@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+#replyContainer {
+   width:96%;
+   height:500px;
+   margin-top:10px;
+   /* overflow-y:scroll; */
+}
+
+#replyContainer > #comment_write {
+   padding: 10px 0px;
+   border-top: 1px solid #000066;
+   border-bottom: 1px solid #000066;
+}
+
+#replyContainer > #comment_write #comment{
+   margin-bottom:8px;
+}
+
+#replyContainer > #comment_write label {
+   display: inline-block;
+   width: 100px;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+#replyContainer > #comment_write input[type='text'], 
+#replyContainer > #comment_write input[type='password'],
+#replyContainer > #comment_write textarea {
+   border: 1px solid #ccc; width: 120px;
+   vertical-align: middle;
+   padding: 3px 10px;
+   line-height: 120%;
+}
+
+#replyContainer > #comment_write textarea{
+   width: 85%;
+   height: 60px; 
+   vertical-align: middle;
+}
+
+/* 동적 요소의 CSS */
+.comment_item {
+   color: #333;
+   padding: 10px 15px;
+   border-bottom: 1px dotted #000066;
+   line-height: 150%;
+}
+
+.comment_item .writer {
+   color: #555;
+   line-height: 150%;
+   margin-bottom:5px;
+}
+.comment_item .writer input {
+   vertical-align: middle;
+}
+.comment_item .writer .name {
+   color: #222;
+   font-weight: bold;
+}
+.update_form, .delete_btn, .update_btn, .reset_btn{
+   margin-left:10px;
+}
+
+#content{
+   width: 65%;
+   height: 50px;
+   vertical-align: middle;
+}
+
+.pwdChkArea{
+   position:relative;
+   top:-18px;
+   left:220px;
+}
+
+.pwdArea {
+   margin : 0px;
+}
+
+/** 유효성 체크시 사용할 클래스   */
+.msg_default, msg {color:#000099; font-weight:bold;}
+.msg_error{color:red;}
+.passwd, .pwdCheckBut, .pwdResetBut{margin-right:8px;}
+
+/** 비밀번호 확인 레이어의 위치, 크기, 투명도 지정 
+.glayLayer { position:relative; background: black; 
+          opacity: 0.60; filter: alpha(opacity=60); 
+} */
+
+/** 폼 태그 위치 지정  
+.overLayer { width: 880px; padding:6px; background: white;
+          position:absolute; top:60px; left:80px; 
+}
+.overLayer form{display:inline;}
+.overLayer input[type='button']{margin-right:5px;}  */ 
