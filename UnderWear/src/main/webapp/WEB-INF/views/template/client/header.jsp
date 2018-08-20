@@ -15,8 +15,8 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/board/boardList.do">게시판</a></li>
-            <li><a href="/gallery/galleryList.do">겔러리</a></li>
-             <li><a href="/member/join.do">회원가입</a></li>
+            <li><a href="product/productList.do">상품</a></li>
+             <li><a href="member/join.do">회원가입</a></li>
             <li><a href="#">로그인</a></li>
             <!-- <li class="dropdown"> 
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
