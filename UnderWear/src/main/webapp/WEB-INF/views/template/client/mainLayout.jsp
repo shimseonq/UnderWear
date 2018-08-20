@@ -16,11 +16,11 @@
     <title><tiles:getAsString name="title"/></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/include/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/resources/include/dist/assets/css/sticky-footer-navbar.css" rel="stylesheet">
-
+    <link href="/resources/include/css/carousel.css" rel="stylesheet">
+ 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
@@ -30,52 +30,131 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+   <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>
+    
   </head>
-
-  <body>
-
    
-    <nav class="navbar navbar-default navbar-fixed-top">  	<!-- header 설정 -->
-   		<tiles:insertAttribute name="header" />
-   	
-    </nav>
-	
-	<div class="container">
-		<div class="page-header">
-			<div class="jumbotron">
-				<h1>노력은 배신하지 않는다.</h1>
-				<p>Effect are not betraying you</p>
-			</div>
-		</div>
-     
-      <div class="row">
-        <div class="col-md-4">
-          <h2>게시판 관리</h2>
-          <p>처음으로 만든 게시판. 이미지 첨부 가능한 게시판 . 입력/수정/삭제 및 댓글 작성까지 처리 완료.</p>
-          <p><a class="btn btn-default" href="/board/boardList.do" role="button">View details &raquo;</a></p>
+  <body>  
+      <nav class="navbar navbar-default navbar-fixed-top">     <!-- header 설정 -->
+         <tiles:insertAttribute name="header" />
+
+      </nav>
+      
+           <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+        <img src="/resources/image/frist.png" alt="First slide">
+
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>빤스</h1>
+              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+             
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <h2>겔러리 게시판 관리</h2>
-          <p>썸네일 처리 게시판. 입력 처리 완료. lightBox처리 </p>
-          <p><a class="btn btn-default" href="/gallery/galleryList.do" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>로그인 및 회원 관리</h2>
-          <p>회원가입/정보 수정 /회원 탈퇴 처리 완료. 로그인 및 로그아웃 처리 완료.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="item">
+          <img src="/resources/image/second.png" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>브라자</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+             
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/resources/image/frist.png" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>셋트</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+             
+            </div>
+          </div>
         </div>
       </div>
-	</div> <!-- container close-->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+   
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">신상 빤쮸 <br/><span class="text-muted">S/S시즌 신상 빤쮸</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+           <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="/resources/image/third.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="/resources/image/vp3.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">신상 브래지어<br/><span class="text-muted">S/S시즌 신상 브래지어</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">이번 시즌을 강타할  속옷<br/><span class="text-muted"> S/S시즌 UNDERWEAR</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
+        </div>
+      <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="/resources/image/vp4.jpg" alt="Generic placeholder image">
+      </div>
+    </div>
+
+    <hr class="featurette-divider"> 
+
+      <!-- /END THE FEATURETTES -->
+   
     <footer class="footer">       <!-- footer 설정 -->
-    	<tiles:insertAttribute name="footer" />
+       <tiles:insertAttribute name="footer" />
  
     </footer>
+    
+    </div>
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>

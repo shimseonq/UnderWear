@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
 		<html>
    			<head>
       		<meta charset="UTF-8">
-     	    <title>회원가입</title>
+     	    <title></title>
       
      	 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
          		<!-- 브라우저의 호환성 보기 모드를 막고, 해당 브라우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여 주도록 설정. -->
@@ -15,7 +16,7 @@
         		<link rel="shortcut icon" href="../image/icon.png" />
         		<link rel="apple-touch-icon" href="../image/icon.png" />
         		<!-- 모바일 웹 페이지 설정 끝 -->
-        
+    		    <script type="text/javascript" src="/resources/include/css/agreement.css"></script>
         		<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
         		<!-- [if it IE 9] > <script src="../jshtml5shiv.js"></script> [endif] -->
       			
@@ -40,8 +41,16 @@
  				</script>		
   		    			
    			</head>
+   			
       		<body>
-     			<div class="contentContainer">
+     		
+     		
+					 	<jsp:include page="agreement.jsp"/>
+     		 	
+     		 	
+     	 		<br /> <br />
+     	 	
+     	<h3>회원정보 입력</h3>
 	<div class="well">
 		<form id="memberForm" class="form-horizontal">
 			<input type="hidden" name="email" id="email" />
@@ -132,5 +141,6 @@
 		</form>
 	</div>
 </div>
-      		</body>
-		</html>
+	
+      </body>
+</html>
