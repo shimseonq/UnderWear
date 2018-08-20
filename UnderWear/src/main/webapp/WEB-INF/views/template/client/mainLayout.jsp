@@ -51,32 +51,32 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-        <img src="/resources/image/frist.png" alt="First slide">
+        <img src="/resources/image/slide1.jpg" alt="First slide">
 
           <div class="container">
             <div class="carousel-caption">
-              <h1>빤스</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <h1>UnderWear</h1>
+            <!--   <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p> -->
              
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="/resources/image/second.png" alt="Second slide">
+          <img src="/resources/image/slide2.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>브라자</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1>Summer!</h1>
+              <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
              
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="/resources/image/frist.png" alt="Third slide">
+          <img src="/resources/image/slide3.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>셋트</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1>New Arrive</h1>
+              <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
              
             </div>
           </div>
@@ -104,12 +104,12 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">신상 빤쮸 <br/><span class="text-muted">S/S시즌 신상 빤쮸</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h4 class="featurette-heading">SUMMER BRA-TOP <br/><span class="text-muted">S/S Session New UnderWear</span></h4>
+         <!--  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p> -->
            <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/resources/image/third.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="/resources/image/main1.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -117,11 +117,11 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/resources/image/vp3.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="/resources/image/main2.jpg" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
-          <h2 class="featurette-heading">신상 브래지어<br/><span class="text-muted">S/S시즌 신상 브래지어</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">여름의 일상, 어디든 함께<br/><span class="text-muted">Bra, Let it go</span></h2>
+         <!--  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p> -->
           <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
         </div>
       </div>
@@ -130,12 +130,12 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">이번 시즌을 강타할  속옷<br/><span class="text-muted"> S/S시즌 UNDERWEAR</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Youth-tival<br/><span class="text-muted">젊음 그 자체로 아름다운몸 아무거나 입기엔 아깝지 않으세요?</span></h2>
+          <!-- <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p> -->
           <p><a class="btn btn-lg btn-primary" href="#" role="button">바로가기</a></p>
         </div>
       <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/resources/image/vp4.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="/resources/image/main3.jpg" alt="Generic placeholder image">
       </div>
     </div>
 

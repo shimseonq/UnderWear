@@ -21,7 +21,7 @@
                  <li><a href="http://localhost:8080/">MEN</a></li>
                   <li><a href="http://localhost:8080/">WOMEN</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Product<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PRODUCT<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="#">브래지어</a></li>
                     <li><a href="#">여성 팬티</a></li>
