@@ -18,7 +18,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                 <li><a href="http://localhost:8080/">MEN</a></li>
+                 <li><a href="product/productList.do">MEN</a></li>
                   <li><a href="http://localhost:8080/">WOMEN</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PRODUCT<span class="caret"></span></a>
@@ -38,6 +38,7 @@
                     <li><a href="#">문의 게시판</a></li>
                   </ul>
                 </li>
+
               </ul>
               <ul class="nav navbar-nav">
                  <li><a href="#"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
