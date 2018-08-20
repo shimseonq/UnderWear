@@ -1,35 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>  
-	  
-	   <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">UnderWear</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/board/boardList.do">게시판</a></li>
-            <li><a href="/gallery/galleryList.do">겔러리</a></li>
-             <li><a href="/member/join.do">회원가입</a></li>
-            <li><a href="#">로그인</a></li>
-            <!-- <li class="dropdown"> 
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+
+
+ <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">UnderWear</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                 <li><a href="http://localhost:8080/">MEN</a></li>
+                  <li><a href="http://localhost:8080/">WOMEN</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Product<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">브래지어</a></li>
+                    <li><a href="#">여성 팬티</a></li>
+                    <li><a href="#">남성 팬티</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">속옷 셋트</a></li>
+                  </ul>
+                </li>
+              <li><a href="#">공지사항</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">게시판<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">리뷰 게시판</a></li>
+                    <li><a href="#">문의 게시판</a></li>
+                  </ul>
+                </li>
               </ul>
-            </li>  -->
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+              <ul class="nav navbar-nav">
+                 <li><a href="#"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
+                 <li><a href="#"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
+                   <li><a href="/member/join.do">Login</a></li>
+                 </ul>
+              </div>
+            </div>
+         </nav>
+    </div>
+ </div>
+
+    

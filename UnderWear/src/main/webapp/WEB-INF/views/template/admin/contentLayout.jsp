@@ -18,21 +18,17 @@
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/resources/include/css/dashboard.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/resources/include/css/metisMenu.min.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="/resources/include/dist/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- Custom CSS -->
+    <link href="/resources/include/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-   <link rel="stylesheet" type="text/css" href="/resources/include/css/admin.css"/>
-   <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
-   <script type="text/javascript" src="/resources/include/js/common.js"></script>    
+    <!-- Morris Charts CSS -->
+    <link href="/resources/include/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/resources/include/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
   <body>
 
@@ -52,13 +48,21 @@
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <!-- jQuery -->
+    <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-    <script src="/resources/include/dist/assets/js/docs.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/resources/include/js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/resources/include/js/raphael.min.js"></script>
+    <script src="/resources/include/js/morris.min.js"></script>
+    <script src="/resources/include/js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/resources/include/dist/js/sb-admin-2.js"></script>
   </body>
 </html>
