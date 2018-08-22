@@ -31,6 +31,5 @@ public class MemberSecurity {
 	@Override
 	public String toString() {
 		return "MemberSecurity [userId=" + userId + ", salt=" + salt + "]";
-	}
-	
+	}	
 }

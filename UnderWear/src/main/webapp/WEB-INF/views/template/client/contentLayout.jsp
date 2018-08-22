@@ -43,7 +43,7 @@
     <!-- Begin page content -->
    <div class="container">
       <div class="page-header">  
-        <h1><tiles:getAsString name="title"/></h1>
+        <h2><tiles:getAsString name="title"/></h2>
       </div>  
          <tiles:insertAttribute name="body" /> <!-- content 영역 -->
    </div>
