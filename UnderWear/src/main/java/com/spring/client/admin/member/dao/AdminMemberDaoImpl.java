@@ -17,6 +17,12 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		
 		return session.selectList("memberList",mvo);
 	}
+	//글상세페이징~
+	@Override
+	public MemberVO memberDetail(MemberVO mvo) {
+		
+		return  session.selectOne("memberDetail", mvo);
+	}
 
 
 }

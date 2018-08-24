@@ -5,12 +5,12 @@ import com.spring.client.member.vo.MemberVO;
 
 public interface MemberDao {
 
-	public MemberVO memberSelect(String userId);
+	public MemberVO memberSelect(String c_id);
 
 	public int securityInsert(MemberSecurity set);
 
 	public int memberInsert(MemberVO mvo);
 
-	public MemberSecurity securitySelect(String userId);
+	public MemberSecurity securitySelect(String c_id);
 
 }

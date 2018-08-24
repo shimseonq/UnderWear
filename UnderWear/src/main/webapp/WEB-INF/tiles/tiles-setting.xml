@@ -39,5 +39,13 @@
 			<put-attribute name="title" value="상품" />
 			<put-attribute name="body" value="/WEB-INF/views/product/{1}.jsp" />
 		</definition>
+		
+		<definition name="login/*" extends="content">
+			<put-attribute name="title" value="로그인" />
+			<put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
+		</definition>
+		
+		
+		
 
 </tiles-definitions>

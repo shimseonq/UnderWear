@@ -6,19 +6,20 @@
 	</select>
 	
 	<insert id="securityInsert" parameterType="security">
-		insert into security(userid, salt)
-		values(#{userId}, #{salt})
+		insert into security(c_id, salt)
+		values(#{c_id}, #{salt})
 	</insert>
 	<select id="memberSelect" parameterType="String" resultType="member">
-		select idx, userid,userpw,username,pinno,email,phone from spring_member
-		where userid = #{userId}
-	</select>
+		select c_num, c_id,c_pwd,c_name,c_birth,c_email,c_phone,c_address from customer
+		where c_id = #{c_id}
+	</select
+	>
 	<insert id="memberInsert" parameterType="member">
 		/*member - memberInsert */
-	<selectKey keyProperty="idx" resultType="int" order="BEFORE">
-		select spring_member_seq.nextval from dual
+	<selectKey keyProperty="c_num" resultType="int" order="BEFORE">
+		select customer_seq.nextval from dual
 	</selectKey>
-		insert into spring_member(idx, userid, userpw,username, pinno,email,phone)
-		values(#{idx},#{userId},#{userPw},#{userName},#{pinno},#{email},#{phone})
+		insert into customer(c_num, c_id, c_pwd,c_name, c_birth,c_email,c_phone,c_address, rk_no)
+		values(#{c_num},#{c_id},#{ c_pwd},#{c_name},#{c_birth},#{c_email},#{c_phone},#{c_address},'1')
 	</insert>
 </mapper>

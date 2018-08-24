@@ -3,11 +3,19 @@
 <mapper namespace="com.spring.client.admin.member.dao.AdminMemberDao">
 	<select id="memberList" resultType="member"> 
        /*마스킹 하기*/
- 	   select idx, pinno, joindate,
-       regexp_replace(userid,'.','*',4) as userid,
-       regexp_replace(username,'.','*',2) as username,
-       regexp_replace(phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as phone,
-       concat('*****',substr(email,6,length(email))) as email
-       from spring_member
+ 	   select c_num, c_birth, c_date, c_address,
+       regexp_replace(c_id,'.','*',4) as c_id,
+       regexp_replace(c_name,'.','*',4) as c_name,
+       regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,
+       concat('*****',substr(c_email,6,length(c_email))) as c_email
+       from customer
    </select>
-</mapper>
+   
+   <!-- 게시물 상세 정보 -->
+   <select id="memberDetail" parameterType="member" resultType="member">
+      /* member - memberDetail*/
+	select c_num, c_name, c_phone, c_id, c_email ,c_birth,to_char (c_date,'YYYY-MM-DD HH24:MM:SS')
+ 	as c_date,c_address from customer where c_num = #{c_num}
+    </select>
+   
+</mapper> 

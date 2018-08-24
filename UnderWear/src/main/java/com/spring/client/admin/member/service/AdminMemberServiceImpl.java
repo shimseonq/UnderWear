@@ -10,7 +10,7 @@ import com.spring.client.member.vo.MemberVO;
 
 @Service
 public class AdminMemberServiceImpl implements AdminMemberService {
-
+	//상품 리스트 보여주기
 	@Autowired
 	private AdminMemberDao adminMemberDao;
 	@Override
@@ -19,6 +19,14 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		mList = adminMemberDao.memberList(mvo);
 		return mList;
 	}
+	//상품 상세보기
+	@Override
+	public MemberVO memberDetail(MemberVO mvo) {
+		MemberVO detail = new MemberVO();
+		detail = adminMemberDao.memberDetail(mvo);
+		return detail;
+	}
 
+	//글 상세 페이지
 
 }

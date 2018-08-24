@@ -14,8 +14,8 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSession session;
 
 	@Override
-	public MemberVO memberSelect(String userId) {
-		return (MemberVO) session.selectOne("memberSelect", userId);
+	public MemberVO memberSelect(String c_id) {
+		return (MemberVO) session.selectOne("memberSelect", c_id);
 	}
 
 	@Override
@@ -24,12 +24,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int securityInsert(MemberSecurity userId) {
-		return session.insert("securityInsert", userId);
+	public int securityInsert(MemberSecurity c_id) {
+		return session.insert("securityInsert", c_id);
 	}
 
 	@Override
-	public MemberSecurity securitySelect(String userId) {
-		return (MemberSecurity) session.selectOne("securitySelect", userId);
+	public MemberSecurity securitySelect(String c_id) {
+		return (MemberSecurity) session.selectOne("securitySelect", c_id);
 	}
 }

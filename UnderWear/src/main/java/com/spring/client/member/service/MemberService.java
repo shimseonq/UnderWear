@@ -4,10 +4,8 @@ import com.spring.client.member.vo.MemberVO;
 
 public interface MemberService {
 
-	int userIdConfirm(String userId);
+	int userIdConfirm(String c_id);
 
 	int memberInsert(MemberVO mvo);
-
-
 
 }

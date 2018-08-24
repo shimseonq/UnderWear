@@ -21,9 +21,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	/*
-	 * @Autowired private LoginService loginService;
-	 */
 
 	/*************************************************
 	 * 회원 가입 폼
@@ -39,22 +36,22 @@ public class MemberController {
 	 ******************************************************/
 	@ResponseBody
 	@RequestMapping(value = "/userIdConfirm.do", method = RequestMethod.POST)
-	public String userIdConfirm(@RequestParam("userId") String userId) {
-		int result = memberService.userIdConfirm(userId);
+	public String userIdConfirm(@RequestParam("c_id") String c_id) {
+		int result = memberService.userIdConfirm(c_id);
 		return result + "";
 	}
 
 	/***********************************************************************
 	 * 회원 가입 처리
 	 ***********************************************************************/
-	@RequestMapping(value = "join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public ModelAndView memberInsert(MemberVO mvo) {
 		logger.info("join.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
 		int result = 0;
 		result = memberService.memberInsert(mvo);
-
+		logger.info(result);
 		switch (result) {
 		case 1:
 			mav.addObject("errCode", 1); // userId already exist
@@ -71,4 +68,5 @@ public class MemberController {
 		}
 		return mav;
 	}
+	
 }

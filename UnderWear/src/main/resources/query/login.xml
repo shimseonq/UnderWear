@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.client.login.dao.LoginDao">
+	<select id="userIdSelect" parameterType="String"
+		resultType="login">
+		select c_id,
+		c_pwd,
+		c_name
+		from customer
+		where c_id = #{c_id}
+	</select>
+	<select id="loginSelect" parameterType="login"
+		resultType="login">
+		/* 로그인 처리 쿼리 */
+		select
+		c_id,
+		c_pwd,
+		c_name
+		from customer
+		where c_id = #{c_id} and c_pwd = #{c_pwd}
+	</select>
+	<insert id="loginHistoryInsert" parameterType="login">
+		insert into login_history(c_num, c_id, retry, lastFailedLogin,
+		lastSuccessedLogin, clientIP)
+		values(
+		login_history_seq.nextval, #{c_id}, #{retry,jdbcType=INTEGER},
+		#{lastFailedLogin,jdbcType=INTEGER},
+		#{lastSuccessedLogin,jdbcType=INTEGER},
+		#{clientIP,jdbcType=VARCHAR}
+		)
+	</insert>
+	<update id="loginHistoryUpdate" parameterType="login">
+		update login_history
+		set retry = #{retry}
+		Ads by
+		set retry #{retry},
+		lastFailedLogin = #{lastFailedLogin},
+		lastSuccessedLogin = #{lastSuccessedLogin},
+		clientIP = #{clientIP,jdbcType=VARCHAR}
+		where c_num = #{c_num} and c_id = #{c_id}
+	</update>
+	<select id="loginHistorySelect" parameterType="String"
+		resultType="login">
+		select
+		c_num,
+		c_id,
+		retry,
+		lastFailedLogin,
+		lastSuccessedLogin,
+		clientIP
+		from login_history
+		where c_id = #{c_id}
+	</select>
+</mapper>

@@ -8,41 +8,41 @@ package com.spring.client.login.vo;
  * 로그인한 사용자의 IP 정보
  */
 public class LoginHistory {
-	private int idx;  //순번
-	private String userid; //로그인아이디
-	private int retry;		// 로그인 시도 횟수
-	private int lastSuccessedLogin;	// 마지막으로 성공한 로그인 시간
-	private int lastFailedLogin;	// 마지막으로 실패한 로그인 시간
-	private String clientIp;	//로그인한 사용자의 ip 주소
+	private int c_num; // 순번
+	private String c_id; // 로그인아이디
+	private int retry; // 로그인 시도 횟수
+	private long lastSuccessedLogin; // 마지막으로 성공한 로그인 시간
+	private long lastFailedLogin; // 마지막으로 실패한 로그인 시간
+	private String clientIp; // 로그인한 사용자의 ip 주소
 
 	public LoginHistory() {
 	}
 
-	public LoginHistory(int idx, String userid, int retry, int lastSuccessedLogin, int lastFailedLogin,
+	public LoginHistory(int c_num, String c_id, int retry, long lastSuccessedLogin, long lastFailedLogin,
 			String clientIp) {
 		super();
-		this.idx = idx; 
-		this.userid = userid;
+		this.c_num = c_num;
+		this.c_id = c_id;
 		this.retry = retry;
 		this.lastSuccessedLogin = lastSuccessedLogin;
 		this.lastFailedLogin = lastFailedLogin;
 		this.clientIp = clientIp;
 	}
 
-	public int getIdx() {
-		return idx;
+	public int getC_num() {
+		return c_num;
 	}
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
 	}
 
-	public String getUserid() {
-		return userid;
+	public String getC_id() {
+		return c_id;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
 	}
 
 	public int getRetry() {
@@ -53,19 +53,19 @@ public class LoginHistory {
 		this.retry = retry;
 	}
 
-	public int getLastSuccessedLogin() {
+	public long getLastSuccessedLogin() {
 		return lastSuccessedLogin;
 	}
 
-	public void setLastSuccessedLogin(int lastSuccessedLogin) {
+	public void setLastSuccessedLogin(long lastSuccessedLogin) {
 		this.lastSuccessedLogin = lastSuccessedLogin;
 	}
 
-	public int getLastFailedLogin() {
+	public long getLastFailedLogin() {
 		return lastFailedLogin;
 	}
 
-	public void setLastFailedLogin(int lastFailedLogin) {
+	public void setLastFailedLogin(long lastFailedLogin) {
 		this.lastFailedLogin = lastFailedLogin;
 	}
 
@@ -79,7 +79,7 @@ public class LoginHistory {
 
 	@Override
 	public String toString() {
-		return "LoginHistory [idx=" + idx + ", userid=" + userid + ", retry=" + retry + ", lastSuccessedLogin="
+		return "LoginHistory [c_num=" + c_num + ", c_id=" + c_id + ", retry=" + retry + ", lastSuccessedLogin="
 				+ lastSuccessedLogin + ", lastFailedLogin=" + lastFailedLogin + ", clientIp=" + clientIp + "]";
 	}
 
