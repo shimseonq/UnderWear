@@ -50,10 +50,27 @@
 			margin:0px;
 		}
     </style>
+    <script type="text/javascript">
+    	$(function(){
+    		$("#pay").click(function() {
+    			var b_no = $(".tac").attr("data-num");
+    			$("#b_no").val(b_no);
+    			//console.log("글번호 :"+b_num)
+    			$("#basketForm").attr({
+    				"method" : "post",
+    				"action" : "/order/orderForm.do"
+    			});
+    			$("#basketForm").submit();
+    		});    		
+    	})
+    	
+    </script>
   </head>
 
   <body>
-  	 <!-- Jumbotron -->
+  	 <form id="basketForm" name="basketForm">  
+         <input type="hidden" id="b_no" name="b_no"/>
+    </form>
   	 	<h3>My page</h3>
   	 	
   	 	<div class="masthead">
@@ -78,7 +95,6 @@
 					<td>상품명</td>
 					<td>상품금액</td>
 					<td>갯수</td>
-					<td>담긴날짜</td>
 					<td>총 금액</td>
 				</tr>
 				
@@ -86,15 +102,14 @@
 				<tbody id="list">
 				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
-									<td>${product.p_color}</td>
-									<td>${product.p_size}</td>
-									<td>${product.p_date}</td>>
+						 <c:when test="${not empty basketList}" >
+							<c:forEach var="basket" items="${basketList}" varStatus="status">
+								<tr class="tac" data-num="${basket.b_no}" >
+									<td>${basket.img_01}</td>
+									<td>${basket.p_name}</td>
+									<td>${basket.pr_01}</td>
+									<td>${basket.b_count}</td>
+									<td>${basket.total}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -110,7 +125,7 @@
 
 	<div class="container"> 
 		<p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
-		<a class="btn btn-lg btn-success" href="/order/orderForm.do" role="button">결제하러 가기</a></p> 
+		<input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
 	</div>
       <!--Example row of columns
       <div class="row">

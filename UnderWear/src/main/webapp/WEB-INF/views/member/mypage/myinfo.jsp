@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Update Member!</title>
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="/resources/image/icon.png" />
+<link rel="shortcut icon" href="/resour"src/main/webapp/WEB-INF/views/member/mypage/myinfo.jsp"ces/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
 <!-- 모바일 웹 페이지 설정 끝 -->
 <!--[if lt IE 9]>
@@ -30,9 +30,6 @@
 <script type="text/javascript">
 function errorCodeCheck(){
 	var status = '<c:out value="${status}" />';
-	원활한 사용을 위해 왼쪽 아이콘 클릭 후 팝업창이 뜨면 플래시 실행 '허용' 버튼을 클릭해주세요. 자세히 보기
-	2018. 8. 22. [SPRING] 수업시간에 작성한 회원관리 소스(뷰) : 네이버 카페
-	https://cafe.naver.com/niceprogrammer2018 5/8
 	var status <c out value ${status} /> ;
 	if(status != ""){
 	alert("기존 비밀번호 검증에 실패하였습니다. \n기존 비밀번호를 다시 확인해 주세요. ");

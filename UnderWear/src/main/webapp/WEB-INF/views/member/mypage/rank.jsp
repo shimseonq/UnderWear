@@ -49,6 +49,10 @@
 			text-align:center;
 		}
     </style>
+    <script type="text/javascript">
+    	
+    
+    </script>
   </head>
 
   <body>
@@ -70,18 +74,19 @@
       <h3>나의 등급</h3>
       
       <!-- Example row of columns -->
-      
-        <div class="myrank">
+        
+        <form class="myrank">
           <h2>나의 등급</h2>
-          <p>현재 나의 등급은 ${customer.rank} 입니다.</p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-
-      
+	          <input type="hidden" name="c_num" id="c_num" value="${myRank.c_no}"/>
+	          <p>현재 나의 등급은<span id ="my_rank" class="my_rank"> ${myRank.my_rank}</span>입니다.</p>
+          <p><a class="btn btn-primary" href="https://id.coupang.com/addressbook/new?displayTitle=true&displayBackButton=false&pick=true&dawnOnly=false&deliveryType=STANDARD&layoutType=off&returnUrl=https%3A%2F%2Forder.coupang.com%2FdeliveryAddress%2FpopUp%2FresultSelectDeliveryAddress%3FcheckoutId%3D1535008285245&displayDeliveryPreferences=true&historyCount=0" role="button">View details &raquo;</a></p>
+        </form>
+     
       <div class="jumbotron">
         <table class="table table-condensed">
 				<thead>
 				<tr>
+					<td>등급번호</td>
 					<td>등급명</td>
 					<td>등급별 할인률</td>
 					<td>등급 누적 구매액</td>
@@ -92,16 +97,17 @@
 				<tbody id="list">
 				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
+						 <c:when test="${not empty rankList}" >
+							<c:forEach var="rank" items="${rankList}" varStatus="status">
+								<tr class="tac" data-num="${rank.rk_no}" >
+									<td>${rank.rk_no}</td>
+									<td>${rank.rk_rank}</td>
+									<td>${rank.rk_discount}</td>
+									<td>${rank.rk_standard}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
+						<c:otherwise>   
 							<tr>
 								<td colspan="3" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>

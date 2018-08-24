@@ -1,16 +1,18 @@
 package com.spring.client.member.rank.vo;
 
-public class RankVO {
-	private int rk_num;
+import com.spring.client.product.vo.ProductVO;
+
+public class RankVO extends ProductVO{
+	private int rk_no;
 	private String rk_rank ="";
 	private int rk_standard;
 	private String rk_discount ="";
-	
-	public int getRk_num() {
-		return rk_num;
+
+	public int getRk_no() {
+		return rk_no;
 	}
-	public void setRk_num(int rk_num) {
-		this.rk_num = rk_num;
+	public void setRk_no(int rk_no) {
+		this.rk_no = rk_no;
 	}
 	public String getRk_rank() {
 		return rk_rank;

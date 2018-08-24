@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.client.member.dao.MemberDao;
+import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
 import com.spring.common.util.Util;
@@ -53,4 +54,13 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 	}
+	
+
+	@Override
+	public String myRank(MemberVO rvo) {
+		String myRank = null;
+		myRank = memberDao.myRank(rvo);
+		return myRank;
+	}
+
 }

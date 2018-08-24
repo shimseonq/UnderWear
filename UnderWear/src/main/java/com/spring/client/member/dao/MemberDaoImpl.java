@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
 
@@ -31,5 +32,10 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public MemberSecurity securitySelect(String userId) {
 		return (MemberSecurity) session.selectOne("securitySelect", userId);
+	}
+	
+	@Override
+	public String myRank(MemberVO rvo) {
+		return session.selectOne("myRank");
 	}
 }

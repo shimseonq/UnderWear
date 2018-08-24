@@ -49,6 +49,16 @@
     		text-align: center;
     	}
     </style>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="/resources/include/js/address.js"></script>
+	<script>
+	$(function() {
+		$("#searchadd").click(function(){
+			searchAddress();
+		});
+	})
+	    
+	</script>
   </head>
 
   <body>
@@ -56,32 +66,32 @@
      <h3>결제</h3>
      <hr/>
      <h4>주문물품</h4>
-	<div class="jumbotron"> 
-		
+     <form name="f_data" id="f_data" method="post">
+	 <%--<input type="hidden" name="b_no" id="b_no" value="${orderList.b_no }"/>--%>		
+	 </form>
+	 <div class="jumbotron"> 		
         <table class="table table-condensed">
 				<thead>
 				<tr>
 					<td>상품 이미지</td>
 					<td>상품명</td>
-					<td>상품금액</td>
+					<td>색깔</td>
+					<td>사이즈</td> 
 					<td>갯수</td>
-					<td>담긴날짜</td>
-					<td>총 금액</td>
 				</tr>
 				
 				</thead>
 				<tbody id="list">
 				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
-									<td>${product.p_color}</td>
-									<td>${product.p_size}</td>
-									<td>${product.p_date}</td>
+						 <c:when test="${not empty orderList}" >
+							<c:forEach var="basket" items="${orderList}" varStatus="status">
+								<tr class="tac" data-num="${basket.b_no}" >
+									<td>${basket.img_01}</td>
+									<td>${basket.p_name}</td>
+									<td>${basket.p_color }</td>
+									<td>${basket.p_size }</td>
+									<td>${basket.b_count }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -96,28 +106,25 @@
       </div>
 	<div class="well">
 	<h4>주문서 작성</h4>
-		<form id="orderForm" class="form-horizontal">
-			<input type="hidden" name="email" id="email" />
-			<input type="hidden" name="pinno" id="pinno" />
-		<div>	
 			<div class="form-group form-group-sm">
 				<label for="o_name" class="col-sm-2 control-label">주문자 명</label>
 				<div class="col-sm-3">
-					<input type="text" id="o_name" name="o_name"  maxlength="12" class="form-control" placeholder="User ID" />
+					<input type="text" id="o_name" name="o_name"  maxlength="12" class="form-control" placeholder="주문자 명" />
 				</div> 
 			</div>
 			<div class="form-group form-group-sm">
 				<label for="o_address" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-3">
-					<input type="text" id="o_address" name="o_address" maxlength="15" class="form-control" placeholder="Password" >
-					<input type="text" id="o_address" name="o_address" maxlength="15" class="form-control" placeholder="Password" >
-					<input type="text" id="o_address" name="o_address" maxlength="15" class="form-control" placeholder="Password" >
+					<input type="button" id="searchadd" name ="searchadd" value="우편번호 찾기"/>
+					<input type="text" id="o_post" name="o_post" maxlength="15" class="form-control" placeholder="우편번호" >
+					<input type="text" id="o_address1" name="o_address1" maxlength="15" class="form-control" placeholder="주소" >
+					<input type="text" id="o_address2" name="o_address2" maxlength="15" class="form-control" placeholder="나머지 주소 " >
 				</div>
 			</div>
 				<div class="form-group form-group-sm">
 					<label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
 				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="Phone Number">	
+					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="핸드폰 번호">	
 				</div>
 			</div>	
 				<div class="form-group form-group-sm">
@@ -139,7 +146,6 @@
 					</select> 
 				</div>
 			</div>
-		</div>
 		<div>	
 			<div class="form-group form-group-sm">
 				<label for="birth" class="col-sm-2 control-label">이메일</label>
@@ -164,16 +170,16 @@
 				<input type="text" id="userName" name="userName" maxlength="10" class="form-control" placeholder="NAME" >
 			</div>										
 		</div>
+	</div>
 		<h4>결제 금액</h4>
 		<div class="jumbotron"> 	
         	<table class="table table-condensed">
 				<thead>
-				<tr>
-					<td>상품 금액</td>
-					<td>할인금액  / 추가금액 </td>
-					<td>총 결제 금액</td>
-				</tr>
-				
+					<tr>
+						<td>상품 금액</td>
+						<td>할인금액  / 추가금액 </td>
+						<td>총 결제 금액</td>
+					</tr>
 				</thead>
 				<tbody id="list">
 				<!-- 데이터 출력 -->

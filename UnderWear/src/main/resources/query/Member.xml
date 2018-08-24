@@ -21,4 +21,10 @@
 		insert into spring_member(idx, userid, userpw,username, pinno,email,phone)
 		values(#{idx},#{userId},#{userPw},#{userName},#{pinno},#{email},#{phone})
 	</insert>
+	
+	<select id="myRank" parameterType="String" resultType="member">
+		select rk_rank 
+		from rank inner join customer on rank.rk_no = customer.rk_no
+		where c_num = 1
+	</select>
 </mapper>

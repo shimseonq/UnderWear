@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>	
-			<h2 class="sub-header">게시판 리스트</h2>
-			
-     
-     
+	<h2 class="sub-header">게시판 리스트</h2>
+			   
       <table class="table table-striped">
       <thead>
          <tr>
             <th class="tac">회원번호</th>
-            <th class="tac">회원아 이디</th>
+            <th class="tac">회원아이디</th>
             <th class="tac">회원명</th>
             <th class="tac">회원이메일</th>
             <th class="tac">회원휴대폰</th>

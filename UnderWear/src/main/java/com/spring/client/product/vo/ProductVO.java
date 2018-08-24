@@ -80,4 +80,6 @@ public class ProductVO extends CommonVO {
 		this.p_file = p_file;
 	}
 	
+	
+	
 }
