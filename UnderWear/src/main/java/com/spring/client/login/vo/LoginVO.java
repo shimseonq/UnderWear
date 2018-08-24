@@ -1,42 +1,42 @@
 package com.spring.client.login.vo;
 
 public class LoginVO extends LoginHistory {
-	private String userId = "";
-	private String userPw = "";
-	private String userName = "";
+	private String c_id = ""; //유저 id  c_id
+	private String c_pwd = "";	//유저 비밀번호 c_pwd
+	private String c_name = ""; //유저 네임 c_name
 
 	public LoginVO() {
 	}
 
-	public LoginVO(String userId, String userPw, String userName) {
+	public LoginVO(String c_id, String c_pwd, String c_name) {
 		super();
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
+		this.c_id = c_id;
+		this.c_pwd= c_pwd;
+		this.c_name = c_name;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getC_id() {
+		return c_id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
 	}
 
-	public String getUserPw() {
-		return userPw;
+	public String getC_pwd() {
+		return c_pwd;
 	}
 
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
+	public void setC_pwd(String c_pwd) {
+		this.c_pwd = c_pwd;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getC_name() {
+		return c_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
 	}
 
 }

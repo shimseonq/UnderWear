@@ -53,12 +53,12 @@
      	<h3>회원정보 입력</h3>
 	<div class="well">
 		<form id="memberForm" class="form-horizontal">
-			<input type="hidden" name="email" id="email" />
-			<input type="hidden" name="pinno" id="pinno" />
+			<input type="hidden" name="c_email" id="c_email" />
+			<input type="hidden" name="c_birth" id="c_birth" />
 			<div class="form-group form-group-sm">
-				<label for="userId" class="col-sm-2 control-label">사용자 ID</label>
+				<label for="c_id" class="col-sm-2 control-label">사용자 ID</label>
 				<div class="col-sm-3">
-					<input type="text" id="userId" name="userId"  maxlength="12" class="form-control" placeholder="User ID" />
+					<input type="text" id="c_id" name="c_id"  maxlength="12" class="form-control" placeholder="User ID" />
 				</div>
 				<div class="col-sm-2">
 					<input type="button" id="idConfirmBtn" value="아이디 중복체크" class="form-control btn-primary" />
@@ -68,9 +68,9 @@
 				</div>
 			</div>
 			<div class="form-group form-group-sm">
-				<label for="userPw" class="col-sm-2 control-label">비밀 번호</label>
+				<label for="c_pwd" class="col-sm-2 control-label">비밀 번호</label>
 				<div class="col-sm-3">
-					<input type="password" id="userPw" name="userPw" maxlength="15" class="form-control" placeholder="Password" >
+					<input type="password" id="c_pwd" name="c_pwd" maxlength="15" class="form-control" placeholder="Password" >
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static error"></p>
@@ -86,9 +86,9 @@
 				</div>
 			</div>
 			<div class="form-group form-group-sm">
-				<label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
+				<label for="c_phone" class="col-sm-2 control-label">핸드폰 번호</label>
 				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="Phone Number">	
+					<input type="text" id="c_phone" name="c_phone" maxlength="15" class="form-control" placeholder="Phone Number">	
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static error"></p>
@@ -107,9 +107,18 @@
 				</div>
 			</div>										
 			<div class="form-group form-group-sm">
-				<label for="userName" class="col-sm-2 control-label">회원이름</label>
+				<label for="c_name" class="col-sm-2 control-label">회원이름</label>
 				<div class="col-sm-3">
-					<input type="text" id="userName" name="userName" maxlength="10" class="form-control" placeholder="NAME" >
+					<input type="text" id="c_name" name="c_name" maxlength="10" class="form-control" placeholder="NAME" >
+				</div>
+				<div class="col-sm-5">
+					<p class="form-control-static error"></p>
+				</div>						
+			</div>
+			<div class="form-group form-group-sm">
+				<label for="c_address" class="col-sm-2 control-label">주소</label>
+				<div class="col-sm-3">
+					<input type="text" id="c_address" name="c_address" maxlength="10" class="form-control" placeholder="ADDRESS" >
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static error"></p>

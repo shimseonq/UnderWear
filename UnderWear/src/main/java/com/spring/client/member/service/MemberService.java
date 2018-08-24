@@ -5,11 +5,9 @@ import com.spring.client.member.vo.MemberVO;
 
 public interface MemberService {
 
-	public int userIdConfirm(String userId);
-
-	public int memberInsert(MemberVO mvo);
+	public int userIdConfirm(String c_id);
 	
 	public String myRank(MemberVO mvo);
 
-
+	public int memberInsert(MemberVO mvo);
 }

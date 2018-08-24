@@ -1,8 +1,9 @@
 package com.spring.client.member.basket.vo;
 
+import com.spring.client.member.vo.MemberVO;
 import com.spring.client.product.vo.ProductVO;
 
-public class BasketVO extends ProductVO {
+public class BasketVO extends MemberVO {
 	private int b_no;
 	private int b_count = 0;
 	private String img_01 = "";

@@ -1,27 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>시작페이지</title>
-      
-      <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-         <!-- 브라우저의 호환성 보기 모드를 막고, 해당 브라우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여 주도록 설정. -->
-      
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-        <!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정.    initial-scale는 초기비율 -->
-         
-        <!-- 모바일 웹 페이지 설정 -->
-      <link rel="shortcut icon" href="/resources/image/icon.png"/>
-      <link rel="apple-touch-icon" href="/resources/image/icon.png"/>
-        <!-- 모바일 웹 페이지 설정 끝 -->
-        
-        <!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
-        <!-- [if it IE 9] > <script src="/resources/jshtml5shiv.js"></script> [endif] -->
-      	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
- 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
- 		<script type="text/javascript" src="/resources/include/js/join.js"></script>
-   		<script type="text/javascript" src="/resources/include/css/agreement.css"></script>
+<head>
+<meta charset="UTF-8">
+<title>시작페이지</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<!-- 브라우저의 호환성 보기 모드를 막고, 해당 브라우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여 주도록 설정. -->
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정.    initial-scale는 초기비율 -->
+
+<!-- 모바일 웹 페이지 설정 -->
+<link rel="shortcut icon" href="/resources/image/icon.png" />
+<link rel="apple-touch-icon" href="/resources/image/icon.png" />
+<!-- 모바일 웹 페이지 설정 끝 -->
+
+<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
+<!-- [if it IE 9] > <script src="/resources/jshtml5shiv.js"></script> [endif] -->
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
+<script type="text/javascript" src="/resources/include/js/join.js"></script>
+<script type="text/javascript"
+	src="/resources/include/css/agreement.css"></script>
 <script type="text/javascript">
 function chk(){
  var req = document.form.req.checked;
@@ -42,23 +46,18 @@ location.href="/member/join.do";}
 </script>
 </head>
 <body>
-<form action="" name="form" method="post">
- <table width="1400" height="650">
-  <tr>
-   <td width="100%" height="10%"><span style="padding-left: 160px"></span>&nbsp;
-    <br>
-    <hr>
-   </td>
-  </tr>
-  <tr>
-   <td width="100%" height="50%" align="center">
-   <p align="left">
-   <span style="padding-left: 160px">
-   UnderWear 사이트 약관동의</span>
-   </p>
-   <br>
-   <textarea
-     rows="20" cols="150">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
+	<form action="" name="form" method="post">
+		<table width="1400" height="650">
+			<tr>
+				<td width="100%" height="10%"><span style="padding-left: 160px"></span>&nbsp;
+					<br>
+					<hr></td>
+			</tr>
+			<tr>
+				<td width="100%" height="50%" align="center">
+					<p align="left">
+						<span style="padding-left: 160px"> UnderWear 사이트 약관동의</span>
+					</p> <br> <textarea rows="20" cols="150">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
 회원가입
 - 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보
 만14세 미만 아동 회원가입
@@ -80,35 +79,27 @@ location.href="/member/join.do";}
 - 홈페이지, 서면양식, 팩스, 전화, 상담 게시판, 이메일, 이벤트 응모, 배송요청
 - 협력회사로부터의 제공
 - 생성정보 수집 툴을 통한 수집
-   </textarea>
-   <br>
-   <input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다.
-   </td>
-  </tr>
-  <tr>
-   <td align="center" valign="top">
-   
-    <input type="button" value="동의하지 않습니다" onclick="nochk()"/>
-   </td>
-  </tr>
- </table>
- 
-  <table width="1400" height="650">
-  <tr>
-   <td width="100%" height="10%"><span style="padding-left: 160px"></span>&nbsp; 
-    <br>
-    <hr>
-   </td>
-  </tr>
-  <tr>
-   <td width="100%" height="50%" align="center">
-   <p align="left">
-   <span style="padding-left: 160px">
-   UnderWear 사이트  개인정보 동의</span>
-   </p>
-   <br>
-   <textarea
-     rows="20" cols="150">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
+   </textarea> <br> <input type="checkbox" name="req"> 개인정보 수집 및 이용에
+					동의합니다.
+				</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top"><input type="button"
+					value="동의하지 않습니다" onclick="nochk()" /></td>
+			</tr>
+		</table>
+
+		<table width="1400" height="650">
+			<tr>
+				<td width="100%" height="10%"><span style="padding-left: 160px"></span>&nbsp;
+					<br>
+					<hr></td>
+			</tr>
+			<tr>
+				<td width="100%" height="50%" align="center">
+					<p align="left">
+						<span style="padding-left: 160px"> UnderWear 사이트 개인정보 동의</span>
+					</p> <br> <textarea rows="20" cols="150">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
 회원가입
 - 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보
 만14세 미만 아동 회원가입
@@ -130,20 +121,17 @@ location.href="/member/join.do";}
 - 홈페이지, 서면양식, 팩스, 전화, 상담 게시판, 이메일, 이벤트 응모, 배송요청
 - 협력회사로부터의 제공
 - 생성정보 수집 툴을 통한 수집
-   </textarea>
-   <br>
-   <input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다.
-   </td>
-  </tr>
-  <tr>
-   <td align="center" valign="top">
-   
-    <input type="button" value="동의하지 않습니다" onclick="nochk()"/>
-   </td>
-  </tr>
- </table>
- 
- 
-</form>
+   </textarea> <br> <input type="checkbox" name="req"> 개인정보 수집 및 이용에
+					동의합니다.
+				</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top"><input type="button"
+					value="동의하지 않습니다" onclick="nochk()" /></td>
+			</tr>
+		</table>
+
+
+	</form>
 </body>
 </html>

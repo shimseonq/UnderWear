@@ -1,0 +1,12 @@
+.xans-layout-footer { float:right; }
+.xans-layout-footer .utilMenu { overflow:hidden; zoom:1; }
+.xans-layout-footer .utilMenu li { float:left; text-align:right;}
+.xans-layout-footer .utilMenu li a { color:#000000; font-weight:bold;font-size:10px; letter-spacing:1px;  margin:0 0 0 10px; padding:0 0 0 9px;   }
+.xans-layout-footer .utilMenu li:first-child a { border:0; margin:0; padding:0; }
+.xans-layout-footer .inner {}
+.xans-layout-footer p#copy { color:#000000; font-family:arial; font-size:11px; letter-spacing:1px;text-align:right; }
+.xans-layout-footer p#address { padding:0px 0 15px; margin:11px 0 0; color:#000000; line-height:17px; font-size:9px;letter-spacing:0px;  0 0 repeat-x; text-align:right;}
+.xans-layout-footer p#address span { padding:0 0px 0 0; }
+.xans-layout-footer p#address span a,
+.xans-layout-footer p#address span a:hover { color:#000000;  font-weight:bold; }
+.xans-layout-footer #top { position:absolute; right:0; top:0px; }

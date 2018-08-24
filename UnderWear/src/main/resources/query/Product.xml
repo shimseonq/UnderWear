@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.product.dao.ProductDao">
 	
-	<select id="productList" parameterType="product" resultType="product" >	<!-- id로 구분한다. -->
-		/* Product - productList */		<!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
+	<select id="productList" parameterType="product" resultType="product" >	id로 구분한다.
+		/* Product - productList */		자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함.
 		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender,
 		pr_01, smallct_category
 

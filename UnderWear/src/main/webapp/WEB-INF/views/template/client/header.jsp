@@ -1,7 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/header.js"></script>
+<script type="text/javascript">
+	$(function(){
+		login();
+		$("#mypage").click(function(){
+			if(${login.c_id != null && login.c_id != ''}){
+				location.href="/mypage/mypage.do";
+			}else{
+				location.href="/login/login.do";
+			}
+		});
+		
+		$("#basket").click(function(){
+			if(${login.c_id != null && login.c_id != ''}){
+				location.href="/mypage/basket.do";
+			}else{
+				location.href="/login/login.do";
+			}
+		});
+	});
+	
+	function login(){
+		if(${login.c_id != null && login.c_id != ''}){
+			$("#login").hide();
+			$("#joinus").hide();
+		}else{
+			$("#login").show();
+			$("#joinus").show();
+		}
+	}
+</script>
  <div class="navbar-wrapper">
       <div class="container">
 
@@ -14,7 +46,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/">UnderWear</a>
+              <a class="navbar-brand" href="/"><img src="/resources/image/underwear.png"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -41,9 +73,19 @@
 
               </ul>
               <ul class="nav navbar-nav">
-                 <li><a href="/mypage/mypage.do"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
-                 <li><a href="/mypage/basket.do"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
-                   <li><a href="/member/join.do">Login</a></li>
+                 <li><a id="mypage" name="mypage" href="#"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
+                 <li><a id="basket" name="basket"href="#"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
+                   <li><a id="login" name="login" href="/login/login.do">Login</a></li>
+                    <li><a id="joinus" name="joinus" href="/member/join.do">join us</a></li>
+                    <li><c:if test="${login.c_id != null and login.c_id != ''}">
+						<fieldset id="loginAfter">
+						<legend>
+							<strong>[ ${login.c_name} ]님 반갑습니다</strong>
+						</legend>
+						<span id="memberMenu" class="tac">     
+						<input type="button" id="logout" value="로그아웃"><span> </span></span>
+						</fieldset>
+					</c:if>
                  </ul>
               </div>
             </div>

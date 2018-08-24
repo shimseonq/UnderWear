@@ -14,10 +14,22 @@
 	<logger name="com.spring.client">
 		<level value="info" />
 	</logger>
-	
+	<logger name="com.spring.admin">
+		<level value="info" />
+	</logger>
+	<logger name="com.spring.client.member.dao">
+		<level value="trance" />
+	</logger>
+	<logger name="com.spring.client.product.dao">
+		<level value="trance" />
+	</logger>
+	<logger name="com.spring.client.login.dao">
+		<level value="trance" />
+	</logger>
 	<logger name="org.spring.client.member.dao">
 		<level value="trace"/>
 	</logger>
+	
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

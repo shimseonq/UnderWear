@@ -22,6 +22,5 @@
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/member/{1}.jsp"/>
       <put-attribute name="sub" value=""/>
-      
    </definition>
 </tiles-definitions>

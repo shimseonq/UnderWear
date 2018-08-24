@@ -6,5 +6,6 @@
 		from basket inner join product on basket.p_code = product.p_code 
 		inner join image on image.p_code = product.p_code
 		inner join price on price.pr_no = product.pr_no
+		where c_num = #{c_num}
 	</select>
 </mapper>

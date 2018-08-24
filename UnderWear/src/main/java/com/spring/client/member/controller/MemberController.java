@@ -1,7 +1,5 @@
 package com.spring.client.member.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.client.login.vo.LoginVO;
 import com.spring.client.member.service.MemberService;
 import com.spring.client.member.vo.MemberVO;
 
@@ -24,9 +21,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	/*
-	 * @Autowired private LoginService loginService;
-	 */
 
 	/*************************************************
 	 * 회원 가입 폼
@@ -42,22 +36,22 @@ public class MemberController {
 	 ******************************************************/
 	@ResponseBody
 	@RequestMapping(value = "/userIdConfirm.do", method = RequestMethod.POST)
-	public String userIdConfirm(@RequestParam("userId") String userId) {
-		int result = memberService.userIdConfirm(userId);
+	public String userIdConfirm(@RequestParam("c_id") String c_id) {
+		int result = memberService.userIdConfirm(c_id);
 		return result + "";
 	}
 
 	/***********************************************************************
 	 * 회원 가입 처리
 	 ***********************************************************************/
-	@RequestMapping(value = "join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public ModelAndView memberInsert(MemberVO mvo) {
 		logger.info("join.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
 		int result = 0;
 		result = memberService.memberInsert(mvo);
-
+		logger.info(result);
 		switch (result) {
 		case 1:
 			mav.addObject("errCode", 1); // userId already exist
@@ -75,6 +69,7 @@ public class MemberController {
 		return mav;
 	}
 	
+
 	/**************************************************************
 	 * 회원 수정 처리(AOP 예외 처리 후)
 	 **************************************************************//*
@@ -102,4 +97,5 @@ public class MemberController {
 			 mav.setViewName("redirect:/member/logout.do");
 			 return mav;
 	}*/
+
 }

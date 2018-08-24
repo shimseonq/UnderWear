@@ -3,10 +3,11 @@
 <!-- 별칭 부여 -->
 <configuration >
 	<typeAliases>
-		 <typeAlias type="com.spring.client.member.vo.MemberVO" alias="member" /> 
-		 <typeAlias type="com.spring.client.member.vo.MemberSecurity" alias="security" />
+		<typeAlias type="com.spring.client.member.vo.MemberVO" alias="member" /> 
+		<typeAlias type="com.spring.client.member.vo.MemberSecurity" alias="security" />
 		 <typeAlias type="com.spring.client.product.vo.ProductVO" alias="product" />
+		 <typeAlias type="com.spring.client.login.vo.LoginVO" alias="login" /> 
 		 <typeAlias type="com.spring.client.member.rank.vo.RankVO" alias="rank"/>
-		 <typeAlias type="com.spring.client.member.basket.vo.BasketVO" alias="basket"/>
+		<typeAlias type="com.spring.client.member.basket.vo.BasketVO" alias="basket"/>
 	</typeAliases>
 </configuration>

@@ -69,7 +69,7 @@
 
   <body>
   	 <form id="basketForm" name="basketForm">  
-         <input type="hidden" id="b_no" name="b_no"/>
+         <input type="hidden" id="b_no" name="b_no" value="${member.c_num}"/>
     </form>
   	 	<h3>My page</h3>
   	 	

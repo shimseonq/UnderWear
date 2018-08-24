@@ -18,9 +18,9 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDao memberDao;
 
 	@Override
-	public int userIdConfirm(String userId) { // 사용가능한 아이디인지 확인처리하는 것
+	public int userIdConfirm(String c_id) { // 사용가능한 아이디인지 확인처리하는 것
 		int result;
-		if (memberDao.memberSelect(userId) != null) {
+		if (memberDao.memberSelect(c_id) != null) {
 			result = 1;
 		} else {
 			result = 2;
@@ -31,12 +31,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberInsert(MemberVO mvo) {
 		int sCode = 1;
-		if (memberDao.memberSelect(mvo.getUserId()) != null) {
+		if (memberDao.memberSelect(mvo.getC_id()) != null) {
 			return 1;
 		} else {
 			try {
 				MemberSecurity sec = new MemberSecurity();
-				sec.setUserId(mvo.getUserId());
+				sec.setC_id(mvo.getC_id());
 				sec.setSalt(Util.getRandomString());
 				/* sCode = memberDao.securityInsert(sec); */
 

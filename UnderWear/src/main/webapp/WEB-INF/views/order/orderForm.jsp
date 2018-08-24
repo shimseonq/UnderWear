@@ -56,13 +56,11 @@
 		$("#searchadd").click(function(){
 			searchAddress();
 		});
-	})
+	});
 	    
 	</script>
   </head>
-
-  <body>
-      
+  <body>     
      <h3>결제</h3>
      <hr/>
      <h4>주문물품</h4>
@@ -73,11 +71,10 @@
         <table class="table table-condensed">
 				<thead>
 				<tr>
-					<td>상품 이미지</td>
+					<td>상품</td>
 					<td>상품명</td>
-					<td>색깔</td>
-					<td>사이즈</td> 
-					<td>갯수</td>
+					<td>가격</td>
+					<td>결제금액</td> 
 				</tr>
 				
 				</thead>
@@ -87,11 +84,12 @@
 						 <c:when test="${not empty orderList}" >
 							<c:forEach var="basket" items="${orderList}" varStatus="status">
 								<tr class="tac" data-num="${basket.b_no}" >
-									<td>${basket.img_01}</td>
+									<td>${basket.img_01}
+									${basket.p_color }
+									${basket.p_size }</td>
 									<td>${basket.p_name}</td>
-									<td>${basket.p_color }</td>
-									<td>${basket.p_size }</td>
-									<td>${basket.b_count }</td>
+									<td>${basket.pr_01}</td>
+									<td>${basket.total}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -127,25 +125,6 @@
 					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="핸드폰 번호">	
 				</div>
 			</div>	
-				<div class="form-group form-group-sm">
-					<label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
-				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="Phone Number">	
-				</div>
-			</div>
-			<div class="form-group form-group-sm">
-				<label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
-				<div class="col-sm-3">
-					<input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="EMAIL">
-				</div>
-				<div class="col-sm-2">
-					<select id="emailDomain" class="form-control">
-						<option value="naver.com">네이버</option>
-						<option value="daum.net">다음</option>
-						<option value="nate.com">네이트</option>																	
-					</select> 
-				</div>
-			</div>
 		<div>	
 			<div class="form-group form-group-sm">
 				<label for="birth" class="col-sm-2 control-label">이메일</label>

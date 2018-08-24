@@ -32,4 +32,20 @@ public class AdminMemberController {
 		
 		return "admin/member/memberList";
 	}
+	 
+	   @RequestMapping(value="/member/memberDetail.do", method=RequestMethod.GET)
+	   public String memerDetail(MemberVO mvo, Model model) {
+	      logger.info("memberDetail 호출성공");
+	      logger.info("c_num = "+mvo.getC_num());
+
+	      MemberVO detail = new MemberVO();
+	      detail = adminMemberService.memberDetail(mvo);
+	      
+	      
+	    
+	      model.addAttribute("detail",detail);
+	      
+	      return "/admin/member/memberDetail";
+	   }
+	
 }
