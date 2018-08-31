@@ -2,7 +2,7 @@ var loginUserId = "";
 $(function(){
 	//errorCodeCheck();
 	//emailCheck();
-	var message = ["기존 비밀번호를 입력해 주세요.",
+	var message = [
 		"영문,숫자,특수문자만 가능. 8 ~ 15자 입력해 주세요.",
 		"비밀번호와 비밀번호 확인란은 값이 일치해야 합니다.",
 		"- 포함 입력해 주세요. 예시) 010-0000-0000"];
@@ -17,7 +17,7 @@ $(function(){
 	/* 수정폼에서 확인 버튼 클릭 시 처리 이벤트 */
 	$("#modify").click(function(){
 //		입력값 체크
-		if (!formCheck($('#oldUserPw'), $('.error:eq(0)'), "기존 비밀번호를")) return;
+		if (!formCheck($('#oldUserPw'), $('.error:eq(0)'), "비밀번호를")) return;
 		else if (!inputVerify(1,'#oldUserPw', '.error:eq(0)')) return;
 		else if (!formCheck($('#phone'), $('.error:eq(3)'), "전화번호를")) return;
 		else if (!inputVerify(2,'#phone', '.error:eq(3)')) return;

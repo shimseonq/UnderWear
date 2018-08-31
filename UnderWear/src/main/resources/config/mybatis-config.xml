@@ -9,5 +9,6 @@
 		 <typeAlias type="com.spring.client.login.vo.LoginVO" alias="login" /> 
 		 <typeAlias type="com.spring.client.member.rank.vo.RankVO" alias="rank"/>
 		<typeAlias type="com.spring.client.member.basket.vo.BasketVO" alias="basket"/>
+		<typeAlias type="com.spring.client.order.vo.OrderVO" alias="order"/>
 	</typeAliases>
 </configuration>

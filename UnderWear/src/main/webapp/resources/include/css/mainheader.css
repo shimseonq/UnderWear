@@ -13,16 +13,15 @@
      }
      .container{
       margin: auto;
-        width:60%;
+       width:100%;
      }
      
      .navbar-nav{
-      width:30%; 
-      margin-left:15%; 
+      width:30%;
      }
    
    .navbar-nav:nth-child(2) {
-      width:10%; 
+      width:40%; 
       margin-left: 5%;
    }
    .navbar-nav:nth-child(2)>li>a{
@@ -33,9 +32,12 @@
       padding:0px;
       font-weight: bold;
       color:lightgray;
-      margin-top:15px;
    }
    .navbar-nav:nth-child(2)>li>a>img{
       height:25px;
       width:auto;
    }
+  /*   .navbar-nav:nth-child(2)>li:nth-child(5){
+   	 	display:block;
+   		font-size: 10px;
+   } */

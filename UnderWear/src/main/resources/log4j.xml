@@ -26,9 +26,6 @@
 	<logger name="com.spring.client.login.dao">
 		<level value="trance" />
 	</logger>
-	<logger name="org.spring.client.member.dao">
-		<level value="trace"/>
-	</logger>
 	
 	
 	<!-- 3rdparty Loggers -->

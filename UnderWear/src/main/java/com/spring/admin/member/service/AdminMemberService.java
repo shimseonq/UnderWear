@@ -1,4 +1,4 @@
-package com.spring.client.admin.member.service;
+package com.spring.admin.member.service;
 
 import java.util.List;
 
@@ -11,6 +11,5 @@ public interface AdminMemberService {
 	@Autowired
 	public List<MemberVO> memberList(MemberVO mvo);
 	//글 상세페이지
-	//글상세 구현
-		public MemberVO memberDetail(MemberVO mvo);
+
 }

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.member.rank.dao.RankDao">
-	<select id="rankList" parameterType="String" resultType="rank">
+	<select id="rankList" parameterType="rank" resultType="rank">
 		select rk_no, rk_rank, rk_discount, rk_standard from rank order by rk_no
 	</select>
+	
+	<select id="myRank" parameterType="java.lang.String" resultType="java.lang.String">
+		select rk_rank 
+		from rank inner join customer on rank.rk_no = customer.rk_no
+		where c_id = #{c_id}
+	</select>
+	
 </mapper>

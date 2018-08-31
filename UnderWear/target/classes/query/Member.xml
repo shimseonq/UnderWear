@@ -2,18 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.member.dao.MemberDao">
 	<select id="securitySelect" parameterType="String" resultType="security">
-		select userid, salt from security where userId=#{userId}
+		select c_id, salt from security where c_id=#{c_id}
 	</select>
 	
 	<insert id="securityInsert" parameterType="security">
 		insert into security(c_id, salt)
 		values(#{c_id}, #{salt})
 	</insert>
+	
 	<select id="memberSelect" parameterType="String" resultType="member">
 		select c_num, c_id,c_pwd,c_name,c_birth,c_email,c_phone,c_address from customer
 		where c_id = #{c_id}
-	</select
-	>
+	</select>
+
 	<insert id="memberInsert" parameterType="member">
 		/*member - memberInsert */
 	<selectKey keyProperty="c_num" resultType="int" order="BEFORE">
@@ -23,9 +24,38 @@
 		values(#{c_num},#{c_id},#{ c_pwd},#{c_name},#{c_birth},#{c_email},#{c_phone},#{c_address},'1')
 	</insert>
 	
-	<select id="myRank" parameterType="String" resultType="member">
-		select rk_rank 
-		from rank inner join customer on rank.rk_no = customer.rk_no
-		where c_num = #{c_num}
+	
+	<select id="myInfo" parameterType="member" resultType="member">
+	select c_num, c_name, c_id, c_pwd, substr(c_birth,1,6) as c_birth,
+	c_email, c_phone, c_address from customer
+	where c_id = #{c_id}
 	</select>
+	
+	<update id="memberUpdate" parameterType="member">
+		update customer set
+		<if test="c_pwd != null and c_pwd != ''">
+			c_pwd=#{c_pwd},
+		</if>
+		c_phone=#{c_phone},
+		c_address=#{c_address},
+		c_email=#{c_email}
+		where c_id=#{c_id}
+	</update>
+	
+	<delete id="securityDelete" parameterType="String">
+		delete from security where c_id = #{c_id}
+	</delete>
+	
+	<!-- <delete id="memberDelete" parameterType="String">
+		delete from customer where c_id = #{c_id}
+	</delete> -->
+	
+	<update id="memberDelete" parameterType="member">
+		update customer set c_name='-', c_email='-', c_address='-', c_date=sysdate, c_pwd='-', rk_no=0, c_birth=0, c_phone='-'
+		where c_id = #{c_id}
+	</update>
+	<!-- <select id="myboard" >
+		   select q_no,q_title, c_id,c_name, q_content, to_char(q_date, 'YYYY-MM-DD') as q_date , repRoot, repStep, repIndent from qna q inner join customer c on 
+		q.c_num = c.c_num 
+	</select> -->
 </mapper>

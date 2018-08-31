@@ -7,6 +7,7 @@ public class RankVO extends ProductVO{
 	private String rk_rank ="";
 	private int rk_standard;
 	private String rk_discount ="";
+	private String c_id="";
 
 	public int getRk_no() {
 		return rk_no;
@@ -32,4 +33,12 @@ public class RankVO extends ProductVO{
 	public void setRk_discount(String rk_discount) {
 		this.rk_discount = rk_discount;
 	}
+	
+	public String getC_id() {
+		return c_id;
+	}
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+	
 }

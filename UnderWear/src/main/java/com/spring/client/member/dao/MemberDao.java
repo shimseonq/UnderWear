@@ -1,5 +1,7 @@
 package com.spring.client.member.dao;
 
+import java.util.List;
+
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
 
@@ -12,7 +14,12 @@ public interface MemberDao {
    public int memberInsert(MemberVO mvo);
 
    public MemberSecurity securitySelect(String c_id);
-   
-   public String myRank(MemberVO mvo); 
 
+   public MemberVO myInfo(MemberVO mvo);
+
+   public int memberUpdate(MemberVO mvo);
+
+	public int memberDelete(MemberVO mvo);	
+	
+	public int securityDelete(String c_id);
 }

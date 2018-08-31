@@ -5,6 +5,7 @@ public class LoginVO extends LoginHistory {
 	private String c_pwd = "";	//유저 비밀번호 c_pwd
 	private String c_name = ""; //유저 네임 c_name
 
+	
 	public LoginVO() {
 	}
 
