@@ -26,10 +26,24 @@
 	<logger name="com.spring.client.login.dao">
 		<level value="trance" />
 	</logger>
-	<logger name="org.spring.client.member.dao">
+	<logger name="com.spring.client.member.dao">
 		<level value="trace"/>
 	</logger>
-	
+	<logger name="com.spring.client.notice.dao">
+		<level value="trace"/>
+	</logger>
+	<logger name="com.spring.admin.notice.dao">
+		<level value="trace"/>
+	</logger>
+	<logger name="com.spring.admin.qna.dao">
+		<level value="trace"/>
+	</logger>
+	<logger name="com.spring.client.qna.dao">
+		<level value="trace"/>
+	</logger>
+	<logger name="com.spring.client.review.dao">
+		<level value="trace"/>
+	</logger>
 	
 	
 	
