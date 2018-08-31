@@ -20,7 +20,7 @@
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/carousel.css" rel="stylesheet">
 
-    <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+    
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
@@ -31,6 +31,19 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
    <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>   
+   <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+        
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+      
+      <!-- 부가적인 테마 -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+      <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      
+      <script type="text/javascript" src="/resources/include/js/common.js"></script>
+      
   </head>
 
   <body>
@@ -43,7 +56,7 @@
     <!-- Begin page content -->
    <div class="container">
       <div class="page-header">  
-        <h2><tiles:getAsString name="title"/></h2>
+        <h1><tiles:getAsString name="title"/></h1>
       </div>  
          <tiles:insertAttribute name="body" /> <!-- content 영역 -->
    </div>
@@ -62,5 +75,5 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
-  </body>
+  
 </html>

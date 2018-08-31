@@ -29,3 +29,5 @@
 		delete from basket where b_no = #{b_no}
 	</delete>
 </mapper> 
+      
+

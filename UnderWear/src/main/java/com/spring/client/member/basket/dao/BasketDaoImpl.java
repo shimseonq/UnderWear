@@ -33,5 +33,4 @@ public class BasketDaoImpl implements BasketDao {
 	public BasketVO basketOrder(BasketVO bvo) {
 		return session.selectOne("basketOrder", bvo);
 	}
-	
 }

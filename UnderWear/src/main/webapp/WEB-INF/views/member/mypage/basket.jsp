@@ -86,7 +86,7 @@ var checkB = [];
          console.log($("#b_number").val());
          //return output;
    }
-   
+
 
 </script>
 </head>
@@ -148,9 +148,6 @@ var checkB = [];
                   
                </tbody>
          </table> 
-         
-         
-                  
       </div>
 
    <div class="container"> 

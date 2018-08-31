@@ -25,6 +25,7 @@ import com.spring.client.member.vo.MemberVO;
 @Controller
 @RequestMapping(value="/mypage")
 public class MypageController {
+
 	Logger logger = Logger.getLogger(MypageController.class);
 	
 	@Autowired

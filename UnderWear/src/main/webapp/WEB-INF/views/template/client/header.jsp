@@ -4,6 +4,7 @@
 
 <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/header.js"></script>
+
 <!-- <script type="text/javascript">
 var c_id = "{login.c_id}";
 
@@ -18,6 +19,36 @@ function login(){
 	}else{
 		$("#login").show();
 		$("#joinus").show();
+
+<script type="text/javascript">
+	$(function(){
+		login();
+		$("#mypage").click(function(){
+			if(${login.c_id != null && login.c_id != ''}){
+				location.href="/mypage/mypage.do";
+			}else{
+				location.href="/login/login.do";
+			}
+		});
+		
+		$("#basket").click(function(){
+			if(${login.c_id != null && login.c_id != ''}){
+				location.href="/mypage/basketList.do";
+			}else{
+				location.href="/login/login.do";
+			}
+		});
+	});
+	
+	function login(){
+		if(${login.c_id != null && login.c_id != ''}){
+			$("#login").hide();
+			$("#joinus").hide();
+		}else{
+			$("#login").show();
+			$("#joinus").show();
+		}
+
 	}
 }
 </script> -->

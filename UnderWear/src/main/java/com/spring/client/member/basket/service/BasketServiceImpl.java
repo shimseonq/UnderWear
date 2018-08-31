@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.member.basket.dao.BasketDao;
 import com.spring.client.member.basket.vo.BasketVO;
+import com.spring.client.product.dao.ProductDao;
+import com.spring.client.product.vo.ProductVO;
 
 @Service
 public class BasketServiceImpl implements BasketService {
 
 	@Autowired
 	private BasketDao basketDao;
+	@Autowired
+	private ProductDao productDao;
 	
 	@Override
 	public List<BasketVO> basketList(BasketVO bvo) {
@@ -58,7 +62,6 @@ public class BasketServiceImpl implements BasketService {
 			mList.add(vo);
 		}
 		return mList;
-	}
-	
+	}	
 
 }

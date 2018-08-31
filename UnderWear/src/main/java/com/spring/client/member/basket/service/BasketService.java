@@ -6,6 +6,7 @@ import com.spring.client.member.basket.vo.BasketVO;
 
 public interface BasketService {
 
+
 	public List<BasketVO> basketList(BasketVO bvo );
 
 	public int basketInsert(BasketVO bvo);
@@ -13,5 +14,4 @@ public interface BasketService {
 	public int basketDelete(BasketVO bvo);
 
 	public List<BasketVO> basketOrder(BasketVO bvo, String[] b_num);
-
 }
