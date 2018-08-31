@@ -62,12 +62,12 @@
                     <li><a href="#">속옷 셋트</a></li>
                   </ul>
                 </li>
-              <li><a href="#">공지사항</a></li>
+              <li><a href="/notice/noticeList.do">공지사항</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">게시판<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">리뷰 게시판</a></li>
-                    <li><a href="#">문의 게시판</a></li>
+                    <li><a href="/review/reviewList.do">리뷰 게시판</a></li>
+                    <li><a href="/qna/qnaList.do">문의 게시판</a></li>
                   </ul>
                 </li>
 

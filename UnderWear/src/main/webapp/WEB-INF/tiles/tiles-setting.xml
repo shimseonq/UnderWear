@@ -55,6 +55,20 @@
 			<put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
 		</definition>
 		
+		<definition name="qna/*" extends="content">
+			<put-attribute name="title" value="문의 게시판" />
+			<put-attribute name="body" value="/WEB-INF/views/qna/{1}.jsp" />
+		</definition>
+		
+		<definition name="notice/*" extends="content">
+			<put-attribute name="title" value="공지사항" />
+			<put-attribute name="body" value="/WEB-INF/views/notice/{1}.jsp" />
+		</definition>
+		
+		<definition name="review/*" extends="content">
+			<put-attribute name="title" value="후기 게시판" />
+			<put-attribute name="body" value="/WEB-INF/views/review/{1}.jsp" />
+		</definition>
 		
 		
 

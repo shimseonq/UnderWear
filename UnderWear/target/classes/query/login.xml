@@ -13,6 +13,7 @@
 		resultType="login">
 		/* 로그인 처리 쿼리 */
 		select
+		c_num,
 		c_id,
 		c_pwd,
 		c_name

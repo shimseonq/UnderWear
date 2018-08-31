@@ -68,10 +68,10 @@
                                     <a href="panels-wells.html">게시판 관리</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">게시물 관리</a>
+                                    <a href="/admin/qna/qnaList.do">관리자 문의 게시판 관리</a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html">Notice 관리</a>
+                                    <a href="/admin/notice/noticeList.do">관리자 Notice 관리</a>
                                 </li>  
                             </ul>
                             <!-- /.nav-second-level -->

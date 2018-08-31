@@ -8,12 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.client.admin.member.service.AdminMemberService;
 import com.spring.client.member.basket.service.BasketService;
 import com.spring.client.member.basket.vo.BasketVO;
-import com.spring.client.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value="/order")
