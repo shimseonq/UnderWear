@@ -19,4 +19,14 @@ public class BasketDaoImpl implements BasketDao {
 		return session.selectList("basketList", bvo);
 	}
 
+	@Override
+	public int basketInsert(BasketVO bvo) {
+		return session.insert("basketInsert", bvo);
+	}
+	
+	@Override
+	public List<BasketVO> basketOrder(BasketVO bvo){
+		return session.selectList("basketOrder", bvo);
+	}
+
 }

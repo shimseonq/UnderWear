@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.product.dao.ProductDao">
-	
-	<select id="productList" parameterType="product" resultType="product" >	id로 구분한다.
-		/* Product - productList */		자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함.
-		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender,
-		pr_01, smallct_category
-
-		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategoty.smallct_category
-		from product inner join price on product.pr_no = price.pr_no inner join smallcategory on product.smallct_no = smallcategory.smallct_no
+	<!-- 게시물 리스트 -->
+	<select id="productList" parameterType="product" resultType="product" >	<!-- id로 구분한다. -->
+		/* Product - productList */		<!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
+		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category
+		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no
+		
 		order by p_code desc
 	</select>
 	
+	<!-- 상품 등록 -->
 	<insert id="productInsert" parameterType="product">
-		/* Product - productInsert */
-		INSERT INTO PRODUCT
-			(p_code, p_name, p_inventory, p_color, p_size, p_date, p_content, p_gender, pr_no, smallct_no, ) 
-  			VALUES 
-  			(product_seq.nextval, #{p_code}, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{p_gender}, #{pr_no}, #{smallct_no} )
-	</insert>
+      /* Product - productInsert */
+      INSERT INTO PRODUCT
+      (p_code, p_name, p_inventory, p_color, p_size, p_date, p_content, pr_no, p_gender, smallct_no) 
+        VALUES
+        (product_seq.nextval, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no})
+   </insert>
 	
-	<!-- 상품 테이블 상세 조회 -->
-	<!-- <select id="productDetail" parameterType="product" resultType="product" >
-		Product -
-	</select> --> 
+	<!-- 상품 상세 조회 -->
+	<select id="productDetail" parameterType="product" resultType="product" >
+		/* Product - productDetail */
+		
+		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category, p_file
+		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no where p_code = #{p_code} 
+	</select>
+	
+	
+	<!-- 상품 수정 -->
+	<update id="productUpdate" parameterType="product">
+	/* Product - productUpdate*/
+	update product set p_name = #{p_name}, p_date = sysdate <if test="p_file != ''">,b_file = #{b_file}</if> where p_code = #{p_code}
+	
+	</update>
+	
+	<delete id="productDelete" parameterType="product">
+	<!-- 상품 삭제 -->
+	/* Product - productDelete*/
+	delete from product where p_code = #{p_code}
+	</delete>
+	
+	
 </mapper>

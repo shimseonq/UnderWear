@@ -8,4 +8,8 @@ public interface BasketDao {
 
 	public List<BasketVO> basketList(BasketVO bvo);
 
+	public int basketInsert(BasketVO bvo);
+	
+	public List<BasketVO> basketOrder(BasketVO bvo);
+
 }

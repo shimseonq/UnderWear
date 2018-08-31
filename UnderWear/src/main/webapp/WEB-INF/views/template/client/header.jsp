@@ -17,7 +17,7 @@
 		
 		$("#basket").click(function(){
 			if(${login.c_id != null && login.c_id != ''}){
-				location.href="/mypage/basket.do";
+				location.href="/mypage/basketList.do";
 			}else{
 				location.href="/login/login.do";
 			}
