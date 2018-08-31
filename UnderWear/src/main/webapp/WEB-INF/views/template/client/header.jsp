@@ -50,21 +50,21 @@ function login(){
                     <li><a href="#">속옷 셋트</a></li>
                   </ul>
                 </li>
-              <li><a href="#">공지사항</a></li>
+              <li><a href="/notice/noticeList.do">공지사항</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">게시판<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">리뷰 게시판</a></li>
-                    <li><a href="#">문의 게시판</a></li>
+                    <li><a href="/review/reviewList.do">리뷰 게시판</a></li>
+                    <li><a href="/qna/qnaList.do">문의 게시판</a></li>
                   </ul>
                 </li>
 
               </ul>
               <ul class="nav navbar-nav">
-                 <li><a id="mypage" href="/mypage/pwdCheck.do"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
-                 <li><a id="basket" href="/mypage/basket.do"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
-                  <li><a id="login" href="/login/login.do">Login</a></li>
-                  <li><a id="joinus" href="/member/join.do">join us</a></li>
+                 <li><a id="mypage" name="mypage" href="#"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
+                 <li><a id="basket" name="basket"href="#"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
+                   <li><a id="login" name="login" href="/login/login.do">Login</a></li>
+                    <li><a id="joinus" name="joinus" href="/member/join.do">join us</a></li>
                     <li><c:if test="${login.c_id != null and login.c_id != ''}">
 						<fieldset id="loginAfter">
 						<legend>
@@ -73,7 +73,9 @@ function login(){
 						<span id="memberMenu" class="tac">     
 						<input type="button" id="logout" value="로그아웃"><span> </span></span>
 						</fieldset>
+
 					</c:if></li>
+
                  </ul>
               </div>
             </div>
