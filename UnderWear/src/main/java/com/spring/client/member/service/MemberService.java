@@ -1,5 +1,7 @@
 package com.spring.client.member.service;
 
+import java.util.List;
+
 import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberVO;
 
@@ -17,4 +19,7 @@ public interface MemberService {
 	public MemberVO memberSelect(String c_id);
 
 	public int memberDelete(MemberVO mvo);
+
+	
+	public List<MemberVO> memberList(MemberVO mvo);
 }

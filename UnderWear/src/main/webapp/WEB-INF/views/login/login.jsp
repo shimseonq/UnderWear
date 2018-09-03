@@ -34,11 +34,11 @@
 				alert("5번이상 로그인 시도로 30초동안 로그인 할 수 없습니다.\n잠시 후 다시 시도해 주세요");
 				break;
 				}
+					}
 			}
-		}
-		</script>
+			</script>
 		</head>
-	<body>
+<body>
 	<div class="contentContainer">
 		<div class="well">
 			<%-- 로그인 전 화면 --%>
@@ -78,8 +78,8 @@
 					</legend>
 					<span id="memberMenu" class="tac"> <a
 						href="/login/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp; <a
-						href="/mypage/myinfo.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp; <a
-						href="/mypage/myinfo.do">회원탈퇴</a>
+						href="/member/modify.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp; <a
+						href="/member/delete.do">회원탈퇴</a>
 					</span>
 				</fieldset>
 			</c:if>

@@ -13,6 +13,7 @@ public class CommonVO {
 	private int pr_01				= 0;		// 가격
 	private int smallct_no			= 0;		// 소분류 번호
 	private String smallct_category = "";		// 소분류
+
 	
 	public String getSearch() {
 		return search;

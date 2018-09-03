@@ -11,8 +11,4 @@ public interface AdminMemberService {
 	@Autowired
 	public List<MemberVO> memberList(MemberVO mvo);
 
-
-	//글상세 구현
-	public MemberVO memberDetail(MemberVO mvo);
-
 }

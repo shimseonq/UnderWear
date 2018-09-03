@@ -56,4 +56,16 @@ public class MemberDaoImpl implements MemberDao {
 		return session.delete("securityDelete",c_id);
 	}
 
+	@Override
+	public List<MemberVO> memberList(MemberVO mvo) {
+		
+		return session.selectOne("memberLst",mvo);  //八祸 包府磊 窜
+	}
+
+	@Override
+	public int termsInsert(MemberVO mvo) {  //距包 包府
+		
+		return session.insert("termsInsert", mvo);
+	}
+
 }

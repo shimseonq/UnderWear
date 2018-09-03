@@ -1,28 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/common/common.jspf" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
 		
 <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
  <script type="text/javascript" src="/resources/include/js/common.js"></script>
-  <script type="text/javascript" src="/resources/include/js/memberDetail.js"></script>
+  <script type="text/javascript" src="/resources/include/js/board3.js"></script>
 	<script type="text/javascript">
-	 $(function() {
-		 $(".goDetail").click(function() {
-	         var c_num = $(this).parents("tr").attr("data-num");
-	         $("#c_num").val(c_num);
-	         //console.log("글번호 :"+b_num)
-	         $("#detailForm").attr({
-	            "method" : "get",
-	            "action" : "/admin/member/memberDetail.do"
-	         });
-	         $("#detailForm").submit();
-	      });
-	 });
-
+	search = "<c:out value='${data.search}' />";
+	start_date = "<c:out value='${data.start_date}' />";
+	end_date = "<c:out value='${data.end_date}' />";
+	keyword = "<c:out value='${data.keyword}' />";
 	</script>
-		 <form id="detailForm" name="detailForm">  
-		<h2 class="sub-header">회원 리스트</h2>
-			
+	
+	
 
+	
+		<!--  <form id="detailForm" name="detailForm">   -->
+		<h2 class="sub-header">회원 리스트</h2>
+		<div class="table-responsive">	
+			 <div class="well">
+			
+    		  <form class="form-inline" id="f_search">
+         <h4><span class="label label-success">검색조건</span></h4>
+         <div class="form-group">
+            <select name="search" id="search" class="form-control">
+               <option value="c_name">회원명</option>
+               <option value="c_address">거주지</option>
+               <option value="c_date">가입일</option>
+            	<option value="rk_no">등급</option>
+            </select>
+         </div>
+         <div class="form-group" id="textCheck">
+            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="검색어를 입력하세요.">   
+         </div>
+         <div class="form-group" id="dateCheck">
+            <input type="date" name="start_date" id="start_date" class="form-control" placeholder="시작일자.">
+            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="종료일자.">
+         </div>
+         <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
+         <button type="button" class="btn btn-primary" id="allSearchBtn">All Search</button>
+        </form>
+   </div>
+			
+			
       <table class="table table-striped">
       <thead>
          <tr>
@@ -33,6 +54,7 @@
             <th class="tac">회원휴대폰</th>
              <th class="tac">회원집주소</th>
             <th class="tac">등록일</th>
+            <th class="tac">등급</th>
          </tr>
       </thead>
       <tbody>
@@ -45,8 +67,9 @@
                      <td>${member.c_name}</td>
                      <td>${member.c_email}</td>
                      <td>${member.c_phone}</td>
-                       <td>${member.c_address}</td>
-                      <td>${member.c_date}</td>
+                     <td>${member.c_address}</td>
+                     <td>${member.c_date}</td>
+                  <%--     <td>${member.rk_no}</td> --%>
                   </tr>
                </c:forEach>
             </c:when>
@@ -58,5 +81,6 @@
          </c:choose>
       </tbody>
    </table>
-   </form>
-	
+   <!-- </form> -->
+</div>
+

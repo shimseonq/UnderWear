@@ -70,7 +70,19 @@ $(function(){
    /* 확인 버튼 클릭 시 처리 이벤트*/
    $("#joinInsert").click(function() {
       //입력값체크
-      if(!formCheck($('#c_id'),$('.error:eq(0)'),"아이디를")) return;
+	   if(!($('#t_agree').is(":checked"))){
+			alert("이용악관에 동의하지 않으셨습니다. 동의해주세요");
+			
+			$("#t_agree").focus();
+			return;
+		}	
+	   else if(!($('#t_privacyagree').is(":checked"))){
+			alert("개인정보 보호에 동의하지 않으셨습니다. 동의해주세요");
+			$("#t_privacyagree").focus();
+			return;
+			
+		}
+	   else	if(!formCheck($('#c_id'),$('.error:eq(0)'),"아이디를")) return;
       else if(!inputVerify(0,"#c_id",".error:eq(0)")) return;
       
       else if(!formCheck($('#c_pwd'),$('.error:eq(1)'),"비밀번호를")) return;
@@ -105,3 +117,20 @@ $(function(){
 	   });
    })
 });
+
+
+/*function termsAgree(){
+	if(!($('#t_agree').is(":checked"))){
+		alert("이용악관에 동의하지 않으셨습니다. 동의해주세요");
+		
+		$("#t_agree").focus();
+		return;
+	}
+	
+	if(!($('#t_privacyagree').is(":checked"))){
+		alert("개인정보 보호에 동의하지 않으셨습니다. 동의해주세요");
+		$("#t_privacyagree").focus();
+		return;
+		
+	}
+}*/

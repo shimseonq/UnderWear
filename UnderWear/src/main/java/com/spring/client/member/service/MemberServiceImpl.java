@@ -96,5 +96,17 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public List<MemberVO> memberList(MemberVO mvo) {
+		List<MemberVO> myList = null;
+		
+		if(mvo.getSearch() == "") {
+			mvo.setSearch("all"); //검색 대상인 all에 대한 정의
+		}
+		myList = memberDao.memberList(mvo); 
+		
+		return myList; //null 값이 들어가게 되면 데이터 출력불가
+	}
+
 
 }
