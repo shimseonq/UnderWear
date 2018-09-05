@@ -53,4 +53,9 @@ public class ProductDaoImpl implements ProductDao {
 	public int productInsert(ProductVO pvo) {
 		return session.insert("productInsert", pvo);
 	}*/
+
+	@Override
+	public List<ProductVO> productThumbnail(ProductVO pvo) {
+		return session.selectList("productThumbnail", pvo);
+	}
 }

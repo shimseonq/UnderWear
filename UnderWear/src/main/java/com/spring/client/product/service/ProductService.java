@@ -19,5 +19,9 @@ public interface ProductService {
 	public String bigCategory(ObjectMapper mapper);
 	   
 	public String smallCategory(int bigct_no, ObjectMapper mapper);
+
+	public List<ProductVO> productThumbnail(ProductVO pvo);
+
+	
 	 
 }

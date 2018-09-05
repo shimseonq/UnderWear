@@ -93,6 +93,15 @@ public class ProductServiceImpl implements ProductService {
 	      }
 	      return listData;
 	   }
+
+	@Override
+	public List<ProductVO> productThumbnail(ProductVO pvo) {
+		List<ProductVO> myList = null;
+		
+		myList = productDao.productThumbnail(pvo);
+		return myList;
+		
+	}
 	
 	
 }

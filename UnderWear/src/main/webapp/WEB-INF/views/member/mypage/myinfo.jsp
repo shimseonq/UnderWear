@@ -153,10 +153,7 @@ function emailCheck(){
 						<select id="emailDomain" class="form-control">
 							<option value="naver.com">네이버</option>
 							<option value="daum.net">다음</option>
-							<option value="nate.com">네이트</option> 원활한 사용을 위해 왼쪽 아이콘 클릭 후 팝업창이
-							뜨면 플래시 실행 '허용' 버튼을 클릭해주세요. 자세히 보기 2018. 8. 22. [SPRING] 수업시간에 작성한
-							회원관리 소스(뷰) : 네이버 카페 https://cafe.naver.com/niceprogrammer2018 6/8
-							p p
+							<option value="nate.com">네이트</option>
 						</select>
 					</div>
 					<div class="col-sm-3">

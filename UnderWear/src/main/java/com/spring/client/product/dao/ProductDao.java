@@ -18,5 +18,9 @@ public interface ProductDao {
 	public List<ProductVO> bcategory();
 	   
 	public List<ProductVO> scategory();
+
+	public List<ProductVO> productThumbnail(ProductVO pvo);
+
+	
 	
 }

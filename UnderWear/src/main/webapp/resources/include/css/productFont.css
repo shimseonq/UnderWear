@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo|Noto+Sans+KR');
+
+body{
+	
+}
+.p_name{
+	
+	font-size: 28px;
+}
+.price{
+	
+	font-size: 20px;
+}
+#size{
+	font-size: 20px;
+}
+#color{
+	font-size: 20px;
+}
+#content{
+	
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+#selectColor{
+	font-size: 15px;
+}
+#selectSize{
+	font-size: 15px;
+}
+

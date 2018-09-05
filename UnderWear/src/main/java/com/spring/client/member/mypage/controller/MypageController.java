@@ -47,7 +47,7 @@ public class MypageController {
    /*************************************************
     * 마이페이지 장바구니 조회
     *************************************************/
-   @RequestMapping(value="/basketList.do", method = RequestMethod.GET)
+   @RequestMapping(value="/basket.do", method = RequestMethod.GET)
    public String customerBasketList(BasketVO bvo, Model model, HttpSession session) {
       logger.info("basket 호출 성공");
       
@@ -68,7 +68,28 @@ public class MypageController {
    }
    
  
-   
+   @RequestMapping(value="/basketInsert.do", method = RequestMethod.GET)
+   public String customerBasketInsert(BasketVO bvo, Model model, HttpSession session) {
+	   logger.info("basketInsert 호출 성공");
+	   
+	   int result = 0;
+	   String url = "";
+	   
+	   LoginVO login =(LoginVO)session.getAttribute("login");
+	      bvo.setC_num(login.getC_num());
+	   
+	   result = basketService.basketInsert(bvo);
+	   
+	   
+	   
+	   if(result == 1) {
+		   url = "/mypage/basket.do";
+	   }else {
+		   model.addAttribute("code",1);
+		   url = "/product/productDetail.do";
+	   }
+	return "redirect:"+url;
+   }
 
    /*************************************************
     * 마이페이지 게시물 조회

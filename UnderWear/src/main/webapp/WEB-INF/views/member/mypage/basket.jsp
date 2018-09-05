@@ -32,6 +32,10 @@
     <![endif]-->   
     
     <style type="text/css">
+    	img{
+    		width: 50;
+    		height: 50;
+    	}
        .jumbotron{
           height: 300px;
           border: 2px solid lightgray;
@@ -53,7 +57,7 @@
 
 <script type="text/javascript">
 var checkB = [];
-var checkBIndex = 0;
+
 
 	$(function(){
 		  
@@ -135,6 +139,7 @@ var checkBIndex = 0;
                         <c:forEach var="basket" items="${basketList}" varStatus="status">
                            <tr class="tac" data-num="${basket.b_no}"  >
                               <td><input type="checkbox" name="item" id="item" value="${basket.b_no}"/></td>
+                              <td><img alt="" src="/resources/image/${basket.img_image }"></td>
                               <td>${basket.p_name}</td>
                               <td>${basket.pr_01}</td>
                               <td>${basket.b_count}</td>
