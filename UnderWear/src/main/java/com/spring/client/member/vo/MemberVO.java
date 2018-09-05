@@ -13,6 +13,7 @@ public class MemberVO extends LoginVO {
 	private Timestamp c_date; // 회원 등록일 c_date
 	private String c_address; //회원 집주소
 
+
 	public String getOldUserPw() {
 		return oldUserPw;
 	}

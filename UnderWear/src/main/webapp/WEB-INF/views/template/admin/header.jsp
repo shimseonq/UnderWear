@@ -18,7 +18,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                       <!--  <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -27,25 +27,24 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
+                            /input-group
+                        </li> -->
+                        <li>
+                            <a href="/">Main Page</a>
                         </li>
                         <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Main Page</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
+                            <a > 회원 관리</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/admin/member/memberList.do">회원 정보</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">등급 정보</a>
+                                    <a href="/admin/member/rank.do">등급 정보</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> 상품 관리</a>
+                            <a> 상품 관리</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">상품 정보</a>
@@ -62,7 +61,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> 게시판 관리<span class="fa arrow"></span></a>
+                            <a> 게시판 관리</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="panels-wells.html">게시판 관리</a>
@@ -78,7 +77,7 @@
                         </li>
                       
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <a> Sample Pages</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="blank.html">Blank Page</a>

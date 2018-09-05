@@ -13,11 +13,13 @@ import com.spring.client.member.vo.MemberVO;
 public class AdminMemberDaoImpl implements AdminMemberDao {
 	@Autowired
 	private SqlSession session;
-	
+
 	@Override
 	public List<MemberVO> memberList(MemberVO mvo) {
-		
-		return session.selectList("memberList",mvo);
+		// TODO Auto-generated method stub
+		return null;
 	}
-
+	
+	
+	
 }

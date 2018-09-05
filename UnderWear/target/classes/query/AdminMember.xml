@@ -6,9 +6,10 @@
  	   select c_num, c_birth, c_date, c_address,
        regexp_replace(c_id,'.','*',4) as c_id,
        regexp_replace(c_name,'.','*',4) as c_name,
-       regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,
-       concat('*****',substr(c_email,6,length(c_email))) as c_email
-       from customer
+       regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,r.rk_rank,
+       concat('*****',substr(c_email,6,length(c_email))) as c_email 
+       from customer c inner join rank r on c.rk_no = r.rk_no
+       
   <where>
          <if test="search=='c_address'">
             <![CDATA[ c_address LIKE '%'|| #{keyword} ||'%' ]]>
@@ -19,7 +20,7 @@
          <if test="search=='c_date'">
             <![CDATA[ to_char(c_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
          </if>
-         <if test="search=='rk_no'">
+         <if test="search=='rk_rank'">
             <![CDATA[ rk_no LIKE '%'|| #{keyword} ||'%' ]]>
          </if>
          

@@ -54,14 +54,14 @@
             <th class="tac">회원휴대폰</th>
              <th class="tac">회원집주소</th>
             <th class="tac">등록일</th>
-            <th class="tac">등급</th>
+             <th class="tac">등급</th>
          </tr>
       </thead>
       <tbody>
          <c:choose>
             <c:when test="${not empty memberList}">
                <c:forEach var="member" items="${memberList}" varStatus="status">
-                  <tr class="tac" data-c_num="${member.c_num }">
+                  <tr class="tac" data-c_num="${member.c_num}">
                      <td>${status.count}</td>
                      <td><span class="goDetail">${member.c_id}</span></td>
                      <td>${member.c_name}</td>
@@ -69,7 +69,8 @@
                      <td>${member.c_phone}</td>
                      <td>${member.c_address}</td>
                      <td>${member.c_date}</td>
-                  <%--     <td>${member.rk_no}</td> --%>
+                      <td>${member.rk_rank}</td>
+                  
                   </tr>
                </c:forEach>
             </c:when>
@@ -83,4 +84,3 @@
    </table>
    <!-- </form> -->
 </div>
-

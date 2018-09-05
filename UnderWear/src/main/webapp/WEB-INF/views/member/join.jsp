@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
@@ -150,7 +149,7 @@
      	 		<br /> <br />
      	 	
      	<h3>회원정보 입력</h3>
-	<div class="well">
+	<div class="well" style="border: 1;">
 		<form id="memberForm" class="form-horizontal">
 			<input type="hidden" name="c_email" id="c_email" />
 			<input type="hidden" name="c_birth" id="c_birth" />
@@ -249,6 +248,7 @@
 		</form>
 	</div>
 </div>
+
 	
       </body>
 </html>

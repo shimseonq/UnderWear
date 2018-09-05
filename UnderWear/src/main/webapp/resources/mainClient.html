@@ -52,15 +52,28 @@
                     <div class="dropdown-menu"><a class="text-black dropdown-item display-4" href="https://mobirise.com">Notice</a>
                     <a class="text-black dropdown-item display-4" href="#">Review<br></a>
                     <a class="text-black dropdown-item display-4" href="#">Q&amp;A</a></div>
-                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="#">
-                        Login</a></li><li class="nav-item"><a class="nav-link link text-black display-4" href=#">
-                        Join Us</a></li></ul>
+                	</li><li class="nav-item"><a class="nav-link link text-black display-4" href="/member/lgoin">
+                        Login</a></li><li class="nav-item"><a class="nav-link link text-black display-4" href="/member/join.do">
+                        Join Us</a></li>
+                        <li><c:if test="${login.c_id != null and login.c_id != ''}">
+						<fieldset id="loginAfter">
+						<legend>
+							<p>[ ${login.c_name} ]님 반갑습니다</p>
+						</legend>
+						<span id="memberMenu" class="tac">     
+						<input type="button" id="logout" value="로그아웃"><span> </span></span>
+						</fieldset></c:if></li>
+                        
+                        </ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="#"><span class="mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>
                     </a> <a class="btn btn-sm btn-primary display-4" href="#"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
                     </a></div>
         </div> <!-- 여기까지  header -->
     </nav>
 </section>
+
+
+
 
 <section class="engine"><a href="#">how to create a web page</a></section> <!-- 얘는 뭔지 모르겠음 ㅎㅎ -->
 <section class="carousel slide cid-r1UzbHbOva" data-interval="false" id="slider2-o">
@@ -134,7 +147,7 @@
     </div>
 </section>
 
-<section class="features13 cid-r1UA8aXB9K" id="features13-r">
+<section class="features13 cid-r1UA8aXB9K" id="features13-r">  <!-- 메인에 나와주는 것 -->
 
     <!-- body (main)   -->
     <div class="container">
@@ -317,40 +330,6 @@
                         © Copyright 2017 UnderWear - All Rights Reserved
                     </p>
                 </div>
-                <!-- <div class="col-md-6">   쓸때없는 버튼 입니다.
-                    <div class="social-list align-right">
-                        <div class="soc-item">
-                            <a href="#" target="_blank">
-                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="#" target="_blank">
-                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
-                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.behance.net/Mobirise" target="_blank">
-                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

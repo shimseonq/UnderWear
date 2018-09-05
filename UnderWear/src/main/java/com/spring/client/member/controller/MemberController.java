@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.client.login.service.LoginService;
 import com.spring.client.login.vo.LoginVO;
+import com.spring.client.member.rank.service.RankService;
 import com.spring.client.member.service.MemberService;
 import com.spring.client.member.vo.MemberVO;
 
@@ -27,6 +28,8 @@ public class MemberController {
 	
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private RankService rankService;
 
 
 	/*************************************************
@@ -147,4 +150,6 @@ public class MemberController {
 		mav.setViewName("mypage/bye_success");
 		return mav;
 	}
+	
+	
 }

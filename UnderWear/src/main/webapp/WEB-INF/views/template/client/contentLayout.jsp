@@ -12,68 +12,78 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title><tiles:getAsString name="title"/></title>
-
-   <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/resources/include/bcss/mobirise-icons.css">
+  <link rel="stylesheet" href="/resources/include/bcss/tether.min.css">
+  <link rel="stylesheet" href="/resources/include/bcss/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/include/bcss/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/resources/include/bcss/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/resources/include/bcss/style.css">
+  <link rel="stylesheet" href="/resources/include/bcss/styles.css">
+  <link rel="stylesheet" href="/resources/include/bcss/style1.css">
+  <link rel="stylesheet" href="/resources/include/bcss/mbr-additional.css" type="text/css">
+  <!-- bootstrap core css -->
     <link href="/resources/include/dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/resources/include/css/carousel.css" rel="stylesheet">
-
+      <link href="/resources/include/css/carousel.css" rel="stylesheet">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+       
+      
     
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and meia queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-   <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>   
-   <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
-        
-        <!-- 합쳐지고 최소화된 최신 CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-      
-      <!-- 부가적인 테마 -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-      <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-      
-      <script type="text/javascript" src="/resources/include/js/common.js"></script>
+  
+    
+    <title><tiles:getAsString name="title"/></title>
+	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/resources/include/js/common.js"></script>
+	
       
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-   <nav class="navbar navbar-default navbar-fixed-top"> <!-- nav 영역 -->
-       <tiles:insertAttribute name="header" />
-   </nav>
+   <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k"> <!-- nav 영역 -->
+       <tiles:insertAttribute name="header" /> <!-- header -->
+  </section>
    
+   <br/><br/><br/><br/><br/><br/><br/>
     <!-- Begin page content -->
    <div class="container">
       <div class="page-header">  
         <h1><tiles:getAsString name="title"/></h1>
       </div>  
+        <br/><br/><br/><br/>
          <tiles:insertAttribute name="body" /> <!-- content 영역 -->
    </div>
-    
+    <br/><br/><br/><br/><br/><br/><br/><br/>
     <footer class="footer">   <!-- footer 영역 -->
        <tiles:insertAttribute name="footer" />
     
     </footer>
 
 
-    <!-- Bootstrap core JavaScript ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+   <script src="/resources/include/bjs/jquery.min.js"></script>
+  <script src="/resources/include/bjs/popper.min.js"></script>
+  <script src="/resources/include/bjs/tether.min.js"></script>
+  <script src="/resources/include/bjs/bootstrap.min.js"></script>
+  <script src="/resources/include/bjs/smooth-scroll.js"></script>
+  <script src="/resources/include/bjs/script.min.js"></script>
+  <script src="/resources/include/bjs/jquery.touch-swipe.min.js"></script>
+  <script src="/resources/include/bjs/jquery.mb.vimeo_player.js"></script>
+  <script src="/resources/include/bjs/social-likes.js"></script>
+  <script src="/resources/include/bjs/bootstrap-carousel-swipe.js"></script>
+  <script src="/resources/include/bjs/jquery.mb.ytplayer.min.js"></script>
+  <script src="/resources/include/bjs/script.js"></script>
+  <script src="/resources/include/js/script.js"></script>
+  
+  <!-- bootstrap js -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>
     <script src="/resources/include/dist/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+  
+  
   </body>
   
 </html>
