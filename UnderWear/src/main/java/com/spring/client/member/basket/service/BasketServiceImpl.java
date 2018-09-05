@@ -8,16 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.member.basket.dao.BasketDao;
 import com.spring.client.member.basket.vo.BasketVO;
-import com.spring.client.product.dao.ProductDao;
-import com.spring.client.product.vo.ProductVO;
+import com.spring.client.member.rank.dao.RankDao;
+
 
 @Service
 public class BasketServiceImpl implements BasketService {
 
 	@Autowired
 	private BasketDao basketDao;
+	
 	@Autowired
-	private ProductDao productDao;
+	private RankDao rankDao;
 	
 	@Override
 	public List<BasketVO> basketList(BasketVO bvo) {
@@ -39,29 +40,35 @@ public class BasketServiceImpl implements BasketService {
 	}
 	
 	@Override
-	public int basketDelete(BasketVO bvo) {
+	public int basketDelete(BasketVO bvo, String[] b_num) {	//체크된거 여러개 선택
+		int b_no;
 		int result=0;
-		try {
-			result= basketDao.basketDelete(bvo);
-		}catch(Exception e) {
-			e.printStackTrace();
-			result = 0;
+		for(int i=0; i<b_num.length; i++) {
+			b_no = Integer.parseInt(b_num[i]);
+			bvo.setB_no(b_no);
+			result = basketDao.basketDelete(bvo);
 		}
 		return result;
 	}
 
 	@Override
 	public List<BasketVO> basketOrder(BasketVO bvo, String[] b_num) {
-		List<BasketVO> mList = new ArrayList<BasketVO>();	//개 좃같은 코드
+		List<BasketVO> mList = new ArrayList<BasketVO>();	//체크된거 여러개 선택
 		BasketVO vo = new BasketVO();
 		int b_no;
+		int total = 0;
 		for(int i=0; i<b_num.length; i++) {
 			b_no = Integer.parseInt(b_num[i]);
 			bvo.setB_no(b_no);
 			vo = basketDao.basketOrder(bvo);
+			total += vo.getTotal();
 			mList.add(vo);
 		}
+		bvo.setPaytotal(total);
+		double sale = total * rankDao.discount(bvo.getC_id());
+		System.out.println(rankDao.discount(bvo.getC_id()));
+		bvo.setPaysale(sale);
 		return mList;
 	}	
-
+ 
 }

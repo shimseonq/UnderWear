@@ -92,8 +92,8 @@ function login(){
 
               </ul>
               <ul class="nav navbar-nav">
-                 <li><a id="mypage" name="mypage" href="#"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
-                 <li><a id="basket" name="basket"href="#"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
+                 <li><a id="mypage" name="mypage" href="/mypage/pwdCheck.do"><img src="/resources/image/mypang.png" alt="마이페이지"/></a></li>
+                 <li><a id="basket" name="basket"href="/mypage/basket.do"><img src="/resources/image/basket.gif" alt="장바구니"/></a></li>
                    <li><a id="login" name="login" href="/login/login.do">Login</a></li>
                     <li><a id="joinus" name="joinus" href="/member/join.do">join us</a></li>
                     <li><c:if test="${login.c_id != null and login.c_id != ''}">

@@ -7,10 +7,12 @@ public class OrderVO extends BasketVO {
 	private int o_no;
 	private String o_date;
 	private String o_delivery;
-	private String o_warning;
-	private String o_delivaryname;
-	private String o_delivaryphone;
+	private String o_comment;
+	private String o_deliveryname;
+	private String o_deliveryphone;
 	private String o_deliveryaddress;
+	private int o_status = 0;
+	
 	
 	public int getO_no() {
 		return o_no;
@@ -30,29 +32,35 @@ public class OrderVO extends BasketVO {
 	public void setO_delivery(String o_delivery) {
 		this.o_delivery = o_delivery;
 	}
-	public String getO_warning() {
-		return o_warning;
+	public String getO_comment() {
+		return o_comment;
 	}
-	public void setO_warning(String o_warning) {
-		this.o_warning = o_warning;
-	}
-	public String getO_delivaryname() {
-		return o_delivaryname;
-	}
-	public void setO_delivaryname(String o_delivaryname) {
-		this.o_delivaryname = o_delivaryname;
-	}
-	public String getO_delivaryphone() {
-		return o_delivaryphone;
-	}
-	public void setO_delivaryphone(String o_delivaryphone) {
-		this.o_delivaryphone = o_delivaryphone;
+	public void setO_comment(String o_comment) {
+		this.o_comment = o_comment;
 	}
 	public String getO_deliveryaddress() {
 		return o_deliveryaddress;
 	}
 	public void setO_deliveryaddress(String o_deliveryaddress) {
 		this.o_deliveryaddress = o_deliveryaddress;
+	}
+	public String getO_deliveryname() {
+		return o_deliveryname;
+	}
+	public void setO_deliveryname(String o_deliveryname) {
+		this.o_deliveryname = o_deliveryname;
+	}
+	public String getO_deliveryphone() {
+		return o_deliveryphone;
+	}
+	public void setO_deliveryphone(String o_deliveryphone) {
+		this.o_deliveryphone = o_deliveryphone;
+	}
+	public int getO_status() {
+		return o_status;
+	}
+	public void setO_status(int o_status) {
+		this.o_status = o_status;
 	}
 	
 }

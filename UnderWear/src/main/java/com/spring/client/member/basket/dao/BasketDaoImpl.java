@@ -33,4 +33,14 @@ public class BasketDaoImpl implements BasketDao {
 	public BasketVO basketOrder(BasketVO bvo) {
 		return session.selectOne("basketOrder", bvo);
 	}
+	
+	@Override
+	public int basketNumber(int b_no) {
+		return session.selectOne("basketNumber",b_no);
+	}
+
+	@Override
+	public int statusUpdate(BasketVO bvo) {
+		return session.update("statusUpdate");
+	}
 }

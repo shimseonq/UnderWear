@@ -76,34 +76,6 @@ public class MemberController {
 		return mav;
 	}
 	
-	/*************************************************
-	 * 마이페이지 개인정보 수정
-	 *************************************************//*
-	@RequestMapping(value="/myInfoUpdate.do", method = RequestMethod.POST)
-	public String myInfoUpdate(MemberVO mvo, Model model, HttpSession session) {
-		logger.info("boardUpdate 호출 성공");
-				
-		LoginVO login =(LoginVO)session.getAttribute("login");
-	    logger.info("c_id ="+login.getC_id());
-		mvo.setC_id(login.getC_id());       
-		mvo.setC_pwd(login.getC_pwd());
-		
-		int result = 0;
-	    String url = "";
-	    
-
-	      result = memberService.myInfoUpdate(mvo);
-	      if(result == 1) {
-	         url = "/mypage/mybasket.do";
-	      }else {
-	    	  MemberVO myInfo = new MemberVO();
-		 	  myInfo = memberService.myInfo(mvo);
-				
-		 	  model.addAttribute("myInfo", myInfo);
-		 	 url = "/mypage/myinfo.do";
-	      }
-	      return url;
-	}*/
 	
 	/**************************************************************
 	 * 회원 수정 처리(AOP 예외 처리 후)

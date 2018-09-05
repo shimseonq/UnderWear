@@ -30,7 +30,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Main Page</a>
+                            <a href="/"> Main Page</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
@@ -41,6 +41,7 @@
                                 <li>
                                     <a href="morris.html">등급 정보</a>
                                 </li>
+                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -81,10 +82,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a href="/admin/order/orderList.do">주문관리</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="/admin/sale/saleList.do">판매관리</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
