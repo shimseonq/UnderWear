@@ -38,12 +38,18 @@
 	<logger name="com.spring.admin.qna.dao">
 		<level value="trace"/>
 	</logger>
+	<logger name="com.spring.admin.product.dao">
+		<level value="trace"/>
+	</logger>
 	<logger name="com.spring.client.qna.dao">
 		<level value="trace"/>
 	</logger>
 	<logger name="com.spring.client.review.dao">
 		<level value="trace"/>
-	</logger>	
+	</logger>
+	<logger name="com.spring.common">
+		<level value="trace"/>
+	</logger>
 
 
 

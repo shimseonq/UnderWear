@@ -145,6 +145,11 @@
     				$("#sumdiv").hide();
     			}
     		});
+    		
+    		/* 수정 버튼 클릭 시 처리 이벤트 */
+     		$("#updateFormBtn").click(function() {
+     			location.href="/admin/product/updateForm.do";
+     		});
     		/* $("#detailForm").attr({
 				"method":"post",
 				"action":"/order/orderForm.do"
@@ -287,6 +292,7 @@
 </head>
 
       <body>
+      
       <form name="detailForm" id="detailForm" method="get">
          <script type="text/javascript"><!--
          google_ad_client = "ca-pub-2783044520727903";
@@ -405,7 +411,7 @@
     	<img alt="" src="/resources/image/test/test26.jpg"> -->
     	<img alt="" src="/resources/image/${detail.p_file }">
     </div>	
-         
+      <input type="button" id="updateFormBtn" value="수정" />   
          </form>
       </body>
       <script type="text/javascript">

@@ -30,6 +30,16 @@
       <put-attribute name="sub" value=""/>
    </definition>
 
+   
+   <definition name="admin/product/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/product/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
+   </definition>
+   
+   
+   
+  
    <definition name="admin/order/*" extends="basic">
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/order/{1}.jsp"/>
@@ -54,3 +64,4 @@
 			
 	</definition>
 </tiles-definitions>
+

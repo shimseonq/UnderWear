@@ -53,10 +53,10 @@
                             <a> 상품 관리</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">상품 정보</a>
+                                    <a href="/admin/product/productList.do">상품 정보</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">상품 등록</a>
+                                    <a href="/admin/product/writeForm.do">상품 등록</a>
                                 </li>
                                   <li>
                                     <a href="morris.html">상품 분류</a>

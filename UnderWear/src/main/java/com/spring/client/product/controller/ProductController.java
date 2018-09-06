@@ -29,8 +29,6 @@ public class ProductController {
 		
 	@Autowired	//의존성 주입
 	private ProductService productService;
-	@Autowired 
-	private BasketService basketService;
 	
 	/*글목록 구현하기 (페이징 처리를 제외한 목록)*/
 	/*,*/
