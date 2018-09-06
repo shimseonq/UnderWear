@@ -86,9 +86,10 @@
 		<nav aria-label="Page navigation">
 			<ul class="pagination" id="pagination"></ul>
 		</nav>
-		
+			</div>
 		<!-- =============================== 글쓰기 버튼 출력 시작 =============================== -->
 		<div class="contentBtn">
 			<button type="button" class="btn btn-primary" id="insertFormBtn">글쓰기</button>
 		</div>
 	</div>
+

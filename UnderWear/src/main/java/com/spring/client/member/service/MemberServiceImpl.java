@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.client.member.basket.vo.BasketVO;
 import com.spring.client.member.dao.MemberDao;
-import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
 import com.spring.common.util.OpenCrypt;
@@ -94,6 +92,18 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDao.memberDelete(mvo);
 		result = memberDao.securityDelete(mvo.getC_id());
 		return result;
+	}
+
+	@Override
+	public List<MemberVO> memberList(MemberVO mvo) {
+		List<MemberVO> myList = null;
+		
+		if(mvo.getSearch() == "") {
+			mvo.setSearch("all"); //검색 대상인 all에 대한 정의
+		}
+		myList = memberDao.memberList(mvo); 
+		
+		return myList; //null 값이 들어가게 되면 데이터 출력불가
 	}
 
 

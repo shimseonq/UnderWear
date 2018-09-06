@@ -1,6 +1,6 @@
 package com.spring.client.member.rank.vo;
 
-public class RankVO{
+public class RankVO {
 	private int rk_no;
 	private String rk_rank ="";
 	private int rk_standard;

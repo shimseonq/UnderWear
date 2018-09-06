@@ -48,17 +48,11 @@ public class AdminOrderController {
 	public String deliveryUpdate(OrderVO ovo, @RequestParam String o_number,Model model, HttpSession session) {
 		logger.info("order Finish호출 성공");
 		String[] o_num = o_number.split(",");
-		LoginVO login =(LoginVO)session.getAttribute("login");
 		
-	    if(login == null) {
-	         return "login/login";	        
-	    }else {	
-	    	ovo.setC_id(login.getC_id());
-
-	 		adminOrderService.deliveryUpdate(ovo, o_num);
+ 		adminOrderService.deliveryUpdate(ovo, o_num);
 	 		
-			return "redirect:/admin/order/orderList.do";
-	    }		
+		return "redirect:/admin/order/orderList.do";
+			
 	}
 	
 }

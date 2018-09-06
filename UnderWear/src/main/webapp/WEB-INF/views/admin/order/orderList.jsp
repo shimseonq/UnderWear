@@ -6,9 +6,9 @@
 
 
 <!-- =================스크립트 정의 ======================= -->
-<!-- <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script> -->
-<!-- <script type="text/javascript" src="/resources/include/js/common.js"></script> -->
-<script type="text/javascript" src="/resources/include/js/board.js"></script>
+<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
+<script type="text/javascript" src="/resources/include/js/orderBoard.js"></script>
 <script type="text/javascript">
 	search = "<c:out value='${data.search}' />";
 	start_date = "<c:out value='${data.start_date}' />";
@@ -24,9 +24,27 @@
 				"method" : "get",
 				"action" : "/admin/order/deliveryUpdate.do"
 			});
-			console.log("클릭");
-			/* $("#order_list").submit(); */
+			//console.log("클릭");
+			$("#order_list").submit();
 		});
+		
+		//검색하고 나서 검색조건이랑 검색명  초기화 안되고 그대로 값 foward하는 부분
+	      var word = "${data.keyword}";
+	      var value = "";
+	      if (word != "") {
+	         $("#keyword").val("${data.keyword}");
+	         $("#search").val("${data.search}");
+	      }
+
+	      /* 검색 대상이 변경될 때마다 처리 이벤트 */
+	      $('#search').change(function() {
+	         if ($("#search").val() == "all") {
+	            $("#keyword").val("전체 데이터 조회합니다.");
+	         } else if ($("#search").val() != "all") {
+	            $("#keyword").val("");
+	            $("#keyword").focus();
+	         }
+	      });
 	});
 
 	function boxForm() {
@@ -57,10 +75,10 @@
          <h3><span class="label label-success">검색조건</span></h3>
          <div class="form-group">
             <select name="search" id="search" class="form-control">
-               <option value="b_title">제목</option>
-               <option value="b_content">내용</option>
-               <option value="b_name">작성자</option>
-               <option value="b_date">작성일자</option>
+               <option value="c_id">아이디</option>
+               <option value="p_name">상품명</option>
+               <option value="o_delivery">배송상태</option>
+               <option value="o_date">주문일자</option>
             </select>
          </div>
          <div class="form-group" id="textCheck">
@@ -76,13 +94,13 @@
       </form>
    </div>
    <form name="order_list" id="order_list">
-    	<input type='hidden' name='o_number' id="o_number" />
+    	<input type='hidden' name="o_number" id="o_number" />
      <!--   <script >document.write(b_noCheck);</script> -->
-    </form> 
+    	<input type="hidden" name="o_delivery" value="${o_delivery}"/>
    <table class="table table-striped">
       <thead>
          <tr>
-         	<th class="tac"><!-- <input type="button" id="update" name="update" value="배송정보 변경"/> --></th>
+         	<th class="tac"><input type="button" id="update" name="update" value="배송정보 변경"/></th>
             <th class="tac">주문번호</th>
             <th class="tac">아이디</th>
             <th class="tac">상품명</th>
@@ -124,4 +142,5 @@
          </c:choose>
       </tbody>
    </table>
+   </form> 
 </div>

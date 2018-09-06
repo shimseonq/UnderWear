@@ -1,6 +1,8 @@
 package com.spring.client.member.vo;
- 
-public class MemberSecurity { 
+
+import com.spring.client.product.vo.ProductVO;
+
+public class MemberSecurity extends ProductVO{ 
     private String c_id;		//유저 아이디
     private String salt;		
 

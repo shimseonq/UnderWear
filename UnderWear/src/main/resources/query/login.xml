@@ -38,8 +38,7 @@
 		clientIP = #{clientIP,jdbcType=VARCHAR}
 		where c_num = #{c_num} and c_id = #{c_id}
 	</update>
-	<select id="loginHistorySelect" parameterType="String"
-		resultType="login">
+	<select id="loginHistorySelect" parameterType="String" resultType="login">
 		select
 		c_num,
 		c_id,

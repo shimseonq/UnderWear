@@ -22,4 +22,9 @@ public interface MemberDao {
 	public int memberDelete(MemberVO mvo);	
 	
 	public int securityDelete(String c_id);
+	
+	public List<MemberVO> memberList(MemberVO mvo);
+	
+	public int termsInsert(MemberVO mvo);
+
 }

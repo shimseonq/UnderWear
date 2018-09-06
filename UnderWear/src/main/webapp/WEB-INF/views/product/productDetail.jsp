@@ -26,7 +26,7 @@
       
       <link href="/resources/include/dist/camroll/camroll_slider.css" rel="stylesheet" type="text/css">
       
-      <style>
+     <!--  <style>
       	#content{
       		background-color:red;
       		width: 200px;
@@ -114,7 +114,7 @@
       		height: 700px;
       		
       		background-color: gray;    	}
-      </style>
+      </style> -->
         
         <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>

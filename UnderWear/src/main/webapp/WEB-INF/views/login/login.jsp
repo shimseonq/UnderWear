@@ -34,11 +34,11 @@
 				alert("5번이상 로그인 시도로 30초동안 로그인 할 수 없습니다.\n잠시 후 다시 시도해 주세요");
 				break;
 				}
+					}
 			}
-		}
-		</script>
+			</script>
 		</head>
-	<body>
+<body>
 	<div class="contentContainer">
 		<div class="well">
 			<%-- 로그인 전 화면 --%>
@@ -71,16 +71,22 @@
 				</form>
 			</c:if>
 			<%-- 로그인 후 화면 --%>
+			
 			<c:if test="${login.c_id != null and login.c_id != ''}">
 				<fieldset id="loginAfter">
-					<legend>
+				<legend>
+					<br/><br/><br/><br/>
 						<strong>[ ${login.c_name} ]님 반갑습니다</strong>
+						<br/><br/><br/><br/>
 					</legend>
-					<span id="memberMenu" class="tac"> <a
-						href="/login/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp; <a
-						href="/mypage/myinfo.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp; <a
-						href="/mypage/myinfo.do">회원탈퇴</a>
-					</span>
+				
+					<span id="memberMenu" class="tac"> 
+					  <a href="/">메인으로</a>&nbsp;&nbsp;&nbsp;
+					<a href="/login/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp;
+					 <a href="/member/modify.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp;
+					  <a href="/member/delete.do">회원탈퇴</a>
+					  </span>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</fieldset>
 			</c:if>
 		</div>

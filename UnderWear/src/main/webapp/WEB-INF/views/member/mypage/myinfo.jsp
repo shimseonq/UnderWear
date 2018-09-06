@@ -20,11 +20,12 @@
 <!--[if lt IE 9]>
 <script src="/resources/include/js/html5shiv.js"></script>
 <![endif]-->
-	<script type="text/javascript"
-	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+	 <script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script> 
 	
 	<script type="text/javascript" src="/resources/include/js/common.js"></script>
 	<script type="text/javascript" src="/resources/include/js/modify.js"></script>
+
     <!-- Custom styles for this template -->
     
     <link href="/resources/include/css/justified-nav.css" rel="stylesheet">

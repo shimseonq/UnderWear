@@ -42,9 +42,9 @@ public class OrderServiceImpl implements OrderService {
 				svo.setB_status(basketDao.statusUpdate(svo));
 				svo.setO_no(orderDao.orderNumber());
 				result = payDao.payInsert(svo);
-				svo.setPa_no(payDao.payNumber());
-				result = saleDao.saleInsert(svo);
 			}
+			svo.setPa_no(payDao.payNumber());
+			result = saleDao.saleInsert(svo);
 		}catch(Exception e) {
 			e.printStackTrace(); 
 		}

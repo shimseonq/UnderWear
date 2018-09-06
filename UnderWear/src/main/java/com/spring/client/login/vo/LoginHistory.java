@@ -84,5 +84,4 @@ public class LoginHistory extends ProductVO {
 		return "LoginHistory [c_num=" + c_num + ", c_id=" + c_id + ", retry=" + retry + ", lastSuccessedLogin="
 				+ lastSuccessedLogin + ", lastFailedLogin=" + lastFailedLogin + ", clientIp=" + clientIp + "]";
 	}
-
 }

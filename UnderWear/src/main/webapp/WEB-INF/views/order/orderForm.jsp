@@ -158,13 +158,13 @@
 		</div>
 		<form id="orderForm" name="orderForm">
 			<input type="hidden" name="b_number" id="b_number" />
-			<input type="hidden" name="total" value="${total}"/>
+			<input type="hidden" name="sa_money" value="${pay}"/>
 		<h4>결제 금액</h4>
 			<div class="jumbotron">
 				<table class="table table-condensed">
 					<thead>
 						<tr>
-							<td>총 상품금액</td>   
+							<td>총 상품금액</td>
 							<td>추가/할인 금액</td>
 							<td>총 결제금액</td>
 						</tr>

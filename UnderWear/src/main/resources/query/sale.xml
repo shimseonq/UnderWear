@@ -18,6 +18,18 @@
 		inner join orders on pay.o_no = orders.o_no
 		inner join basket on orders.b_no = basket.b_no
 		inner join product on basket.p_code = product.p_code
+		<where>      
+      <if test ="search =='p_name'">
+         <![CDATA[p_name LIKE '%'||#{keyword} || '%']]>
+      </if>
+      <if test ="search =='pa_payway'">
+         <![CDATA[pa_payway LIKE '%'||#{keyword} || '%']]>
+      </if>
+      
+       <if test = "search == 'sa_date'">
+         <![CDATA[to_char(sa_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
+      </if> 
+      </where> 
 		order by sa_date desc
 	</select>
 </mapper>
