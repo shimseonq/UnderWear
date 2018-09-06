@@ -70,6 +70,8 @@
 			<put-attribute name="body" value="/WEB-INF/views/review/{1}.jsp" />
 		</definition>
 		
-		
+		 <definition name="reviewReply/*" extends="content">
+			<put-attribute name="body" value="/WEB-INF/views/review/reviewReply.jsp" />
+		</definition> 
 
 </tiles-definitions>

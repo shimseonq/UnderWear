@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.member.rank.dao.RankDao;
 import com.spring.client.member.rank.vo.RankVO;
+import com.spring.client.member.vo.MemberVO;
 
 @Service
 public class RankServiceImpl implements RankService {
@@ -21,4 +22,10 @@ public class RankServiceImpl implements RankService {
 		return rList;
 	}
 
+	@Override
+	public String myRank(RankVO rvo) {
+		String myRank = null;
+		myRank = rankDao.myRank(rvo);
+		return myRank;
+	}
 }

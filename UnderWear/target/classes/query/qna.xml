@@ -9,7 +9,7 @@
 q.c_num = c.c_num   -->
 
   select q_no,q_title, c_id,c_name, q_content, to_char(q_date, 'YYYY-MM-DD') as q_date , repRoot, repStep, repIndent, q_hit 
-  from qna q inner join customer c on 
+  from qna q left outer join customer c on 
 q.c_num = c.c_num  
 <where>		<!-- if 조건을 만족할때만 작용하는 부분 -->
 		<if test ="search =='q_title'">		<!-- search가 작은 ''안에 문자와 같으면! -->
@@ -26,9 +26,13 @@ q.c_num = c.c_num
 			<![CDATA[to_char(q_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
 		</if> 
 		</where>
-		order by q_no desc
+		order by repRoot desc, repStep asc
  
 </select> 
+
+
+
+
 
 	<!-- 게시물 입력 -->
 	 <insert id="qnaInsert" parameterType="qna">
@@ -38,32 +42,64 @@ q.c_num = c.c_num
 		values(qna_seq.nextval, #{q_title}, #{q_content},1
 		<if test="q_img != null and q_img != ''">,#{q_img}</if>) -->
 		
-		insert into qna(q_no, q_title, q_content, reproot, repStep, repindent, c_num
+		insert into qna(q_no, q_title, q_content, reproot, repStep, repindent,c_num
 		<if test="q_img != null and q_img != ''">,q_img</if> )
-		values(qna_seq.nextval, #{q_title}, #{q_content}, qna_seq.currval, 0, 0 ,#{c_num}
+		values(qna_seq.nextval, #{q_title}, #{q_content}, qna_seq.currval, #{repStep}, #{repIndent},#{c_num}
 		<if test="q_img != null and q_img != ''">,#{q_img}</if> )
 	</insert> 
+	
 	
 	<!-- 게시물 상세 조회 -->
 	 <select id="qnaDetail" parameterType="qna" resultType="qna">
 		/* Qna - qnaDetail */
-		select q_no, q_title, q_content, c_id, to_char(q_date, 'YYYY-MM-DD HH24:MI:SS') as q_date, q_img,q_hit,reproot, repStep, repindent
-		from qna q inner join customer c on q.c_num = c.c_num where q_no=#{q_no}
+		select q_no, q_title, q_content, c_id, to_char(q_date, 'YYYY-MM-DD HH24:MI:SS') as q_date, 
+		q_img,q_hit,reproot, repStep, repindent
+		from qna q left outer join customer c on q.c_num = c.c_num where q_no=#{q_no}
 		
 	</select> 
 	
-	<!-- 게시물 수정 -->
-	<update id="qnaUpdate" parameterType="qna">		
-		/* Qna - qnaUpdate */
-		UPDATE qna set q_title = #{q_title}, q_content = #{q_content}, q_date = sysdate		
+		<!-- 게시물 수정 처리  -->
+	<update id="qnaUpdate" parameterType="qna">
+	/* Qna - qnaUpdate */
+		 UPDATE qna set q_title = #{q_title}, q_content = #{q_content}, q_date = sysdate		
 		<if test="c_pwd != ''">
 		,c_pwd = #{c_pwd}
 		</if>
 		<if test="q_img != ''">
 		,q_img = #{q_img}
 		</if>
-		WHERE q_no = #{q_no}
+		WHERE q_no = #{q_no} 
 	</update>
+	
+	
+	<!-- 답변 처리 부분 -->
+	<update id="makeReply" parameterType="qna">
+	UPDATE qna SET repStep = repStep + 1
+	WHERE repRoot = #{repRoot} AND repStep > #{repStep} 
+	</update>
+	
+	
+	
+	<insert id="replyInsert" parameterType="qna">		
+		<!-- 답변 입력 처리 -->
+		INSERT INTO qna(q_no,q_title,q_content, repRoot, repStep, repIndent
+		<if test="q_img != null and q_img != ''">,q_img</if> )
+		values( qna_seq.nextVal, #{q_title}, #{q_content}, #{repRoot}, #{repStep}, #{repIndent}
+		<if test="q_img != null and q_img != ''">,#{q_img}</if>)
+	</insert>
+	
+	
+	
+	
+		<!-- 답변 상세 조회 -->
+	 <select id="replyDetail" parameterType="qna" resultType="qna">
+		/* Qna - replyDetail */
+		
+		select q_no, q_title, q_content, to_char(q_date, 'YYYY-MM-DD HH24:MI:SS') as q_date, q_img ,q_hit,reproot, repStep, repindent
+		from qna  where q_no=#{q_no}
+		
+	</select> 
+	
 	
 	<!-- 해당 번호의 비밀번호 확인 -->
 	<select id="pwdConfirm" parameterType="qna" resultType="int">
@@ -81,12 +117,13 @@ q.c_num = c.c_num
 	delete from qna where q_no = #{q_no}
 	</delete>
 	
+	
+	
 	<!-- 조회수 조회 -->
 	<update id="qnaHitUpdate" parameterType="qna">
          UPDATE qna
               SET q_hit = NVL(q_hit, 0) + 1 
          WHERE q_no=#{q_no} 
-         
 </update>
 
 

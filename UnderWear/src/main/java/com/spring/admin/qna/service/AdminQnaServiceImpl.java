@@ -45,6 +45,47 @@ public class AdminQnaServiceImpl implements AdminQnaService {
 		}
 		return result;
 	}
+
+	@Override
+	public int qnaDelete(QnaVO qvo) {
+		int result = 0;
+		try {
+			result = qnaDao.qnaDelete(qvo);
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
+
+	@Override
+	public int replyInsert(QnaVO qvo) {
+		int result = 0;
+		try {
+			 qnaDao.makeReply(qvo);
+			 qvo.setRepStep(qvo.getRepStep()+1);
+			 qvo.setRepIndent(qvo.getRepIndent()+1);
+			 
+			 logger.info("step = >"+qvo.getRepStep());
+			 logger.info("getRepIndent = >"+qvo.getRepIndent());
+			 result = qnaDao.replyInsert(qvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		
+		return result;
+	}
+
 	
+	@Override
+	public QnaVO replyDetail(QnaVO qvo) {
+		QnaVO detail = null;
+		qnaDao.qnaHitUpdate(qvo.getQ_no());
+	      detail = qnaDao.replyDetail(qvo);
+	      
+	      return detail;
+	}
+
 
 	}

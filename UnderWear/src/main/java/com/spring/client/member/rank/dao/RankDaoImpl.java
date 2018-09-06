@@ -19,4 +19,14 @@ public class RankDaoImpl implements RankDao {
 		return session.selectList("rankList",rvo);
 	}
 
+	@Override
+	public String myRank(RankVO rvo) {
+		return session.selectOne("myRank",rvo);
+	}
+
+	@Override
+	public double discount(String c_id) {
+		return session.selectOne("discount");
+	}
+
 }

@@ -12,10 +12,11 @@ public interface ReviewDao {
 
 	public int reviewUpdate(ReviewVO rvo);
 
-	public int pwdConfirm(ReviewVO rvo);
 
 	public int reviewInsert(ReviewVO rvo);
 
 	public int reviewDelete(ReviewVO rvo);
+
+	public int reviewHitUpdate(int rv_no);
 
 }

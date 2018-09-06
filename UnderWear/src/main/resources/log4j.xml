@@ -44,6 +44,9 @@
 	<logger name="com.spring.client.review.dao">
 		<level value="trace"/>
 	</logger>
+	<logger name="com.spring.client.reviewReply.dao">
+		<level value="trace"/>
+	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

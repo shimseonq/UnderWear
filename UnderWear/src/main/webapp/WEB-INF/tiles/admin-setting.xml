@@ -22,14 +22,19 @@
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/qna/{1}.jsp"/>
       <put-attribute name="sub" value=""/>
+      </definition>
+      
+          <definition name="admin/qna/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/review/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
       
    </definition>
+   
    <definition name="admin/member/*" extends="basic">
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/member/{1}.jsp"/>
       <put-attribute name="sub" value=""/>
    </definition>
-   
-   
    
    </tiles-definitions>

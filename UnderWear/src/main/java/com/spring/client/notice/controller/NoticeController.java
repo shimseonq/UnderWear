@@ -39,7 +39,7 @@ public class NoticeController {
 	 * 글 상세보기 구현
 	 ********************/
 	@RequestMapping(value="noticeDetail.do", method=RequestMethod.GET)
-	public String noticeDetail(NoticeVO nvo, Integer curPage,Model model) {
+	public String noticeDetail(NoticeVO nvo, Model model) {
 		logger.info("noticeDetail 호출 성공");
 		logger.info("n_no = " + nvo.getN_no());
 		

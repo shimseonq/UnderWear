@@ -67,7 +67,7 @@
 		$("#pwdBtn").click(
 				function() {
 					if ($("#c_pwd").val().replace(/\s/g, "") == "") {
-						$("#msg").text("비밀번호를 입력해 주세요.").css("color", "red");
+						$("#msg").text("로그인 비밀번호를 입력해 주세요.").css("color", "red");
 						$("#c_pwd").focus();
 						return;
 					} else {
@@ -100,8 +100,7 @@
 						});
 					}
 				});
-
-	})
+			})
 </script>
 
 </head>
@@ -156,13 +155,7 @@
 				<tr>
 					<td class="ac">제목</td>
 					<td colspan="3">${detail.q_title}</td>
-				<tr>
-					<td class="ac">글번호</td>
-					<td>${detail.rv_no }<span> <%-- (조회수 : ${detail.readcnt }) --%>
-					</span></td>
-					<td class="ac">작성일</td>
-					<td>${detail.rv_date }</td>
-				</tr>
+				
 				<tr>
 					<td class="ac">내용</td>
 					<td colspan="3">${detail.q_content}</td>

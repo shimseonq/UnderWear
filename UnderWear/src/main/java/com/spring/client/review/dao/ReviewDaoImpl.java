@@ -28,10 +28,10 @@ public class ReviewDaoImpl implements ReviewDao {
 	public int reviewUpdate(ReviewVO rvo) {
 		return session.update("reviewDetail", rvo);
 	}
-	@Override
+	/*@Override
 	public int pwdConfirm(ReviewVO rvo) {
 		return (Integer)session.selectOne("pwdConfirm", rvo);
-	}
+	}*/
 	@Override
 	public int reviewInsert(ReviewVO rvo) {
 		return  session.insert("reviewInsert", rvo);
@@ -39,6 +39,10 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public int reviewDelete(ReviewVO rvo) {
 		return session.delete("reviewDelete",rvo);
+	}
+	@Override
+	public int reviewHitUpdate(int rv_no) {
+		return session.update("reviewHitUpdate", rv_no);
 	}
 
 }

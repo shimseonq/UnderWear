@@ -31,167 +31,323 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-    	.jumbotron{
-    		height: 200px;
-    		border: 2px solid lightgray;
-    		border-radius: 10px;
-    		padding:0px;
-    	}
-    	.masthead, .row{
-    		margin-bottom:20px;
-    	}
-    	h3{
-    		color:gray;  		
-    	}
+       .jumbotron{
+       	 height:150px;
+          border-radius: 10px;
+          padding:0px;
+          margin:0px;
+       }
+       .masthead, .row{
+          margin-bottom:20px;
+       }
+       h3{
+          color:gray;        
+       }
 
-		button{
-    		display:block;
-    		text-align: center;
-    	}
+      button{
+          display:block;
+          text-align: center;
+       }
+      .form-control{
+      	width:150px;
+      	display:inline;
+      }
+    
+      .form-group:nth-child(5){
+         width:1200px;
+      }
+      .form-group{
+      	width:350px;
+      	height:40px;
+      	float:left;
+      }
+      .col-sm-5{
+      	width:1200px;
+         float:inherit;
+      }
+       .col-sm-5>label{
+       	font-
+       }
     </style>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script type="text/javascript" src="/resources/include/js/address.js"></script>
-	<script>
+	<script>	
+	
 	$(function() {
+		$("#o_deliveryaddress").val($("#o_post").val()+"/"+$("#o_address1").val());
+		/* console.log(b_no); */
 		$("#searchadd").click(function(){
 			searchAddress();
 		});
+
+		$("#pay").click(function(){
+			$("#orderForm").attr({
+				"method":"post",
+				"action":"/order/orderInsert.do"
+			});
+			 console.log($("#o_deliveryaddress").val()); 
+			 $("#orderForm").submit();  
+		})
 	});
 	    
 	</script>
   </head>
-  <body>     
-     <h3>결제</h3>
-     <hr/>
-     <h4>주문물품</h4>
-     <form name="f_data" id="f_data" method="post">
-	 <%--<input type="hidden" name="b_no" id="b_no" value="${orderList.b_no }"/>--%>		
-	 </form>
-	 <div class="jumbotron"> 		
-        <table class="table table-condensed">
+<body>
+	<h3>결제</h3>
+	<hr />
+	<div class="maincontroller">
+		<h4>주문물품</h4>
+		<div class="jumbotron">
+			<table class="table table-condensed">
 				<thead>
-				<tr>
-					<td>상품</td>
-					<td>상품명</td>
-					<td>가격</td>
-					<td>결제금액</td> 
-				</tr>
-				
+					<tr>
+						<td>상품</td>
+						<td>상품명</td>
+						<td>가격</td>
+						<td>결제금액</td>
+					</tr>
 				</thead>
 				<tbody id="list">
-				<!-- 데이터 출력 -->
+					<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty orderList}" >
-							<c:forEach var="basket" items="${orderList}" varStatus="status">
-								<tr class="tac" data-num="${basket.b_no}" >
-									<td>${basket.img_01}
-									${basket.p_color }
-									${basket.p_size }</td>
+						<c:when test="${not empty basketOrder}">
+							<c:forEach var="basket" items="${basketOrder}" varStatus="status">
+								<tr class="tac" data-num="${basket.b_no}">
 									<td>${basket.p_name}</td>
 									<td>${basket.pr_01}</td>
+									<td>${basket.b_count}</td>
 									<td>${basket.total}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="6" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+								<td colspan="6" class="tac">주문할 내역이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
-				</tbody>
-			</table>
-      </div>
-	<div class="well">
-	<h4>주문서 작성</h4>
-			<div class="form-group form-group-sm">
-				<label for="o_name" class="col-sm-2 control-label">주문자 명</label>
-				<div class="col-sm-3">
-					<input type="text" id="o_name" name="o_name"  maxlength="12" class="form-control" placeholder="주문자 명" />
-				</div> 
-			</div>
-			<div class="form-group form-group-sm">
-				<label for="o_address" class="col-sm-2 control-label">주소</label>
-				<div class="col-sm-3">
-					<input type="button" id="searchadd" name ="searchadd" value="우편번호 찾기"/>
-					<input type="text" id="o_post" name="o_post" maxlength="15" class="form-control" placeholder="우편번호" >
-					<input type="text" id="o_address1" name="o_address1" maxlength="15" class="form-control" placeholder="주소" >
-					<input type="text" id="o_address2" name="o_address2" maxlength="15" class="form-control" placeholder="나머지 주소 " >
-				</div>
-			</div>
-				<div class="form-group form-group-sm">
-					<label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
-				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="핸드폰 번호">	
-				</div>
-			</div>	
-		<div>	
-			<div class="form-group form-group-sm">
-				<label for="birth" class="col-sm-2 control-label">이메일</label>
-				<div class="col-sm-3">
-					<input type="text" id="birth" name="birth" maxlength="10" class="form-control" placeholder="주민등록번호 6자리">	
-				</div>
-				<div class="col-sm-2">
-					<input type="text" id="gender" name="gender" maxlength="10" class="form-control" placeholder="주민등록번호 7번째 1자리">	
-				</div>
-			</div>						
-			<div class="form-group form-group-sm">
-				<label for="userPwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
-				<div class="col-sm-3">
-					<input type="password"  id="userPwCheck" name="userPwCheck" maxlength="15" class="form-control" placeholder="Password Confirm" >
-				</div>
-			</div>
-		</div>
-								
-		<div class="form-group form-group-sm">
-			<label for="userName" class="col-sm-2 control-label">회원이름</label>
-			<div class="col-sm-3">
-				<input type="text" id="userName" name="userName" maxlength="10" class="form-control" placeholder="NAME" >
-			</div>										
-		</div>
-	</div>
-		<h4>결제 금액</h4>
-		<div class="jumbotron"> 	
-        	<table class="table table-condensed">
-				<thead>
-					<tr>
-						<td>상품 금액</td>
-						<td>할인금액  / 추가금액 </td>
-						<td>총 결제 금액</td>
-					</tr>
-				</thead>
-				<tbody id="list">
-				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
+						<c:when test="${not empty orderList}">
+							<c:forEach var="order" items="${orderList}" varStatus="status">
+								<tr class="tac" data-num="${order.o_no}">
+									<td>${order.o_delivery}</td>
+									<td>${order.o_deliveryname}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="6" class="tac">결제할 금액이 없습니다.</td>
+								<td colspan="6" class="tac">주문할 내역이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
 				</tbody>
 			</table>
-      </div>
-      <div class="form-group">	
+		</div>
+		<form id="orderForm" name="orderForm">
+		<c:forEach var="basket" items="${basketOrder}" varStatus="status">
+			<input type="hidden" name="b_no" value="${basket.b_no}" />	
+		</c:forEach>
+		<input type="hidden" name="o_deliveryaddress" id="o_deliveryaddress" value=""/>
+		<h4>결제 금액</h4>
+			<div class="jumbotron">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<td>총 상품금액</td>   
+							<td>추가/할인 금액</td>
+							<td>총 결제금액</td>
+						</tr>
+					</thead>
+					<tbody id="list">
+						<!-- 데이터 출력 -->
+						<tr class="tac">
+							<td>${paytotal}</td>
+							<td>${paysale}</td>
+							<td name="sa_money">${pay}</td>
+						<tr>
+					</tbody>
+				</table>
+			</div>
+			<h4>주문서 작성</h4>
+			<div>
+				<div class="form-group form-group-sm">
+					<label for="o_deliveryName">주문자 명 <input type="text"
+						id="o_deliveryname" name="o_deliveryname" class="form-control"
+						placeholder="주문자 명" /></label>
+				</div>
+				<div class="form-group form-group-sm">
+					<label for="c_delivaryPhone">연락처 <input type="text"
+						id="o_deliveryphone" name="o_deliveryphone" class="form-control"
+						maxlength="13" placeholder="핸드폰 번호"></label>
+				</div>
+				<div class="form-group form-group-sm">
+					<label for="o_post">배송지 주소 <input type="text"
+						id="o_post" name="o_post" maxlength="5"
+						class="form-control" placeholder="우편번호" > <input
+						type="button" id="searchadd" name="searchadd" value="찾기" /> <input
+						type="text" id="o_address1" name="o_address1" maxlength="15"
+						class="form-control" placeholder="주소" width="250px"> <input type="text"
+						id="o_address2" name="o_address2" maxlength="15"
+						class="form-control" placeholder="나머지 주소 " width="250px">
+					</label>
+				</div>
+				<div class="form-group form-group-sm">
+					<label for="o_comment">배송시 유의사항</label>
+					<textarea id="o_comment" name="o_comment" cols="30" rows="3"
+						placeholder="배송시 유의 사항"></textarea>
+				</div>
+			</div>
+			<div class="jumbotron">
+				<label for="userName">결제 방법</label>
+				<div>
+					<select id="pa_payway" name="pa_payway">
+						<option class="col-sm-2 control-label" value="카드결제">카드결제</option>
+						<option class="col-sm-2 control-label" value="무통장입금">무통장입금</option>
+					</select> <select name="card">
+						<option></option>
+						<option value="samsung">삼성카드</option>
+						<option value="hyundae">현대카드</option>
+						<option value="shinhan">신한카드</option>
+						<option value="kb">국민카드</option>
+						<option value="woori">우리카드</option>
+						<option value="hana">하나카드</option>
+						<option value="ibk">기업카드</option>
+						<option value="bc">BC카드</option>
+					</select> <label>카드사를 선택해 주세요.</label> <input type="text" maxlength="4"
+						class="form-control" /> <label>-</label> <input type="text"
+						maxlength="4" class="form-control" /> <label>-</label> <input
+						type="password" maxlength="4" class="form-control" /> <label>-</label>
+					<input type="text" maxlength="4" class="form-control" />
+				</div>
+
+				<label for="cvc">cvc번호 <input type="password" id="cvc"
+					name="cvc" class="form-control" maxlength="3" />
+				</label> <label for="cvc">카드비밀번호 <input type="password" id="cardpwd"
+					name="cardpwd" class="form-control" maxlength="2" /></label> <label
+					for="cardpwd">**</label>
+			</div>
+			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-6">
-					<input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-					<input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-					<input type="button" value="취소" id="joinCancel" class="btn btn-default" />						
-				</div>	
-			</div>																										
+					<input type="button" value="결제" id="pay" class="btn btn-default" />
+					<input type="button" value="취소" id="cancel" class="btn btn-default" />
+				</div>
+			</div>
 		</form>
 	</div>
-	
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+
+
+	<%--  <div class="well">
+   <h4>주문서 작성</h4>
+         <div class="form-group form-group-sm">
+            <label for="o_name" class="col-sm-2 control-label">주문자 명</label>
+            <div class="col-sm-3">
+               <input type="text" id="o_name" name="o_name"  maxlength="12" class="form-control" placeholder="주문자 명" />
+            </div> 
+         </div>
+         <div class="form-group form-group-sm">
+            <label for="phone" class="col-sm-2 control-label">연락처</label>
+            <div class="col-sm-3">
+               <input type="text" id="phone" name="phone" maxlength="15" class="form-control" placeholder="핸드폰 번호">   
+            </div>
+         </div>   
+         <div class="form-group form-group-sm">
+            <label for="o_address" class="col-sm-2 control-label">배송지 주소</label>
+            <div class="col-sm-3">
+               <input type="button" id="searchadd" name ="searchadd" value="우편번호 찾기"/>
+               <input type="text" id="o_post" name="o_post" maxlength="15" class="form-control" placeholder="우편번호" >
+               <input type="text" id="o_address1" name="o_address1" maxlength="15" class="form-control" placeholder="주소" >
+               <input type="text" id="o_address2" name="o_address2" maxlength="15" class="form-control" placeholder="나머지 주소 " >
+            </div>
+         </div>   
+         <div class="form-group form-group-sm">
+            <label for="birth" class="col-sm-2 control-label">배송시 유의사항</label>
+            <div class="col-sm-3">
+               <textarea id="o_content" name="o_content" cols="60" rows="3" class="form-control" placeholder="배송시 유의 사항"></textarea>   
+            </div>
+         </div>
+                                             
+     <div class="form-group form-group-sm">
+         <label for="userName" class="col-sm-2 control-label">결제 방법</label>
+         <div class="col-sm-3">
+            <select name="payway">
+               <option value="paycard">카드결제</option>
+               <option value="paycmd">무통장입금</option>
+            </select>
+            <c:if test="#{pay.payway ==paycard}">
+               <p><select name="card">
+                  <option>-----------</option>
+                  <option value="samsung">삼성카드</option>
+                  <option value="hyundae">현대카드</option>
+                  <option value="shinhan">신한카드</option>
+                  <option value="kb">국민카드</option>
+                  <option value="woori">우리카드</option>
+                  <option value="hana">하나카드</option>
+                  <option value="ibk">기업카드</option>
+                  <option value="bc">BC카드</option>
+               </select>
+               <label>카드사를 선택해 주세요.</label>
+               <input type="text" class="cardnum" maxlength="4"/>
+               <label>-</label>
+               <input type="text" class="cardnum" maxlength="4"/>
+               <label>-</label>
+               <input type="password" class="cardnum" maxlength="4"/>
+               <label>-</label>
+               <input type="text" class="cardnum" maxlength="4"/>
+               </p>
+               <p>
+               <label for="cvc">cvc번호 </label>
+               <input type="text" id="cvc" name="cvc" class="cardnum" maxlength="3"/>
+               </p>
+               <p>
+               <label for="cvc">카드비밀번호 </label>
+               <input type="text" id="cardpwd" name="cardpwd" class="cardnum" maxlength="2"/>
+               <label for="cardpwd">**</label>
+               </p>
+            </c:if>            
+         </div>                              
+      </div> 
+   </div>--%>
+	<%-- <h4>결제 금액</h4>
+      <div class="jumbotron">    
+           <table class="table table-condensed">
+            <thead>
+               <tr>
+                  <td>상품 금액</td>
+                  <td>할인금액  / 추가금액 </td>
+                  <td>총 결제 금액</td>
+               </tr>
+            </thead>
+            <tbody id="list">
+            <!-- 데이터 출력 -->
+               <c:choose>
+                   <c:when test="${not empty productList}" >
+                     <c:forEach var="product" items="${productList}" varStatus="status">
+                        <tr class="tac" data-num="${product.p_code}" >
+                           <td>${product.p_code}</td>
+                           <td>${product.p_name}</td>
+                           <td>${product.p_inventory}</td>
+                        </tr>
+                     </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+                     <tr>
+                        <td colspan="6" class="tac">결제할 금액이 없습니다.</td>
+                     </tr>
+                  </c:otherwise>u
+               </c:choose>
+            </tbody>
+         </table>
+      </div>
+       <div class="form-group">   
+         <div class="col-sm-offset-2 col-sm-6">
+            <input type="button" value="결제" id="pay" class="btn btn-default" /> 
+            <input type="button" value="취소" id="cancel" class="btn btn-default" />                  
+         </div>   
+      </div>  --%>
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>

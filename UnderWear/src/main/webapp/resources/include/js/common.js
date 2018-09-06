@@ -3,7 +3,7 @@
  * */
 function chkData(item, msg) {
 	if($(item).val().replace(/\s/g, "") == "") {	// 객체에 대한 표현.
-		alert(msg + " 입력해 주세요.");
+		alert(msg + "를 입력해 주세요.");
 		$(item).val("");
 		$(item).focus();
 		return false;

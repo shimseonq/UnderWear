@@ -15,10 +15,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율-->
+<link rel="re-icon" type="image/re.gif" href="/resources/image/re.gif">
 
-<!-- 아이콘 표시 -->
-<link rel="shortcut icon" href="../image/icon.png" />
-<link rel="apple-touch-icon" href="../image/icon.png" />
 
 <!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스c필터를 적용하면 된다. -->
 <!-- [if It IE 9]>
@@ -47,8 +45,9 @@
  <script type="text/javascript" src="/resources/include/js/common.js"></script>  
 
 
-<script type="text/javascript" src="/resources/include/js/board2.js"></script>
+<script type="text/javascript" src="/resources/include/js/adminQnaBoard.js"></script>
 <script type="text/javascript">
+
 search = "<c:out value='${data.search}' />";
 start_date = "<c:out value='${data.start_date}' />";
 end_date = "<c:out value='${data.end_date}' />";
@@ -92,17 +91,36 @@ $(function() {
 			$("#keyword").focus();
 		}
 	});
-
-	/* 검색 버튼 클릭 시 처리 이벤트  */
-	/* $("#searchData").click(function() {
-		if ($("#search").val() != "all") {
-			if (!chkSubmit($('#keyword'), "검색어를"))
-				return;
-		}
-		goPage();
-	}); */
-
-	// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
+	
+	/*// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
+	$(".goDetail").click(function() {
+	
+		
+		var q_no = $(this).parents("tr").attr("data-num");
+		$("#q_no").val(q_no);
+		console.log("글번호 : " + q_no);
+		// 상세 페이지로 이동하기 위해 form 추가 (id : detailForm)
+		
+		
+		
+		//원글 과 답글 구별하여 디테일 전송
+		 var word = "${qna.repStep}";
+		if(word > 0){
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/qna/reviewReplyDetail.do"
+			})
+			$("#detailForm").submit();
+		}else{
+		$("#detailForm").attr({
+			"method" : "get",
+			"action" : "/qna/qnaDetail.do"
+		})
+		$("#detailForm").submit();
+	} */
+	
+	
+	 // 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
 	$(".goDetail").click(function() {
 		var q_no = $(this).parents("tr").attr("data-num");
 		$("#q_no").val(q_no);
@@ -113,28 +131,11 @@ $(function() {
 			"action" : "/admin/qna/qnaDetail.do"
 		})
 		$("#detailForm").submit();
-	})
-
-	// 글쓰기 버튼 클릭 시
-	$("#insertFormBtn").click(function() {
-		
-		location.href = "writeForm.do";
-
-	});
-});
-/* 글쓰기 버튼 클릭 시 처리 이벤트 */
-function goPage() {
-	if ($("#search").val() == "all") {
-		$("#keyword").val("");
-	}
-
-	$("#f_search").attr({
-		"method" : "get",
-		"action" : "/admin/qna/qnaList.do"
-	});
-	$("#f_search").submit();
-
-}
+	}) 
+	
+	
+})
+	
 </script>
 
 </head>
@@ -185,8 +186,8 @@ function goPage() {
          <tr>
             <th class="tac">글 번호</th>
             <th class="tac">글 제목</th>
-            <th class="tac">작성일</th>
             <th class="tac">작성자</th>
+            <th class="tac">작성일</th>
             <th class="tac">조회수</th>
          </tr>
       </thead>
@@ -196,7 +197,19 @@ function goPage() {
 						<c:forEach var="qna" items="${qnaList}" varStatus="status">
 							<tr class="tac" data-num="${qna.q_no}" align="center">
 								<td>${qna.q_no}</td>
-								<td class="goDetail tal">${qna.q_title}</td>
+								
+								<td align="left">
+									<!-- 답글 앞에 여백주기 -->
+										<c:if test="${qna.repStep>0}">
+											<c:forEach begin="1" end="${qna.repIndent}">
+												&nbsp;&nbsp;&nbsp;
+											</c:forEach>
+											<img src="/resources/image/re.gif" />	
+										</c:if>
+										<span class="goDetail"> ${qna.q_title}</span>
+										<%-- <c:if test="${qna.rCount>0 }"><span class="rCount">[${qna.rCount}]</span></c:if> --%>
+									</td>
+									
 								<td class="content">${qna.c_name }</td>
 								<td>${qna.q_date}</td>
 								<td>${qna.q_hit}</td>
@@ -210,11 +223,14 @@ function goPage() {
 					</c:otherwise>
 				</c:choose>
       </tbody>
+      
+      
    </table>
    
    <nav aria-label="Page navigation">
 			<ul class="pagination" id="pagination"></ul>
 		</nav>
+		
 		<!-- =============================== 글쓰기 버튼 출력 시작 =============================== -->
 		<div class="contentBtn">
 			<button type="button" class="btn btn-primary" id="insertFormBtn">글쓰기</button>

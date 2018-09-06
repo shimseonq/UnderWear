@@ -56,13 +56,6 @@
 			</tr>
 		</table>
 
-
-		<!-- <table id="boardPwdBut">
-					<tr>
-						
-					</tr>
-				</table> -->
-
 		<div class="contentTB">
 			<table>
 				<tbody>
@@ -73,13 +66,12 @@
 
 				<tr>
 					<td class="ac">글번호</td>
-					<td>${detail.n_no }<span>(조회수 : ${detail.n.hit })</span></td>
+					<td>${detail.n_no }<span>(조회수 : ${detail.n_hit })</span></td>
 					<td class="ac">작성일</td>
 					<td>${detail.n_date }</td>
 					<td class="ac">작성자</td>
 					<td>관리자</td>
 				</tr>
-
 				<tr>
 					<td class="ac">제목</td>
 					<td colspan="3">${detail.n_title}</td>
@@ -92,11 +84,8 @@
 				</tbody>
 			</table>
 
-
 		</div>
-
 	</div>
-
 
 </body>
 </html>

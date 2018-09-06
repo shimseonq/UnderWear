@@ -19,4 +19,6 @@ public interface QnaService {
 
 	public int qnaDelete(QnaVO qvo);
 	
+	
+	
 }

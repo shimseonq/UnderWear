@@ -1,13 +1,18 @@
 package com.spring.client.member.service;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.client.member.basket.vo.BasketVO;
 import com.spring.client.member.dao.MemberDao;
 import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.common.util.OpenCrypt;
 import com.spring.common.util.Util;
 
 @Service
@@ -52,15 +57,44 @@ public class MemberServiceImpl implements MemberService {
 				return 2;
 			}
 		}
-
 	}
-	
 
 	@Override
-	public String myRank(MemberVO rvo) {
-		String myRank = null;
-		myRank = memberDao.myRank(rvo);
-		return myRank;
+	public MemberVO myInfo(MemberVO mvo) {
+		MemberVO myInfo = new MemberVO();
+		myInfo = memberDao.myInfo(mvo);
+		return myInfo;
 	}
+
+	@Transactional
+	@Override
+	public int memberUpdate(MemberVO mvo) {
+		if(!mvo.getC_pwd().isEmpty()) {
+			MemberSecurity sec= memberDao.securitySelect(mvo.getC_id());
+			mvo.setC_pwd(mvo.getC_pwd());
+		}
+		int result = memberDao.memberUpdate(mvo);
+		
+		return result;
+	}
+
+	@Override
+	public MemberVO memberSelect(String c_id) {
+		MemberVO vo = memberDao.memberSelect(c_id);
+		return vo;
+	}
+
+	@Transactional
+	@Override
+	public int memberDelete(MemberVO mvo) {
+		if(!mvo.getC_pwd().isEmpty()) {
+			MemberSecurity sec= memberDao.securitySelect(mvo.getC_id());
+			mvo.setC_id(new String(OpenCrypt.getSHA256(mvo.getC_id(), sec.getSalt())));
+		}
+		int result = memberDao.memberDelete(mvo);
+		result = memberDao.securityDelete(mvo.getC_id());
+		return result;
+	}
+
 
 }

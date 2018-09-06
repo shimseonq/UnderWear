@@ -21,15 +21,10 @@
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
+  
     <style type="text/css">
     	.jumbotron{
     		height: 300px;
@@ -54,35 +49,50 @@
 		}
 
     </style>
+    
+    <script type="text/javascript">
+    	$(function() {
+			$("#reviewBtn").click(function() {
+				$("writeForm").attr({
+					"method" : "post",
+					"action" : "/review/writeForm.do"
+				})
+				$("#writeForm").submit();
+			})
+		});
+    </script>
   </head>
 
   <body>
   	 <!-- Jumbotron -->
   	 	<h3>My page</h3>
-  	 	
+  	
   	 	<div class="masthead">
         <nav>
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>
         </nav>
       </div>    
       <h3>주문 내역</h3>
+       <form id="writeForm" name="writeForm" enctype="multipart/form-data">
+       <input type="hidden" id="o_no" name="o_no"	value="${pay.o_no}" />
       <div class="jumbotron">
 
         <table class="table table-condensed">
 				<thead>
 				<tr>
-					<td>상품 이미지</td>
+					<td></td>
 					<td>상품명</td>
 					<td>가격</td>
 					<td>갯수</td>
 					<td>수령인</td>
 					<td>주소지</td>
+					<td>결제일</td>
 					<td>배송 상태</td>
 				</tr>
 				
@@ -90,17 +100,17 @@
 				<tbody id="list">
 				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
-									<td>${product.p_color}</td>
-									<td>${product.p_size}</td>
-									<td>${product.p_date}</td>
-									<td>${product.p_gender}</td>
-									<td>${product.p_gender}</td>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.pa_no}" >
+									<td>${pay.p_name}</td>
+									<td>${pay.pa_no}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.pa_date}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -113,7 +123,7 @@
 				</tbody>
 			</table>
       </div>
-
+	</form>
 
       <!-- Example row of columns -->
       <div class="row">
@@ -129,7 +139,7 @@
           <p><a class="btn btn-primary" href="#" role="button">결제완료 &raquo;</a></p>
        </div>
         <div class="col-lg-4">
-          <p><a class="btn btn-primary" href="#" role="button">리뷰작성 &raquo;</a></p>
+          <p><input type="button" id="reviewBtn" name="reviewBtn" class="btn btn-primary" value="리뷰작성 ">&raquo;  </p>
         </div>
 	</div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

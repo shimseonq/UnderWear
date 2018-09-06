@@ -43,7 +43,7 @@
 		<div class="contentTB">
 
 			<form id="f_writeForm" enctype="multipart/form-data">
-			<!-- <table id="boardWrite">
+			 <table id="boardWrite">
 						<colgroup>
 							<col width="17%" />
 							<col width="83%" />
@@ -89,6 +89,8 @@
 								NN.Config.toolbarType = "simple";
 
 								//Editor Height
+								
+								
 								NN.Config.height = 400;
 
 								var q_content = new NNEditor();
@@ -132,31 +134,11 @@
 						<td><input name="attach_file[]" type="file" id="q_imgfile"
 							name="q_imgfile" /></td>
 					</tr>
-					<tr>
-						<th scope="row">첨부파일2</th>
-						<td><input name="attach_file[]" type="file" id="q_imgfile"
-							name="q_imgfile" /></td>
-					</tr>
-					<tr>
-						<th scope="row">첨부파일3</th>
-						<td><input name="attach_file[]" type="file" id="q_imgfile"
-							name="q_imgfile" /></td>
-					</tr>
-					<tr>
-						<th scope="row">첨부파일4</th>
-						<td><input name="attach_file[]" type="file" id="q_imgfile"
-							name="q_imgfile" /></td>
-					</tr>
-					<tr>
-						<th scope="row">첨부파일5</th>
-						<td><input name="attach_file[]" type="file" id="q_imgfile"
-							name="q_imgfile" /></td>
-					</tr>
 				</tbody>
-				</table> -->
+				</table> 
 				
 				
-				<table id="boardWrite" class="table table-hover">
+				<!-- <table id="boardWrite" class="table table-hover">
 					<colgroup>
 						<col width="17%" />
 						<col width="83%" />
@@ -181,7 +163,7 @@
 						<td><input type="file" id="q_imgfile" name="q_imgfile" />
 						</td>
 					</tr>
-				</table>
+				</table> -->
 				<div class="contentBtn">
 				<input type=button class="btn btn-default" id="qnaInsertBtn"
 					value="글쓰기" />

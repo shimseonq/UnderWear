@@ -4,11 +4,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.spring.client.login.dao.LoginDao;
 import com.spring.client.login.vo.LoginVO;
 import com.spring.client.member.dao.MemberDao;
-import com.spring.client.member.vo.MemberSecurity;
-import com.spring.common.util.OpenCrypt;
 
 @Service
 public class LoginServiceImpl implements LoginService {

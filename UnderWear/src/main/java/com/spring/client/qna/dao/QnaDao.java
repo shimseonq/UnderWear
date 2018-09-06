@@ -21,5 +21,10 @@ public interface QnaDao {
 
 	public int qnaHitUpdate(int q_no);
 
+	
+	public int replyInsert(QnaVO qvo);
 
+	public int makeReply(QnaVO qvo);
+
+	public QnaVO replyDetail(QnaVO qvo);
 }

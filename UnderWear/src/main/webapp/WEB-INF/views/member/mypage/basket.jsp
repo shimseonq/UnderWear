@@ -32,53 +32,75 @@
     <![endif]-->   
     
     <style type="text/css">
-    	.jumbotron{
-    		height: 300px;
-    		border: 2px solid lightgray;
-    		border-radius: 10px;
-    		padding:0px;
-    	}
-    	.masthead, .row{
-    		margin-bottom:20px;
-    	}
-    	h3{
-    		color:gray;  		
-    	}
+       .jumbotron{
+          height: 300px;
+          border: 2px solid lightgray;
+          border-radius: 10px;
+          padding:0px;
+       }
+       .masthead, .row{
+          margin-bottom:20px;
+       }
+       h3{
+          color:gray;        
+       }
 
-		.row{
-			text-align:center;
-			margin:0px;
-		}
+      .row{
+         text-align:center;
+         margin:0px;
+      }
     </style>
-    <script type="text/javascript">
-    	$(function(){
-    		$("#pay").click(function() {
-    			var b_no = $(".tac").attr("data-num");
-    			$("#b_no").val(b_no);
-    			//console.log("글번호 :"+b_num)
-    			$("#basketForm").attr({
-    				"method" : "post",
-    				"action" : "/order/orderForm.do"
-    			});
-    			$("#basketForm").submit();
-    		});    		
-    	})
-    	
-    </script>
-  </head>
+
+<script type="text/javascript">
+var checkB = [];
+
+   $(function(){      
+      $("#pay").click(function(){
+         boxForm();
+            $("#b_data").attr({
+            "method" : "post",
+            "action" : "/order/orderForm.do"
+            });
+         
+         $("#b_data").submit();
+         });
+      });
+      
+   
+   
+   function boxForm(){      
+      var values = document.getElementsByName("item");
+         for(var i = 0; i<values.length; i++){
+            if(values[i].checked){ 
+               checkB.push(values[i].value);   
+            }
+         }
+         var output = "";
+         for (var i = 0; i < checkB.length; ++i){
+        	 output+=checkB[i];
+        	 //if(i<checkB.length-1) output+=","
+         //   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+         }
+         
+         $("#b_number").val(checkB);
+         console.log($("#b_number").val());
+         //return output;
+   }
+
+
+</script>
+</head>
 
   <body>
-  	 <form id="basketForm" name="basketForm">  
-         <input type="hidden" id="b_no" name="b_no" value="${member.c_num}"/>
-    </form>
-  	 	<h3>My page</h3>
-  	 	
-  	 	<div class="masthead">
+      <h3>My page</h3>
+       
+         
+      <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>
@@ -87,46 +109,53 @@
       
       <h3>장바구니 내역</h3>
       <div class="jumbotron">
-      
-        <table class="table table-condensed">
-				<thead>
-				<tr>
-					<td>상품 이미지</td>
-					<td>상품명</td>
-					<td>상품금액</td>
-					<td>갯수</td>
-					<td>총 금액</td>
-				</tr>
-				
-				</thead>
-				<tbody id="list">
-				<!-- 데이터 출력 -->
-					<c:choose>
-						 <c:when test="${not empty basketList}" >
-							<c:forEach var="basket" items="${basketList}" varStatus="status">
-								<tr class="tac" data-num="${basket.b_no}" >
-									<td>${basket.img_01}</td>
-									<td>${basket.p_name}</td>
-									<td>${basket.pr_01}</td>
-									<td>${basket.b_count}</td>
-									<td>${basket.total}</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="6" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
+    <form name="b_data" id="b_data">
+    	<input type='hidden' name='b_number' id="b_number" />
+     <!--   <script >document.write(b_noCheck);</script> -->
+    </form> 
+            <table class="table table-condensed">
+            <thead>
+            <tr>
+               <td>선택</td>
+               <td>상품 이미지</td>
+               <td>상품명</td>
+               <td>상품금액</td>
+               <td>갯수</td>
+               <td>총 금액</td>
+            </tr>            
+            </thead>
+            
+               <tbody id="list">
+               <!-- 데이터 출력 -->
+                  <c:choose>
+                      <c:when test="${not empty basketList}" >
+                        <c:forEach var="basket" items="${basketList}" varStatus="status">
+                           <tr class="tac" data-num="${basket.b_no}">
+                              <td><input type="checkbox" name="item" id="item" value="${basket.b_no}"/></td>
+                              <td>${basket.p_name}</td>
+                              <td>${basket.pr_01}</td>
+                              <td>${basket.b_count}</td>
+                              <td>${basket.total}</td>
+                           </tr>
+                        </c:forEach>
+                     </c:when>
+                     <c:otherwise>
+                        <tr>
+                           <td colspan="6" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+                        </tr>
+                     </c:otherwise>
+                  </c:choose>
+                  
+               </tbody>
+         </table> 
       </div>
 
-	<div class="container"> 
-		<p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
-		<input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
-	</div>
+   <div class="container"> 
+      <p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
+       <input type="button" class="btn btn-lg btn-success" id="cancel" name="cancel" value="삭제"/>
+      <input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
+   </div>
+   
       <!--Example row of columns
       <div class="row">
         <div class="col-lg-4">

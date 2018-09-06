@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.review.dao.ReviewDao;
 import com.spring.client.review.vo.ReviewVO;
+import com.spring.client.reviewReply.dao.ReviewReplyDao;
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -14,6 +15,8 @@ public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	private ReviewDao reviewDao;
 	
+	@Autowired
+	private ReviewReplyDao reviewReplyDao;
 	/*********************
 	 * 글목록 구현
 	 *********************/
@@ -33,6 +36,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public ReviewVO reviewDetail(ReviewVO rvo) {
 		ReviewVO detail = null;
+		reviewDao.reviewHitUpdate(rvo.getRv_no());
 		detail = reviewDao.reviewDetail(rvo);
 		return detail;
 	}
@@ -48,13 +52,13 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		return result;
 	}
-	// 비밀번호 확인 구현
+	/*// 비밀번호 확인 구현
 	@Override
 	public int pwdConfirm(ReviewVO rvo) {
 		int result = 0;
 		result = reviewDao.pwdConfirm(rvo);
 		return result;
-	}
+	}*/
 
 	@Override
 	public int reviewInsert(ReviewVO rvo) {
@@ -79,6 +83,14 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		return result;
 	}
+
+	@Override
+	public int replyCount(int rv_no) {
+		int result = reviewReplyDao.replyCount(rv_no);
+	      return result;
+	}
+
+
 
 }
 	

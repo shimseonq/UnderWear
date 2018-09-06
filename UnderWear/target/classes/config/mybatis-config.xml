@@ -15,5 +15,9 @@
 		<typeAlias type="com.spring.client.notice.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.spring.client.qnaReply.vo.QnaReplyVO" alias="qnaReply"/>
 		<typeAlias type="com.spring.client.review.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.spring.client.reviewReply.vo.ReviewReplyVO" alias="reviewReply"/>
+		<typeAlias alias="sale" type="com.spring.client.sale.vo.SaleVO"/>
+		<typeAlias alias="order" type="com.spring.client.order.vo.OrderVO"/>
+		<typeAlias alias="pay" type="com.spring.client.pay.vo.PayVO"/>
 	</typeAliases>
 </configuration>

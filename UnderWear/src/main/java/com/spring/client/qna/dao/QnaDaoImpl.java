@@ -48,5 +48,19 @@ public class QnaDaoImpl implements QnaDao {
 		return session.update("qnaHitUpdate", q_no);
 	}
 	
+	@Override
+	public int replyInsert(QnaVO qvo) {
+		return session.selectOne("qnaInsert", qvo);
+	}
+	@Override
+	public int makeReply(QnaVO qvo) {
+		return (Integer)session.selectOne("makeReply", qvo);
+	}
+	
+	@Override
+	public QnaVO replyDetail(QnaVO qvo) {
+		return (QnaVO)session.selectOne("replyDetail", qvo);
+	}
+	
 	
 }

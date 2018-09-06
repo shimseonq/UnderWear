@@ -47,7 +47,7 @@
  <script type="text/javascript" src="/resources/include/js/common.js"></script>  
 
 
-<script type="text/javascript" src="/resources/include/js/board.js"></script>
+<script type="text/javascript" src="/resources/include/js/adminQnaBoard.js"></script>
 
 <script type="text/javascript">
 	search = "<c:out value='${data.search}' />";
@@ -102,6 +102,8 @@
 			}
 			goPage();
 		}); */
+		
+		
 
 		// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
 		$(".goDetail").click(function() {
@@ -109,9 +111,10 @@
 			$("#q_no").val(q_no);
 			console.log("글번호 : " + q_no);
 			// 상세 페이지로 이동하기 위해 form 추가 (id : detailForm)
+			
 			$("#detailForm").attr({
 				"method" : "get",
-				"action" : "/qna/qnaDetail.do"
+				"action" : "/qna/pwdCheck.do"
 			})
 			$("#detailForm").submit();
 		})
@@ -228,7 +231,20 @@
 						<c:forEach var="qna" items="${qnaList}" varStatus="status">
 							<tr class="tac" data-num="${qna.q_no}" align="center">
 								<td>${qna.q_no}</td>
-								<td class="goDetail tal">${qna.q_title}</td>
+								
+								<td align="left">
+									<!-- 답글 앞에 여백주기 -->
+										<c:if test="${qna.repStep>0}">
+											<c:forEach begin="1" end="${qna.repIndent}">
+												&nbsp;&nbsp;&nbsp;
+											</c:forEach>
+											<img src="/resources/image/re.gif" />	
+										</c:if>
+										<span class="goDetail"><%-- ${vo.title} --%>비밀 글 입니다. </span>
+										
+									</td>
+									
+								<%-- <td class="goDetail tal">${qna.q_title}</td> --%>
 								<td class="content">${qna.c_name }</td>
 								<td>${qna.q_date}</td>
 								<td>${qna.q_hit}</td>

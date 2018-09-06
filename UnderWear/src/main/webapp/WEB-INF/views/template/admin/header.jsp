@@ -73,6 +73,9 @@
                                 <li>
                                     <a href="/admin/notice/noticeList.do">관리자 Notice 관리</a>
                                 </li>  
+                                <li>
+                                    <a href="/admin/review/reviewList.do">관리자 Notice 관리</a>
+                                </li> 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
