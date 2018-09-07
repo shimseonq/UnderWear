@@ -15,8 +15,7 @@ public class LoginServiceImpl implements LoginService {
 	Logger logger = Logger.getLogger(LoginServiceImpl.class);
 	@Autowired
 	private LoginDao loginDao;
-	@Autowired
-	private MemberDao memberDao;
+	
 
 	@Override
 	public LoginVO userIdSelect(String c_id) {

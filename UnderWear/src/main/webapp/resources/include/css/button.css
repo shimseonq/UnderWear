@@ -21,6 +21,7 @@
     -moz-box-sizing: border-box;
     counter-increment: bc;
     padding: 0px 5px 5px 5px;
+    margin-top: -20%;
 }
 
 

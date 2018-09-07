@@ -60,7 +60,7 @@
           <ul class="nav nav-justified">
             <li><a href="/mypage/basketList.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>

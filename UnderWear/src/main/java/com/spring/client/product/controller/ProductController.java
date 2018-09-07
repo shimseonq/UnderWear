@@ -1,9 +1,7 @@
 package com.spring.client.product.controller;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -14,11 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.spring.client.login.vo.LoginVO;
+import com.spring.admin.image.service.AdminImageService;
+import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.client.member.basket.vo.BasketVO;
 import com.spring.client.product.service.ProductService;
 import com.spring.client.product.vo.ProductVO;
-import com.spring.common.file.FileUploadUtil;
 
 @Controller
 @RequestMapping(value="/product")
@@ -27,6 +25,9 @@ public class ProductController {
 		
 	@Autowired	//의존성 주입
 	private ProductService productService;
+	
+	@Autowired
+	private AdminImageService adminImageService;
 	
 	
 	
@@ -49,20 +50,24 @@ public class ProductController {
 		logger.info("p_code = " + pvo.getP_code());
 		
 		ProductVO detail = new ProductVO();
+		ProductVO main = new ProductVO();
 		detail = productService.productDetail(pvo);
+		main = productService.productMain(pvo);
 		
-		
+		List<AdminImageVO> imageList = productService.productDetailImage(pvo);
+		model.addAttribute("imageList",imageList);
 		
 		if(detail != null && (!detail.equals(""))) {
 			detail.setP_content(detail.getP_content().toString().replaceAll("\n", "<br>"));
 		}
 		
 		model.addAttribute("detail", detail);
+		model.addAttribute("main",main);
 		return "product/productDetail";
 	}
 	
 	//삭제
-	@RequestMapping(value="/productDelete.do")
+	/*@RequestMapping(value="/productDelete.do")
 	public String productDelete(ProductVO pvo, HttpServletRequest request) throws IOException{
 		logger.info("productDelete 호출 성공");
 		
@@ -83,7 +88,7 @@ public class ProductController {
 		}
 		
 		return "redirect:"+url;
-	}
+	}*/
 	
 	//수정
 	@RequestMapping(value="/productUpdate.do")
@@ -103,6 +108,8 @@ public class ProductController {
 	@RequestMapping(value="/productThumbnail.do")
 	public String productThumbnail(@ModelAttribute ("data")ProductVO pvo, Model model) {
 		logger.info("productThumbnail 호출 성공");
+		
+		
 		
 		List<ProductVO> productThumbnail = productService.productThumbnail(pvo);
 		model.addAttribute("productThumbnail", productThumbnail);

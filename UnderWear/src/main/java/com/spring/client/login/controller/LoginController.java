@@ -1,5 +1,8 @@
 package com.spring.client.login.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,17 +17,17 @@ import com.spring.client.login.service.LoginService;
 import com.spring.client.login.vo.LoginVO;
 
 @Controller
-@SessionAttributes("login")
+/*@SessionAttributes("login")*/
 @RequestMapping("/login")
 public class LoginController {
 	Logger logger = Logger.getLogger(LoginController.class);
 	@Autowired
 	private LoginService loginService;
 
-	@ModelAttribute("login")
+	/*@ModelAttribute("login")
 	public LoginVO login() {
 		return new LoginVO();
-	}
+	}*/
 
 	/**************************************************************
 	 * 로그인 폼 처리
@@ -39,7 +42,7 @@ public class LoginController {
 	 * 로그인 처리 참고 : 로그인 실패시 횟수 제한을 제어하지 않은 처리
 	 *************************************************************/
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView loginInsert(@ModelAttribute LoginVO lvo, ModelAndView mav) {
+	public ModelAndView loginInsert(@ModelAttribute LoginVO lvo, ModelAndView mav, HttpSession session) {
 		logger.info("login.do post 호출 성공");
 		String userId = lvo.getC_id();
 		String userPw = lvo.getC_pwd();
@@ -50,7 +53,8 @@ public class LoginController {
 			mav.setViewName("login/login");
 			return mav;
 		} else { // 일치하면
-			mav.addObject("login", loginCheckResult);
+			session.setAttribute("login",loginCheckResult);
+			/*mav.addObject("login", loginCheckResult);*/
 			mav.setViewName("login/login");
 			return mav;
 		}
@@ -92,8 +96,10 @@ public class LoginController {
 	 * 로그아웃 처리 메서드
 	 **************************************************************/
 	@RequestMapping("/logout.do")
-	public String logout(SessionStatus sessionStatus) {
-		sessionStatus.setComplete();
+	public String logout(/*SessionStatus sessionStatus*/HttpSession session, HttpServletRequest request) {
+		/*sessionStatus.setComplete();*/
+		session.invalidate(); //세션값 반납
+		session = request.getSession(true);
 		return "redirect:/";
 	}
 }

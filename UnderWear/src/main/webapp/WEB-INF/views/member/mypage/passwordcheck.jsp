@@ -47,8 +47,7 @@
 					<div class="form-group">
 						<label for="c_id" class="col-sm-2 control-label">아 이 디 </label>
 						<div class="col-sm-4">
-							<p id="c_id" name="c_id" class="form-control"
-								value="${login.c_id}" />
+							<p id="c_id" name="c_id" class="form-control" value="${login.c_id}" />
 						</div>
 						<p class="form-control-static error"></p>
 					</div>

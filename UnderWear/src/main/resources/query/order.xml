@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.client.order.dao.OrderDao">
+	<!-- <select id="orderList" parameterType="String" resultType="basket">
+		/* Order - orderList*/
+		select o_no, p_size, p_color, pr_01*b_count as total, o_date 
+		from order inner join basket on order.b_no = basket.b_no
+		inner join product on basket.p_code = product.p_code 
+		inner join price on price.pr_no = product.pr_no
+		where b_no = #{b_no}	
+	</select> -->
+	
+	<insert id="orderInsert" parameterType="order">
+		/*Order - orderInsert*/
+		<selectKey keyProperty="o_no" resultType="int" order="BEFORE">
+			select order_seq.nextval from dual
+		</selectKey>
+		insert into basket(o_no, o_delivery<if test="o_warning !='' and o_warning !=null">, o_warning</if>, b_no, o_date, o_deliveryaddress, 
+				o_delivaryname, o_delivaryphone)
+		values(#{o_no},#{o_delivary}<if test="o_warning !='' and o_warning !=null">, #{o_warning}</if>, #{b_no}, #{o_date}, #{o_deliveryaddress},
+		#{o_delivaryname}, #{o_delivaryphone})
+	</insert>
+</mapper>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.client.product.dao.ProductDao;
 import com.spring.client.product.vo.ProductVO;
 
@@ -24,12 +25,18 @@ public class ProductServiceImpl implements ProductService {
 		myList = productDao.productList(pvo);
 		return myList;		
 	}
-
+	//디테일공간
 	@Override
 	public ProductVO productDetail(ProductVO pvo) {
 		ProductVO detail = null;
 	      detail = productDao.productDetail(pvo);
 	      return detail;
+	}
+	@Override
+	public ProductVO productMain(ProductVO pvo) {
+		ProductVO main = null;
+		main = productDao.productMain(pvo);
+		return main;
 	}
 	
 	@Override
@@ -97,11 +104,21 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> productThumbnail(ProductVO pvo) {
 		List<ProductVO> myList = null;
-		
 		myList = productDao.productThumbnail(pvo);
 		return myList;
+	}
+	
+
+	@Override
+	public List<AdminImageVO> productDetailImage(ProductVO pvo) {
+		List<AdminImageVO> image = null;
+		image = productDao.productDetailImage(pvo);
+		return image;
 		
 	}
+	
+
+	
 	
 	
 }

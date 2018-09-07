@@ -3,12 +3,16 @@ package com.spring.client.product.service;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.client.product.vo.ProductVO;
 
 public interface ProductService {
 	public List<ProductVO> productList(ProductVO pvo);
-
+	
+	
 	public ProductVO productDetail(ProductVO pvo);
+	public List<AdminImageVO> productDetailImage(ProductVO pvo);
+	public ProductVO productMain(ProductVO pvo);
 	
 	public int productUpdate(ProductVO pvo);
 	

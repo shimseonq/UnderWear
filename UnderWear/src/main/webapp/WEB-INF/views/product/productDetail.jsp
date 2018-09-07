@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
    <head>
@@ -43,17 +44,32 @@
         <script type="text/javascript" src="/resources/include/js/jquery.hammer.min.js"></script>
 
 <style>
-	.contatiner{
-		width:1600px;
-	} 
-		table{
-			padding: 5px;
+		#inforDiv{
+			
+			margin-top: 65%;
 		}
+		#con{
+			    width: 290px;
+			    text-align: center;
+			    color: red;
+			    margin-left: 8.2%;
+		}
+		#selltxt{
+			width: 100px;
+		}
+		table{
+			width: 400px;
+		}
+		td{
+			padding: 3%; 
+		}
+		
 		#p_name{
 			text-align: center;  
 		} 
 		#default {
 			width: 950px;
+			
 		}
 		
 		.taegwang {
@@ -73,13 +89,14 @@
 			display: none;
 			text-align: center;
 			width: 200px;
+			
 		}
 		
 		#option {
 			margin-left: 22%;
 			margin-top: 5%;
-			
-			width: 350px;
+			  
+			width: 400px;
 			display: inline-block;
 		}
 		
@@ -92,18 +109,19 @@
 		}
 		
 		.table {
-			width: 300px;
+			width: 400px;
 			
 		}
 		
 		.container4 {
-			width: 200px;
+			width: 400px;
 			
 		}
 		
 		.container3 {
 			background-color: white;
-			width: 200px;
+			width: 400px;
+			margin-top: -12%;
 		}
 		
 		.container2 {
@@ -125,7 +143,7 @@
 		}
 		
 		.button_base {
-			margin-left: 5%;
+			 margin-left: 39%;
 		}
 </style>
 
@@ -137,6 +155,7 @@
 	var c_id = "${login.c_id}";
 	var state;
 	var state2;
+	var state3 ="${detail.p_name}";
 
 	$(function() {
 		init();
@@ -149,7 +168,8 @@
 			if (state != null) {
 				if (state2 != null) {
 					$("#sumdiv").show();
-					$("#spanval").html(state + "/" + state2);
+					$("#con").val(state3+"/"+state + "/" + state2);
+					
 				}
 			} else {
 				$("#sumdiv").hide();
@@ -287,39 +307,36 @@
          <div class="all">
            <div class="taegwang">
     <!-- default start -->
-    <section id="default" class="padding-top0">
+      <section id="default" class="padding-top0">
+      
     <div class="row">
-      <div class="large-12 column"><h3>Default options</h3></div>
-      <%-- <div class="large-5 column">
-        <div class="xzoom-container">
-          <img class="xzoom" id="xzoom-default" src="/resources/image/preview/${detail.img_image }" xoriginal="/resources/image/original/${detail.img_image }" />
-          <div class="xzoom-thumbs">
-            <a href="/resources/image/original/${detail.img_image }"><img class="xzoom-gallery" width="80" src="/resources/image/thumbs/${detail.img_image }"  xpreview="/resources/image/preview/${detail.img_image }" title="The description goes here"></a>
-            <a href="/resources/image/original/02_o_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/02_o_car.jpg" title="The description goes here"></a>
-            <a href="/resources/image/original/03_r_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/03_r_car.jpg" title="The description goes here"></a>
-            <a href="/resources/image/original/04_g_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/04_g_car.jpg" title="The description goes here"></a>
-          </div>
-        </div>        
-      </div> --%>
+      <div class="large-12 column"><span id="imgTitle">UnderWear</span></div>
       <div class="large-5 column">
         <div class="xzoom-container">
-          <img class="xzoom" id="xzoom-default" src="/resources/image/preview/01_b_car.jpg" xoriginal="/resources/image/original/01_b_car.jpg" />
+          <img class="xzoom" id="xzoom-default" src="/resources/image/preview/${main.img_main}" xoriginal="/resources/image/original/${main.img_main}" />
           <div class="xzoom-thumbs">
-            <a href="/resources/image/original/01_b_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/thumbs/01_b_car.jpg"  xpreview="/resources/image/preview/01_b_car.jpg" title="The description goes here"></a>
+            <a href="/resources/image/original/${main.img_main}"><img class="xzoom-gallery" width="80" src="/resources/image/thumbs/${main.img_main}"  xpreview="/resources/image/preview/${main.img_main}" title="The description goes here"></a>
             <a href="/resources/image/original/02_o_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/02_o_car.jpg" title="The description goes here"></a>
             <a href="/resources/image/original/03_r_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/03_r_car.jpg" title="The description goes here"></a>
             <a href="/resources/image/original/04_g_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/04_g_car.jpg" title="The description goes here"></a>
           </div>
-        </div>        
+          
+        </div>  
+              
       </div>
-      <div class="large-7 column"></div>
+      <div class="large-7 column">
+      	<div id="inforDiv"><span id="infor">[해당 이미지에 마우스를 올리면 사진이 커집니다]</span></div>
+      </div>
     </div>
+    
     </section>
     <!-- default end -->
 		</div>
 			<div id="p_name">
 				<span class="p_name">상품명 : </span>
 				<span class="p_name">${detail.p_name}</span>
+				
+				
 			</div>
 		<div id="option">
 			
@@ -328,13 +345,15 @@
 			
 			<table>
 				<tr>
-					<td><span class="price">Price : </span></td>
+					<td><span class="price">Price</span></td>
+					<td>:</td>
 					<td><span class="price">${detail.pr_01}won</span></td>
 					<%-- <td>${detail.p_file }</td> --%>
 				</tr>
 				<tr>
 				<!-- 셀렉트 배열처리 -->
-					<td><span id="color">Color : </span></td>
+					<td><span id="color">Color</span></td>
+					<td>:</td>
 					<td> <select id="selectColor" name="selectColor">
 							<option>옵션</option> 
 							<script>document.write(colorOptions);</script>
@@ -343,8 +362,8 @@
 				</tr>
 				 
 				<tr>
-					<td><span id="size">Size : </span></td>
-
+					<td><span id="size">Size</span></td>
+					<td>:</td>
 					<td>
 					<select id="selectSize" name="selectSize">
 							<option>옵션</option>
@@ -354,18 +373,32 @@
 				</tr>
 			</table>
 		</div>
-		
+		 
 				<input type="hidden" id="p_code" name="p_code" value="${detail.p_code}" />
 				
 			
 				<div id="sumdiv">
-					<div id="content" style="font-size: 10px;"> ${detail.p_name}<span id="spanval"></span>
+					<div id="content"><input type="text" id="con" readonly value="${detail.p_name}">
 				</div>
-					수량 : <input type=hidden name="sell_price" value="${detail.pr_01}">
-					<input type="number" name="b_count" value="1" size="3" onchange="change();">
-						 <input type="button" value=" + " onclick="add();"> 
-						 <input type="button" value=" - " onclick="del();"><br> 
-						 금액 : <input type="text" name="sum" size="11" readonly>원
+					<table>
+						<tr>
+							<td><span id="sellCount">수량</span></td>
+							<td>:</td>
+							<td>
+								<input type="number" name="b_count" value="1"  onchange="change();">EA
+								<input type=hidden name="sell_price" id="selltxt" value="${detail.pr_01}">
+							</td>
+						</tr>
+						<tr>
+							<td><span id="sellPrice">금액</span></td>
+							<td>:</td>
+							<td>
+								<input type="text" name="sum" size="11" readonly>원
+							</td>
+						</tr>
+					</table> 
+
+						 
 				</div>
 
 				<div class="container4">
@@ -404,11 +437,29 @@
     	<img alt="" src="/resources/image/test/test23.jpg"><br>
     	<img alt="" src="/resources/image/test/test25.jpg"><br>
     	<img alt="" src="/resources/image/test/test26.jpg"> -->
-    	<%-- <img alt="" src="/uploadStorage/product/${detail.img_image }"> --%>
+    	<%--  <img alt="" src="/uploadStorage/product/${detail.img_image }"> --%>
     	
-    </div>	
+    	<%-- <c:choose>
+    		<c:when test="${not empty productDetail}" >
+    			<c:forEach var="image" items="${imageList }" varStatus="status">
+    				<img src="/uploadStorage/product/${image.img_image}">
+    			</c:forEach>
+    			
+    			
+    		</c:when>
+    		
+    	</c:choose> --%>
+			<c:if test="${not empty imageList}">
+				<c:forEach var="image" items="${imageList}" varStatus="status">
+					
+						<img src="/resources/image/${image.img_image}">
+						
+				</c:forEach>
+			</c:if>
+			
+			
+		</div>	
          
- 
     <script src="/resources/include/js/foundation.min.js"></script>
     <script src="/resources/include/js/setup.js"></script>
          

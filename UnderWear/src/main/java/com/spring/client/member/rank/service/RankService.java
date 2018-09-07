@@ -8,4 +8,6 @@ public interface RankService {
 
 	public List<RankVO> rankList(RankVO rvo);
 
+	public String myRank(RankVO rvo);
+
 }

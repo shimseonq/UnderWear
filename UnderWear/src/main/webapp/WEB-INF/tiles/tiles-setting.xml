@@ -41,7 +41,7 @@
 		</definition>
 
 		<definition name="order/*" extends="content">
-			<put-attribute name="title" value="상품" />
+			<put-attribute name="title" value="주문" />
 			<put-attribute name="body" value="/WEB-INF/views/order/{1}.jsp" />
 		</definition>
 		

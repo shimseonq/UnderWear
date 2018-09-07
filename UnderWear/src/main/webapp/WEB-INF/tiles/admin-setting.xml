@@ -29,7 +29,17 @@
       <put-attribute name="main" value="/WEB-INF/views/admin/member/{1}.jsp"/>
       <put-attribute name="sub" value=""/>
    </definition>
-   
-   
+   <definition name="admin/rank/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/rank/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
+   </definition>
+   	<definition name="admin/login/*" extends="basic">
+   	  		 <put-attribute name=""></put-attribute>
+			<put-attribute name="main" value="/WEB-INF/views/admin/login/{1}.jsp" />
+			<put-attribute name="sub" value="로그인" />
+			
+	</definition>
+  
    
    </tiles-definitions>

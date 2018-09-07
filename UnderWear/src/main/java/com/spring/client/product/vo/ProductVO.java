@@ -1,8 +1,8 @@
 package com.spring.client.product.vo;
 
-import com.spring.admin.image.vo.ImageVO;
+import com.spring.admin.image.vo.AdminImageVO;
 
-public class ProductVO extends ImageVO {
+public class ProductVO extends AdminImageVO {
 
 	private int p_code			= 0;
 	private String p_name		= "";
@@ -12,12 +12,19 @@ public class ProductVO extends ImageVO {
 	private String p_date		= "";
 	private String p_content	= "";
 	private String p_gender		= "";
+	private String p_image		= "";
 	
 	
 	
 	
 
 
+	public String getP_image() {
+		return p_image;
+	}
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
 	public int getP_code() {
 		return p_code;
 	}

@@ -24,9 +24,15 @@
 		/* Product - productDetail */
 		<!-- ,image.img_image -->
 		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category
-		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no  inner join image on product.p_code = image.p_code where product.p_code =#{p_code}
+		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no  where product.p_code =#{p_code}
 	</select>
-	
+	<select id="productDetailImage" parameterType="product" resultType="product">
+		select img_no, img_image, p_code
+        from image where p_code = #{p_code}
+	</select>
+	<select id="productMain" parameterType="product" resultType="product">
+		Select img_main from image where p_code= #{p_code} AND IMG_MAIN IS NOT NULL
+	</select>
 	
 	<!-- 상품 수정 -->
 	<update id="productUpdate" parameterType="product">
@@ -41,10 +47,11 @@
 	delete from product where p_code = #{p_code}
 	</delete>
 	
+	<!-- 고객보는 상품리스트 -->
 	<select id="productThumbnail" parameterType="product" resultType="product" >	<!-- id로 구분한다. -->
 		/* Product - productThumbnail */		<!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
-		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,img_image
-from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no  inner join image on product.p_code = image.p_code where p_gender = #{p_gender}
+		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,p_image
+from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no   where p_gender = #{p_gender}
 		
 		order by p_code desc
 	</select>

@@ -48,6 +48,12 @@
 		.myrank{
 			text-align:center;
 		}
+		
+		.rk_rank{
+			color:green;
+			font-size: 1.6em;
+			font-weight: bold;
+		}
     </style>
     <script type="text/javascript">
     	
@@ -64,7 +70,7 @@
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>
@@ -76,15 +82,15 @@
       <!-- Example row of columns -->
         
         <form class="myrank">
+        	<input type="hidden" id="c_id" name="c_id" value="${login.c_id}"/>
           <h2>나의 등급</h2>
-	          <input type="hidden" name="c_num" id="c_num" value="${myRank.c_no}"/>
-	          <p>현재 나의 등급은<span id ="my_rank" class="my_rank"> ${myRank.my_rank}</span>입니다.</p>
-          <p><a class="btn btn-primary" href="https://id.coupang.com/addressbook/new?displayTitle=true&displayBackButton=false&pick=true&dawnOnly=false&deliveryType=STANDARD&layoutType=off&returnUrl=https%3A%2F%2Forder.coupang.com%2FdeliveryAddress%2FpopUp%2FresultSelectDeliveryAddress%3FcheckoutId%3D1535008285245&displayDeliveryPreferences=true&historyCount=0" role="button">View details &raquo;</a></p>
+	          <p>현재 나의 등급은<span id ="rk_rank" class="rk_rank"> ${myRank}</span>입니다.</p>
+          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </form>
      
       <div class="jumbotron">
         <table class="table table-condensed">
-				<thead>
+			<thead>
 				<tr>
 					<td>등급번호</td>
 					<td>등급명</td>
@@ -93,28 +99,28 @@
 					<td></td>
 				</tr>
 				
-				</thead>
-				<tbody id="list">
+			</thead>
+			<tbody id="list">
 				<!-- 데이터 출력 -->
-					<c:choose>
-						 <c:when test="${not empty rankList}" >
-							<c:forEach var="rank" items="${rankList}" varStatus="status">
-								<tr class="tac" data-num="${rank.rk_no}" >
-									<td>${rank.rk_no}</td>
-									<td>${rank.rk_rank}</td>
-									<td>${rank.rk_discount}</td>
-									<td>${rank.rk_standard}</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>   
-							<tr>
-								<td colspan="3" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+				<c:choose>
+					<c:when test="${not empty rankList}" >
+						<c:forEach var="rank" items="${rankList}" varStatus="status">
+							<tr class="tac" data-num="${rank.rk_no}" >
+								<td>${rank.rk_no}</td>
+								<td>${rank.rk_rank}</td>
+								<td>${rank.rk_discount}</td>
+								<td>${rank.rk_standard}</td>
 							</tr>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>   
+						<tr>
+							<td colspan="3" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
       </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>

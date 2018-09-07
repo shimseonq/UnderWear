@@ -9,11 +9,13 @@
 		 <typeAlias type="com.spring.client.login.vo.LoginVO" alias="login" /> 
 		 <typeAlias type="com.spring.client.member.rank.vo.RankVO" alias="rank"/>
 		<typeAlias type="com.spring.client.member.basket.vo.BasketVO" alias="basket"/>
-		
-		
+		<typeAlias type="com.spring.client.order.vo.OrderVO" alias="order"/>		
 		<typeAlias type="com.spring.client.qna.vo.QnaVO" alias="qna"/>
 		<typeAlias type="com.spring.client.notice.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.spring.client.qnaReply.vo.QnaReplyVO" alias="qnaReply"/>
 		<typeAlias type="com.spring.client.review.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminlogin"/>
+		
+
 	</typeAliases>
 </configuration>

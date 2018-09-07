@@ -6,17 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/include/css/productFont.css" />
+
 <style type="text/css"> 
-	.content{
+	.imageContent{
 		text-align: center;
 		font-size: 30px;
+		background-color: #EAEAEA;
 	}
 	#big{	
 	}
 	.small{ 
+		margin-left : -3%; 
 		padding-top: 5%;
 		float: left;
 		padding-left: 10%;
+		color: black;
 		
 	}
 	#small2{
@@ -33,8 +38,19 @@
 		width: 200px;
 		height: 300px;
 		background-color: green;
+	}  
+	img{ 
+		width: 270px;  
+		height: 370px;
+		margin-top: 6%;
 	}
-</style>
+	.img{
+		width: 300px;
+		height: 400px;
+		background-color: #EAEAEA;
+		text-align: center;
+	}
+</style>   
 
 <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 
@@ -51,7 +67,7 @@
 				"action" : "/product/productDetail.do"
 			})
 			$("#detailForm").submit();
-		})
+		}) 
 	})
 </script>
 </head>
@@ -60,18 +76,18 @@
 		<input type="hidden" id="p_code" name="p_code" />
 		<!-- hidden 값을 전달해 줌 -->
 	</form>
-
+	
 	<div id="big">
 		<c:choose>
 			<c:when test="${not empty productThumbnail }">
 				<c:forEach var="product" items="${productThumbnail }" varStatus="status">
 					<div class="small" >
 						<div class="img" data-num="${product.p_code}">
-						<a class="goDetail tal"><img alt="imgView" src="/uploadStorage/product/${product.img_image}"></a>
+						<a class="goDetail tal"><img alt="imgView" src="/resources/image/preview/${product.p_image}"></a>
 						</div>
-						<div class="content">
-						<sapn>${product.pr_01}WON</sapn><br>
-						<sapn>${product.p_name}</sapn>
+						<div class="imageContent">
+						<span>${product.pr_01}WON</span><br>
+						<span>${product.p_name}</span>
 						</div>
 					</div>
 				</c:forEach>

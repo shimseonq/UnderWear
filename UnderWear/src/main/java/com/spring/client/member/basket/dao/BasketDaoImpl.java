@@ -21,12 +21,16 @@ public class BasketDaoImpl implements BasketDao {
 
 	@Override
 	public int basketInsert(BasketVO bvo) {
-		return session.insert("basketInsert", bvo);
-	}
-	
-	@Override
-	public List<BasketVO> basketOrder(BasketVO bvo){
-		return session.selectList("basketOrder", bvo);
+		return session.insert("basketInsert",bvo);
 	}
 
+	@Override
+	public int basketDelete(BasketVO bvo) {
+		return session.delete("basketDelete",bvo);
+	}
+
+	@Override
+	public BasketVO basketOrder(BasketVO bvo) {
+		return session.selectOne("basketOrder", bvo);
+	}
 }

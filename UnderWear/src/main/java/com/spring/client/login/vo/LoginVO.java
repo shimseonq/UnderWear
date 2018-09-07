@@ -8,12 +8,9 @@ public class LoginVO extends LoginHistory {
 	private int c_num = 0; //유저 번호
 
 
-
 	public LoginVO() {
 	}
-
-
-
+	
 	public LoginVO(String c_id, String c_pwd, String c_name, int c_num) {
 		super();
 		this.c_id = c_id;
@@ -21,7 +18,6 @@ public class LoginVO extends LoginHistory {
 		this.c_name = c_name;
 		this.c_num = c_num;
 	}
-
 
 	public String getC_id() {
 		return c_id;
@@ -54,9 +50,4 @@ public class LoginVO extends LoginHistory {
 	public void setC_num(int c_num) {
 		this.c_num = c_num;
 	}
-
-
-	
-
-
 }
