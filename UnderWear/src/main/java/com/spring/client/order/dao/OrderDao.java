@@ -24,6 +24,8 @@ public interface OrderDao {
 	public int deliveryUpdate3(OrderVO ovo);
 	
 	public int deliveryUpdate4(OrderVO ovo);
+	
+	public OrderVO adminOrderOne(OrderVO ovo);
 }
 
 

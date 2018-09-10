@@ -2,6 +2,14 @@
  * 예시 : if(!chkData("#keyword", 검색어를")) return;
  * */
 function chkData(item, msg) {
+	if($(item).val().replace(/\s/g, "") == "") {	// 객체에 대한 표현.
+		alert(msg + "를 입력해 주세요.");
+		$(item).val("");
+		$(item).focus();
+		return false;
+	} else {
+		return true;
+	}
    if($(item).val().replace(/\s/g, "") == "") {   // 객체에 대한 표현.
       alert(msg + " 입력해 주세요.");
       $(item).val("");
@@ -92,7 +100,8 @@ function getDateFormat(dateValue) {
 var pattern = [
    "((?=.*[a-zA-Z])(?=.*[0-9]).{6,10})",
    "((?=.*[a-zA-Z])(?=.*[0-9@#$%]).{8,12})",
-   "^\\d{3}-\\d{3,4}-\\d{4}"
+   "^\\d{3}-\\d{3,4}-\\d{4}",
+   "^[0-9]+$"
    ];
 
 function inputVerify(index, data, printarea) {
@@ -107,4 +116,15 @@ function inputVerify(index, data, printarea) {
    }
 }
 
- 	
+
+function inputVerifyAlert(index, data) {
+	var data_regExp = new RegExp(pattern[index]);
+	var match = data_regExp.exec($(data).val());
+	if(match==null){
+		alert("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+		$(data).val("");
+		return false;
+	}else{
+		return true;
+	}
+}

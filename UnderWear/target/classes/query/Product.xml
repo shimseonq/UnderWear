@@ -36,10 +36,15 @@
 	</update>
 	
 	<delete id="productDelete" parameterType="product">
-	<!-- 상품 삭제 -->
+	<!-- 상품 삭제 --> 
 	/* Product - productDelete*/
 	delete from product where p_code = #{p_code}
 	</delete>
 	
-	
+	<!-- 판매된 만큼 상품에서 빠진다 -->
+	<update id="inventoryCount" parameterType="product">
+		update product set 
+		p_inventory = p_inventory -(select b_count from basket where b_no = #{b_no}) 
+		where p_code = #{p_code}
+	</update>
 </mapper>

@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.client.member.basket.dao.BasketDao;
-import com.spring.client.order.controller.OrderController;
 import com.spring.client.order.dao.OrderDao;
 import com.spring.client.order.vo.OrderVO;
 import com.spring.client.pay.dao.PayDao;
-import com.spring.client.pay.vo.PayVO;
+import com.spring.client.product.dao.ProductDao;
+import com.spring.client.product.vo.ProductVO;
 import com.spring.client.sale.dao.SaleDao;
 import com.spring.client.sale.vo.SaleVO;
 
@@ -31,17 +31,23 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private BasketDao basketDao;
 	
+	@Autowired
+	private ProductDao productDao;
+	
 	@Override
-	public int orderInsert(SaleVO svo, String[] b_num) {
+	public int orderInsert(SaleVO svo, String[] b_num, String[] p_num) {
 		logger.info("orderInsert ¼º°ø");
 		int result=0;
 		try {
-			for(int i=0; i<b_num.length; i++) {				
-				svo.setB_no(Integer.parseInt(b_num[i]));				
+			for(int i=0; i<b_num.length; i++) {	
+				svo.setB_no(Integer.parseInt(b_num[i]));
+				svo.setP_code(Integer.parseInt(p_num[i]));
+				logger.info(svo.getP_code());
 				result= orderDao.orderInsert(svo); 
 				svo.setB_status(basketDao.statusUpdate(svo));
 				svo.setO_no(orderDao.orderNumber());
-				result = payDao.payInsert(svo);
+				productDao.inventoryCount(svo);
+				result = payDao.payInsert(svo);  
 			}
 			svo.setPa_no(payDao.payNumber());
 			result = saleDao.saleInsert(svo);

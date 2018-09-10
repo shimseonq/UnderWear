@@ -107,6 +107,7 @@ var loginUserId = "${member.userId}"; */
           </ul>
         </nav>
       </div> 
+      
 	<div class="contentContainer"> 
 		<div class="well">
 			<form id="memberForm" class="form-horizontal">

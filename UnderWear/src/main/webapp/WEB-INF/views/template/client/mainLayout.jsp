@@ -15,7 +15,7 @@
    <title><tiles:getAsString name="title"/></title>
   <link rel="stylesheet" href="/resources/include/bcss/mobirise-icons.css">
   <link rel="stylesheet" href="/resources/include/bcss/tether.min.css">
-  <link rel="stylesheet" href="/resources/include/bcss/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/include/dist/css/bootstrap.css">
   <link rel="stylesheet" href="/resources/include/bcss/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/resources/include/bcss/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="/resources/include/bcss/style.css">
@@ -23,18 +23,12 @@
   <link rel="stylesheet" href="/resources/include/bcss/style1.css">
   <link rel="stylesheet" href="/resources/include/bcss/mbr-additional.css" type="text/css">
 
-
-
 </head>
 <body>
   <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k">
  	<tiles:insertAttribute name="header" />
   </section>
     
-
-
-
-
 <section class="engine"><a href="#">how to create a web page</a></section> <!-- 얘는 뭔지 모르겠음 ㅎㅎ -->
 <section class="carousel slide cid-r1UzbHbOva" data-interval="false" id="slider2-o">
 
@@ -208,7 +202,7 @@
                     <div class="mbr-social-likes">
                         <a href="https://www.facebook.com"> <img src="/resources/image/icon/facebook.png" title="link on Facebook" > </a> <!-- 이렇게 처리하자 -->
                          <a href="https://www.twitter.com"> <img src="/resources/image/icon/twitter.png" title="link on twitter" > </a>
-                          <a href="https://www.instagram.com"><img src="/resources/image/icon/instagram.png" title="link on instagram" >       </a>               
+                          <a href="https://www.instagram.com"><img src="/resources/image/icon/instagram.png" title="link on instagram" ></a>               
                           <a href="https://www.naver.com"><img src="/resources/image/icon/eamil.png" title="link on email" > </a>
                         
                       </div>

@@ -52,6 +52,17 @@
       order by o_date desc      
 	</select>
 	
+	<!-- 데이터 하나 조회 -->
+	<select id="adminOrderOne" parameterType="order" resultType="order">
+		select o_no, c_id, p_name, pr_01, b_count, (pr_01*b_count) as total, o_deliveryaddress, o_deliveryname, o_deliveryphone, o_date, o_delivery
+		from orders 
+		inner join basket on orders.b_no = basket.b_no
+		inner join customer on basket.c_num = customer.c_num
+		inner join product on basket.p_code = product.p_code
+		inner join price on product.pr_no = price.pr_no
+      	where o_no = #{o_no}    
+	</select>
+	
 	<!-- 상태값 변경을 통해 회원 페이지에서 주문 내역을 삭제 -->
 	<update id="orderFinish" parameterType="order">
 		update orders set o_status=0 where o_no = #{o_no}
@@ -77,5 +88,5 @@
 		update orders set o_delivery='배송완료' where o_no = #{o_no}
 	</update>
 	
-	
-</mapper>
+
+	</mapper>

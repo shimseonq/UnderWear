@@ -19,7 +19,6 @@
     <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-    <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -37,9 +36,13 @@
           border: 2px solid lightgray;
           border-radius: 10px;
           padding:0px;
+          text-align:center;
+       }
+       .container{
+      	 text-align:center;
        }
        .masthead, .row{
-          margin-bottom:20px;
+          margin-bottom:100px;
        }
        h3{
           color:gray;        
@@ -49,6 +52,11 @@
          text-align:center;
          margin:0px;
       }
+      
+      .masthead{
+      	 display:none;
+      }
+      
     </style>
 
 <script type="text/javascript">
@@ -57,13 +65,17 @@ var checkB = [];
    $(function(){      
       $("#pay").click(function(){
          boxForm();
+         if($("#b_number").val() == ""){
+        	 alert("결제할 품목이 없습니다.");
+         }else{
             $("#b_data").attr({
             "method" : "post",
             "action" : "/order/orderForm.do"
             });
          
          $("#b_data").submit();
-         });
+         }
+      });
       
      
 	$("#cancel").click(function() {

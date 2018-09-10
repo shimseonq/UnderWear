@@ -53,4 +53,9 @@ public class ProductDaoImpl implements ProductDao {
 	public int productInsert(ProductVO pvo) {
 		return session.insert("productInsert", pvo);
 	}*/
+
+	@Override
+	public int inventoryCount(ProductVO pvo) {
+		return session.update("inventoryCount",pvo);
+	}
 }

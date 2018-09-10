@@ -39,6 +39,7 @@ public class OrderController {
 	public String orderList(BasketVO bvo, OrderVO ovo, @RequestParam String b_number, Model model, HttpSession session) {
 		logger.info("order 호출 성공");
 		String[] b_num = b_number.split(",");
+		
 		LoginVO login =(LoginVO)session.getAttribute("login");
 		bvo.setC_id(login.getC_id());
 		List<BasketVO> basketOrder = basketService.basketOrder(bvo,b_num);
@@ -59,12 +60,13 @@ public class OrderController {
 	 * 주문입력
 	 ***********************************************************************/
 	@RequestMapping(value = "/orderInsert.do", method = RequestMethod.POST)
-	public String orderInsert(SaleVO svo, @RequestParam String b_number) {
+	public String orderInsert(SaleVO svo, @RequestParam String b_number, @RequestParam String product) {
 		logger.info("orderInsert 호출 성공");
 		String[] b_num = b_number.split(",");
+		String[] p_num = product.split(",");
 		int result = 0;
 		
-		result = orderService.orderInsert(svo, b_num);
+		result = orderService.orderInsert(svo, b_num,p_num);
 		
 		if(result == 1) {	
 			return "redirect:/mypage/mypage.do";
