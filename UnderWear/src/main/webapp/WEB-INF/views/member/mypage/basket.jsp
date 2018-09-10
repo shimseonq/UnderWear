@@ -58,57 +58,86 @@
 <script type="text/javascript">
 var checkB = [];
 
+   $(function(){      
+      $("#pay").click(function(){
+         boxForm();
+         if($("#b_number").val() == ""){
+            alert("결제할 품목이 없습니다.");
+         }else{
+            $("#b_data").attr({
+            "method" : "post",
+            "action" : "/order/orderForm.do"
+            });
+         
+         $("#b_data").submit();
+         }
+      });
+      
+     
+   $("#cancel").click(function() {
+         $.ajax({
+            url : "/mypage/basket.do",
+            type : "get",
+            data : "b_no=" + $("#item").val(), //받아올 data 값, queryString
+            dataType : "text", //응답받는 데이터 타입
+            error : function() {
+               alert("시스템 오류입니다. 관리자에게 문의하세요");
+            },
+            success : function(resultData) {
+               if (resultData == 0) {
+                  alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
+                  return;
+               }else {
+                  confirm("물품을 삭제하시겠습니까?");                     
+                  boxForm();
+                  if($("#b_number").val()!=""){
+                     $("#b_data").attr({
+                        "method" : "get",
+                        "action" : "/mypage/basketDelete.do"
+                     });
+                     console.log($("#b_number").val());
+                     $("#b_data").submit();
+                     alert("삭제가 완료 되었습니다.");
+                  }else{
+                     console.log($("#b_number").val());
+                     alert("삭제할 물품이 없습니다.");   
+                  }
+               }
+            }
+         })
+      });
+   });
 
-	$(function(){
-		  
-	   
-		$("#pay").click(function(){
-			boxForm();
-			$("#b_data").val(checkB);
-				$("#b_data").attr({
-				"method" : "get",
-				"action" : "/order/orderForm.do"
-				});
-			
-			$("#b_data").submit();
-			});
-		});
-		
-	
-	
-	function boxForm(){		
-		var values = document.getElementsByName("item");
-	   	for(var i = 0; i<values.length; i++){
-	   		if(values[i].checked){
-	   			
-	   			checkB.push(values[i].value);
-	   			
-	               
-	   		}
-	   	}
-	   	var output = "";
-	   	for (var i = 0; i < checkB.length; ++i){
-	   		output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
-	   	}
-	   	return output;
-	}
-	
-	var b_noCheck = boxForm();
-	
-	
+   function boxForm() {
+      var values = document.getElementsByName("item");
+      for (var i = 0; i < values.length; i++) {
+         if (values[i].checked) {
+            checkB.push(values[i].value);
+         }
+      }
+      var output = "";
+      for (var i = 0; i < checkB.length; ++i) {
+         output += checkB[i];
+         //if(i<checkB.length-1) output+=","
+         //   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+      }
+
+      $("#b_number").val(checkB);
+      //console.log($("#b_number").val());
+      //return output;
+   }
 </script>
 </head>
 
   <body>
-      <h3>My page</h3>
-       
+      <h3>My page</h3>       
          
       <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>
@@ -118,7 +147,8 @@ var checkB = [];
       <h3>장바구니 내역</h3>
       <div class="jumbotron">
     <form name="b_data" id="b_data">
-    	<script >document.write(b_noCheck);</script>
+       <input type='hidden' name='b_number' id="b_number" />
+     <!--   <script >document.write(b_noCheck);</script> -->
     </form> 
             <table class="table table-condensed">
             <thead>
@@ -156,36 +186,13 @@ var checkB = [];
                   
                </tbody>
          </table> 
-         
-         
-          	     
       </div>
 
    <div class="container"> 
       <p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
+       <input type="button" class="btn btn-lg btn-success" id="cancel" name="cancel" value="삭제"/>
       <input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
    </div>
-   
-      <!--Example row of columns
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Safari bug warning!</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">배송조회 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">결제완료 &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">리뷰작성 &raquo;</a></p>
-        </div>
-      </div>
-
-    </div> --> <!-- /container -->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>

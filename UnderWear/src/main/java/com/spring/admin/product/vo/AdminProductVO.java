@@ -12,6 +12,7 @@ public class AdminProductVO extends AdminImageVO {
 	private String p_date		= "";		// 상품 등록일
 	private String p_content	= "";		// 상품 설명
 	private String p_gender		= "";		// 상품 성별
+	private String p_image		= "";		// 썸네일
 	
 	public int getP_code() {
 		return p_code;
@@ -64,7 +65,12 @@ public class AdminProductVO extends AdminImageVO {
 	public void setP_gender(String p_gender) {
 		this.p_gender = p_gender;
 	}
-	
+	public String getP_image() {
+		return p_image;
+	}
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
 	
 	@Override
 	public String toString() {

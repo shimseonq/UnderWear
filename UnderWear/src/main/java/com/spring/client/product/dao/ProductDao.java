@@ -27,6 +27,8 @@ public interface ProductDao {
 
 	public List<ProductVO> productThumbnail(ProductVO pvo);
 	
+	 public int inventoryCount(ProductVO pvo);
+	
 	
 	
 

@@ -73,7 +73,7 @@
 
 				<tr>
 					<td class="ac">글번호</td>
-					<td>${detail.n_no }<span>(조회수 : ${detail.n.hit })</span></td>
+					<td>${detail.n_no }<span>(조회수 : ${detail.n_hit })</span></td>
 					<td class="ac">작성일</td>
 					<td>${detail.n_date }</td>
 					<td class="ac">작성자</td>

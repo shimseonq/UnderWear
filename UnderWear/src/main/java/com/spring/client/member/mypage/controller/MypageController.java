@@ -23,8 +23,9 @@ import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.service.MemberService;
 import com.spring.client.member.vo.MemberVO;
 import com.spring.client.order.service.OrderService;
-/*import com.spring.client.pay.service.PayService;
-import com.spring.client.pay.vo.PayVO;*/
+import com.spring.client.order.vo.OrderVO;
+import com.spring.client.pay.service.PayService;
+import com.spring.client.pay.vo.PayVO;
 
 @Controller
 @RequestMapping(value="/mypage")
@@ -44,8 +45,8 @@ public class MypageController {
    @Autowired
    private LoginService loginService;   
 
-   /*@Autowired
-   private PayService payService;*/
+   @Autowired
+   private PayService payService;
 
    @Autowired
    private OrderService orderService;
@@ -53,7 +54,7 @@ public class MypageController {
    /*************************************************
     * 마이페이지 주문 조회
     *************************************************/
-  /* @RequestMapping(value="/mypage.do", method = RequestMethod.GET)
+   @RequestMapping(value="/mypage.do", method = RequestMethod.GET)
    public String customerOrderList(PayVO pvo, Model model, HttpSession session) {
       logger.info("mypage 호출 성공");
 
@@ -69,12 +70,12 @@ public class MypageController {
 
          return "mypage/mypage";
       }
-   }*/
+   }
 
    /*************************************************
     * 마이페이지 구매완료
     *************************************************/
- /*  @RequestMapping(value="/orderFin.do", method = RequestMethod.POST)
+   @RequestMapping(value="/orderFin.do", method = RequestMethod.POST)
    public String orderFinish(OrderVO ovo, Model model, HttpSession session) {
       logger.info("order Finish호출 성공");
       LoginVO login =(LoginVO)session.getAttribute("login");
@@ -88,7 +89,7 @@ public class MypageController {
 
          return "redirect:/mypage/mypage.do";
       }      
-   }*/
+   }
 
    /*************************************************
     * 마이페이지 장바구니 조회
@@ -110,12 +111,39 @@ public class MypageController {
 
          return "mypage/basket";
       }      
+   }      
+   
+
+   /*************************************
+    * 마이페이지 등록
+    * ************************************/
+   @RequestMapping(value="/basketInsert.do", method = RequestMethod.GET)
+   public String customerBasketInsert(BasketVO bvo, Model model, HttpSession session) {
+      logger.info("basketInsert 호출 성공");
+      
+      int result = 0;
+      String url = "";
+      
+      LoginVO login =(LoginVO)session.getAttribute("login");
+         bvo.setC_num(login.getC_num());
+      
+      result = basketService.basketInsert(bvo);
+      
+      
+      
+      if(result == 1) {
+         url = "/mypage/basket.do";
+      }else {
+         model.addAttribute("code",1);
+         url = "/product/productDetail.do";
+      }
+   return "redirect:"+url;
    }
 
    /*************************************************
     * 마이페이지 장바구니 삭제
     *************************************************/
-   /*@RequestMapping(value="/basketDelete.do", method = RequestMethod.GET)
+   @RequestMapping(value="/basketDelete.do", method = RequestMethod.GET)
    public String basketDelete(BasketVO bvo, @RequestParam String b_number, Model model, HttpSession session) {
       logger.info("basket delete 호출 성공");
       String[] b_num = b_number.split(",");
@@ -130,7 +158,7 @@ public class MypageController {
 
          return "redirect:/mypage/basket.do";
       }      
-   }*/
+   }
 
    /*************************************************
     * 마이페이지 내정보 확인
@@ -217,31 +245,4 @@ public class MypageController {
 
       return "mypage/myboard";
    }
-   
-   /*************************************
-    * 마이페이지 등록
-    * ************************************/
-   @RequestMapping(value="/basketInsert.do", method = RequestMethod.GET)
-   public String customerBasketInsert(BasketVO bvo, Model model, HttpSession session) {
-      logger.info("basketInsert 호출 성공");
-      
-      int result = 0;
-      String url = "";
-      
-      LoginVO login =(LoginVO)session.getAttribute("login");
-         bvo.setC_num(login.getC_num());
-      
-      result = basketService.basketInsert(bvo);
-      
-      
-      
-      if(result == 1) {
-         url = "/mypage/basket.do";
-      }else {
-         model.addAttribute("code",1);
-         url = "/product/productDetail.do";
-      }
-   return "redirect:"+url;
-   }
-
 }

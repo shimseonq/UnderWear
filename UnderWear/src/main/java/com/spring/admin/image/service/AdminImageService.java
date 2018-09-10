@@ -3,7 +3,6 @@ package com.spring.admin.image.service;
 import java.util.List;
 
 import com.spring.admin.image.vo.AdminImageVO;
-import com.spring.client.product.vo.ProductVO;
 
 public interface AdminImageService {
 	public List<AdminImageVO> imageList(AdminImageVO ivo);
@@ -14,6 +13,5 @@ public interface AdminImageService {
 	public int imageUpdate(AdminImageVO ivo);
 	public int imageDelete(AdminImageVO ivo);
 	public List<AdminImageVO> imageName();
-	public List<AdminImageVO> imageList(ProductVO ivo);
 
 }

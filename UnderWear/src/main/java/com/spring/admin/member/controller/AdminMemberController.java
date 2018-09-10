@@ -1,4 +1,4 @@
-package com.spring.admin.member.controller;
+/*package com.spring.admin.member.controller;
 
 import java.util.List;
 
@@ -28,9 +28,9 @@ public class AdminMemberController {
 	@Autowired
 	private AdminRankService adminRankService;
 
-	/*************************************************
+	*//*************************************************
 	 * 회원 리스트 구현하기
-	 *************************************************/
+	 *************************************************//*
 	@RequestMapping(value = "/member/memberList.do", method = RequestMethod.GET)
 	public String memberList(MemberVO mvo, Model model) {
 		logger.info("memberList 호출 성공");
@@ -40,9 +40,9 @@ public class AdminMemberController {
 
 		return "admin/member/memberList";
 	}
-	/*************************************************
+	*//*************************************************
 	 * 관리자 페이지 등급현황 조회
-	 *************************************************/
+	 *************************************************//*
 	@RequestMapping(value="/member/rank.do", method = RequestMethod.GET)
 	public String customerRankList(RankVO rvo, Model model, HttpSession session ,MemberVO mvo) {
 		logger.info("rank 호출 성공");
@@ -58,3 +58,4 @@ public class AdminMemberController {
 		return "admin/rank/rankupdate";
 	}
 }
+*/

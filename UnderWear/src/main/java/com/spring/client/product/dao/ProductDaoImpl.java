@@ -29,6 +29,11 @@ public class ProductDaoImpl implements ProductDao {
 		return (ProductVO)session.selectOne("productMain", pvo);
 	}
 	
+	@Override
+	   public int inventoryCount(ProductVO pvo) {
+	      return session.update("inventoryCount",pvo);
+	   }
+	
 	
 	
 	@Override

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.spring.admin.image.dao.AdminImageDao;
 import com.spring.admin.image.vo.AdminImageVO;
-import com.spring.client.product.vo.ProductVO;
 
 @Service
 public class AdminImageServiceImpl implements AdminImageService {
@@ -74,14 +73,5 @@ public class AdminImageServiceImpl implements AdminImageService {
 		myList = adminImageDao.imageName();
 		return myList;
 	}
-
-	@Override
-	public List<AdminImageVO> imageList(ProductVO ivo) {
-		List<AdminImageVO> myList;
-		myList = adminImageDao.imageList(ivo);
-		return myList;
-	}
-
-	
 	
 }

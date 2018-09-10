@@ -12,7 +12,6 @@ public class AdminImageVO extends CommonVO {
 	// 파일 업로드를 위한 필드
 	private List<MultipartFile> files;		// 첨부 파일
 	private String img_image = "";			// 실제 서버에 저장한 파일명
-	private String img_main = "";
 	
 	public int getImg_no() {
 		return img_no;
@@ -31,12 +30,6 @@ public class AdminImageVO extends CommonVO {
 	}
 	public void setImg_image(String img_image) {
 		this.img_image = img_image;
-	}
-	public String getImg_main() {
-		return img_main;
-	}
-	public void setImg_main(String img_main) {
-		this.img_main = img_main;
 	}
 	
 	

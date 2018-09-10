@@ -21,7 +21,7 @@ public interface AdminProductService {
 	
 	// UPDATE
 	public int productUpdate(AdminProductVO pvo, HttpServletRequest request);
-	public List<AdminImageVO> imageUpdate(AdminProductVO ivo);
+	public int imageUpdate(AdminProductVO ivo);
 	
 	// INSERT
 	public int imageInsert(AdminProductVO pvo);
@@ -33,6 +33,7 @@ public interface AdminProductService {
 
 	// DELETE
 	public int productDelete(AdminProductVO pvo);
+	public int imageDelete(AdminProductVO pvo);
 
 	
 

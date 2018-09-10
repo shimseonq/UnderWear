@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.admin.image.vo.AdminImageVO;
-import com.spring.client.product.vo.ProductVO;
 
 @Repository
 public class AdminImageDaoImpl implements AdminImageDao {
@@ -58,11 +57,6 @@ public class AdminImageDaoImpl implements AdminImageDao {
 	@Override
 	public List<AdminImageVO> imageName() {
 		return session.selectList("imageName");
-	}
-
-	@Override
-	public List<AdminImageVO> imageList(ProductVO ivo) {
-		return session.selectList("imageList",ivo);
 	}
 
 }

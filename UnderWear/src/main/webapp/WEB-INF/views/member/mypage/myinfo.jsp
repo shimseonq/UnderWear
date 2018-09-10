@@ -96,10 +96,10 @@ var loginUserId = "${member.userId}"; */
 <!-- Jumbotron -->
   	 	<h3>My page</h3>
   	 	
-  	 	<div class="masthead">
+  	 <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="/mypage/basketList.do">장바구니조회</a></li>
+            <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
             <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
@@ -107,6 +107,7 @@ var loginUserId = "${member.userId}"; */
           </ul>
         </nav>
       </div> 
+      
 	<div class="contentContainer"> 
 		<div class="well">
 			<form id="memberForm" class="form-horizontal">

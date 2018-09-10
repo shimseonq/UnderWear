@@ -24,4 +24,9 @@ public class RankDaoImpl implements RankDao {
 		return session.selectOne("myRank",rvo);
 	}
 
+	@Override
+	public double discount(String c_id) {
+		return session.selectOne("discount");
+	}
+
 }
