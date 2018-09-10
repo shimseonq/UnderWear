@@ -57,6 +57,7 @@
     <a href="#" class="thumbnail">
       <img src="/resources/image/main1.jpg" alt="...">
     </a>
+<<<<<<< HEAD
   </div>
 </div>
 
@@ -98,4 +99,3 @@
       </div>
 
       <hr class="featurette-divider">
-      

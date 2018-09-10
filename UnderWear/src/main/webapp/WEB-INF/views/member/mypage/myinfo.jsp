@@ -172,10 +172,16 @@ var loginUserId = "${member.userId}"; */
 					</div>
 					<div class="col-sm-2">
 						<select id="emailDomain" class="form-control">
+<<<<<<< HEAD
+							<option value="naver.com">네이버</option>
+							<option value="daum.net">다음</option>
+							<option value="nate.com">네이트</option>
+=======
 							<option selected="selected">직접입력</option>
 							<option value="@naver.com">네이버</option>
 							<option value="@daum.net">다음</option>
 							<option value="@nate.com">네이트</option> 
+>>>>>>> branch 'master' of https://github.com/shimseonq/UnderWear.git
 						</select>
 					</div>
 				</div>

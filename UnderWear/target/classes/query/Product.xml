@@ -10,23 +10,29 @@
       order by p_code desc
    </select>
    
-   <!-- 상품 등록 -->
+   <!-- 상품 등록 --> 
    <insert id="productInsert" parameterType="product">
       /* Product - productInsert */
       INSERT INTO PRODUCT
       (p_code, p_name, p_inventory, p_color, p_size, p_date, p_content, pr_no, p_gender, smallct_no) 
         VALUES
-      (product_seq.nextval, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no})
+        (product_seq.nextval, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no})
    </insert>
    
-   <!-- 상품 상세 조회 -->
+   <!-- 상품 상세 조회 --> 
    <select id="productDetail" parameterType="product" resultType="product" >
       /* Product - productDetail */
-      
-      select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category, p_file
-      from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no where p_code = #{p_code} 
+      <!-- ,image.img_image -->
+      select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,p_image
+      from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no  where product.p_code =#{p_code}
    </select>
-   
+   <select id="productDetailImage" parameterType="product" resultType="product">
+      select img_no, img_image, p_code
+        from image where p_code = #{p_code}
+   </select>
+   <select id="productMain" parameterType="product" resultType="product">
+      Select img_main from image where p_code= #{p_code} AND IMG_MAIN IS NOT NULL
+   </select>
    
    <!-- 상품 수정 -->
    <update id="productUpdate" parameterType="product">
@@ -36,10 +42,22 @@
    </update>
    
    <delete id="productDelete" parameterType="product">
-   <!-- 상품 삭제 --> 
+   <!-- 상품 삭제 -->
    /* Product - productDelete*/
    delete from product where p_code = #{p_code}
    </delete>
+   
+   <!-- 고객보는 상품리스트 -->
+   <select id="productThumbnail" parameterType="product" resultType="product" >   <!-- id로 구분한다. -->
+      /* Product - productThumbnail */      <!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
+      select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,p_image
+from product 
+inner join price on product.pr_no = price.pr_no   
+inner join smallcategory on product.smallct_no = smallcategory.smallct_no   
+where p_gender = #{p_gender}
+      
+      order by p_code desc
+   </select>
    
    <!-- 판매된 만큼 상품에서 빠진다 -->
    <update id="inventoryCount" parameterType="product">

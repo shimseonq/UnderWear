@@ -16,7 +16,7 @@
     <link rel="icon" href="/resources/image/icon.png">
     
     <!-- Bootstrap core CSS -->
-    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/include/dist/css/adminbootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="/resources/include/css/metisMenu.min.css" rel="stylesheet">

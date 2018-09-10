@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.client.product.vo.ProductVO;
 
 @Repository
@@ -18,11 +19,22 @@ public class ProductDaoImpl implements ProductDao {
    public List<ProductVO> productList(ProductVO pvo) {
       return session.selectList("prodcutList", pvo);
    }
-
+   //디테일공간
    @Override
    public ProductVO productDetail(ProductVO pvo) {
       return (ProductVO)session.selectOne("productDetail", pvo);
    }
+   @Override
+   public ProductVO productMain(ProductVO pvo) {
+      return (ProductVO)session.selectOne("productMain", pvo);
+   }
+   
+   @Override
+      public int inventoryCount(ProductVO pvo) {
+         return session.update("inventoryCount",pvo);
+      }
+   
+   
    
    @Override
    public int productDelete(ProductVO pvo) {
@@ -53,9 +65,23 @@ public class ProductDaoImpl implements ProductDao {
    public int productInsert(ProductVO pvo) {
       return session.insert("productInsert", pvo);
    }*/
-
+      //썸네일공간
    @Override
-   public int inventoryCount(ProductVO pvo) {
-      return session.update("inventoryCount",pvo);
+   public List<ProductVO> productThumbnail(ProductVO pvo) {
+      return session.selectList("productThumbnail", pvo);
    }
+   
+   
+   
+   
+      //배열이미지 처리공간
+   @Override
+   public List<AdminImageVO> productDetailImage(ProductVO pvo) {
+      return session.selectList("productDetailImage", pvo);
+   }
+   
+
+   
+
+   
 }

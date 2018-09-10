@@ -3,7 +3,11 @@ package com.spring.common.vo;
 import com.spring.client.member.rank.vo.RankVO;
 
 
-public class CommonVO extends RankVO {
+
+public class CommonVO extends RankVO{
+
+
+
 	
 	// 조건 검색시 사용할 필드
 	private String search = "";

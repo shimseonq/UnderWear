@@ -29,8 +29,7 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
   </head>
-<!-- NAVBAR
-================================================== -->
+<!-- NAVBAR================================================== -->
   <body>
  	 <!-- 헤더 부분 -->
      <!-- Fixed navbar -->

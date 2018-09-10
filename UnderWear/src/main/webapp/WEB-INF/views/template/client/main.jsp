@@ -20,7 +20,8 @@
           </div>
           <div class="item">
             <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="/resources/image/main1.jpg">
-          </div>
+      
+          </div>          
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
