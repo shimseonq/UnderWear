@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.client.login.service.LoginService;
 import com.spring.client.qna.dao.QnaDao;
 import com.spring.client.qna.vo.QnaVO;
 
@@ -19,6 +20,8 @@ public class QnaServiceImpl implements QnaService {
 	 *********************/
 	@Autowired
 	private QnaDao qnaDao;
+	@Autowired
+	private LoginService loginService;
 
 	@Override
 	public List<QnaVO> qnaList(QnaVO qvo) {
@@ -43,6 +46,8 @@ public class QnaServiceImpl implements QnaService {
 				e.printStackTrace();
 				result = 0;
 			}
+			
+			
 			return result;
 		}
 

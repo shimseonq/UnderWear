@@ -11,4 +11,10 @@ public interface AdminQnaService {
 	public QnaVO qnaDetail(QnaVO qvo);
 	
 	public int qnaUpdate(QnaVO qvo);
+
+	public int qnaDelete(QnaVO qvo);
+
+	public int replyInsert(QnaVO qvo);
+	
+	public QnaVO replyDetail(QnaVO qvo);
 }

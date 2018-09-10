@@ -23,7 +23,7 @@ Logger logger  = Logger.getLogger(AdminNoticeController.class);
 	
 	@Autowired
 	private AdminNoticeService adminNoticeService;
-	
+		
 	/***********************************************************************
 	 * 글목록 구현하기
 	 ************************************************************************/

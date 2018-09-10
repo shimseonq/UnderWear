@@ -10,5 +10,8 @@ public interface AdminMemberService {
 	//±Û¸ñ·Ï
 	@Autowired
 	public List<MemberVO> memberList(MemberVO mvo);
+	
+	@Autowired
+	public List<MemberVO> memberRank(MemberVO mvo);
 
 }

@@ -21,9 +21,13 @@
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <!-- <script type="text/javascript" src="/resources/include/js/login.js"></script> -->
 <script type="text/javascript">
+	var pwd = "${login.c_pwd}";
 	 $(function(){
 		$("#gosave").click(function(){
 			if (!chkData('#c_pwd',"비밀번호를")) return;
+			if(pwd != $("#c_pwd").val()){
+				alert("비밀번호가 일치하지 않습니다.");
+			}
 			else{
 				$("#loginForm").attr({
 					"method":"post",
@@ -57,7 +61,7 @@
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>

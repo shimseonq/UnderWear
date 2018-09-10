@@ -47,7 +47,7 @@ $(function(){
    $("#excelDownBtn").click(function () {
 	   $("#f_search").attr({
 		   "method":"get",
-		   "action":"/client/qna/qnaList.do"
+		   "action":"/admin/qna/qnaList.do"
 	   });
 	   $("#f_search").submit();
    });
@@ -66,7 +66,7 @@ $(function(){
 function goPage() {
    $("#f_search").attr({
       "method":"get",
-      "action":"/client/qna/qnaList.do"
+      "action":"/admin/qna/qnaList.do"
    });
    $("#f_search").submit();
 }

@@ -5,19 +5,15 @@
    <!--  게시물 전체 조회 및 검색 쿼리문 -->
   <select id="reviewList" parameterType="review" resultType="review">
   /* review - reviewList */		
-		    select rv_no, rv_title,c_name, to_char(rv_date, 'YYYY-MM-DD') as rv_date,rv_hit
-		from review r inner join orders o on r.o_no = o.o_no inner join basket b on b.b_no = O.b_NO inner join customer c on c.c_num = b.c_num
-        order by rv_no desc
-  </select>
-
-	<!-- 게시물 상세 조회 -->
-	<select id="reviewDetail" parameterType="review" resultType="review">
-	  /* review - reviewList */		
-		select rv_no, rv_title, c_name, to_char(rv_date, 'YYYY-MM-DD') as rv_date,rv_hit
-		from review r inner join orders o on r.o_no = o.o_no inner join basket b on b.b_no = O.b_NO inner join customer c on c.c_num = b.c_num
-        where rv_no = #{rv_no}
-        <where>		<!-- if 조건을 만족할때만 작용하는 부분 -->
-		<if test ="search =='rv_title'">		<!-- search가 작은 ''안에 문자와 같으면! -->
+		 select rv_no, rv_title,c_name, to_char(rv_date, 'YYYY-MM-DD') as rv_date,rv_hit,
+		 (select count(*) from r_reply where rv_no=r.rv_no) as rCount 
+		from review r 
+		inner join orders o on r.o_no = o.o_no 
+		inner join basket b on b.b_no = O.b_NO 
+		inner join customer c on c.c_num = b.c_num
+        
+          <where>		
+		<if test ="search =='rv_title'">		
 			<![CDATA[rv_title LIKE '%'||#{keyword} || '%']]>
 		</if>
 		<if test ="search =='c_name'">
@@ -30,8 +26,24 @@
 		 <if test = "search == 'rv_date'">
 			<![CDATA[to_char(rv_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
 		</if> 
-		</where>
+		</where> 
 		order by rv_no desc
+  </select>
+
+
+		
+	<!-- 게시물 상세 조회 -->
+	<select id="reviewDetail" parameterType="review" resultType="review">
+	  /* review - reviewList */		
+	  
+		select rv_no, rv_content, rv_title, c_name, to_char(rv_date, 'YYYY-MM-DD') as rv_date,rv_hit,rv_img
+		from review r 
+		inner join orders o on r.o_no = o.o_no 
+		inner join basket b on b.b_no = o.b_NO 
+		inner join customer c on c.c_num = b.c_num
+        where rv_no = #{rv_no}
+        
+       
 	</select>  
 	
 	
@@ -50,7 +62,7 @@
 	
 	
 	<!-- 해당 번호의 비밀번호 확인 -->
-	<select id="pwdConfirm" parameterType="review" resultType="int">
+	 <select id="pwdConfirm" parameterType="review" resultType="int">
 		/* review - pwdConfirm */
 		SELECT NVL((
 					SELECT 1 FROM review
@@ -62,21 +74,32 @@
 					inner join customer c on c.c_num = b.c_num
         			where rv_no = #{rv_no}
 					
-	</select>
-	
+	</select> 
 	<!-- 게시물 입력  -->
 	<insert id="reviewInsert" parameterType="review">
-	
-	insert into review(rv_no, rv_title, rv_content, o_no
-		<if test="rv_img != null and rv_img != ''">,rv_img</if> )
-		values(review_seq.nextval, #{rv_title}, #{rv_content} ,#{o_no}
-		<if test="rv_img != null and rv_img != ''">,#{rv_img}</if> )
-	</insert>
+   
+   <!-- <selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
+        select o_no from orders where m_no = #{m_no}
+     </selectKey> -->
+     
+   insert into review(rv_no, rv_title, rv_content, o_no
+      <if test="rv_img != null and rv_img != ''">,rv_img</if> )
+      values(review_seq.nextval, #{rv_title}, #{rv_content} ,#{o_no}
+      <if test="rv_img != null and rv_img != ''">,#{rv_img}</if> )
+   </insert>
 	
 		<!-- 게시물 삭제 하기  -->
 <delete id="reviewDelete" parameterType="review">		<!-- 반환타입이 int일 시 파라미터타입은 int -->
 		/* review - reviewDelete */
 		delete from review where rv_no = #{rv_no}
 	</delete>
+	
+	<!-- 조회수 조회 -->
+	<update id="reviewHitUpdate" parameterType="review">
+         UPDATE review
+              SET rv_hit = NVL(rv_hit, 0) + 1 
+         WHERE rv_no=#{rv_no} 
+</update>
+
 </mapper>
 

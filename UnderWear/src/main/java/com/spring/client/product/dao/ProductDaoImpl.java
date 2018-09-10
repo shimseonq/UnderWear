@@ -49,8 +49,8 @@ public class ProductDaoImpl implements ProductDao {
 	   public List<ProductVO> scategory() {
 	      return session.selectList("category");
 	   }
-/*	@Override
-	public int productInsert(ProductVO pvo) {
-		return session.insert("productInsert", pvo);
-	}*/
+	   @Override
+		public int inventoryCount(ProductVO pvo) {
+			return session.update("inventoryCount",pvo);
+}
 }

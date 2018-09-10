@@ -6,11 +6,11 @@
 		from basket inner join product on basket.p_code = product.p_code 
 		inner join price on price.pr_no = product.pr_no
 		inner join customer on basket.c_num = customer.c_num
-		where c_id=#{c_id}
+		where c_id=#{c_id} and b_status != 0 order by b_no
 	</select>
 	
 	<select id="basketOrder" parameterType="basket" resultType="basket">
-		select b_no, p_name, pr_01, b_count, pr_01*b_count as total 
+		select b_no, basket.p_code, p_name, pr_01, b_count, pr_01*b_count as total
 		from basket inner join product on basket.p_code = product.p_code 
 		inner join price on price.pr_no = product.pr_no
 		where b_no=#{b_no}
@@ -28,6 +28,10 @@
 	<delete id="basketDelete" parameterType="basket">
 		delete from basket where b_no = #{b_no}
 	</delete>
+	
+	<update id="statusUpdate" parameterType="basket">
+		update basket set b_status = 0 where b_no = #{b_no}
+	</update>
 </mapper> 
       
 

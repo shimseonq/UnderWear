@@ -12,7 +12,15 @@ public class MemberVO extends LoginVO {
 	private String c_phone; // 회원 전화번호 c_phone
 	private Timestamp c_date; // 회원 등록일 c_date
 	private String c_address; //회원 집주소
+	private int sa_total;
 
+	public int getSa_total() {
+		return sa_total;
+	}
+
+	public void setSa_total(int sa_total) {
+		this.sa_total = sa_total;
+	}
 
 	public String getOldUserPw() {
 		return oldUserPw;

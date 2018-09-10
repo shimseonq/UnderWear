@@ -47,7 +47,7 @@
  <script type="text/javascript" src="/resources/include/js/common.js"></script>  
 
 
-<script type="text/javascript" src="/resources/include/js/board2.js"></script>
+<script type="text/javascript" src="/resources/include/js/adminQnaBoard.js"></script>
 <script type="text/javascript">
 search = "<c:out value='${data.search}' />";
 start_date = "<c:out value='${data.start_date}' />";

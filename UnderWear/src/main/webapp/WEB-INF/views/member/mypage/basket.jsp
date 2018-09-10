@@ -15,11 +15,11 @@
     <title>마이페이지</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>
+<!--    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>  -->
+    <!-- <link href="/resources/include/css/mainheader.css" rel="stylesheet"/> -->
 
     <!-- Custom styles for this template -->
-    <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
+  <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -31,7 +31,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->   
     
-    <style type="text/css">
+  <!--   <style type="text/css">
        .jumbotron{
           height: 300px;
           border: 2px solid lightgray;
@@ -50,7 +50,7 @@
          margin:0px;
       }
     </style>
-
+ -->
 <script type="text/javascript">
 var checkB = [];
 
@@ -64,30 +64,60 @@ var checkB = [];
          
          $("#b_data").submit();
          });
-      });
       
-   
-   
-   function boxForm(){      
-      var values = document.getElementsByName("item");
-         for(var i = 0; i<values.length; i++){
-            if(values[i].checked){ 
-               checkB.push(values[i].value);   
-            }
-         }
-         var output = "";
-         for (var i = 0; i < checkB.length; ++i){
-        	 output+=checkB[i];
-        	 //if(i<checkB.length-1) output+=","
-         //   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
-         }
-         
-         $("#b_number").val(checkB);
-         console.log($("#b_number").val());
-         //return output;
-   }
+     
+	$("#cancel").click(function() {
+			$.ajax({
+				url : "/mypage/basket.do",
+				type : "get",
+				data : "b_no=" + $("#item").val(), //받아올 data 값, queryString
+				dataType : "text", //응답받는 데이터 타입
+				error : function() {
+					alert("시스템 오류입니다. 관리자에게 문의하세요");
+				},
+				success : function(resultData) {
+					if (resultData == 0) {
+						alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
+						return;
+					}else {
+						confirm("물품을 삭제하시겠습니까?");							
+						boxForm();
+						if($("#b_number").val()!=""){
+							$("#b_data").attr({
+								"method" : "get",
+								"action" : "/mypage/basketDelete.do"
+							});
+							console.log($("#b_number").val());
+							$("#b_data").submit();
+							alert("삭제가 완료 되었습니다.");
+						}else{
+							console.log($("#b_number").val());
+							alert("삭제할 물품이 없습니다.");	
+						}
+					}
+				}
+			})
+		});
+	});
 
+	function boxForm() {
+		var values = document.getElementsByName("item");
+		for (var i = 0; i < values.length; i++) {
+			if (values[i].checked) {
+				checkB.push(values[i].value);
+			}
+		}
+		var output = "";
+		for (var i = 0; i < checkB.length; ++i) {
+			output += checkB[i];
+			//if(i<checkB.length-1) output+=","
+			//   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+		}
 
+		$("#b_number").val(checkB);
+		//console.log($("#b_number").val());
+		//return output;
+	}
 </script>
 </head>
 
@@ -100,7 +130,7 @@ var checkB = [];
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>
@@ -130,7 +160,7 @@ var checkB = [];
                   <c:choose>
                       <c:when test="${not empty basketList}" >
                         <c:forEach var="basket" items="${basketList}" varStatus="status">
-                           <tr class="tac" data-num="${basket.b_no}"  >
+                           <tr class="tac" data-num="${basket.b_no}">
                               <td><input type="checkbox" name="item" id="item" value="${basket.b_no}"/></td>
                               <td>${basket.p_name}</td>
                               <td>${basket.pr_01}</td>
@@ -152,6 +182,7 @@ var checkB = [];
 
    <div class="container"> 
       <p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
+       <input type="button" class="btn btn-lg btn-success" id="cancel" name="cancel" value="삭제"/>
       <input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
    </div>
    

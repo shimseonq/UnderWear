@@ -2,9 +2,9 @@ package com.spring.client.review.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.client.login.vo.LoginVO;
+import com.spring.client.order.vo.OrderVO;
 
-public class ReviewVO extends LoginVO {
+public class ReviewVO extends OrderVO {
 	private int rv_no	=	0;		//리뷰 게시판 번호
 	private String rv_title = "";	//리뷰 게시판 제목 
 	private String rv_content = "";	//리뷰 게시판  내용
@@ -12,6 +12,8 @@ public class ReviewVO extends LoginVO {
 	private int rv_hit = 0;			//리뷰 게시판 조회수
 	private MultipartFile rv_imgfile;	//리뷰 게시판 첨부파일 
 	private String rv_img;				//리뷰 게시판 실제 서버에 저장한 파일명 	,== b_file
+	private int rrp_no	= 0;
+	private int rCount = 0;
 	
 	
 	/*------------------------- common VO -----------------------------*/
@@ -64,6 +66,18 @@ public class ReviewVO extends LoginVO {
 	public void setRv_img(String rv_img) {
 		this.rv_img = rv_img;
 	}
+	public int getRrp_no() {
+		return rrp_no;
+	}
+	public void setRrp_no(int rrp_no) {
+		this.rrp_no = rrp_no;
+	}
+	public int getrCount() {
+		return rCount;
+	}
+	public void setrCount(int rCount) {
+		this.rCount = rCount;
+	}
 	public String getSearch() {
 		return search;
 	}
@@ -89,4 +103,8 @@ public class ReviewVO extends LoginVO {
 		this.end_date = end_date;
 	}
 	
+	
+	
+	
+
 }

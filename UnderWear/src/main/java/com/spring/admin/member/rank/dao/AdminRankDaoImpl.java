@@ -23,4 +23,5 @@ public class AdminRankDaoImpl implements AdminRankDao {
 		return session.selectOne("myRank", rvo);
 	}
 
+
 }

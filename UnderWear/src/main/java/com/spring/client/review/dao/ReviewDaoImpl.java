@@ -40,5 +40,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	public int reviewDelete(ReviewVO rvo) {
 		return session.delete("reviewDelete",rvo);
 	}
+	@Override
+	public int reviewHitUpdate(int rv_no) {
+		return session.update("reviewHitUpdate", rv_no);
+	}
 
 }

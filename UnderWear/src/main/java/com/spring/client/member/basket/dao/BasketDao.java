@@ -15,4 +15,8 @@ public interface BasketDao {
 
 	public BasketVO basketOrder(BasketVO bvo);
 
+	public int basketNumber(int b_no);
+	
+	public int statusUpdate(BasketVO bvo);
+
 }

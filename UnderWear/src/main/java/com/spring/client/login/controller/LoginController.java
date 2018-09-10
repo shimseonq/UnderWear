@@ -55,7 +55,7 @@ public class LoginController {
 		} else { // 일치하면
 			session.setAttribute("login",loginCheckResult);
 			/*mav.addObject("login", loginCheckResult);*/
-			mav.setViewName("login/login");
+			mav.setViewName("redirect:/");
 			return mav;
 		}
 

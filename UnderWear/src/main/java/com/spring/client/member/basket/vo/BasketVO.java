@@ -6,9 +6,23 @@ import com.spring.client.product.vo.ProductVO;
 public class BasketVO extends MemberVO {
 	private int b_no;  
 	private int b_count = 0;
-	private String img_01 = "";
 	private int total= 0;
+	private int paytotal = 0;
+	private double paysale =0;
+	private int b_status = 0;
 	
+	public int getPaytotal() {
+		return paytotal;
+	}
+	public void setPaytotal(int paytotal) {
+		this.paytotal = paytotal;
+	}
+	public double getPaysale() {
+		return paysale;
+	}
+	public void setPaysale(double sale) {
+		this.paysale = sale;
+	}
 	public int getB_no() {
 		return b_no;
 	}
@@ -27,10 +41,11 @@ public class BasketVO extends MemberVO {
 	public void setB_count(int b_count) {
 		this.b_count = b_count;
 	}
-	public String getImg_01() {
-		return img_01;
+	public int getB_status() {
+		return b_status;
 	}
-	public void setImg_01(String img_01) {
-		this.img_01 = img_01;
+	public void setB_status(int b_status) {
+		this.b_status = b_status;
 	}
+	
 }

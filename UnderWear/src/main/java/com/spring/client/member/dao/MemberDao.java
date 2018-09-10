@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.qna.vo.QnaVO;
 
 public interface MemberDao {
 
@@ -26,5 +27,8 @@ public interface MemberDao {
 	public List<MemberVO> memberList(MemberVO mvo);
 	
 	public int termsInsert(MemberVO mvo);
+	
+	public List<QnaVO> customerBoardList(MemberVO mvo);
+
 
 }

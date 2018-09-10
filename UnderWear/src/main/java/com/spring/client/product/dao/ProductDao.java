@@ -19,4 +19,5 @@ public interface ProductDao {
 	   
 	public List<ProductVO> scategory();
 	
+	public int inventoryCount(ProductVO pvo);
 }

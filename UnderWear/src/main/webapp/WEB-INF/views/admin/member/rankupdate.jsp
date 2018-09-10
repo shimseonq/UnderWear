@@ -11,9 +11,42 @@
 	start_date = "<c:out value='${data.start_date}' />";
 	end_date = "<c:out value='${data.end_date}' />";
 	keyword = "<c:out value='${data.keyword}' />";
-	</script>
+	var checkB=[];
+	var butChk = 0;	
+	$(function() {
 	
+		    	/* qj튼 클릭 시 처리 이벤트 */
+		      	$("#updateBtn").click(function(){
+		      		boxForm();
+		      		$("#rank_list").attr({
+		      		"method":"get",
+		      		"action":"/admin/rank/rankPaysUpdate.do"
+		      	}),
+		    	//console.log($("#o_number").val());
+		      	$("#rank_list").submit()
+		   });
 	
+	})
+	
+	function boxForm() {
+		var values = document.getElementsByName("item");
+		for (var i = 0; i < values.length; i++) {
+			if (values[i].checked) {
+				checkB.push(values[i].value);
+			}
+		}
+		var output = "";
+		for (var i = 0; i < checkB.length; ++i) {
+			output += checkB[i];
+			//if(i<checkB.length-1) output+=","
+			//   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+		}
+
+		$("#o_number").val(checkB);	
+		//return output;
+	}
+	         </script>
+
 
 	
 		<!--  <form id="detailForm" name="detailForm">   -->
@@ -41,10 +74,12 @@
         </form>
    </div>
 			
-			
+	<form name="rank_list" id="rank_list">
+    	<input type='hidden' name="o_number" id="o_number" />	
       <table class="table table-striped">
       <thead>
          <tr>
+         	<th><input type="button" id="updateBtn" value="등급 업데이트"/>
             <th class="tac">회원번호</th>
             <th class="tac">회원아이디</th>
             <th class="tac">회원명</th>
@@ -56,16 +91,16 @@
       </thead>
       <tbody>
          <c:choose>
-            <c:when test="${not empty memberList}">
-               <c:forEach var="member" items="${memberList}" varStatus="status">
+            <c:when test="${not empty memberRank}">
+               <c:forEach var="member" items="${memberRank}" varStatus="status">
                   <tr class="tac" data-c_num="${member.c_num}">
-                     <td>${status.count}</td>
-                     <td><span class="goDetail">${member.c_id}</span></td>
-                     <td>${member.c_name}</td>
+                  <td><input type="checkbox" name="item" class="item" value="${member.c_num}"/></td>
+                     <td>${member.c_id}</td>
+                     <td><span class="goDetail">${member.c_birth}</span></td>
+                     <td>${member.c_date}</td>                    
+                     <td>${member.sa_total}</td>
                      <td>${member.rk_rank}</td>
-                     <td></td>
-                      <td><input type="button" value="등급변경"/></td>
-                  
+                      <td>                  
                   </tr>
                </c:forEach>
             </c:when>
@@ -77,5 +112,6 @@
          </c:choose>
       </tbody>
    </table>
+   </form>/
    <!-- </form> -->
 </div>

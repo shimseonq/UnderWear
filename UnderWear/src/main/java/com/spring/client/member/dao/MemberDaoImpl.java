@@ -6,9 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.qna.vo.QnaVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -66,6 +66,11 @@ public class MemberDaoImpl implements MemberDao {
 	public int termsInsert(MemberVO mvo) {  //약관 관리
 		
 		return session.insert("termsInsert", mvo);
+	}
+
+	@Override
+	public List<QnaVO> customerBoardList(MemberVO mvo) {
+		return session.selectList("customerBoardList",mvo);
 	}
 
 }

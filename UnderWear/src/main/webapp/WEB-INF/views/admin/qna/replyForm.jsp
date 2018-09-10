@@ -23,7 +23,7 @@
    
       
       
-     <link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="/resources/include/css/board.css" />
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
@@ -45,7 +45,7 @@
   	    		else{
   	    			$("#f_replyForm").attr({
   	    				"method" : "post",
-  	    				"action" : "/admin/qna/qnaUpdate.do"
+  	    				"action" : "/admin/qna/replyInsert.do"
   	    			})
   	    			$("#f_replyForm").submit();
   	    		}

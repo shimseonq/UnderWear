@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.client.login.service.LoginService;
 import com.spring.client.login.vo.LoginVO;
 import com.spring.client.qna.service.QnaService;
 import com.spring.client.qna.vo.QnaVO;
@@ -26,6 +28,8 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	@Autowired
+	private LoginService loginService;
 	
 	/*********************
 	 * 리스트보기
@@ -47,14 +51,28 @@ public class QnaController {
 	 * 글작성 폼
 	 *********************/
 	@RequestMapping(value="/writeForm.do")
-	public String writeForm(HttpSession session) {
+	public String writeForm(HttpSession session , QnaVO qvo) {
 		logger.info("writeForm 호출성공");
 		
-		LoginVO login =(LoginVO)session.getAttribute("login");
+	/*	LoginVO login =(LoginVO)session.getAttribute("login");
 		if(login==null) {
 			return "redirect:/login/login.do";
-		}
-		return "qna/writeForm";
+			
+		}*/
+		
+		
+		//로그인이 안되 있을 경우 로그인 ㄴ창으로 던져버
+		LoginVO login =(LoginVO)session.getAttribute("login");
+	      
+	       if(login == null) {
+	            return "login/login";           
+	       }else {   
+	          logger.info("c_id ="+login.getC_id());
+	          qvo.setC_id(login.getC_id());
+		
+		
+	}
+	       return "qna/writeForm";
 	}
 	
 	/********************
@@ -63,15 +81,21 @@ public class QnaController {
 	 ********************/
 	@RequestMapping(value="qnaDetail.do", method=RequestMethod.GET)
 	public String qnaDetail(QnaVO qvo, Model model, HttpSession session) throws Exception {
+	
 		
 		logger.info("qnaDetail 호출성공");
 		logger.info("q_no = " + qvo.getQ_no());
 		
 		QnaVO detail = new QnaVO();
+		
+		LoginVO login =(LoginVO)session.getAttribute("login");
+		qvo.setC_id(login.getC_id());
+		
 		detail = qnaService.qnaDetail(qvo);
 		if(detail != null && (!detail.equals(""))) {
 			detail.setQ_content(detail.getQ_content().toString().replaceAll("\n", "<br>"));
 		}
+		
 		
 		model.addAttribute("detail", detail);
 		return "qna/qnaDetail";
@@ -218,5 +242,49 @@ public class QnaController {
 		return "redirect:"+url;
 	}
 	
-
+	/*************************************************
+	    * 마이페이지 내정보 확인
+	    *************************************************/
+	   @RequestMapping(value="/pwdCheck.do", method = RequestMethod.GET)
+	   public ModelAndView pwdForm(LoginVO lvo, @ModelAttribute("qna") QnaVO qvo, ModelAndView mav, HttpSession session) {
+	      logger.info("pwdForm 호출 성공");
+	      
+	      LoginVO login =(LoginVO)session.getAttribute("login");		//@ModelAttribute("qna") 매개변수로 qvo 넣어서 q_no 사용할수있께함 ex) ${qna.q_no}
+	       if(login == null) {
+	          mav.setViewName("login/login");    
+	          return mav;      
+	       }else {          
+	    	   mav.setViewName("qna/pwdCheck");
+	           return mav;
+	       }
+	   }
+	
+	
+		/*************************************************
+	    * 마이페이지 내정보 확인
+	    *************************************************/
+	   @RequestMapping(value="/pwdCheck.do", method = RequestMethod.POST)
+	   public ModelAndView pwdCheck(LoginVO lvo, QnaVO qvo, ModelAndView mav, HttpSession session) {
+	      logger.info("pwdCheck 호출 성공");
+	      
+	      LoginVO login =(LoginVO)session.getAttribute("login");
+	       if(login == null) {
+	          mav.setViewName("login/login");    
+	          return mav;      
+	       }else {          
+	         String userId = login.getC_id();
+	         String userPw = lvo.getC_pwd();
+	         LoginVO loginCheckResult = loginService.loginSelect(userId, userPw);
+	         
+	         if (loginCheckResult == null) {
+	            mav.addObject("status", 1);		//틀렸을 경우
+	            mav.setViewName("qna/pwdCheck");
+	            return mav;
+	         } else { // 일치하면
+	            mav.setViewName("redirect:/qna/qnaDetail.do?q_no="+ qvo.getQ_no());
+	            return mav;
+	         }
+	       }
+	   }
+	
 }

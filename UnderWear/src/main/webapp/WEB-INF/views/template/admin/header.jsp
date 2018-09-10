@@ -39,18 +39,18 @@
                                     <a href="/admin/member/memberList.do">회원 정보</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/member/rank.do">등급 정보</a>
+                                    <a href="/admin/member/rankupdate.do">등급 정보</a>
                                 </li>
                             </ul>
                          </li>
                         <li>
                             <a> 상품 관리</a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">상품 정보</a>
+                               <li>
+                                    <a href="/admin/product/productList.do">상품 정보</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">상품 등록</a>
+                                    <a href="/admin/product/writeForm.do">상품 등록</a>
                                 </li>
                                   <li>
                                     <a href="morris.html">상품 분류</a>
@@ -83,7 +83,7 @@
                                     <a href="blank.html">Blank Page</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="/admin/order/orderList.do">배송 조회</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

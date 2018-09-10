@@ -3,12 +3,13 @@
 <mapper namespace="com.spring.admin.member.dao.AdminMemberDao">
 		<select id="memberList" resultType="member"> 
        /*마스킹 하기*/
- 	   select c_num, c_birth, c_date, c_address,
+   select c_num, c_birth, c_date, c_address,
        regexp_replace(c_id,'.','*',4) as c_id,
        regexp_replace(c_name,'.','*',4) as c_name,
        regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,r.rk_rank,
        concat('*****',substr(c_email,6,length(c_email))) as c_email 
-       from customer c inner join rank r on c.rk_no = r.rk_no
+       from customer c  inner join rank r on c.rk_no = r.rk_no
+
        
   <where>
          <if test="search=='c_address'">
@@ -25,9 +26,32 @@
          </if>
          
       </where>
-  
-   </select>
-
+ </select>
  
-   
+ <!-- 		<update id="rankPayUpdate1" parameterType="member" >
+ 		update customer set rk_no = 2 where rk_no = 1 and c_num = #{c_num};
+ 		</update>
+ 		
+ 		<update id="rankPayUpdate2" parameterType="member" >
+ 		update customer set rk_no = 3 where wrk_no = 2 and c_num = #{c_num};
+ 		</update>
+ 		
+ 		<update id="rankPayUpdate3" parameterType="member" >
+ 		update customer set rk_no = 4 where rk_no = 3 and c_num = #{c_num};
+  		</update>
+  		
+<select id="memberRank" parameterType="member" resultType="member">
+	select customer.c_num,c_id, c_birth, c_date, c_address,(select
+	sum(sa_money) from sale
+	inner join pay on sale.pa_no = pay.pa_no
+	inner join orders on pay.o_no = orders.o_no
+	inner join basket on orders.b_no = basket.b_no
+	inner join customer on basket.c_num = customer.c_num
+	group by customer.c_num having customer.c_num=#{c_num})as sa_total, rk_rank
+	from customer inner join rank on customer.rk_no = rank.rk_no
+	where c_pwd != '-'
+</select>  
+<select id="rankNo" parameterType="member" resultType="member">
+	select rk_no from customer where c_num = #{c_num}
+</select> -->
 </mapper> 

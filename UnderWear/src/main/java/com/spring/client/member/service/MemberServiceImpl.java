@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.client.member.dao.MemberDao;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.qna.vo.QnaVO;
 import com.spring.common.util.OpenCrypt;
 import com.spring.common.util.Util;
 
@@ -104,6 +105,13 @@ public class MemberServiceImpl implements MemberService {
 		myList = memberDao.memberList(mvo); 
 		
 		return myList; //null 값이 들어가게 되면 데이터 출력불가
+	}
+
+	@Override
+	public List<QnaVO> customerBoardList(MemberVO mvo) {
+		List<QnaVO> qList = null;
+		qList = memberDao.customerBoardList(mvo);
+		return qList;
 	}
 
 

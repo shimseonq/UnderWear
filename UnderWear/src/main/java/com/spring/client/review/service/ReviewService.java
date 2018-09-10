@@ -17,4 +17,7 @@ public interface ReviewService {
 	public int reviewInsert(ReviewVO rvo);
 
 	public int reviewDelete(ReviewVO rvo);
+
+	public int replyCount(int rv_no);
+	
 }

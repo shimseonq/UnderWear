@@ -157,13 +157,6 @@
                <td class="ac">제목</td>
                <td colspan="3">${detail.q_title}</td>
             <tr>
-               <td class="ac">글번호</td>
-               <td>${detail.q_no }<span> <%-- (조회수 : ${detail.readcnt }) --%>
-               </span></td>
-               <td class="ac">작성일</td>
-               <td>${detail.q_date }</td>
-            </tr>
-            <tr>
                <td class="ac">내용</td>
                <td colspan="3">${detail.q_content}</td>
             </tr>
@@ -175,43 +168,7 @@
             </c:if>
             </tbody>
          </table>
-		<div class="contentTB">
-			<table>
-				<tbody>
-				<colgroup>
-					<col width="17%" />
-					<col width="83%" />
-				</colgroup>
-				<tr>
-					<td class="ac">글번호</td>
-					<td>${detail.q_no }<span> (조회수 : ${detail.q_hit })</span></td>
-					<td class="ac">작성일</td>
-					<td>${detail.q_date }</td>
-				</tr>
-				<tr>
-					<td class="ac">제목</td>
-					<td colspan="3">${detail.q_title}</td>
-				<tr>
-					<td class="ac">글번호</td>
-					<td>${detail.q_no }<span> <%-- (조회수 : ${detail.readcnt }) --%>
-					</span></td>
-					<td class="ac">작성일</td>
-					<td>${detail.q_date }</td>
-				</tr>
-				<tr>
-					<td class="ac">내용</td>
-					<td colspan="3">${detail.q_content}</td>
-				</tr>
-				<c:if test="${detail.q_img != ''}">
-					<tr>
-						<td class="ac vm">첨부파일 이미지</td>
-						<td colspan="3"><img id="fileImage"></td>
-					</tr>
-				</c:if>
-				</tbody>
-			</table>
 
-      </div>
       <%-- <jsp:include  page="qnaReply.jsp" ></jsp:include>  --%>
    </div>
 </div>
