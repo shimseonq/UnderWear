@@ -29,5 +29,35 @@ public class OrderDaoImpl implements OrderDao {
 	public int orderNumber() {
 		return session.selectOne("orderNumber");
 	}
+
+	@Override
+	public List<OrderVO> adminOrderList(OrderVO ovo) {
+		return session.selectList("adminOrderList", ovo);
+	}
+
+	@Override
+	public int orderFinish(OrderVO ovo) {
+		return session.update("orderFinish");
+	}
+
+	@Override
+	public int deliveryUpdate1(OrderVO ovo) {
+		return session.update("deliveryUpdate1");
+	}
+
+	@Override
+	public int deliveryUpdate2(OrderVO ovo) {
+		return session.update("deliveryUpdate2");
+	}
+
+	@Override
+	public int deliveryUpdate3(OrderVO ovo) {
+		return session.update("deliveryUpdate3");
+	}
+
+	@Override
+	public int deliveryUpdate4(OrderVO ovo) {
+		return session.update("deliveryUpdate4");
+	}
 	
 }

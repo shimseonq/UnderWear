@@ -40,20 +40,21 @@ public class BasketServiceImpl implements BasketService {
 	}
 	
 	@Override
-	public int basketDelete(BasketVO bvo) {
-		int result=0;
-		try {
-			result= basketDao.basketDelete(bvo);
-		}catch(Exception e) {
-			e.printStackTrace();
-			result = 0;
-		}
-		return result;
-	}
+	   public int basketDelete(BasketVO bvo, String[] b_num) {   //체크된거 여러개 선택
+	      int b_no;
+	      int result=0;
+	      for(int i=0; i<b_num.length; i++) {
+	         b_no = Integer.parseInt(b_num[i]);
+	         bvo.setB_no(b_no);
+	         result = basketDao.basketDelete(bvo);
+	      }
+	      return result;
+	   }
+
 
 	@Override
 	public List<BasketVO> basketOrder(BasketVO bvo, String[] b_num) {
-		List<BasketVO> mList = new ArrayList<BasketVO>();	//개 좃같은 코드
+		List<BasketVO> mList = new ArrayList<BasketVO>();	//체크된거 여러개 선택
 		BasketVO vo = new BasketVO();
 		int b_no;
 		int total = 0;
@@ -69,6 +70,8 @@ public class BasketServiceImpl implements BasketService {
 		System.out.println(rankDao.discount(bvo.getC_id()));
 		bvo.setPaysale(sale);
 		return mList;
-	}	
+	}
+
+
  
 }

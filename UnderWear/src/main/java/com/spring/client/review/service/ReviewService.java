@@ -2,7 +2,6 @@ package com.spring.client.review.service;
 
 import java.util.List;
 
-import com.spring.client.qna.vo.QnaVO;
 import com.spring.client.review.vo.ReviewVO;
 
 public interface ReviewService {
@@ -13,7 +12,7 @@ public interface ReviewService {
 
 	public int reviewUpdate(ReviewVO rvo);
 
-	/*public int pwdConfirm(ReviewVO rvo);*/
+	public int pwdConfirm(ReviewVO rvo);
 
 	public int reviewInsert(ReviewVO rvo);
 

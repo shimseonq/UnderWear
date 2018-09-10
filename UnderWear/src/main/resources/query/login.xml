@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.login.dao.LoginDao">
-	<select id="userIdSelect" parameterType="String"
-		resultType="login">
+	<select id="userIdSelect" parameterType="String" resultType="login">
 		select c_id,
 		c_pwd,
 		c_name
 		from customer
 		where c_id = #{c_id}
 	</select>
-	<select id="loginSelect" parameterType="login"
-		resultType="login">
+	<select id="loginSelect" parameterType="login" resultType="login">
 		/* 로그인 처리 쿼리 */
 		select
 		c_num,
@@ -40,8 +38,7 @@
 		clientIP = #{clientIP,jdbcType=VARCHAR}
 		where c_num = #{c_num} and c_id = #{c_id}
 	</update>
-	<select id="loginHistorySelect" parameterType="String"
-		resultType="login">
+	<select id="loginHistorySelect" parameterType="String" resultType="login">
 		select
 		c_num,
 		c_id,

@@ -31,10 +31,6 @@
   </select>
 
 
-
-
-
-		
 		
 	<!-- 게시물 상세 조회 -->
 	<select id="reviewDetail" parameterType="review" resultType="review">
@@ -66,7 +62,7 @@
 	
 	
 	<!-- 해당 번호의 비밀번호 확인 -->
-	<!-- <select id="pwdConfirm" parameterType="review" resultType="int">
+	 <select id="pwdConfirm" parameterType="review" resultType="int">
 		/* review - pwdConfirm */
 		SELECT NVL((
 					SELECT 1 FROM review
@@ -78,14 +74,13 @@
 					inner join customer c on c.c_num = b.c_num
         			where rv_no = #{rv_no}
 					
-	</select> -->
-	
+	</select> 
 	<!-- 게시물 입력  -->
 	<insert id="reviewInsert" parameterType="review">
 	
-	<selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
-	  	select o_no from orders
-	  </selectKey>
+	<!-- <selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
+	  	select o_no from orders where m_no = #{m_no}
+	  </selectKey> -->
 	  
 	insert into review(rv_no, rv_title, rv_content, o_no
 		<if test="rv_img != null and rv_img != ''">,rv_img</if> )

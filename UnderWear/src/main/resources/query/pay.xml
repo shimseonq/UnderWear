@@ -16,15 +16,14 @@
 	</select>
 	
 	<select id="payList" parameterType="pay" resultType="pay">
-		select pa_no, p_name, pr_01, b_count, o_deliveryname, o_deliveryaddress,  o_delivery, to_char(pa_date,'YY-MM-DD HH:MI:SS')as pa_date
-		 from pay
-		inner join orders on pay.o_no = orders.o_no 
+		select o_no, p_name, pr_01, b_count, o_deliveryname, o_deliveryaddress, o_delivery, to_char(o_date,'YY-MM-DD HH:MI:SS')as o_date
+		from orders 
 		inner join basket on orders.b_no = basket.b_no 
 		inner join product on basket.p_code = product.p_code
 		inner join price on product.pr_no = price.pr_no
 		inner join customer on customer.c_num = basket.c_num
-		where c_id = #{c_id}
-		order by pa_date
+		where  o_status!=0 and c_id = #{c_id}
+		order by o_date desc
 	</select>
 
 </mapper>

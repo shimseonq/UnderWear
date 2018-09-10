@@ -6,14 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text.css"
-	href="/resources/include/css/common.css" />
-<link rel="stylesheet" type="text.css"
+<link rel="stylesheet" type="text/css"
 	href="/resources/include/css/board.css" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/common.css" />
 
-<script type="text/javascript"
-	src="/resources/include/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/resources/include/js/common.js"></script>
+<style type="text/css">
+#imgView {
+	position: absolute;
+}
+
+.imgViewData {
+	position: relative;
+	top: -2px;
+	left: 0px;
+	z-index: 100;
+}
+</style>
 
 <script type="text/javascript">
 
@@ -37,9 +46,9 @@
 <body>
 
 <div class="contentContainer">
-		<div class="contentTB">
-			<form id="f_writeForm" enctype="multipart/form-data">
-			<table id="boardWrite" class="table table-hover">
+		<!-- <div class="contentTB">
+			<form id="f_writeForm" enctype="multipart/form-data"> -->
+		<!-- 	<table id="boardWrite" class="table table-hover">
 					<colgroup>
 						<col width="17%" />
 						<col width="83%" />
@@ -52,27 +61,47 @@
 					</tr>
 					
 					<tr >
-						<td class="ac"><label for="exampleInputEmail1">글제목</label></td>
-						<td><input type="text" class="form-control" id="n_title"
-							name="n_title" /></td>
-					</tr>
-					<tr >
 						<td class="ac vm"><label for="exampleInputPassword1">글 내용</label></td>
 						<td><textarea class="form-control" rows="7" id="n_content"
 								name="n_content"></textarea></td>
 					</tr>
-					<tr >
-						<td class="ac"><label for="exampleInputEmail1">글제목</label></td>
-						<td><input type="text" class="form-control" id="e"
-							name="e" /></td>
-					</tr>
-				</table>
+				</table> -->
+				
+
+			<div class="contentTB">
+				<form id="f_writeForm" name="f_writeForm"
+					enctype="multipart/form-data">
+					
+					<table id="boardWrite" class="table table-hover">
+						<colgroup>
+							<col width="17%" />
+							<col width="83%" />
+						</colgroup>
+						<tr class="form-group">
+						<tr>
+							<td class="ac">글번호</td>
+							<td>${updateData.n_no}</td>
+							<td class="ac">작성일</td>
+							<td>${updateData.n_date}</td>
+						</tr>
+
+						<tr class="form-group">
+							<td><label for="exampleInputEmail1">글제목</label></td>
+							<td><input type="text" class="form-control" id="n_title"
+								name="n_title" /></td>
+						</tr>
+						<tr class="form-group">
+							<td><label for="exampleInputPassword1">글 내용</label></td>
+							<td><textarea class="form-control" rows="7" id="n_content"
+									name="n_content"></textarea></td>
+						</tr>
+					</table>
+				</form>
+			</div>
 				<div class="contentBtn">
 				<input type=button class="btn btn-default" id="noticeInsertBtn"
 					value="글쓰기" />
 			</div>
-			</form>
 		</div>
-	</div>
 </body>
 </html>

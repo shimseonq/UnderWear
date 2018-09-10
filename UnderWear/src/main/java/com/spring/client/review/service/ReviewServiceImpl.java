@@ -52,13 +52,15 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		return result;
 	}
-	/*// 비밀번호 확인 구현
+	// 비밀번호 확인 구현
 	@Override
 	public int pwdConfirm(ReviewVO rvo) {
 		int result = 0;
 		result = reviewDao.pwdConfirm(rvo);
 		return result;
-	}*/
+	}
+	
+	
 
 	@Override
 	public int reviewInsert(ReviewVO rvo) {

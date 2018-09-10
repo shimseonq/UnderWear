@@ -29,6 +29,7 @@
       <put-attribute name="main" value="/WEB-INF/views/admin/review/{1}.jsp"/>
       <put-attribute name="sub" value=""/>
       
+      <put-attribute name="sub" value=""/>      
    </definition>
    
    <definition name="admin/member/*" extends="basic">
@@ -37,4 +38,28 @@
       <put-attribute name="sub" value=""/>
    </definition>
    
-   </tiles-definitions>
+
+   <definition name="admin/order/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/order/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
+   </definition>
+    
+   <definition name="admin/sale/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/sale/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
+   </definition>
+
+   <definition name="admin/rank/*" extends="basic">
+        <put-attribute name=""></put-attribute>
+      <put-attribute name="main" value="/WEB-INF/views/admin/rank/{1}.jsp"/>
+      <put-attribute name="sub" value=""/>
+   </definition>
+   	<definition name="admin/login/*" extends="basic">
+   	  		 <put-attribute name=""></put-attribute>
+			<put-attribute name="main" value="/WEB-INF/views/admin/login/{1}.jsp" />
+			<put-attribute name="sub" value="로그인" />
+			
+	</definition>
+</tiles-definitions>

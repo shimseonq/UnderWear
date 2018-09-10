@@ -8,7 +8,28 @@
 			select sale_seq.nextval from dual
 		</selectKey>
 		insert into sale(sa_no, pa_no, sa_date, sa_money)
-		values(#{sa_no}, #{pa_no}, sysdate , #{sa_money})
+		values(#{sa_no}, #{pa_no}, sysdate, #{sa_money})
 	</insert>
 
+	<select id="adminSaleList" parameterType="sale" resultType="sale">
+		select sa_no, p_name, b_count, p_size, p_color, pa_payway, sa_money, sa_date
+		from sale 
+		inner join pay on sale.pa_no = pay.pa_no
+		inner join orders on pay.o_no = orders.o_no
+		inner join basket on orders.b_no = basket.b_no
+		inner join product on basket.p_code = product.p_code
+		<where>      
+      <if test ="search =='p_name'">
+         <![CDATA[p_name LIKE '%'||#{keyword} || '%']]>
+      </if>
+      <if test ="search =='pa_payway'">
+         <![CDATA[pa_payway LIKE '%'||#{keyword} || '%']]>
+      </if>
+      
+       <if test = "search == 'sa_date'">
+         <![CDATA[to_char(sa_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
+      </if> 
+      </where> 
+		order by sa_date desc
+	</select>
 </mapper>

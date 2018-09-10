@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.spring.client.login.vo.LoginVO;
 import com.spring.client.member.basket.service.BasketService;
 import com.spring.client.member.basket.vo.BasketVO;
@@ -46,6 +45,10 @@ public class OrderController {
 		
 		int paytotal = bvo.getPaytotal();
 		logger.info("총상품 금액 = "+paytotal); 
+		bvo.setC_id(login.getC_id());
+		
+		model.addAttribute("basketOrder", basketOrder);
+		
 		int paysale = (int)bvo.getPaysale();
 		int pay = paytotal - paysale;
 		
@@ -59,13 +62,12 @@ public class OrderController {
 	 * 주문입력
 	 ***********************************************************************/
 	@RequestMapping(value = "/orderInsert.do", method = RequestMethod.POST)
-	public String orderInsert(SaleVO svo) {
+	public String orderInsert(SaleVO svo, @RequestParam String b_number) {
 		logger.info("orderInsert 호출 성공");
-		
+		String[] b_num = b_number.split(",");
 		int result = 0;
 		
-		result = orderService.orderInsert(svo);
-		logger.info(result);
+		result = orderService.orderInsert(svo, b_num);
 		
 		if(result == 1) {	
 			return "redirect:/mypage/mypage.do";

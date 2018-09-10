@@ -1,6 +1,7 @@
   package com.spring.client.member.mypage.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -21,52 +22,76 @@ import com.spring.client.member.rank.service.RankService;
 import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.service.MemberService;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.order.service.OrderService;
+import com.spring.client.order.vo.OrderVO;
 import com.spring.client.pay.service.PayService;
 import com.spring.client.pay.vo.PayVO;
+import com.spring.client.qna.vo.QnaVO;
 
 @Controller
 @RequestMapping(value="/mypage")
 public class MypageController {
 
 	Logger logger = Logger.getLogger(MypageController.class);
-	
+
 	@Autowired
 	private RankService rankService;
-	
+
 	@Autowired
 	private BasketService basketService;
-	
+
 	@Autowired
 	private MemberService memberService;
 	
 	@Autowired
 	private LoginService loginService;	
-	
+
 	@Autowired
 	private PayService payService;
+
+	@Autowired
+	private OrderService orderService;
+
+	/*************************************************
+	    * 마이페이지 주문 조회
+	    *************************************************/
+	   @RequestMapping(value="/mypage.do", method = RequestMethod.GET)
+	   public String customerOrderList(PayVO pvo, Model model, HttpSession session) {
+	      logger.info("mypage 호출 성공");
+
+	      LoginVO login =(LoginVO)session.getAttribute("login");
+	      if(login == null) {
+	         return "login/login";           
+	      }else {   
+	         pvo.setC_id(login.getC_id());
+
+	         List<PayVO> payList = payService.payList(pvo);   
+
+	         model.addAttribute("payList", payList);
+
+	         return "mypage/mypage";
+	      }
+	   }
 	
 	/*************************************************
-	 * 마이페이지 주문 조회
+	 * 마이페이지 구매완료
 	 *************************************************/
-	@RequestMapping(value="/mypage.do", method = RequestMethod.GET)
-	public String customerOrderList(PayVO pvo, Model model, HttpSession session) {
-		logger.info("mypage 호출 성공");
-
+	@RequestMapping(value="/orderFin.do", method = RequestMethod.POST)
+	public String orderFinish(OrderVO ovo, Model model, HttpSession session) {
+		logger.info("order Finish호출 성공");
 		LoginVO login =(LoginVO)session.getAttribute("login");
+
 		if(login == null) {
 			return "login/login";	        
 		}else {	
-			logger.info("c_id ="+login.getC_id());
-			pvo.setC_id(login.getC_id());
+			ovo.setC_id(login.getC_id());
 
-			List<PayVO> payList = payService.payList(pvo);	
+			orderService.orderFinish(ovo);
 
-			model.addAttribute("payList", payList);
-
-			return "mypage/mypage";
-		}
+			return "redirect:/mypage/mypage.do";
+		}		
 	}
-	
+
 	/*************************************************
 	 * 마이페이지 장바구니 조회
 	 *************************************************/
@@ -117,8 +142,29 @@ public class MypageController {
 				return mav;
 			}
 	    }
+
 	}
-	
+
+	/*************************************************
+	 * 마이페이지 장바구니 삭제
+	 *************************************************/
+	@RequestMapping(value="/basketDelete.do", method = RequestMethod.GET)
+	public String basketDelete(BasketVO bvo, @RequestParam String b_number, Model model, HttpSession session) {
+		logger.info("basket delete 호출 성공");
+		String[] b_num = b_number.split(",");
+		LoginVO login =(LoginVO)session.getAttribute("login");
+
+		if(login == null) {
+			return "login/login";	        
+		}else {	
+			bvo.setC_id(login.getC_id());
+
+			basketService.basketDelete(bvo, b_num);
+
+			return "redirect:/mypage/basket.do";
+		}		
+	}
+
 	/*************************************************
 	 * 마이페이지 개인정보 조회
 	 *************************************************/
@@ -141,8 +187,10 @@ public class MypageController {
 			model.addAttribute("myInfo", myInfo);
 		   	 return "mypage/myinfo";
 	     }
+
 	}
 		
+
 	/*************************************************
 	 * 마이페이지 등급현황 조회
 	 *************************************************/
@@ -161,16 +209,24 @@ public class MypageController {
 		model.addAttribute("myRank",myRank);
 		
 		return "mypage/rank";
+
 	}
-	
+
 	/*************************************************
 	 * 마이페이지 게시물 조회
 	 *************************************************/
 	@RequestMapping(value="/myboard.do", method = RequestMethod.GET)
-	public String customerBoardList(MemberVO mvo, Model model) {
+	public String customerBoardList(MemberVO mvo, Model model, HttpSession session) {
 		logger.info("mypage 호출 성공");
+
+		LoginVO login =(LoginVO)session.getAttribute("login");		
+		logger.info("C_num ="+login.getC_num());
+		mvo.setC_num(login.getC_num());
 		
+		List<QnaVO> customerBoardList = memberService.customerBoardList(mvo);	
+		model.addAttribute("customerBoardList", customerBoardList);
 		return "mypage/myboard";
 	}
+	
 	
 }

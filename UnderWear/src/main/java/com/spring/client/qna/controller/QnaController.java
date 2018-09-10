@@ -82,6 +82,7 @@ public class QnaController {
 	@RequestMapping(value="qnaDetail.do", method=RequestMethod.GET)
 	public String qnaDetail(QnaVO qvo, Model model, HttpSession session) throws Exception {
 	
+		
 		logger.info("qnaDetail 호출성공");
 		logger.info("q_no = " + qvo.getQ_no());
 		

@@ -115,6 +115,95 @@
       		
       		background-color: gray;    	}
       </style>
+     <!--  <style>
+      	#content{
+      		background-color:red;
+      		width: 200px;
+      		margin-left: 20%;
+      		margin-top: 2%;
+      	}
+      	#sumdiv{
+      		margin-top: 2%;
+      		margin-left: 20%;
+      		background-color: orange;
+      		display: none;
+      		text-align: center;
+      		width: 200px;
+      		
+      	}
+      	#option{
+      		margin-top: 42px;
+      		background-color: lime;
+      		width: 600px;
+      		height: 500px;
+      		float: right;
+      	}
+      	
+      	img{
+      		margin-bottom: 200px;
+      		padding: 50px;
+      	}
+      	.testimg{
+      		background-color: white;
+      		
+      	}
+      	.table{
+      		width: 300px;
+      		background-color: black;
+      		
+      	}
+      	.container4{
+      		
+      		width: 200px;
+      		margin-top: 2%;
+      		margin-left: 20%;
+      		background-color: yellow;
+      	}
+      	.container3{
+      		background-color: aqua;
+      		
+      		width : 200px;
+      		margin-top: 25%;
+      		margin-left: 20%;
+      		
+      	}
+         .container2 {
+            max-width: 650px;
+            
+            margin-top: 2%;
+            padding: 0 20px;
+            padding-bottom: 80px;
+             float:left;
+             width:650px;
+             background-color: black;
+             
+            
+         }
+
+         #my-slider {
+            width: 100%;
+            height: 450px;
+            color: white;
+           
+            
+         }
+         
+         @media ( max-width : 640px) {
+            #my-slider .crs-bar-roll-current {
+               width: 38px;
+               height: 38px;
+            }
+            #my-slider .crs-bar-roll-item {
+               width: 30px;
+               height: 30px;
+            }
+         }
+         .all{
+      		border-bottom: solid;
+      		height: 700px;
+      		
+      		background-color: gray;    	}
+      </style> -->
         
         <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>

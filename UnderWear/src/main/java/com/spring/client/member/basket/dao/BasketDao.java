@@ -18,4 +18,6 @@ public interface BasketDao {
 
 	public int basketDelete(BasketVO bvo);
 
+	
+
 }

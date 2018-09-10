@@ -29,6 +29,9 @@
 
     <!-- Custom Fonts -->
     <link href="/resources/include/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+     <!-- jQuery -->
+    <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
   </head>
   <body>
 
@@ -48,8 +51,7 @@
       </div>
     </div>
 
-     <!-- jQuery -->
-    <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>

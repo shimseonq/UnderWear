@@ -75,9 +75,8 @@
 				<thead>
 				<tr>
 					<td>게시물 번호</td>
+					<td>게시판 종류</td>
 					<td>게시물 제목</td>
-					<td>작성자</td>
-					<td>조회수</td>
 					<td>등록일</td>
 				</tr>
 				
@@ -85,23 +84,23 @@
 				<tbody id="list">
 				<!-- 데이터 출력 -->
 					<c:choose>
-						 <c:when test="${not empty productList}" >
-							<c:forEach var="product" items="${productList}" varStatus="status">
-								<tr class="tac" data-num="${product.p_code}" >
-									<td>${product.p_code}</td>
-									<td>${product.p_name}</td>
-									<td>${product.p_inventory}</td>
-									<td>${product.p_color}</td>
-									<td>${product.p_color}</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+					<c:when test="${not empty customerBoardList}">
+						<c:forEach var="customer" items="${customerBoardList}" varStatus="status">
+							<tr class="tac" data-num="${customer.q_no}" align="center">
+								<td>${customer.q_no}</td>
+								<td>${customer.q_content}</td>
+								<td class="goDetail tal">${customer.q_title}</td>
+								<td>${customer.q_date}</td>
 							</tr>
-						</c:otherwise>
-					</c:choose>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+
 				</tbody>
 			</table>
       </div>

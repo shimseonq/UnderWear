@@ -48,16 +48,51 @@
 			}
 		}
 	}
-</script>
+
+	
+	var pwd = "${login.c_pwd}";
+	 $(function(){
+		$("#gosave").click(function(){
+			if (!chkData('#c_pwd',"비밀번호를")) return;
+			if(pwd != $("#c_pwd").val()){
+				alert("비밀번호가 일치하지 않습니다.");
+			}
+			else{
+				$("#loginForm").attr({
+					"method":"post",
+					"action":"/mypage/myinfo.do"
+				});
+				$("#loginForm").submit();	
+			}
+		 });	
+	}); 
+	
+	function errorCodeCheck() {
+		var status = '<c:out value="${status}" />';
+		if (status != "") {
+			// 명확한 자료형 명시를 위해 status의 타입을 정수형으로 변환.
+			switch (parseInt(status)) {
+			case 1:
+				alert("아이디 또는 비밀번호 일치 하지 않거나 존재하지 않는 \n회원입니다. 다시 로그인해 주세요.");
+				break;
+			case 6:
+				alert("5번이상 로그인 시도로 30초동안 로그인 할 수 없습니다.\n잠시 후 다시 시도해 주세요");
+				break;
+			}
+		}
+	}
+	</script>
 </head>
 <body>
+
+
 	<h3>My page</h3>
 	<div class="masthead">
         <nav>
           <ul class="nav nav-justified">
             <li><a href="/mypage/basket.do">장바구니조회</a></li>
             <li><a href="/mypage/mypage.do">주문조회</a></li>
-            <li><a href="/mypage/myinfo.do">개인정보 조회</a></li>
+            <li><a href="/mypage/pwdCheck.do">개인정보 조회</a></li>
             <li><a href="/mypage/rank.do">등급현황</a></li>
             <li><a href="/mypage/myboard.do">게시물 조회</a></li>
           </ul>

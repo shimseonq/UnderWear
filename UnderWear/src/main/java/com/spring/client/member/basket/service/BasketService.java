@@ -10,7 +10,7 @@ public interface BasketService {
 
 	public int basketInsert(BasketVO bvo);
 
-	public int basketDelete(BasketVO bvo);
+	public int basketDelete(BasketVO bvo,  String[] b_num);
 
 	public List<BasketVO> basketOrder(BasketVO bvo, String[] b_num);
 }

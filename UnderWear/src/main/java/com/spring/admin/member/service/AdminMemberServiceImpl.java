@@ -14,17 +14,10 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Autowired
 	private AdminMemberDao adminMemberDao;
 	@Override
-	public List<MemberVO> memberList(MemberVO mvo) {
+		public List<MemberVO> memberList(MemberVO mvo) {
 		List<MemberVO> mList=null;
 		mList = adminMemberDao.memberList(mvo);
 		return mList;
-	}
-	//상품 상세보기
-	@Override
-	public MemberVO memberDetail(MemberVO mvo) {
-		MemberVO detail = new MemberVO();
-		detail = adminMemberDao.memberDetail(mvo);
-		return detail;
 	}
 
 }

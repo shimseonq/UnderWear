@@ -88,6 +88,59 @@ var checkB = [];
    }
 
 
+      
+     
+	$("#cancel").click(function() {
+			$.ajax({
+				url : "/mypage/basket.do",
+				type : "get",
+				data : "b_no=" + $("#item").val(), //받아올 data 값, queryString
+				dataType : "text", //응답받는 데이터 타입
+				error : function() {
+					alert("시스템 오류입니다. 관리자에게 문의하세요");
+				},
+				success : function(resultData) {
+					if (resultData == 0) {
+						alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
+						return;
+					}else {
+						confirm("물품을 삭제하시겠습니까?");							
+						boxForm();
+						if($("#b_number").val()!=""){
+							$("#b_data").attr({
+								"method" : "get",
+								"action" : "/mypage/basketDelete.do"
+							});
+							console.log($("#b_number").val());
+							$("#b_data").submit();
+							alert("삭제가 완료 되었습니다.");
+						}else{
+							console.log($("#b_number").val());
+							alert("삭제할 물품이 없습니다.");	
+						}
+					}
+				}
+			})
+		});
+
+	function boxForm() {
+		var values = document.getElementsByName("item");
+		for (var i = 0; i < values.length; i++) {
+			if (values[i].checked) {
+				checkB.push(values[i].value);
+			}
+		}
+		var output = "";
+		for (var i = 0; i < checkB.length; ++i) {
+			output += checkB[i];
+			//if(i<checkB.length-1) output+=","
+			//   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+		}
+
+		$("#b_number").val(checkB);
+		//console.log($("#b_number").val());
+		//return output;
+	}
 </script>
 </head>
 

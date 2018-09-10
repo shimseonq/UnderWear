@@ -171,6 +171,7 @@
 	<div class="well">
 		<form class="form-inline" id="f_search">
 
+		
 			<h3>
 				<span class="label label-success">검색조건</span>
 			</h3>
@@ -188,6 +189,7 @@
 					placeholder="검색어를 입력해 주세요.">
 			</div>
 
+
 			<div class="form-group" id="dateCheck">
 				<input type="date" id="start_date" name="start_date"
 					placeholder="시작일자" class="form-control"> <input type="date"
@@ -197,6 +199,8 @@
 
 			<button class="btn btn-primary" id="searchBtn">Search</button>
 			<button class="btn btn-primary" id="allSearchBtn">All Search</button>
+			
+
 		</form>
 	</div>
 	<!-- --------------------------------------------------------------------------------------------------- -->

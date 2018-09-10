@@ -13,16 +13,16 @@
      }
      .container{
       margin: auto;
-        width:60%;
+        width:70%;
      }
      
      .navbar-nav{
-      width:30%; 
+      width:50%; 
       margin-left:15%; 
      }
    
    .navbar-nav:nth-child(2) {
-      width:10%; 
+      width:15%; 
       margin-left: 5%;
    }
    .navbar-nav:nth-child(2)>li>a{

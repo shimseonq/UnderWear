@@ -21,12 +21,62 @@
 			#{o_deliveryname}, #{o_deliveryphone})
 	</insert>
 	
+	
+	<!-- 다중 insert를 위한  o_no 찾기 -->
 	<select id="orderNumber" resultType="int">
 		select orders_seq.currval from dual
 	</select>
+
+	<!-- 관리자 페이지 리스트 출력  -->
+	<select id="adminOrderList" parameterType="order" resultType="order">
+		select o_no, c_id, p_name, pr_01, b_count, (pr_01*b_count) as total, o_deliveryaddress, o_deliveryname, o_deliveryphone, o_date, o_delivery
+		from orders 
+		inner join basket on orders.b_no = basket.b_no
+		inner join customer on basket.c_num = customer.c_num
+		inner join product on basket.p_code = product.p_code
+		inner join price on product.pr_no = price.pr_no
+      <where>      
+      <if test ="search =='c_id'">      
+         <![CDATA[c_id LIKE '%'||#{keyword} || '%']]>
+      </if>
+      <if test ="search =='p_name'">
+         <![CDATA[p_name LIKE '%'||#{keyword} || '%']]>
+      </if>
+      <if test ="search =='o_delivery'">
+         <![CDATA[o_delivery LIKE '%'||#{keyword} || '%']]>
+      </if>
+      
+       <if test = "search == 'o_date'">
+         <![CDATA[to_char(o_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
+      </if> 
+      </where> 
+      order by o_date desc      
+	</select>
 	
-	<update id="deliveryUpdate" parameterType="order">
-		update orders set o_delivery=#{o_delivery} where o_no = #{o_no}
+	<!-- 상태값 변경을 통해 회원 페이지에서 주문 내역을 삭제 -->
+	<update id="orderFinish" parameterType="order">
+		update orders set o_status=0 where o_no = #{o_no}
 	</update>
+	
+	<!-- 배송상태 업데이트(결제완료 ->상품준비중) -->
+	<update id="deliveryUpdate1" parameterType="order">
+		update orders set o_delivery='상품준비중' where o_no = #{o_no}
+	</update>
+	
+	<!-- 배송상태 업데이트(상품준비중->배송시작) -->
+	<update id="deliveryUpdate2" parameterType="order">
+		update orders set o_delivery='배송준비중' where o_no = #{o_no}
+	</update>
+	
+	<!-- 배송상태 업데이트(배송시작->배송중) -->
+	<update id="deliveryUpdate3" parameterType="order">
+		update orders set o_delivery='배송중' where o_no = #{o_no}
+	</update>
+	
+	<!-- 배송상태 업데이트(배송중-> 배송완료) -->
+	<update id="deliveryUpdate4" parameterType="order">
+		update orders set o_delivery='배송완료' where o_no = #{o_no}
+	</update>
+	
 	
 </mapper>

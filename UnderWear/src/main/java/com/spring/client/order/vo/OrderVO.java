@@ -36,12 +36,6 @@ public class OrderVO extends BasketVO {
 	public void setO_comment(String o_comment) {
 		this.o_comment = o_comment;
 	}
-	public String getO_deliveryaddress() {
-		return o_deliveryaddress;
-	}
-	public void setO_deliveryaddress(String o_deliveryaddress) {
-		this.o_deliveryaddress = o_deliveryaddress;
-	}
 	public String getO_deliveryname() {
 		return o_deliveryname;
 	}
@@ -54,5 +48,12 @@ public class OrderVO extends BasketVO {
 	public void setO_deliveryphone(String o_deliveryphone) {
 		this.o_deliveryphone = o_deliveryphone;
 	}
+	public String getO_deliveryaddress() {
+		return o_deliveryaddress;
+	}
+	public void setO_deliveryaddress(String o_deliveryaddress) {
+		this.o_deliveryaddress = o_deliveryaddress;
+	}
+	
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.client.login.service.LoginService;
 import com.spring.client.login.vo.LoginVO;
+import com.spring.client.order.vo.OrderVO;
 import com.spring.client.review.service.ReviewService;
 import com.spring.client.review.vo.ReviewVO;
 import com.spring.common.file.FileUploadUtil;
@@ -87,7 +88,7 @@ public class ReviewController {
 	 * 글작성 폼
 	 *********************/
 	@RequestMapping(value="/writeForm.do")
-	public String writeForm(HttpSession session, ReviewVO rvo) {
+	public String writeForm(HttpSession session, @ModelAttribute("review") ReviewVO rvo) {
 		logger.info("writeForm 호출성공");
 		LoginVO login =(LoginVO)session.getAttribute("login");
 	      
@@ -148,7 +149,7 @@ public class ReviewController {
 	/*****************************************************************************************
 	 * 비밀 번호 확인
 	 *****************************************************************************************/
-	/*@ResponseBody
+	@ResponseBody
 	@RequestMapping(value="pwdConfirm.do", method=RequestMethod.POST, produces = "text/plain; charset=UTF-8")	// 성공,실패인 문자 사용 시 인코딩해야함.
 	public String pwdConfirm(ReviewVO rvo) {
 		logger.info("pwdConfirm 호출 성공");
@@ -165,13 +166,13 @@ public class ReviewController {
 		logger.info("result = " + result + " value = " + value);
 		
 		return value;	// 문자열(한글) 반환.
-	}*/
+	}
 	
 	/*****************************************************************************************
 	 * 글입력
 	 *****************************************************************************************/
 	@RequestMapping(value="/reviewInsert.do", method=RequestMethod.POST)
-	public String reviewInsert(ReviewVO rvo, Model model, HttpServletRequest request, HttpSession session) throws IllegalStateException, IOException {
+	public String reviewInsert(ReviewVO rvo, Model model, HttpServletRequest request, HttpSession session, OrderVO ovo) throws IllegalStateException, IOException {
 		logger.info("reviewInsert 호출성공");
 		
 		logger.info("fileName : " + rvo.getRv_imgfile().getOriginalFilename());
@@ -191,16 +192,16 @@ public class ReviewController {
 		int result = 0;
 		String url = "";
 		
-		
-		
 		if(!rvo.getRv_imgfile().isEmpty()) {
 			String q_img = FileUploadUtil.fileUpload(rvo.getRv_imgfile(), request, "review");		
 			rvo.setRv_img(q_img);
 		} else {
 			rvo.setRv_img("");
 		}
-		/*rvo.setC_id(login.getC_id());*/
+		rvo.setC_num(login.getC_num());
 		
+		
+		rvo.setO_no(ovo.getO_no());
 		rvo.setC_num(login.getC_num());
 		result = reviewService.reviewInsert(rvo);
 		
@@ -301,4 +302,6 @@ public class ReviewController {
 	         }
 	       }
 	   }
+	   
+	   
 }

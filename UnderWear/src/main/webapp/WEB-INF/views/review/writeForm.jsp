@@ -22,8 +22,8 @@ $(function() {
 		 if (!chkSubmit($('#rv_title'), "제목을")) return;
 		else if (!chkSubmit($('#rv_content'), "작성할 내용을")) return;
 		
-		/*  else if (!chkSubmit($("#q_imgfile"), "첨부파일을")) return;
-		else if (!chkFile($("q_imgfile"))) return; */
+		/*  else if (!chkSubmit($("#rv_imgfile"), "첨부파일을")) return;
+		else if (!chkFile($("rv_imgfile"))) return; */
 		else {
 			if ($("#rv_imgfile").val() != "") {
 				if (!chkFile($("#rv_imgfile")))
@@ -40,30 +40,64 @@ $(function() {
 </script>
 </head>
 <body>
-
 <div class="contentContainer">
 		<div class="contentTB">
 
 			<form id="f_writeForm" enctype="multipart/form-data">
-				<table id="boardWrite" class="table table-hover">
-					<colgroup>
-						<col width="17%" />
-						<col width="83%" />
-					</colgroup>
-					
-							
-					<tr class="form-group">
+			<input type="hidden" name="o_no" value="${review.o_no}" />
+			 <table id="boardWrite">
+						<colgroup>
+							<col width="17%" />
+							<col width="83%" />
+						</colgroup>
+						
+				<tr class="form-group">
 						<td><label for="exampleInputEmail1">글제목</label></td>
 						<td><input type="text" class="form-control" id="rv_title"
 							name="rv_title" /></td>
 					</tr>
+					
 					<tr class="form-group">
 						<td><label for="exampleInputPassword1">글 내용</label></td>
-						<td><textarea class="form-control" rows="7" id="rv_content"
-								name="rv_content"></textarea></td>
+						<td><script type="text/javascript"
+							src="//editor.cafe24.com/js/nneditor.js"></script> <script
+							type="text/javascript">
+								NN.Config.instanceID = "rv_content";
+								NN.Config.value = "①키:<br />\n②몸무게:<br />\n③구매사이즈:<br />\n④상품후기:<br>";
+								NN.Config.toolbarType = "simple";
+								NN.Config.height = 400;
+
+								var rv_content = new NNEditor();
+								rv_content.build();
+
+								if (typeof $Editor != "object") {
+									$Editor = {
+										_obj : {},
+
+										push : function(obj, id) {
+											this._obj[id] = obj;
+										},
+
+										get : function(id) {
+											return this._obj[id];
+										},
+
+										reset : function(id) {
+											this._obj[id].getText().value = "";
+											this._obj[id].getIFDoc().body.innerHTML = this._obj[id].Config.START_HTML;
+										},
+
+										contents : function(id, context) {
+											this._obj[id].getText().value = context;
+											this._obj[id].getIFDoc().body.innerHTML = this._obj[id].view
+													.parsing(2);
+										}
+									};
+								}
+								$Editor.push(rv_content, "rv_content");
+							</script> <input type="hidden" id="rv_content"
+						  value="rv_content" /></td>
 					</tr>
-					
-					
 					<tr class="form-group">
 						<td><label for="exampleInputFile">파일 업로드</label></td>
 

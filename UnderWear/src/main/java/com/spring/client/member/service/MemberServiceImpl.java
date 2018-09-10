@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.client.member.basket.vo.BasketVO;
 import com.spring.client.member.dao.MemberDao;
-import com.spring.client.member.rank.vo.RankVO;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.qna.dao.QnaDao;
+import com.spring.client.qna.vo.QnaVO;
+import com.spring.client.review.dao.ReviewDao;
 import com.spring.common.util.OpenCrypt;
 import com.spring.common.util.Util;
 
@@ -22,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDao memberDao;
 
+	@Autowired
+	private QnaDao qnaDao;
+	
+	@Autowired
+	private ReviewDao reviewDao;
+	
 	@Override
 	public int userIdConfirm(String c_id) { // 사용가능한 아이디인지 확인처리하는 것
 		int result;
@@ -94,6 +101,25 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDao.memberDelete(mvo);
 		result = memberDao.securityDelete(mvo.getC_id());
 		return result;
+	}
+
+	@Override
+	public List<MemberVO> memberList(MemberVO mvo) {
+		List<MemberVO> myList = null;
+		
+		if(mvo.getSearch() == "") {
+			mvo.setSearch("all"); //검색 대상인 all에 대한 정의
+		}
+		myList = memberDao.memberList(mvo); 
+		
+		return myList; //null 값이 들어가게 되면 데이터 출력불가
+	}
+
+	@Override
+	public List<QnaVO> customerBoardList(MemberVO mvo) {
+		List<QnaVO> qList = null;
+		qList = memberDao.customerBoardList(mvo);
+		return qList;
 	}
 
 

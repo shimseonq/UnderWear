@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.admin.member.dao.AdminMemberDao">
-	<select id="memberList" resultType="member"> 
+		<select id="memberList" resultType="member"> 
        /*마스킹 하기*/
  	   select c_num, c_birth, c_date, c_address,
        regexp_replace(c_id,'.','*',4) as c_id,
        regexp_replace(c_name,'.','*',4) as c_name,
-       regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,
-       concat('*****',substr(c_email,6,length(c_email))) as c_email
-       from customer
+       regexp_replace(c_phone,'(\d{3})\-(\d{3,4})\-(\d{4})','\1-****-\3') as c_phone,r.rk_rank,
+       concat('*****',substr(c_email,6,length(c_email))) as c_email 
+       from customer c inner join rank r on c.rk_no = r.rk_no
+       
+  <where>
+         <if test="search=='c_address'">
+            <![CDATA[ c_address LIKE '%'|| #{keyword} ||'%' ]]>
+         </if>
+         <if test="search=='c_name'">
+            <![CDATA[ c_name LIKE '%'|| #{keyword} ||'%' ]]>
+         </if>
+         <if test="search=='c_date'">
+            <![CDATA[ to_char(c_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
+         </if>
+         <if test="search=='rk_rank'">
+            <![CDATA[ rk_no LIKE '%'|| #{keyword} ||'%' ]]>
+         </if>
+         
+      </where>
+  
    </select>
-   
-   <!-- 게시물 상세 정보 -->
-   <select id="memberDetail" parameterType="member" resultType="member">
-      /* member - memberDetail*/
-	select c_num, c_name, c_phone, c_id, c_email ,c_birth,to_char (c_date,'YYYY-MM-DD HH24:MM:SS')
- 	as c_date,c_address from customer where c_num = #{c_num}
-    </select>
+
+ 
    
 </mapper> 

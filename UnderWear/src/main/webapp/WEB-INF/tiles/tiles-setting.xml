@@ -41,7 +41,7 @@
 		</definition>
 
 		<definition name="order/*" extends="content">
-			<put-attribute name="title" value="상품" />
+			<put-attribute name="title" value="주문" />
 			<put-attribute name="body" value="/WEB-INF/views/order/{1}.jsp" />
 		</definition>
 		
@@ -53,11 +53,13 @@
 		<definition name="login/*" extends="content">
 			<put-attribute name="title" value="로그인" />
 			<put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
+			<put-attribute name="footer" value="/WEB-INF/views/template/client/footer.jsp"/>
 		</definition>
 		
 		<definition name="qna/*" extends="content">
 			<put-attribute name="title" value="문의 게시판" />
 			<put-attribute name="body" value="/WEB-INF/views/qna/{1}.jsp" />
+			<put-attribute name="footer" value="/WEB-INF/views/template/client/footer.jsp"/>
 		</definition>
 		
 		<definition name="notice/*" extends="content">
@@ -73,5 +75,7 @@
 		 <definition name="reviewReply/*" extends="content">
 			<put-attribute name="body" value="/WEB-INF/views/review/reviewReply.jsp" />
 		</definition> 
+		
+		
 
 </tiles-definitions>

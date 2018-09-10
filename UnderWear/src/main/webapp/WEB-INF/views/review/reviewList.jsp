@@ -83,7 +83,7 @@ keyword = "<c:out value= '${data.keyword}' />";
 			// 상세 페이지로 이동하기 위해 form 추가 (id : detailForm)
 			$("#detailForm").attr({
 				"method" : "get",
-				"action" : "/review/pwdCheck.do"
+				"action" : "/review/reviewDetail.do"
 			})
 			$("#detailForm").submit();
 		})
@@ -172,7 +172,7 @@ keyword = "<c:out value= '${data.keyword}' />";
 						<c:forEach var="review" items="${reviewList}" varStatus="status">
 							<tr class="tac" data-num="${review.rv_no}" align="center">
 								<td>${review.rv_no}</td>
-								<td><span class="goDetail tal">비밀 글 입니다. </span>
+								<td><span class="goDetail tal">${review.rv_title} </span>
 								<c:if test="${review.rCount>0 }"><span class="rCount">[${review.rCount}]</span></c:if></td>
 								<td class="content">${review.c_name }</td>
 								<td>${review.rv_date}</td>
@@ -192,9 +192,5 @@ keyword = "<c:out value= '${data.keyword}' />";
 		<nav aria-label="Page navigation">
 			<ul class="pagination" id="pagination"></ul>
 		</nav>
-		
-		<!-- =============================== 글쓰기 버튼 출력 시작 =============================== -->
-		<div class="contentBtn">
-			<button type="button" class="btn btn-primary" id="insertFormBtn">글쓰기</button>
-		</div>
-	</div>
+			</div>
+
