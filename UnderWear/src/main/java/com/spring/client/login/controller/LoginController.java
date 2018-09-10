@@ -9,12 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.client.login.service.LoginService;
 import com.spring.client.login.vo.LoginVO;
+import com.spring.client.member.vo.MemberVO;
 
 @Controller
 /*@SessionAttributes("login")*/
@@ -101,5 +103,34 @@ public class LoginController {
 		session.invalidate(); //세션값 반납
 		session = request.getSession(true);
 		return "redirect:/";
+	}
+	
+	/**************************************************************
+	 * 로그인 폼 처리
+	 **************************************************************/
+	@RequestMapping(value = "/check.do", method = RequestMethod.GET)
+	public String checkForm() {
+		logger.info("check.do get 호출 성공");
+		return "login/check";
+	}
+	
+	
+	@ResponseBody	
+	@RequestMapping(value="/idCheck.do", method=RequestMethod.POST, produces="text/plain; charset=UTF-8")
+	public String idCheck(MemberVO lvo) {
+		logger.info("idCheck 호출 성공");
+		String value="";
+		
+		//아래 변수에는 입력 성공에 대한 상태값 저장(1 or 0)
+		MemberVO vo =  loginService.idCheck(lvo);
+		//return result+"";	//정수값 반환
+		
+		if(vo==null) {
+			value="아이디가 존재하지 않습니다.";
+		}else {
+			value=vo.getC_id();
+		}
+	
+		return value;	//문자열 (한글) 반환
 	}
 }

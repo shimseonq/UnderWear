@@ -30,7 +30,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Myeongjo|Nanum+Pen+Script|Noto+Sans+KR|Open+Sans+Condensed:300" rel="stylesheet">
+   
     <style type="text/css">
     body{
        font-family: 'Do Hyeon', sans-serif;
@@ -47,7 +47,22 @@
        h3{
           color:gray;        
        }
-
+       body{
+          
+       }
+       .jumbotron{
+          height: 300px;
+          padding:0px;
+          border-top: 1px solid lightgray;
+          border-bottom: 1px solid lightgray;
+          text-align:center;
+       }
+       .masthead, .row{
+          margin-bottom:100px;
+       }
+       h3{
+          color:gray;        
+       }
       .row{
          text-align:center;
          margin-bottom:2%;
@@ -61,6 +76,21 @@
       }
       .subject{
          font-size: 1.4em;
+      }
+      
+      .row{
+         text-align:center;
+         margin-bottom:2%;
+      }
+      .shop{
+         text-align:center;
+         margin:0px -5% 0px -5%;
+      }
+      .jumbotron{
+         overflow:auto;
+      }
+      .subject{
+         font-size: 1.1em;
       }
       
     </style>

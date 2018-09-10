@@ -21,7 +21,7 @@
          <script src="../js/html5shiv.js"></script>
       <![endif] -->
    
-      
+       
       
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/board.css" />
@@ -86,6 +86,10 @@
                         <td><textarea name="q_content" id="q_content">${updateData.q_content }</textarea></td>
                      </tr>
                      
+                        <tr>
+                        <td class="ac">작성자</td>
+                        <td><textarea >관리자</textarea></td>
+                     </tr>
                      <tr >
 							<td class="ac"><label for="exampleInputFile">파일 업로드</label></td>
 							<td colspan="3"><input type="file" id="q_imgfile" name="q_imgfile" />

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,12 +40,12 @@
          
         <script type="text/javascript">
 	        $(function() {
-	    		var value = "${updateData.img_image}";
+	    		var value = "${updateData.p_file}";
 	    		if(value != "") {
 	    			var img = $("<img>");		// 동적 생성
 	    			$("#imgView").hover(function() {
 	    				img.attr({
-	        				src:"/uploadStorage/product/${updateData.img_image}",
+	        				src:"/uploadStorage/product/${updateData.p_file}",
 	        				width:"400px",
 	        				height:"180px"
 	    			})
@@ -63,14 +62,12 @@
 	    		// 수정 버튼 클릭 시 처리 이벤트
 	    		$("#productUpdateBtn").click(function() {
 	    			// 입력값 체크
-	    			if(!chkSubmit($('#p_name'), "상품명")) return;
-	    			else if(!chkSubmit($("#p_inventory"), "재고량을")) return;
-	    			/* else if(!chkSubmit($('#pr_01'), "가격을")) return;
-	    			else if(!chkSubmit($("#"))) */
+	    			if(!chkSubmit($('#b_title'), "제목을")) return;
+	    			else if(!chkSubmit($('#b_content'), "작성할 내용을")) return;
 	    			else {
 	    				$("#f_writeForm").attr({
 	    					"method":"POST",
-	    					"action":"/admin/product/productUpdate.do"
+	    					"action":"/product/productUpdate.do"
 	    				});
 	    				$("#f_writeForm").submit();
 	    			}
@@ -78,75 +75,58 @@
 	    		
 	    		// 목록 버튼 클릭 시 처리 이벤트
 	    		$("#productListBtn").click(function() {
-	    			location.href="/admin/product/productList.do"
+	    			location.href="/product/productList.do"
 	    		})
 	    	})
         </script>
 		
 	</head>
 		<body>
-			<div class="contentContainer" >
-				<div class="contentTB">
-					<form id="f_writeForm" enctype="multipart/form-data">		<!-- enctype은 태그가 아닌 attr에서도 사용이 가능. 첨부파일 시 사용. -->
-						<input type="hidden" id="p_code" name="p_code" value="${updateData.p_code}" />
-						<input type="hidden" id="img_image" name="img_image" value="${updateData.img_image}" />
-						
-						<table id="boardWrite">
-							<colgroup>
-								<col width="17%" />
-								<col width="83%" />
-							</colgroup>
+			<div class="contentContainer">
+			<div class="contentTit"><h3>게시판 글수정</h3></div>
+			
+			<div class="contentTB">
+				<form id="f_writeForm" name="f_writeForm" enctype="multipart/form-data">
+					<input type="hidden" id="b_num" name="b_num" value="${updateData.b_num}" />
+					<input type="hidden" id="b_file" name="b_file" value="${updateData.b_file}" />
+					
+					<table>
+						<colgroup>
+							<col width="17%" />
+							<col width="33%" />
+							<col width="17%" />
+							<col width="33%" />
+						</colgroup>
+						<tbody>
 							<tr>
-								<td class="ac">대분류</td>
-								<td>${updateData.bigct_category}</td>
+								<td class="ac">글번호</td>
+								<td>${updateData.b_num}</td>
+								<td class="ac">작성일</td>
+								<td>${updateData.b_date}</td>
 							</tr>
 							<tr>
-								<td class="ac">소분류</td>
-								<td>${updateData.smallct_category}</td>
+								<td class="ac">작성자</td>
+								<td colspan="3">${updateData.b_name}</td>
 							</tr>
 							<tr>
-								<td class="ac vm">상품명</td>
-								<td><input type="text" name="p_name" id="p_name" value="${updateData.p_name}" /></td>
+								<td class="ac">글제목</td>
+								<td colspan="3"><input type="text" name="b_title" id="b_title" value="${updateData.b_title}" /></td>
 							</tr>
 							<tr>
-								<td class="ac vm">상품 재고량</td>
-								<td><input type="text" name="p_inventory" id="p_inventory" value="${updateData.p_inventory}" /></td>
+								<td class="ac vm">글내용</td>
+								<td colspan="3"><textarea name="b_content" id="b_content">${updateData.b_content}</textarea></td>
 							</tr>
 							<tr>
-								<td class="ac vm">상품 가격</td>
-								<td>${updateData.pr_01}</td>
+								<td class="ac">첨부파일</td>
+								<td colspan="3"><input type="file" id="file" name="file" />
+								<span id="imgView" >기존 이미지 파일명 : ${updateData.b_file}<span id="imgArea"></span></span></td>
 							</tr>
 							<tr>
-								<td class="ac vm">상품 컬러</td>
-								<td>${updateData.p_color}</td>
+								<td class="ac">비밀번호</td>
+								<td colspan="3"><input type="password" id="b_pwd" name="b_pwd" ><label>수정할 비밀번호를 입력해 주세요.</label></td>
 							</tr>
-							<tr>
-								<td class="ac vm">상품 사이즈</td>
-								<td>${updateData.p_size}</td>
-							</tr>
-							<tr>
-								<td class="ac vm">상품 성별</td>
-								<td>${updateData.p_gender}</td>
-							</tr>
-							<tr>
-								<td class="ac vm">상품 수정일</td>
-								<td><input type="date" name="p_date" id="p_date" /></td>
-							</tr>
-							<tr>
-								<td class="ac vm">상품 설명</td>
-								<td><textarea cols="100" rows="30" name="p_content" id="p_content" >${updateData.p_content}</textarea></td>
-							</tr>
-							<c:if test="${not empty imageUpdate}">
-								<c:forEach var="image" items="${imageUpdate}" varStatus="status">
-									<tr>
-										<td class="ac vm">상품 이미지</td>
-										<td colspan="5"><input type="file" id="files" name="files[]" />
-										<span id="imgView">기존 이미지 파일명 :${image.img_image}<span id="imgArea" ></span></span>
-										</td>								
-									</tr>
-								</c:forEach>
-							</c:if>
-						</table>
+						</tbody>
+					</table>
 				</form>
 			</div>
 			<div class="contentBtn">

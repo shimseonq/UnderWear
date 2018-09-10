@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.admin.image.service.AdminImageService;
@@ -104,7 +105,7 @@ public class AdminProductController {
 		AdminProductVO updateData = new AdminProductVO();
 		updateData = adminProductService.productDetail(pvo);
 		
-		List<AdminImageVO> imageUpdate = adminProductService.imageUpdate(pvo);	
+		List<AdminImageVO> imageUpdate = adminProductService.productDetailImage(pvo);	
 		model.addAttribute("imageUpdate", imageUpdate);
 
 		model.addAttribute("updateData", updateData);
@@ -119,14 +120,14 @@ public class AdminProductController {
 	 * @return
 	 ****************************************************************/	
 	@ResponseBody
-	@RequestMapping(value="/product/bigCategory.do", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
+	@RequestMapping(value="/product/bigCategory.do", method = RequestMethod.GET, produces="text/plain; charset=UTF-8")
 	public String bigCategory(ObjectMapper mapper) {
 		String bigcate = adminProductService.bigCategory(mapper);
 		return bigcate;
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/product/smallCategory.do", method = RequestMethod.GET, produces = "text/plain; carset=UTF-8")
+	@RequestMapping(value="/product/smallCategory.do", method = RequestMethod.GET, produces="text/plain; charset=UTF-8")
 	public String smallCategory(@RequestParam("bigct_no") int bigct_no, ObjectMapper mapper) {
 		String bigcate = adminProductService.smallCategory(bigct_no, mapper);
 		return bigcate;
@@ -135,16 +136,17 @@ public class AdminProductController {
 	/******************************************************************
 	 * 글 수정 
 	 ******************************************************************/
-	@RequestMapping(value="/product/productUpdate.do", method=RequestMethod.POST, produces = "text/plain; carset=UTF-8")
+	@RequestMapping(value="/product/productUpdate.do", method=RequestMethod.POST)
 	public String productUpdate(AdminProductVO pvo, Model model, HttpServletRequest request) throws IOException {
 		logger.info("adminProductUpdate 호출 성공");
 
 		int result = 0;
 		String url = "";
-		String img_image = "";
+		//String img_image = "";
 
 		logger.info("================ p_code = " + pvo.getP_code());
 		result = adminProductService.productUpdate(pvo, request);
+		
 
 		if (result == 1) {
 			url = "productDetail.do?p_code="+pvo.getP_code();
@@ -161,7 +163,55 @@ public class AdminProductController {
 
 		return "product/updateForm";*/
 	}
+	@RequestMapping(value="/product/imageUpdate.do", method=RequestMethod.POST)
+	public String imageUpdate(AdminProductVO pvo, Model model, HttpServletRequest request) throws IOException {
+		logger.info("adminImageUpdate 호출 성공");
+		
+		int result = 0;
+		String url = "";
+		String img_image = "";
+		MultipartFile attachFile = null;
+		List<MultipartFile> files = pvo.getFiles();
+		
+		//if(!pvo.getFiles().isEmpty()) {
+			//logger.info("================= file = " + pvo.getFile().getOriginalFilename());
+			
+		
+		logger.info("================= file = " + pvo.getImg_image());
+			// 기존 파일 삭제 처리
+			if(pvo.getImg_image().isEmpty()) {
+				FileUploadUtil.fileDelete(pvo.getImg_image(), request);
+			}
+			
+			if(files != null && files.size() > 0) {
+				logger.info("files : " + files.size());
+				for (int i = 0; i < files.size(); i++ ) {
+					attachFile = files.get(i);
+					img_image = FileUploadUtil.fileUpload(attachFile, request, "product");
+					logger.info(img_image);
+				}
+				pvo.setImg_image(img_image);
+				result = adminProductService.imageUpdate(pvo);
+			}
+			// 다시 파일 업로드 실행
+			//img_image = FileUploadUtil.fileUpload(pvo.getFile(), request, "board");
+			
+			
+			/*} else {
+			logger.info("첨부파일 없음");
+			bvo.setB_file("");
+		}*/
+		
+		if (result == 1) {
+			url = "productDetail.do?p_code="+pvo.getP_code();
+		} else {
+			url = "updateForm.do?p_code="+pvo.getP_code();
+		}
 
+		//model.addAttribute("updateData", result);
+		return "redirect:"+url;
+		
+	}
 	/************************************************************
 	 * 상세 페이지 출력 폼
 	 * @param pvo
@@ -191,25 +241,48 @@ public class AdminProductController {
 	/*****************************************************************
 	 * 글 삭제 폼
 	 *****************************************************************/
-	@RequestMapping(value="/product/deleteForm.do")
+	@RequestMapping(value="/product/productDelete.do", method=RequestMethod.GET)
 	public String ProductDelete(AdminProductVO pvo, HttpServletRequest request) throws IOException {
-		logger.info("adminProductDelete 호출 성공");
+		logger.info("productDelete 호출 성공");
+		
+		logger.info("p_code = " + pvo.getP_code());
+		
+		int result = 0;
+		String url = "";
+		
+		result = adminProductService.productDelete(pvo);
+		
+		if (result == 1) {
+			url = "productList.do";
+		} else {
+			url = "productDetail.do?p_code=" + pvo.getP_code();
+		}
+		
+		return "redirect:" + url;
+	}
+
+	/*@RequestMapping(value="/product/imageDelete.do", method=RequestMethod.POST)
+	public String imageDelete(AdminProductVO pvo, HttpServletRequest request) throws IOException {
+		logger.info("adminImageDelete 호출 성공");
 
 		int result = 0;
 		String url = "";
+		String img_image = "";
+		MultipartFile attachFile = null;
+		List<MultipartFile> files = pvo.getFiles();
 
-		if(!pvo.getImg_image().isEmpty()) {
+		if(pvo.getImg_image().isEmpty()) {
 			FileUploadUtil.fileDelete(pvo.getImg_image(), request);
+
 		}
+		result = adminProductService.imageDelete(pvo);
 
-		result = adminProductService.productDelete(pvo);
-
-		if(result == 1) {
-			url = "/admin/product/productList.do";
+		if (result == 1) {
+			url = "productDetail.do?p_code="+pvo.getP_code();
 		} else {
-			url = "/admin/product/productDetail.do?p_code="+pvo.getP_code();
+			url = "updateForm.do?p_code="+pvo.getP_code();
 		}
-
 		return "redirect:"+url;
-	}
+	}*/
+
 }

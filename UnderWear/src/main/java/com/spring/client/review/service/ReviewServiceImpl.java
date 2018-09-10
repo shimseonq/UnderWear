@@ -59,6 +59,8 @@ public class ReviewServiceImpl implements ReviewService{
 		result = reviewDao.pwdConfirm(rvo);
 		return result;
 	}
+	
+	
 
 	@Override
 	public int reviewInsert(ReviewVO rvo) {

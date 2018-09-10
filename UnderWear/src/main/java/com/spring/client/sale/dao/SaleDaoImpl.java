@@ -12,23 +12,16 @@ import com.spring.client.sale.vo.SaleVO;
 @Repository
 public class SaleDaoImpl implements SaleDao {
 
-	@Autowired
-	private SqlSession session;
+   @Autowired
+   private SqlSession session;
 
-	@Override
-	public int saleInsert(SaleVO svo) {
-		return session.insert("saleInsert");
-	}
+   @Override
+   public int saleInsert(SaleVO svo) {
+      return session.insert("saleInsert");
+   }
 
-	@Override
-	public List<SaleVO> adminSaleList(SaleVO svo) {
-		return session.selectList("adminSaleList", svo);
-	}
-
-	@Override
-	public int sumpay(String c_id) {
-		return session.selectOne("sumpay",c_id);
-	}
-
-	
+   @Override
+   public List<SaleVO> adminSaleList(SaleVO svo) {
+      return session.selectList("adminSaleList", svo);
+   }
 }

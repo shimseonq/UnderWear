@@ -33,6 +33,11 @@
                             <a href="/">Main Page</a>
                         </li>
                         <li>
+                            <a href="/"> Main Page</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 회원 관리<span class="fa arrow"></span></a>
+
                             <a > 회원 관리</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -41,12 +46,15 @@
                                 <li>
                                     <a href="/admin/member/rankupdate.do">등급 정보</a>
                                 </li>
+                                
                             </ul>
                          </li>
                         <li>
                             <a> 상품 관리</a>
-                            <ul class="nav nav-second-level">
-                               <li>
+                            <ul class="nav nav-second-level">                            
+
+                                <li>
+
                                     <a href="/admin/product/productList.do">상품 정보</a>
                                 </li>
                                 <li>
@@ -80,10 +88,14 @@
                             <a> Sample Pages</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a href="/admin/order/orderList.do">주문관리</a>
                                 </li>
                                 <li>
+
                                     <a href="/admin/order/orderList.do">배송 조회</a>
+
+                                    <a href="/admin/sale/saleList.do">판매관리</a>
+
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

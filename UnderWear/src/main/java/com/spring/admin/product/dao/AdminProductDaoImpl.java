@@ -46,8 +46,8 @@ public class AdminProductDaoImpl implements AdminProductDao {
 	
 	// 소분류 구현
 	@Override
-	public List<AdminProductVO> scategory() {		/*int bigct_no*/
-		return session.selectList("category");		/*,bigct_no*/
+	public List<AdminProductVO> scategory(int bigct_no) {		/*int bigct_no*/
+		return session.selectList("category",bigct_no);		/*,bigct_no*/
 	}
 
 	// 이미지 입력 구현
@@ -76,8 +76,26 @@ public class AdminProductDaoImpl implements AdminProductDao {
 
 	// 이미지 업데이트 구현
 	@Override
-	public List<AdminImageVO> imageUpdate(AdminProductVO ivo) {
-		return session.selectOne("imageUpdate", ivo);
+	public int imageUpdate(AdminProductVO ivo) {
+		return session.update("imageUpdate", ivo);
+	}
+
+	// 상품 정보 삭제
+	@Override
+	public int productDelete(AdminProductVO pvo) {
+		return session.delete("productDelete", pvo);
+	}
+
+	// 상품 정보 이미지 삭제
+	@Override
+	public int imageDelete(AdminProductVO pvo) {
+		return session.delete("imageDelete", pvo);
+		
+	}
+	
+	@Override
+	public int statusUpdate(AdminProductVO pvo) {
+		return session.update("statusUpdate", pvo);
 	}
 
 }

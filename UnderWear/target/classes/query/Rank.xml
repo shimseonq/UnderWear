@@ -19,5 +19,6 @@
 		inner join customer on rank.rk_no = customer.rk_no
 		where c_id = #{c_id}
 	</select>
+	
 
 </mapper>

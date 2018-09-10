@@ -17,7 +17,7 @@ public interface AdminProductDao {
 	
 	// category
 	public List<AdminProductVO> bcategory();
-	public List<AdminProductVO> scategory();		/*int bigct_no*/
+	public List<AdminProductVO> scategory(int bigct_no);		/*int bigct_no*/
 
 	// Product Detail
 	public AdminProductVO productDetail(AdminProductVO pvo);
@@ -25,9 +25,13 @@ public interface AdminProductDao {
 	
 	//Product Update
 	public int productUpdate(AdminProductVO pvo);
-	public List<AdminImageVO> imageUpdate(AdminProductVO ivo);
+	public int imageUpdate(AdminProductVO ivo);
 	
-
+	// Product Delete
+	public int productDelete(AdminProductVO pvo);
+	public int imageDelete(AdminProductVO pvo);
+	
+	public int statusUpdate(AdminProductVO pvo);
 
 	
 	

@@ -145,43 +145,31 @@
     				$("#sumdiv").hide();
     			}
     		});
+    		
+    		/* 수정 버튼 클릭 시 처리 이벤트 */
+     		$("#updateFormBtn").click(function() {
+     			location.href="/admin/product/updateForm.do";
+     		});
     		/* $("#detailForm").attr({
 				"method":"post",
 				"action":"/order/orderForm.do"
 			});
 			$("#detailForm").submit(); */
     		// 구매 버튼 클릭시 구매페이지로
-    	 	$("#orderFormBtn").click(function() {
-    			/* var p_code = $(this).parents("tr").attr("data-num");
-    			$("#p_code").val(p_code); */
-    			if(c_id!=""){
-    			console.log("상품코드 : " + $("#p_code").val());
-    			 
-    			var insertUrl = "/mypage/basketInsert.do";
-    			$.ajax({
-    				url : insertUrl,
-    				type : "post",
-    				headers : {
-    					"Content-Type" : "application/json",
-    					"X-HTTP-Method-Override" : "POST"
-    				},
-    				dataType : "text",
-    				data : $("#detailForm").serialize(),
-    				error : function(){
-    					alert('시스템 오류 입니다 . 현수형에게 문의하세요');
-    				},
-    				success : function(resultData){
-    					if(resultData == "SUCCESS"){
-    						alert("장바구니에 등록되었습니다.");
 
-    						location.href="/order/orderForm.do";
-    					}
-    				}
-    			})
-    			}else{
-    	            location.href="/login/login.do";
-    	         }
-    		}); 
+    		
+    		$("#orderFormBtn").click(function() {
+                if(c_id!=""){
+                $("#detailForm").attr({
+                   "method":"get",
+                   "action":"/order/orderForm.do"
+                });
+                
+                 $("#detailForm").submit();
+               }else{
+                  location.href="/login/login.do";
+               }
+             }); 
     		
     		$("#basketBtn").click(function() {
     			$("#detailForm").attr({
@@ -304,6 +292,7 @@
 </head>
 
       <body>
+      
       <form name="detailForm" id="detailForm" method="get">
          <script type="text/javascript"><!--
          google_ad_client = "ca-pub-2783044520727903";
@@ -422,7 +411,7 @@
     	<img alt="" src="/resources/image/test/test26.jpg"> -->
     	<img alt="" src="/resources/image/${detail.p_file }">
     </div>	
-         
+      <input type="button" id="updateFormBtn" value="수정" />   
          </form>
       </body>
       <script type="text/javascript">

@@ -27,29 +27,33 @@
 <script type="text/javascript">
 	$(function() {
 		// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
-		$(".goAdminDetail").click(function() {
+		$(".goDetail").click(function() {
 			var p_code = $(this).parents("tr").attr("data-num");
 			$("#p_code").val(p_code);
 			console.log("상품코드 : " + p_code);
 			// 상세 페이지로 이동하기 위해 form 추가 (id : detailForm)
 			$("#detailForm").attr({
 				"method" : "get",
-				"action" : "/admin/product/productDetail.do"
+				"action" : "/product/productDetail.do"
 			})
 			$("#detailForm").submit();
 		})
 	})
 </script>
 
+
 </head>
 <body>
+
+
 	<!-- =============================== 검색 하는 부분 =============================== -->
 	<div id="productSearch">
 		<form id="f_search" name="f_search">
 			<table summary="검색">
 				<colgroup>
 				<tr>
-					<td id="btd1"><label>검색 조건</label> <select id="search" name="search">
+					<td id="btd1"><label>검색 조건</label> <select id="search"
+						name="search">
 							<option value="all">전체</option>
 							<option value="p_code">상품코드</option>
 							<option value="p_name">상품명</option>
@@ -78,7 +82,6 @@
 				<td>성별</td>
 				<td>가격</td>
 				<td>소분류</td>
-				<td>상품 이미지</td>
 			</tr>
 
 		</thead>
@@ -89,7 +92,7 @@
 					<c:forEach var="product" items="${productList}" varStatus="status">
 						<tr class="tac" data-num="${product.p_code}">
 							<td>${product.p_code}</td>
-							<td class="goAdminDetail tal">${product.p_name}</td>
+							<td class="goDetail tal">${product.p_name}</td>
 							<td>${product.p_inventory}</td>
 							<td>${product.p_color}</td>
 							<td>${product.p_size}</td>
@@ -97,7 +100,6 @@
 							<td>${product.p_gender}</td>
 							<td>${product.pr_01}</td>
 							<td>${product.smallct_category}</td>
-							<td>${product.img_image}</td>
 						</tr>
 					</c:forEach>
 				</c:when>

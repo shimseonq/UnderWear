@@ -67,7 +67,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 	@Override
 	public String smallCategory(int bigct_no, ObjectMapper mapper) {
 		String listData = "";
-		List<AdminProductVO> bigcate = adminProductDao.scategory();		/*bigct_no*/
+		List<AdminProductVO> bigcate = adminProductDao.scategory(bigct_no);		/*bigct_no*/
 		try {
 			listData = mapper.writeValueAsString(bigcate);
 		} catch (JsonProcessingException e) {
@@ -139,12 +139,12 @@ public class AdminProductServiceImpl implements AdminProductService {
 	public int productUpdate(AdminProductVO pvo, HttpServletRequest request) {
 		int result = 0;
 		
-		try {
+		/*try {
 			MultipartFile attachFile = null;
 			List<MultipartFile> files = pvo.getFiles();
 			String img_image[] = null;
 			
-			/*logger.info("files : " + files.size());*/
+			logger.info("files : " + files.size());
 			if(files != null && files.size() > 0) {
 				logger.info("files : " + files.size());
 				img_image = new String[files.size()];
@@ -156,9 +156,9 @@ public class AdminProductServiceImpl implements AdminProductService {
 				}
 			}
 			
-			pvo.setP_code(adminProductDao.productNumber());
+			pvo.setP_code(adminProductDao.productNumber());*/
 			result = adminProductDao.productUpdate(pvo);
-			if (img_image != null) {
+			/*if (img_image != null) {
 				for (int i = 0; i < img_image.length; i++) {
 					pvo.setImg_image(img_image[i]);
 					adminProductDao.imageUpdate(pvo);
@@ -167,17 +167,10 @@ public class AdminProductServiceImpl implements AdminProductService {
 		} catch(Exception e) {
 			e.printStackTrace();
 			result = 0;
-		}
+		}*/
 		
 		return result;
 	} 
-	
-
-	@Override
-	public int productDelete(AdminProductVO pvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	// 글 상세 구현.
 	@Override
@@ -188,10 +181,11 @@ public class AdminProductServiceImpl implements AdminProductService {
 	}
 
 	@Override
-	public List<AdminImageVO> imageUpdate(AdminProductVO ivo) {
-		List<AdminImageVO> image = null;
-		image = adminProductDao.productDetailImage(ivo);
-		return image;
+	public int imageUpdate(AdminProductVO ivo) {
+		int result = 0;
+		result = adminProductDao.imageUpdate(ivo);
+		
+		return result;
 	}
 
 	@Override
@@ -200,5 +194,29 @@ public class AdminProductServiceImpl implements AdminProductService {
 		image = adminProductDao.productDetailImage(pvo);
 		return image;
 	}
-	
+
+	@Override
+	public int productDelete(AdminProductVO pvo) {
+		int result = 0;
+		try {
+			result = adminProductDao.statusUpdate(pvo);
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
+
+	@Override
+	public int imageDelete(AdminProductVO pvo) {
+		int result = 0;
+		try {
+			result = adminProductDao.imageDelete(pvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
+
 }

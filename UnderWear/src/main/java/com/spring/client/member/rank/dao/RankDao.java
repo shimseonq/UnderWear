@@ -14,6 +14,5 @@ public interface RankDao {
 	public String myRank(RankVO rvo);
 
 	public double discount(String c_id);
-	
-	
+
 }

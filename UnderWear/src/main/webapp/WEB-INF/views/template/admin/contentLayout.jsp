@@ -29,6 +29,9 @@
 
     <!-- Custom Fonts -->
     <link href="/resources/include/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+     <!-- jQuery -->
+    <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
   </head>
   <body>
 
@@ -36,6 +39,10 @@
        <tiles:insertAttribute name="header" />
     </nav>
 
+	<br />
+		<br />
+		<br />
+		<br />
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -50,8 +57,7 @@
       </div>
     </div>
 
-     <!-- jQuery -->
-    <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>

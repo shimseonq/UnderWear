@@ -80,13 +80,13 @@
               		}
               	});
                	
-              	 /* 비밀 번호 확인 버튼 클릭 시 처리 이벤트 */
+                /* 비밀 번호 확인 버튼 클릭 시 처리 이벤트 */
                 $("#pwdBtn").click(
                       function() {
-                    	  if ($("#c_pwd").val().replace(/\s/g, "") == "") {
-                              $("#msg").text("비밀번호를 입력해 주세요.").css("color", "red");
-                              $("#c_pwd").focus();
-                              return;
+                         if ($("#c_pwd").val().replace(/\s/g, "") == "") {
+                            $("#msg").text("비밀번호를 입력해 주세요.").css("color", "red");
+                            $("#c_pwd").focus();
+                            return;
                          } else {
                             console.log("확인");
                             $.ajax({

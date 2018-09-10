@@ -23,7 +23,7 @@ Logger logger  = Logger.getLogger(AdminNoticeController.class);
 	
 	@Autowired
 	private AdminNoticeService adminNoticeService;
-		
+	
 	/***********************************************************************
 	 * 글목록 구현하기
 	 ************************************************************************/
@@ -66,7 +66,7 @@ Logger logger  = Logger.getLogger(AdminNoticeController.class);
 	public String writeForm() {
 		logger.info("writeForm 호출성공");
 		
-		return "admin/notice/writeForm";
+		return "/admin/notice/writeForm";
 	}
 	
 	/*****************************************************************************************

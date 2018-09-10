@@ -19,12 +19,5 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		mList = adminMemberDao.memberList(mvo);
 		return mList;
 	}
-	
-	@Override
-	public List<MemberVO> memberRank(MemberVO mvo) {
-		List<MemberVO> mList=null;
-		mList = adminMemberDao.memberRank(mvo);
-		return mList;
-	}
 
 }

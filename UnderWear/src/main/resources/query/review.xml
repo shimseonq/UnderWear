@@ -75,8 +75,9 @@
         			where rv_no = #{rv_no}
 					
 	</select> 
-	<!-- 게시물 입력  -->
-	<insert id="reviewInsert" parameterType="review">
+	
+	   <!-- 게시물 입력  -->
+   <insert id="reviewInsert" parameterType="review">
    
    <!-- <selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
         select o_no from orders where m_no = #{m_no}

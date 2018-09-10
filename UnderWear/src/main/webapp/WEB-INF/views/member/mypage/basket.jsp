@@ -2,28 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %> 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
     <title>마이페이지</title>
 
     <!-- Bootstrap core CSS -->
-<!--    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>  -->
-    <!-- <link href="/resources/include/css/mainheader.css" rel="stylesheet"/> -->
+    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-  <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
+     <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,15 +20,20 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->   
     
-  <!--   <style type="text/css">
+    
+    <style type="text/css">
        .jumbotron{
           height: 300px;
           border: 2px solid lightgray;
           border-radius: 10px;
           padding:0px;
+          text-align:center;
+       }
+       .container{
+          text-align:center;
        }
        .masthead, .row{
-          margin-bottom:20px;
+          margin-bottom:100px;
        }
        h3{
           color:gray;        
@@ -49,81 +43,84 @@
          text-align:center;
          margin:0px;
       }
+     
     </style>
- -->
+
 <script type="text/javascript">
 var checkB = [];
 
    $(function(){      
       $("#pay").click(function(){
          boxForm();
+         if($("#b_number").val() == ""){
+            alert("결제할 품목이 없습니다.");
+         }else{
             $("#b_data").attr({
             "method" : "post",
             "action" : "/order/orderForm.do"
             });
          
          $("#b_data").submit();
-         });
+         }
+      });
       
      
-	$("#cancel").click(function() {
-			$.ajax({
-				url : "/mypage/basket.do",
-				type : "get",
-				data : "b_no=" + $("#item").val(), //받아올 data 값, queryString
-				dataType : "text", //응답받는 데이터 타입
-				error : function() {
-					alert("시스템 오류입니다. 관리자에게 문의하세요");
-				},
-				success : function(resultData) {
-					if (resultData == 0) {
-						alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
-						return;
-					}else {
-						confirm("물품을 삭제하시겠습니까?");							
-						boxForm();
-						if($("#b_number").val()!=""){
-							$("#b_data").attr({
-								"method" : "get",
-								"action" : "/mypage/basketDelete.do"
-							});
-							console.log($("#b_number").val());
-							$("#b_data").submit();
-							alert("삭제가 완료 되었습니다.");
-						}else{
-							console.log($("#b_number").val());
-							alert("삭제할 물품이 없습니다.");	
-						}
-					}
-				}
-			})
-		});
-	});
+   $("#cancel").click(function() {
+         $.ajax({
+            url : "/mypage/basket.do",
+            type : "get",
+            data : "b_no=" + $("#item").val(), //받아올 data 값, queryString
+            dataType : "text", //응답받는 데이터 타입
+            error : function() {
+               alert("시스템 오류입니다. 관리자에게 문의하세요");
+            },
+            success : function(resultData) {
+               if (resultData == 0) {
+                  alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
+                  return;
+               }else {
+                  confirm("물품을 삭제하시겠습니까?");                     
+                  boxForm();
+                  if($("#b_number").val()!=""){
+                     $("#b_data").attr({
+                        "method" : "get",
+                        "action" : "/mypage/basketDelete.do"
+                     });
+                     console.log($("#b_number").val());
+                     $("#b_data").submit();
+                     alert("삭제가 완료 되었습니다.");
+                  }else{
+                     console.log($("#b_number").val());
+                     alert("삭제할 물품이 없습니다.");   
+                  }
+               }
+            }
+         })
+      });
+   });
 
-	function boxForm() {
-		var values = document.getElementsByName("item");
-		for (var i = 0; i < values.length; i++) {
-			if (values[i].checked) {
-				checkB.push(values[i].value);
-			}
-		}
-		var output = "";
-		for (var i = 0; i < checkB.length; ++i) {
-			output += checkB[i];
-			//if(i<checkB.length-1) output+=","
-			//   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
-		}
+   function boxForm() {
+      var values = document.getElementsByName("item");
+      for (var i = 0; i < values.length; i++) {
+         if (values[i].checked) {
+            checkB.push(values[i].value);
+         }
+      }
+      var output = "";
+      for (var i = 0; i < checkB.length; ++i) {
+         output += checkB[i];
+         //if(i<checkB.length-1) output+=","
+         //   output = output + "<input type='hidden' name='b_no' value='"+checkB[i]+"'/>"; 
+      }
 
-		$("#b_number").val(checkB);
-		//console.log($("#b_number").val());
-		//return output;
-	}
+      $("#b_number").val(checkB);
+      //console.log($("#b_number").val());
+      //return output;
+   }
 </script>
 </head>
-
   <body>
-      <h3>My page</h3>
-       
+      <h3>My page</h3>       
          
       <div class="masthead">
         <nav>
@@ -140,7 +137,7 @@ var checkB = [];
       <h3>장바구니 내역</h3>
       <div class="jumbotron">
     <form name="b_data" id="b_data">
-    	<input type='hidden' name='b_number' id="b_number" />
+       <input type='hidden' name='b_number' id="b_number" />
      <!--   <script >document.write(b_noCheck);</script> -->
     </form> 
             <table class="table table-condensed">
@@ -185,29 +182,7 @@ var checkB = [];
        <input type="button" class="btn btn-lg btn-success" id="cancel" name="cancel" value="삭제"/>
       <input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
    </div>
-   
-      <!--Example row of columns
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Safari bug warning!</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">배송조회 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">결제완료 &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">리뷰작성 &raquo;</a></p>
-        </div>
-      </div>
-
-    </div> --> <!-- /container -->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
-</html>
