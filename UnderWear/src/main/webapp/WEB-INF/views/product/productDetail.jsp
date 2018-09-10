@@ -313,16 +313,16 @@
       <div class="large-12 column"><span id="imgTitle">UnderWear</span></div>
       <div class="large-5 column">
         <div class="xzoom-container">
-          <img class="xzoom" id="xzoom-default" src="/resources/image/preview/${main.img_main}" xoriginal="/resources/image/original/${main.img_main}" />
+          <img class="xzoom" id="xzoom-default" src="/resources/image/preview/${detail.p_image}" xoriginal="/resources/image/original/${detail.p_image}" />
           <div class="xzoom-thumbs">
-            <a href="/resources/image/original/${main.img_main}"><img class="xzoom-gallery" width="80" src="/resources/image/thumbs/${main.img_main}"  xpreview="/resources/image/preview/${main.img_main}" title="The description goes here"></a>
-            <a href="/resources/image/original/02_o_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/02_o_car.jpg" title="The description goes here"></a>
-            <a href="/resources/image/original/03_r_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/03_r_car.jpg" title="The description goes here"></a>
-            <a href="/resources/image/original/04_g_car.jpg"><img class="xzoom-gallery" width="80" src="/resources/image/preview/04_g_car.jpg" title="The description goes here"></a>
+            <a href="/resources/image/original/${detail.p_image}"><img class="xzoom-gallery" width="80" src="/resources/image/thumbs/${detail.p_image}"  xpreview="/resources/image/preview/${detail.p_image}" title="The description goes here"></a>
+            <a href="/resources/image/original2/${detail.p_image}"><img class="xzoom-gallery" width="80" src="/resources/image/preview2/${detail.p_image}" title="The description goes here"></a>
+            <a href="/resources/image/original3/${detail.p_image}"><img class="xzoom-gallery" width="80" src="/resources/image/preview3/${detail.p_image}" title="The description goes here"></a>
+            <a href="/resources/image/original4/${detail.p_image}"><img class="xzoom-gallery" width="80" src="/resources/image/preview4/${detail.p_image}" title="The description goes here"></a>
           </div>
-          
-        </div>  
-              
+           
+        </div>   
+               
       </div>
       <div class="large-7 column">
       	<div id="inforDiv"><span id="infor">[해당 이미지에 마우스를 올리면 사진이 커집니다]</span></div>

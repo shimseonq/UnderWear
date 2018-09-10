@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
 <%@ page trimDirectiveWhitespaces="true" %> 
 
 <!DOCTYPE html>
@@ -28,7 +29,8 @@
 </head>
 <body>
   <!-- <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k"> -->
-    <tiles:insertAttribute name="header" />
+ 
+
 <!--   </section> -->
     
 
@@ -195,7 +197,7 @@
             </div>
         </div>
     </div>
-</section>      <!-- 작은 메인단 -->
+</section>		<!-- 작은 메인단 -->
 
 
 <section class="cid-r2agbUmdRK" id="social-buttons3-15"> <!-- body (main) -->

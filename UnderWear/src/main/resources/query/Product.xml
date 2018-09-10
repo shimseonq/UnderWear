@@ -10,7 +10,7 @@
 		order by p_code desc
 	</select>
 	
-	<!-- 상품 등록 -->
+	<!-- 상품 등록 --> 
 	<insert id="productInsert" parameterType="product">
       /* Product - productInsert */
       INSERT INTO PRODUCT
@@ -19,11 +19,11 @@
         (product_seq.nextval, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no})
    </insert>
 	
-	<!-- 상품 상세 조회 -->
+	<!-- 상품 상세 조회 --> 
 	<select id="productDetail" parameterType="product" resultType="product" >
 		/* Product - productDetail */
 		<!-- ,image.img_image -->
-		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category
+		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,p_image
 		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no  where product.p_code =#{p_code}
 	</select>
 	<select id="productDetailImage" parameterType="product" resultType="product">
@@ -51,7 +51,10 @@
 	<select id="productThumbnail" parameterType="product" resultType="product" >	<!-- id로 구분한다. -->
 		/* Product - productThumbnail */		<!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
 		select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category,p_image
-from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no   where p_gender = #{p_gender}
+from product 
+inner join price on product.pr_no = price.pr_no   
+inner join smallcategory on product.smallct_no = smallcategory.smallct_no   
+where p_gender = #{p_gender}
 		
 		order by p_code desc
 	</select>

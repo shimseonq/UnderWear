@@ -2,5 +2,4 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<tiles:insertDefinition name="intro" />
-<!DOCTYPE html>
+<tiles:insertDefinition name="content" />

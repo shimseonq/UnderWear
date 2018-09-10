@@ -16,7 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/resources/include/css/mainheader.css" rel="stylesheet"/>
+    
 
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
@@ -139,7 +139,7 @@ var checkB = [];
                         <c:forEach var="basket" items="${basketList}" varStatus="status">
                            <tr class="tac" data-num="${basket.b_no}"  >
                               <td><input type="checkbox" name="item" id="item" value="${basket.b_no}"/></td>
-                              <td><img alt="" src="/resources/image/${basket.img_image }"></td>
+                              <td><img alt="" src="/resources/image/${basket.p_image }"></td>
                               <td>${basket.p_name}</td>
                               <td>${basket.pr_01}</td>
                               <td>${basket.b_count}</td>
