@@ -128,7 +128,7 @@ function goPage() {
 
 </head>
 <body>
-<h2 class="sub-header">관리자 게시판 관리  페이지</h2>
+
 
 <div class="table-responsive">
    <div class="well">
@@ -165,7 +165,7 @@ function goPage() {
 
 <div class="titleAreaBoard">
 		<h2>
-			<span>관리자 공지사항</span>
+			<span>공지사항</span>
 		</h2>
 	</div>
 
