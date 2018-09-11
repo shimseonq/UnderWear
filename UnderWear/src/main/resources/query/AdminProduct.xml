@@ -6,10 +6,7 @@
 		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category, bigcategory.bigct_category
 		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no
 		inner join bigcategory on product.smallct_no = smallcategory.smallct_no
-		where p_status != 0
-			 
-			
-			
+		
 		<where>
 			<if test="search=='p_code'">
 				<![CDATA[ p_address LIKE '%'|| #{keyword} ||'%' ]]>
@@ -21,6 +18,7 @@
 				<![CDATA[ to_char(p_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
 			</if>
 		</where>
+		and p_status != 0
 		
 		order by p_code desc
 		

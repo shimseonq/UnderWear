@@ -11,7 +11,7 @@
         		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
         		 <meta http-equiv="refresh" content="3; url=/login/logout.do">  <!-- 8초후 원래화면의 루트로 새로고침하는 meta정의 -->
         		<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정.    initial-scale는 초기비율 -->
-         
+          
         		<!-- 모바일 웹 페이지 설정 -->
         		<link rel="shortcut icon" href="../image/icon.png" />
         		<link rel="apple-touch-icon" href="../image/icon.png" />

@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.client.member.dao.MemberDao;
 import com.spring.client.member.vo.MemberSecurity;
 import com.spring.client.member.vo.MemberVO;
+import com.spring.client.qna.dao.QnaDao;
 import com.spring.client.qna.vo.QnaVO;
+import com.spring.client.review.dao.ReviewDao;
 import com.spring.common.util.OpenCrypt;
 import com.spring.common.util.Util;
 
@@ -21,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDao memberDao;
 
+	@Autowired
+	private QnaDao qnaDao;
+	
+	@Autowired
+	private ReviewDao reviewDao;
+	
 	@Override
 	public int userIdConfirm(String c_id) { // 사용가능한 아이디인지 확인처리하는 것
 		int result;

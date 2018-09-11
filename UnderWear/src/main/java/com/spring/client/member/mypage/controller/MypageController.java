@@ -26,6 +26,7 @@ import com.spring.client.order.service.OrderService;
 import com.spring.client.order.vo.OrderVO;
 import com.spring.client.pay.service.PayService;
 import com.spring.client.pay.vo.PayVO;
+import com.spring.client.qna.vo.QnaVO;
 
 @Controller
 @RequestMapping(value="/mypage")
@@ -237,12 +238,18 @@ public class MypageController {
    }
 
    /*************************************************
-    * 마이페이지 게시물 조회
-    *************************************************/
-   @RequestMapping(value="/myboard.do", method = RequestMethod.GET)
-   public String customerBoardList(MemberVO mvo, Model model) {
-      logger.info("mypage 호출 성공");
+	 * 마이페이지 게시물 조회
+	 *************************************************/
+	@RequestMapping(value="/myboard.do", method = RequestMethod.GET)
+	public String customerBoardList(MemberVO mvo, Model model, HttpSession session) {
+		logger.info("mypage 호출 성공");
 
-      return "mypage/myboard";
-   }
+		LoginVO login =(LoginVO)session.getAttribute("login");		
+		logger.info("C_num ="+login.getC_num());
+		mvo.setC_num(login.getC_num());
+		
+		List<QnaVO> customerBoardList = memberService.customerBoardList(mvo);	
+		model.addAttribute("customerBoardList", customerBoardList);
+		return "mypage/myboard";
+	}
 }

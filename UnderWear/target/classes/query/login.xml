@@ -18,19 +18,6 @@
 		from customer
 		where c_id = #{c_id} and c_pwd = #{c_pwd}
 	</select>
-	
-		<select id="idCheck" parameterType="member" resultType="member">
-		/* 로그인 처리 쿼리 */
-		select
-		c_num,
-		c_id,
-		c_pwd,
-		c_name,
-		c_email
-		from customer
-		where c_name = #{c_name} and c_email = #{c_email}
-	</select>
-	
 	<insert id="loginHistoryInsert" parameterType="login">
 		insert into login_history(c_num, c_id, retry, lastFailedLogin,
 		lastSuccessedLogin, clientIP)

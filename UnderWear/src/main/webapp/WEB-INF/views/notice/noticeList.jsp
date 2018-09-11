@@ -7,7 +7,12 @@
 	color: red;
 }
 </style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script type="text/javascript">
 	$(function() {
 		// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
@@ -34,22 +39,20 @@
 
 
 		<div class="titleAreaBoard">
-
-			<h2>
-				<span>공지 사항 게시판</span>
-			</h2>
-
-		</div>
-
+		<h2>
+			<span>공지사항</span>
+		</h2>
+	</div>
 	<div class=container>
-		<table border="1" summary="게시판 목록 입니다" class="table table-hover">
-			<caption>공지사항</caption>
+		<table border="1" summary="공지사항 입니다" class="table table-hover">
+			<caption>공지사항 목록</caption>
 
 				<tr align="center">
 					<th scope="col" class="number">NO.</th>
 					<th scope="col" class="subject">TITLE</th>
 					<th scope="col" class="writer">WRITER</th>
 					<th scope="col" class="date ">DATE</th>
+					<th scope="col" class="hit ">HITS</th>
 				</tr>
 
 			<tbody id="list">
@@ -62,12 +65,13 @@
 								<td class="goDetail tal">${notice.n_title}</td>
 								<td class="content">관리자</td>
 								<td>${notice.n_date}</td>
+								<td>${notice.n_hit}</td>
 							</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="4" class="tac">등록된 공지사항이 존재하지 않습니다.</td>
+							<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

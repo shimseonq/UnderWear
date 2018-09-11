@@ -11,7 +11,9 @@ public interface ProductDao {
    
    
    public ProductVO productDetail(ProductVO pvo);
+   
    public List<AdminImageVO> productDetailImage(ProductVO pvo);
+   
    public ProductVO productMain(ProductVO pvo);
    
    

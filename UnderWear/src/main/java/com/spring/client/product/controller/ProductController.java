@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.admin.image.service.AdminImageService;
 import com.spring.admin.image.vo.AdminImageVO;
+import com.spring.client.member.basket.service.BasketService;
 import com.spring.client.member.basket.vo.BasketVO;
 import com.spring.client.product.service.ProductService;
 import com.spring.client.product.vo.ProductVO;
@@ -27,6 +28,8 @@ public class ProductController {
 		
 	@Autowired	//의존성 주입
 	private ProductService productService;
+	@Autowired 
+	private BasketService basketService;
 	
 	@Autowired
 	private AdminImageService adminImageService;

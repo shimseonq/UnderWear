@@ -27,9 +27,10 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="/resources/include/dist/css/carousel.css" rel="stylesheet">
+    <link href="carousel.css" rel="stylesheet">
   </head>
-<!-- NAVBAR================================================== -->
+<!-- NAVBAR
+================================================== -->
   <body>
  	 <!-- 헤더 부분 -->
      <!-- Fixed navbar -->
@@ -48,6 +49,7 @@
     <!-- 내용 -->
     <div class="container">
 		<tiles:insertAttribute name="body" />
+      
     </div>
 
 	<!-- 풋터 시작 -->

@@ -28,7 +28,7 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		rList = reviewDao.reviewList(rvo);
 		return rList;
 	}
- 
+
 	@Override
 	public ReviewVO reviewDetail(ReviewVO rvo) {
 		ReviewVO detail = null;

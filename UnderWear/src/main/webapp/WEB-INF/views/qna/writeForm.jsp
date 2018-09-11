@@ -42,7 +42,7 @@
 	<div class="contentContainer">
 		<div class="contentTB">
 
-			<form id=f_writeForm name="f_writeForm" enctype="multipart/form-data">
+			<form id="f_writeForm" enctype="multipart/form-data">
 			 <table id="boardWrite">
 						<colgroup>
 							<col width="17%" />

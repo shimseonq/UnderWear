@@ -109,9 +109,9 @@ keyword = "<c:out value= '${data.keyword}' />";
 </script>
 
 <%-- ======================== 검색 부분 ======================== --%>
+	
 	<div class="well">
 		<form class="form-inline" id="f_search">
-
 			<h3>
 				<span class="label label-success">검색조건</span>
 			</h3>

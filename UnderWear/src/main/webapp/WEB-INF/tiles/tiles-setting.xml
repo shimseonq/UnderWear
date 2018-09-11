@@ -41,7 +41,7 @@
       
       <definition name="mypage/*" extends="content">
          <put-attribute name="title" value="마이페이지" />
-         <put-attribute name="main" value="" /> 
+         <put-attribute name="main" value="" />
          <put-attribute name="body" value="/WEB-INF/views/member/mypage/{1}.jsp" />
       </definition>
 
@@ -80,7 +80,7 @@
          <put-attribute name="main" value="" />
          <put-attribute name="body" value="/WEB-INF/views/review/{1}.jsp" />
       </definition>
-       
+      
        <definition name="reviewReply/*" extends="content">
          <put-attribute name="body" value="/WEB-INF/views/review/reviewReply.jsp" />
       </definition> 

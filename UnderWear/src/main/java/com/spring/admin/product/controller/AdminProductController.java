@@ -38,7 +38,7 @@ public class AdminProductController {
 	@Autowired
 	private ProductService productService;
  
-	/*글목록 구현하기 (페이징 처리를 제외한 목록)*/
+
 
 	@RequestMapping(value="/product/productList.do", method = RequestMethod.GET)
 	public String productList(@ModelAttribute ("data")AdminProductVO pvo, Model model) {

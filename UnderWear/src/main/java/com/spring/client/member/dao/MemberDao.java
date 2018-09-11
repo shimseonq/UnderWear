@@ -16,19 +16,20 @@ public interface MemberDao {
 
    public MemberSecurity securitySelect(String c_id);
 
+	public List<MemberVO> memberList(MemberVO mvo);
+	
+	public int termsInsert(MemberVO mvo);
+
    public MemberVO myInfo(MemberVO mvo);
 
-   public int memberUpdate(MemberVO mvo);
 
 	public int memberDelete(MemberVO mvo);	
 	
 	public int securityDelete(String c_id);
 	
-	public List<MemberVO> memberList(MemberVO mvo);
-	
-	public int termsInsert(MemberVO mvo);
-	
+	public int memberUpdate(MemberVO mvo);
+
 	public List<QnaVO> customerBoardList(MemberVO mvo);
 
-
+	
 }

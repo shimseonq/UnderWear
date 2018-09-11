@@ -58,7 +58,6 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public List<MemberVO> memberList(MemberVO mvo) {
-		
 		return session.selectOne("memberLst",mvo);  //검색 관리자 단
 	}
 

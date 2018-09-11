@@ -75,19 +75,19 @@
         			where rv_no = #{rv_no}
 					
 	</select> 
+	<!-- 게시물 입력  -->
+	<insert id="reviewInsert" parameterType="review">
 	
-	   <!-- 게시물 입력  -->
-   <insert id="reviewInsert" parameterType="review">
-   
-   <!-- <selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
-        select o_no from orders where m_no = #{m_no}
-     </selectKey> -->
-     
-   insert into review(rv_no, rv_title, rv_content, o_no
-      <if test="rv_img != null and rv_img != ''">,rv_img</if> )
-      values(review_seq.nextval, #{rv_title}, #{rv_content} ,#{o_no}
-      <if test="rv_img != null and rv_img != ''">,#{rv_img}</if> )
-   </insert>
+	<!-- <selectKey keyProperty="o_no" resultType ="int" order="BEFORE" >
+	  	select o_no from orders where m_no = #{m_no}
+	  </selectKey> -->
+	  
+	insert into review(rv_no, rv_title, rv_content, o_no
+		<if test="rv_img != null and rv_img != ''">,rv_img</if> )
+		values(review_seq.nextval, #{rv_title}, #{rv_content} ,#{o_no}
+		<if test="rv_img != null and rv_img != ''">,#{rv_img}</if> )
+	</insert>
+	
 	
 		<!-- 게시물 삭제 하기  -->
 <delete id="reviewDelete" parameterType="review">		<!-- 반환타입이 int일 시 파라미터타입은 int -->

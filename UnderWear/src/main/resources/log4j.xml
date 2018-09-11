@@ -19,12 +19,6 @@
 	<logger name="com.spring.admin">
 		<level value="info" />
 	</logger>
-	<logger name="com.spring.client.member.dao">
-		<level value="trance" />
-	</logger>
-	<logger name="com.spring.client.product.dao">
-		<level value="trance" />
-	</logger>
 	<logger name="com.spring.client.login.dao">
 		<level value="trance" />
 	</logger>
@@ -32,9 +26,6 @@
 		<level value="trace" />
 	</logger>
 	<logger name="com.spring.client.notice.dao">
-		<level value="trace" />
-	</logger>
-	<logger name="com.spring.admin.notice.dao">
 		<level value="trace" />
 	</logger>
 	<logger name="com.spring.admin.qna.dao">
@@ -48,9 +39,7 @@
 	</logger>
 	<logger name="com.spring.client.review.dao">
 		<level value="trace" />
-
 	</logger>
-
 	<logger name="com.spring.client.reviewReply.dao">
 		<level value="trace" />
 	</logger>
@@ -62,9 +51,7 @@
 	<logger name="com.spring.common">
 		<level value="trace" />
 	</logger>
-
-
-
+	
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

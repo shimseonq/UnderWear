@@ -13,8 +13,7 @@
 				<h3>택배배송 조회</h3>
 			</div>
 			<div class="contents03_sub">
-				<link rel="stylesheet" type="text/css"
-					href="https://ssl.pstatic.net/sstatic/keypage/outside/scui/delivery/css/cs_delivery_170313.css">
+				<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/sstatic/keypage/outside/scui/delivery/css/cs_delivery_170313.css" >
 				<div id="_doorToDoor" class="cs_delivery">
 					<div class="sch_box ">
 						<div class="selc">

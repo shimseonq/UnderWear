@@ -1,3 +1,4 @@
+
 <%@page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %> 
@@ -6,7 +7,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/resources/include/css/justified-nav.css" rel="stylesheet">
+<link href="/resources/include/css/justified-nav.css" rel="stylesheet"> 
     <!-- Custom styles for this template -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->

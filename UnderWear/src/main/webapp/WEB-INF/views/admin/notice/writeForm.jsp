@@ -15,7 +15,6 @@
 #imgView {
 	position: absolute;
 }
-
 .imgViewData {
 	position: relative;
 	top: -2px;
@@ -48,11 +47,39 @@
 <body>
 
 <div class="contentContainer">
+				
 
 			<div class="contentTB">
-				<form id="f_writeForm" 
+				<form id="f_writeForm" name="f_writeForm"
 					enctype="multipart/form-data">
 					
+					<table id="boardWrite" class="table table-hover">
+						<colgroup>
+							<col width="17%" />
+							<col width="83%" />
+						</colgroup>
+						<tr class="form-group">
+						<tr>
+							<td class="ac">글번호</td>
+							<td>${updateData.n_no}</td>
+							<td class="ac">작성일</td>
+							<td>${updateData.n_date}</td>
+						</tr>
+
+						<tr class="form-group">
+							<td><label for="exampleInputEmail1">글제목</label></td>
+							<td><input type="text" class="form-control" id="n_title"
+								name="n_title" /></td>
+						</tr>
+						<tr class="form-group">
+							<td><label for="exampleInputPassword1">글 내용</label></td>
+							<td><textarea class="form-control" rows="7" id="n_content"
+									name="n_content"></textarea></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+				<div class="contentBtn">
 					<table id="boardWrite" class="table table-hover">
 						<colgroup>
 							<col width="17%" />
@@ -74,12 +101,7 @@
 				<input type=button class="btn btn-default" id="noticeInsertBtn"
 					value="글쓰기" />
 			</div>
-					
-					
-					
-				</form>
 			</div>
-				
 		</div>
 </body>
 </html>

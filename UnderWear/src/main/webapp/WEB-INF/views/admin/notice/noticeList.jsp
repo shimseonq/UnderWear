@@ -26,6 +26,7 @@
  <![endif]-->
 <style type="text/css">
 .table-responsive{
+	margin-top: -25%;
    margin-top: -25%;
 }
 .required {
@@ -50,6 +51,7 @@
  <script type="text/javascript" src="/resources/include/js/common.js"></script>  
 
 
+<script type="text/javascript" src="/resources/include/js/adminQnaBoard.js"></script>
 <script type="text/javascript" src="/resources/include/js/adminNoticeBoard.js"></script>
 <script type="text/javascript">
 search = "<c:out value='${data.search}' />";
@@ -131,34 +133,10 @@ function goPage() {
 
 </head>
 <body>
+
 <!-- <h2 class="sub-header">관리자 게시판 관리  페이지</h2> -->
 
 <div class="table-responsive">
-  <!--  <div class="well">
-      <form class="form-inline" id="f_search">
-          <h3><span class="label label-success">검색조건</span></h3>
-         
-         <div class="form-group">
-            <select name="search" id="search" class="form-control">
-               <option value="n_title">제목</option>
-               <option value="n_content">내용</option>
-               <option value="n_date">작성일자</option>
-            </select>
-         </div>
-         
-         <div class="form-group" id="textCheck">
-            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="검색어를 입력하세요.">   
-         </div>
-         
-         <div class="form-group" id="dateCheck">
-            <input type="date" name="start_date" id="start_date" class="form-control" placeholder="시작일자.">
-            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="종료일자.">
-         </div>
-         
-         <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
-         <button type="button" class="btn btn-primary" id="allSearchBtn">All Search</button>
-      </form>
-   </div> -->
    
   
  <form name="detailForm" id="detailForm">

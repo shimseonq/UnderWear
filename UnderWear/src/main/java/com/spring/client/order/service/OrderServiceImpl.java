@@ -11,7 +11,6 @@ import com.spring.client.order.dao.OrderDao;
 import com.spring.client.order.vo.OrderVO;
 import com.spring.client.pay.dao.PayDao;
 import com.spring.client.product.dao.ProductDao;
-import com.spring.client.product.vo.ProductVO;
 import com.spring.client.sale.dao.SaleDao;
 import com.spring.client.sale.vo.SaleVO;
 

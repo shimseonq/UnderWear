@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.member.basket.dao.BasketDao">
-	<select id="basketList" parameterType="basket" resultType="basket">
+   <select id="basketList" parameterType="basket" resultType="basket">
       select b_no, p_name, pr_01, b_count, p_image, pr_01*b_count as total 
       from basket inner join product on basket.p_code = product.p_code 
       inner join price on price.pr_no = product.pr_no
       inner join customer on basket.c_num = customer.c_num
       where c_id=#{c_id} and b_status != 0 order by b_no
-   	</select>
-	
-	<select id="basketOrder" parameterType="basket" resultType="basket">
+      </select>
+   
+   <select id="basketOrder" parameterType="basket" resultType="basket">
       select b_no, basket.p_code, p_name, pr_01, b_count, pr_01*b_count as total
       from basket inner join product on basket.p_code = product.p_code 
       inner join price on price.pr_no = product.pr_no

@@ -41,31 +41,42 @@
       
          <div class="page-header">
         <h1>신상품</h1>
-      </div>
+     	 </div>
       
-           <div class="row">
+         <div class="row">
   <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+    <a class="thumbnail"  href="/product/productDetail.do?p_code=153">
+      <img src="/resources/image/hit2.jpg" alt="...">
     </a>
+     <p>상품명 : [1/2컵] 세이지 set</p>
+    	 <p>price : 22600 won</p>
   </div>
   <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="/resources/image/main2.jpg" alt="...">
+    <a href="/product/productDetail.do?p_code=148" class="thumbnail">
+      <img src="/resources/image/hit3.jpg" alt="...">
     </a>
-   </div>
+     <p>상품명 : [1/2컵] 럽씨 set</p>
+     <p>price : 9000 won</p>
+  </div>
   <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="/resources/image/main3.jpg" alt="...">
+    <a href="/product/productDetail.do?p_code=145" class="thumbnail">
+      <img src="/resources/image/hit4.jpg" alt="...">
     </a>
+         <p>상품명 : [볼륨업] 캔디팝 set</p>
+    	 <p>price : 22600 won</p>
   </div>
    <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="/resources/image/main4.jpg" alt="...">
+    <a class="thumbnail" href="/product/productDetail.do?p_code=152" >
+      <img src="/resources/image/hit1.jpg" alt="..." >
     </a>
-
+       <p>상품명 : [풀컵] 세컨도로시 set</p>
+    	 <p>price : 14000 won</p>
   </div>
 </div>
+      
+         <div class="page-header">
+        <h1>신상품</h1>
+      </div>
 
 
   <hr class="featurette-divider">
