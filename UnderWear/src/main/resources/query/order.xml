@@ -78,5 +78,5 @@
 		update orders set o_delivery='배송완료' where o_no = #{o_no}
 	</update>
 	
-	
-</mapper>
+
+	</mapper>

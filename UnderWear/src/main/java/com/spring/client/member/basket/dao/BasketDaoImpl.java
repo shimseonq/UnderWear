@@ -43,4 +43,5 @@ public class BasketDaoImpl implements BasketDao {
 	public int statusUpdate(BasketVO bvo) {
 		return session.update("statusUpdate");
 	}
+
 }

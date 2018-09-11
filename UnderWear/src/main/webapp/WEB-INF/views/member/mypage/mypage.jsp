@@ -32,6 +32,7 @@
     <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Myeongjo|Nanum+Pen+Script|Noto+Sans+KR|Open+Sans+Condensed:300" rel="stylesheet">
     <style type="text/css">
+
     body{
        font-family: 'Do Hyeon', sans-serif;
     }
@@ -47,6 +48,19 @@
        h3{
           color:gray;        
        }
+    	.jumbotron{
+    		height: 300px;
+    		padding:0px;
+    		border-top: 1px solid lightgray;
+    		border-bottom: 1px solid lightgray;
+    		text-align:center;
+    	}
+    	.masthead, .row{
+    		margin-bottom:100px;
+    	}
+    	h3{
+    		color:gray;  		
+    	}
 
       .row{
          text-align:center;
@@ -154,6 +168,206 @@
                </c:choose>
             </tbody>
          </table>
+				<thead>
+				<tr>
+					<td class="subject">상품 이미지</td>
+					<td class="subject">상품명</td>
+					<td class="subject">가격</td>
+					<td class="subject">갯수</td>
+					<td class="subject">수령인</td>
+					<td class="subject">주소지</td>
+					<td class="subject">결제일</td>
+					<td class="subject">배송 상태</td>
+				</tr>
+				
+				</thead>
+				<tbody id="list">
+				<!-- 데이터 출력 -->
+					<c:choose>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.o_no}">
+									<td>${pay.o_no}</td>
+									<td>${pay.p_name}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.o_date}</td>
+									<td><input type="button" value="구매확정" class="finish" name="finish"/>
+									<input type="button" value="리뷰작성" class="review" name="review"/></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac1">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+				<thead>
+				<tr>
+					<td class="subject">상품 이미지</td>
+					<td class="subject">상품명</td>
+					<td class="subject">가격</td>
+					<td class="subject">갯수</td>
+					<td class="subject">수령인</td>
+					<td class="subject">주소지</td>
+					<td class="subject">결제일</td>
+					<td class="subject">배송 상태</td>
+				</tr>
+				
+				</thead>
+				<tbody id="list">
+				<!-- 데이터 출력 -->
+					<c:choose>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.o_no}">
+									<td>${pay.o_no}</td>
+									<td>${pay.p_name}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.o_date}</td>
+									<td><input type="button" value="구매확정" class="finish" name="finish"/>
+									<input type="button" value="리뷰작성" class="review" name="review"/></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac1">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+				<thead>
+				<tr>
+					<td class="subject">상품 이미지</td>
+					<td class="subject">상품명</td>
+					<td class="subject">가격</td>
+					<td class="subject">갯수</td>
+					<td class="subject">수령인</td>
+					<td class="subject">주소지</td>
+					<td class="subject">결제일</td>
+					<td class="subject">배송 상태</td>
+				</tr>
+				
+				</thead>
+				<tbody id="list">
+				<!-- 데이터 출력 -->
+					<c:choose>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.o_no}">
+									<td>${pay.o_no}</td>
+									<td>${pay.p_name}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.o_date}</td>
+									<td><input type="button" value="구매확정" class="finish" name="finish"/>
+									<input type="button" value="리뷰작성" class="review" name="review"/></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac1">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+				<thead>
+				<tr>
+					<td class="subject">상품 이미지</td>
+					<td class="subject">상품명</td>
+					<td class="subject">가격</td>
+					<td class="subject">갯수</td>
+					<td class="subject">수령인</td>
+					<td class="subject">주소지</td>
+					<td class="subject">결제일</td>
+					<td class="subject">배송 상태</td>
+				</tr>
+				
+				</thead>
+				<tbody id="list">
+				<!-- 데이터 출력 -->
+					<c:choose>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.o_no}">
+									<td>${pay.o_no}</td>
+									<td>${pay.p_name}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.o_date}</td>
+									<td><input type="button" value="구매확정" class="finish" name="finish"/>
+									<input type="button" value="리뷰작성" class="review" name="review"/></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac1">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+				<thead>
+				<tr>
+					<td class="subject">상품 이미지</td>
+					<td class="subject">상품명</td>
+					<td class="subject">가격</td>
+					<td class="subject">갯수</td>
+					<td class="subject">수령인</td>
+					<td class="subject">주소지</td>
+					<td class="subject">결제일</td>
+					<td class="subject">배송 상태</td>
+				</tr>
+				
+				</thead>
+				<tbody id="list">
+				<!-- 데이터 출력 -->
+					<c:choose>
+						 <c:when test="${not empty payList}" >
+							<c:forEach var="pay" items="${payList}" varStatus="status">
+								<tr class="tac" data-num="${pay.o_no}">
+									<td>${pay.o_no}</td>
+									<td>${pay.p_name}</td>
+									<td>${pay.pr_01}</td>
+									<td>${pay.b_count}</td>
+									<td>${pay.o_deliveryname}</td>
+									<td>${pay.o_deliveryaddress}</td>
+									<td>${pay.o_delivery}</td>
+									<td>${pay.o_date}</td>
+									<td><input type="button" value="구매확정" class="finish" name="finish"/>
+									<input type="button" value="리뷰작성" class="review" name="review"/></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7" class="tac1">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
 
       </div>
 

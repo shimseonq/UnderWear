@@ -1,7 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ page trimDirectiveWhitespaces="true" %> 
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,79 +9,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/resources/image/icon.png">
 
-  <link rel="stylesheet" href="/resources/include/bcss/mobirise-icons.css">
-  <link rel="stylesheet" href="/resources/include/bcss/tether.min.css">
-  <link rel="stylesheet" href="/resources/include/bcss/bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/include/bcss/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="/resources/include/bcss/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="/resources/include/bcss/style.css">
-  <link rel="stylesheet" href="/resources/include/bcss/styles.css">
-  <link rel="stylesheet" href="/resources/include/bcss/style1.css">
-  <link rel="stylesheet" href="/resources/include/bcss/mbr-additional.css" type="text/css">
-  <!-- bootstrap core css -->
-    <link href="/resources/include/dist/css/bootstrap.css" rel="stylesheet">
-      <link href="/resources/include/css/carousel.css" rel="stylesheet">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-       
-      
-    
-  
-    
     <title><tiles:getAsString name="title"/></title>
-	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="/resources/include/js/common.js"></script>
-	
+
+    <!-- Bootstrap core CSS -->
+    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/resources/include/dist/css/sticky-footer-navbar.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
       
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
   </head>
-
+<!-- NAVBAR
+================================================== -->
   <body>
-
-    <!-- Fixed navbar -->
-   <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k"> <!-- nav 영역 -->
-       <tiles:insertAttribute name="header" /> <!-- header -->
-  </section>
-   
-    <!-- Begin page content -->
-   <div class="container">
-      <div class="page-header">  
-        <h1><tiles:getAsString name="title"/></h1>
-      </div>  
-        <br/><br/><br/><br/>
-         <tiles:insertAttribute name="body" /> <!-- content 영역 -->
-   </div>
-    <br/><br/><br/><br/><br/><br/><br/><br/>
-    <footer class="footer">   <!-- footer 영역 -->
-       <tiles:insertAttribute name="footer" />
-    
-    </footer>
+ 	 <!-- 헤더 부분 -->
+     <!-- Fixed navbar -->
+    	<tiles:insertAttribute name="header" />
+    <!-- 헤저 끝 -->
 
 
-   <script src="/resources/include/bjs/jquery.min.js"></script>
-  <script src="/resources/include/bjs/popper.min.js"></script>
-  <script src="/resources/include/bjs/tether.min.js"></script>
-  <script src="/resources/include/bjs/bootstrap.min.js"></script>
-  <script src="/resources/include/bjs/smooth-scroll.js"></script>
-  <script src="/resources/include/bjs/script.min.js"></script>
-  <script src="/resources/include/bjs/jquery.touch-swipe.min.js"></script>
-  <script src="/resources/include/bjs/jquery.mb.vimeo_player.js"></script>
-  <script src="/resources/include/bjs/social-likes.js"></script>
-  <script src="/resources/include/bjs/bootstrap-carousel-swipe.js"></script>
-  <script src="/resources/include/bjs/jquery.mb.ytplayer.min.js"></script>
-  <script src="/resources/include/bjs/script.js"></script>
-  <script src="/resources/include/js/script.js"></script>
-  
-  <!-- bootstrap js -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<!-- 슬라이더 시작-->
+  		<tiles:insertAttribute name="main" />
+ 
+		<!-- 슬라이더 끝 -->
+
+
+	
+	
+    <!-- 내용 -->
+    <div class="container">
+		<tiles:insertAttribute name="body" />
+      
+    </div>
+
+	<!-- 풋터 시작 -->
+ 		<tiles:insertAttribute name="footer" />
+    <!-- 풋터 끝 -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/resources/include/dist/js/bootstrap.min.js"></script>
     <script src="/resources/include/dist/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
-  
-  
   </body>
-  
 </html>

@@ -7,7 +7,7 @@ import com.spring.client.sale.vo.SaleVO;
 
 public interface OrderService {
 
-	public int orderInsert(SaleVO svo, String[] b_num);
+	public int orderInsert(SaleVO svo, String[] b_num, String[] p_num);
 	
 	public int orderFinish(OrderVO ovo);
 

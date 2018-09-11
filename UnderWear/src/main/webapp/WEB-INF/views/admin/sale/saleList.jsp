@@ -112,9 +112,6 @@
 								value="${sale.sa_no}" /></td>
 							<td>${sale.sa_no}</td>
 							<td>${sale.p_name}</td>
-							<td>${sale.p_color}</td>
-							<td>${sale.p_size}</td>
-							<td>${sale.b_count}</td>
 							<td>${sale.pa_payway}</td>
 							<td>${sale.sa_money}</td>
 							<td>${sale.sa_date}</td>

@@ -42,22 +42,27 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public int deliveryUpdate1(OrderVO ovo) {
-		return session.update("deliveryUpdate1");
+		return session.update("deliveryUpdate1",ovo);
 	}
 
 	@Override
 	public int deliveryUpdate2(OrderVO ovo) {
-		return session.update("deliveryUpdate2");
+		return session.update("deliveryUpdate2",ovo);
 	}
 
 	@Override
 	public int deliveryUpdate3(OrderVO ovo) {
-		return session.update("deliveryUpdate3");
+		return session.update("deliveryUpdate3",ovo);
 	}
 
 	@Override
 	public int deliveryUpdate4(OrderVO ovo) {
-		return session.update("deliveryUpdate4");
+		return session.update("deliveryUpdate4",ovo);
+	}
+
+	@Override
+	public OrderVO adminOrderOne(OrderVO ovo) {
+		return session.selectOne("adminOrderOne");
 	}
 	
 }

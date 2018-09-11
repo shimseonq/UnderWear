@@ -15,21 +15,19 @@
    <definition name="admin/notice/*" extends="basic">
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/notice/{1}.jsp"/>
-      <put-attribute name="sub" value=""/>
+      <put-attribute name="sub" value="공지사항"/>
     </definition>
     
         <definition name="admin/qna/*" extends="basic">
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/qna/{1}.jsp"/>
-      <put-attribute name="sub" value=""/>
+      <put-attribute name="sub" value="문의 게시판"/>
       </definition>
       
-          <definition name="admin/qna/*" extends="basic">
+          <definition name="admin/review/*" extends="basic">
         <put-attribute name=""></put-attribute>
       <put-attribute name="main" value="/WEB-INF/views/admin/review/{1}.jsp"/>
-      <put-attribute name="sub" value=""/>
-      
-      <put-attribute name="sub" value=""/>      
+      <put-attribute name="sub" value="리뷰게시판"/>
    </definition>
    
    <definition name="admin/member/*" extends="basic">

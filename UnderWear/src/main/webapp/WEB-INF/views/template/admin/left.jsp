@@ -10,3 +10,4 @@
 	<li><a href="/admin/review/reviewList.do">리뷰 게시판 관리</a></li>
 	<li><a href="/admin/order/orderList.do">주문 관리</a></li>
 </ul>
+ 

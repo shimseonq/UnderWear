@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
 <%@ page trimDirectiveWhitespaces="true" %> 
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
   <meta name="description" content="">
-   <title><tiles:getAsString name="title"/></title>
+   <title><tiles:getAsString name="title"/></title> 
   <link rel="stylesheet" href="/resources/include/bcss/mobirise-icons.css">
   <link rel="stylesheet" href="/resources/include/bcss/tether.min.css">
   <link rel="stylesheet" href="/resources/include/bcss/bootstrap.min.css">
@@ -27,9 +28,10 @@
 
 </head>
 <body>
-  <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k">
- 	<tiles:insertAttribute name="header" />
-  </section>
+  <!-- <section class="menu cid-r1UxZzsjgj" once="menu" id="menu2-k"> -->
+ 
+
+<!--   </section> -->
     
 
 

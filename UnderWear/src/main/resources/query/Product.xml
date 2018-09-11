@@ -9,7 +9,7 @@
 		
 		order by p_code desc
 	</select>
-	
+	 
 	<!-- 상품 등록 -->
 	<insert id="productInsert" parameterType="product">
       /* Product - productInsert */

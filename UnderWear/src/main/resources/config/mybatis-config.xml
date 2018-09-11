@@ -20,5 +20,8 @@
 		<typeAlias type="com.spring.client.pay.vo.PayVO" alias="pay"/>
 		<typeAlias type="com.spring.client.sale.vo.SaleVO" alias="sale"/>
 		<typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminlogin"/>
+		<typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="AdminMember"/>
+		<typeAlias type="com.spring.admin.product.vo.AdminProductVO" alias="adminProduct" />
+      <typeAlias type="com.spring.admin.image.vo.AdminImageVO" alias="adminImage" />
 	</typeAliases>
 </configuration>

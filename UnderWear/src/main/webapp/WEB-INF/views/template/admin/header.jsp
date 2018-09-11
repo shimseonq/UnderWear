@@ -13,7 +13,7 @@
                 <a class="navbar-brand" href="/resource/default.html">UnderWear 관리자 페이지</a>
             </div>
         
-        
+          
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -79,7 +79,7 @@
                                     <a href="/admin/notice/noticeList.do">관리자 Notice 관리</a>
                                 </li>  
                                 <li>
-                                    <a href="/admin/review/reviewList.do">관리자 Notice 관리</a>
+                                    <a href="/admin/review/reviewList.do">관리자review 관리</a>
                                 </li> 
                             </ul>
                             <!-- /.nav-second-level -->

@@ -7,7 +7,12 @@
 	color: red;
 }
 </style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script type="text/javascript">
 	$(function() {
 		// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
@@ -34,16 +39,13 @@
 
 
 		<div class="titleAreaBoard">
-
-			<h2>
-				<span>공지 사항 게시판</span>
-			</h2>
-
-		</div>
-
+		<h2>
+			<span>공지사항</span>
+		</h2>
+	</div>
 	<div class=container>
-		<table border="1" summary="게시판 목록 입니다" class="table table-hover">
-			<caption>게시판 목록</caption>
+		<table border="1" summary="공지사항 입니다" class="table table-hover">
+			<caption>공지사항 목록</caption>
 
 				<tr align="center">
 					<th scope="col" class="number">NO.</th>

@@ -25,6 +25,9 @@
     <script src="../js/html5shiv.js"></script>
  <![endif]-->
 <style type="text/css">
+.table-responsive{
+	margin-top: -25%;
+}
 .required {
 	color: red;
 }
