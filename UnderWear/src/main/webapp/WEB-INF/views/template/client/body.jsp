@@ -17,18 +17,18 @@
   </div>
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main2.jpg" alt="...">
     </a>
      <p>상품명 : 예제1</p>
   </div>
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main3.jpg" alt="...">
     </a>
   </div>
    <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main4.jpg" alt="...">
     </a>
   </div>
 </div>
@@ -45,19 +45,19 @@
   </div>
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main2.jpg" alt="...">
     </a>
    </div>
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main3.jpg" alt="...">
     </a>
   </div>
    <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img src="/resources/image/main1.jpg" alt="...">
+      <img src="/resources/image/main4.jpg" alt="...">
     </a>
-<<<<<<< HEAD
+
   </div>
 </div>
 

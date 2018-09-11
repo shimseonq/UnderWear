@@ -253,6 +253,7 @@ $(function() {
 		var name_span = $("<span>");
 		name_span.addClass("name");
 		name_span.html(rrp_id + "님");
+		console.log();
 
 		// 작성일시
 		var date_span = $("<span>");

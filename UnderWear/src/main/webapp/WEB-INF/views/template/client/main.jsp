@@ -16,10 +16,10 @@
             <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide" src="/resources/image/main1.jpg">
           </div>  
           <div class="item">
-            <img data-src="resources/image/main2.jpg" alt="Second slide" src="/resources/image/main1.jpg">
+            <img data-src="resources/image/main2.jpg" alt="Second slide" src="/resources/image/main2.jpg">
           </div>
           <div class="item">
-            <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="/resources/image/main1.jpg">
+            <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="/resources/image/main3.jpg">
       
           </div>          
         </div>

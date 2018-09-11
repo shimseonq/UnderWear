@@ -181,7 +181,12 @@ select{
       $("#pay").click(function(){
          boxForm();
          orderConfirm();
-         console.log($("#product").val());
+         console.log($("#b_number").val());
+         $("#orderForm").attr({
+            "method":"post",
+            "action":"/order/orderInsert.do"
+         }); 
+         $("#orderForm").submit();  
       });
          
    });
@@ -221,13 +226,12 @@ select{
    }
    
    function orderConfirm(){
-      var payway = $("#pa_payway").val();
       if(!chkData("#o_deliveryname","주문자명을")) return;
       else if(!chkData("#o_deliveryphone","연락처를")) return;
       else if(!inputVerifyAlert(2,"#o_deliveryphone"))return;
       else if(!chkData("#o_deliveryaddress","배송지 주소를")) return;
       else if(!chkData("#o_address2","나머지 주소를")) return;
-      if(payway=='카드결제'){
+      else if($("#pa_payway").val()=='카드결제'){
          if(!chkData("#card1","카드번호를")) return;
          else if(!inputVerifyAlert(3,"#card1")) return;
          else if(!chkData("#card2","카드번호를")) return;
@@ -236,17 +240,10 @@ select{
          else if(!inputVerifyAlert(3,"#card3")) return;
          else if(!chkData("#card4","카드번호를")) return;
          else if(!inputVerifyAlert(3,"#card4")) return;
-         else if(!chkData("#cvc","카드번호를")) return;
+         else if(!chkData("#cvc","cvc를")) return;
          else if(!inputVerifyAlert(3,"#cvc")) return;
          else if(!chkData("#cardpwd","카드 비밀번호를")) return;
          else if(!inputVerifyAlert(3,"#cardpwd")) return;
-      }
-      else{
-         $("#orderForm").attr({
-            "method":"post",
-            "action":"/order/orderInsert.do"
-         }); 
-         $("#orderForm").submit();  
       }
    }
                  

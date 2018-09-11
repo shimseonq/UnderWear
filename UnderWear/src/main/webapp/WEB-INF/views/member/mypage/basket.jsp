@@ -2,61 +2,73 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %> 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
     <title>마이페이지</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    
-
+<link href="/resources/include/css/justified-nav.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="/resources/include/css/justified-nav.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
+     <script src="/resources/include/js/jquery-1.12.4.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->   
-    <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
+    
+    
     <style type="text/css">
-       img{
-          width: 80px;
-          height: 50px;  
-       }  
        .jumbotron{
           height: 300px;
-          border: 2px solid lightgray;
+          background-color: white;
+          border: none;
+          border-top: 2px solid lightgray;
+          border-bottom: 2px solid lightgray;
           border-radius: 10px;
           padding:0px;
+          text-align:center;
+       }
+       .container{
+          text-align:center;
+          margin-bottom: 3%;
        }
        .masthead, .row{
-          margin-bottom:20px;
+          margin-bottom:100px;
        }
        h3{
-          color:gray;        
+          color:gray;  
+          text-align:left;      
        }
 
       .row{
          text-align:center;
          margin:0px;
       }
+     .table{
+        background-color: white;
+        border: none;
+        border-top: 1px solid whitegray;
+        border-bottom: 1px solid whitegray;
+        border-radius: 4px;
+     }
+     .button{
+        height: 30px;
+        width: 110px;
+        border:none;
+        background-color: white;
+        font-size:16px;
+        font-color:gray;
+        font-weight:bold;
+        margin:5px;
+     }
     </style>
 
 <script type="text/javascript">
-var checkB = [];
+   var checkB = [];
 
    $(function(){      
       $("#pay").click(function(){
@@ -72,7 +84,9 @@ var checkB = [];
          $("#b_data").submit();
          }
       });
-      
+      $("#shopping").click(function() {
+         location.href="/";
+      })
      
    $("#cancel").click(function() {
          $.ajax({
@@ -87,10 +101,11 @@ var checkB = [];
                if (resultData == 0) {
                   alert("장바구니 삭제에 실패 했습니다. 확인 후 다시 요청해 주세요.");
                   return;
-               }else {
-                  confirm("물품을 삭제하시겠습니까?");                     
+               }else {               
+                  if(confirm("물품을 삭제하시겠습니까?")){
                   boxForm();
                   if($("#b_number").val()!=""){
+                     
                      $("#b_data").attr({
                         "method" : "get",
                         "action" : "/mypage/basketDelete.do"
@@ -101,6 +116,7 @@ var checkB = [];
                   }else{
                      console.log($("#b_number").val());
                      alert("삭제할 물품이 없습니다.");   
+                  }
                   }
                }
             }
@@ -128,7 +144,6 @@ var checkB = [];
    }
 </script>
 </head>
-
   <body>
       <h3>My page</h3>       
          
@@ -167,9 +182,8 @@ var checkB = [];
                   <c:choose>
                       <c:when test="${not empty basketList}" >
                         <c:forEach var="basket" items="${basketList}" varStatus="status">
-                           <tr class="tac" data-num="${basket.b_no}"  >
+                           <tr class="tac" data-num="${basket.b_no}">
                               <td><input type="checkbox" name="item" id="item" value="${basket.b_no}"/></td>
-                              <td><img alt="" src="/resources/image/${basket.p_image }"></td>
                               <td>${basket.p_name}</td>
                               <td>${basket.pr_01}</td>
                               <td>${basket.b_count}</td>
@@ -189,12 +203,11 @@ var checkB = [];
       </div>
 
    <div class="container"> 
-      <p><a class="btn btn-lg btn-success" href="/" role="button">쇼핑하러 가기</a>
-       <input type="button" class="btn btn-lg btn-success" id="cancel" name="cancel" value="삭제"/>
-      <input type="button" class="btn btn-lg btn-success" id="pay" name="pay" value="결제"/></p> 
+      <p><input type="button" class="button" id="shopping" value="쇼핑하러 가기"/>
+       <input type="button" class="button" id="cancel" name="cancel" value="삭제"/>
+      <input type="button" class="button" id="pay" name="pay" value="결제"/></p> 
    </div>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
-</html>

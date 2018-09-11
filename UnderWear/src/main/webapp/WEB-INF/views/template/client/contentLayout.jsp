@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="/resources/include/dist/css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR================================================== -->
   <body>
