@@ -33,11 +33,11 @@ public class AdminProductController {
 	private AdminProductService adminProductService;
 
 	@Autowired
-	private AdminImageService adminImageService;
+	private AdminImageService adminImageService; 
 	
 	@Autowired
 	private ProductService productService;
-
+ 
 	/*글목록 구현하기 (페이징 처리를 제외한 목록)*/
 
 	@RequestMapping(value="/product/productList.do", method = RequestMethod.GET)

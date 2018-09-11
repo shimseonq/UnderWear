@@ -1,8 +1,6 @@
 package com.spring.client.reviewReply.vo;
 
-import com.spring.client.review.vo.ReviewVO;
-
-public class ReviewReplyVO extends ReviewVO{
+public class ReviewReplyVO {
 
 	private int rrp_no	= 0;
 	private String rrp_content = "";

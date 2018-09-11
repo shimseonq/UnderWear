@@ -16,7 +16,7 @@ public interface AdminProductService {
 
 	// CATEGORY
 	public String bigCategory(ObjectMapper mapper);
-	
+	 
 	public String smallCategory(int bigct_no, ObjectMapper mapper);
 	
 	// UPDATE

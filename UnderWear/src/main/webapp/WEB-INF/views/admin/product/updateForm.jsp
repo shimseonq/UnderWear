@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -40,12 +41,12 @@
          
         <script type="text/javascript">
 	        $(function() {
-	    		var value = "${updateData.p_file}";
+	    		var value = "${updateData.img_image}";
 	    		if(value != "") {
 	    			var img = $("<img>");		// 동적 생성
 	    			$("#imgView").hover(function() {
 	    				img.attr({
-	        				src:"/uploadStorage/product/${updateData.p_file}",
+	        				src:"/uploadStorage/product/${updateData.img_image}",
 	        				width:"400px",
 	        				height:"180px"
 	    			})
@@ -58,79 +59,170 @@
 	        	} else {
 	        		$("#imgView").hide();	// 이미지 파일 없을 때 관련된 모든 것 숨김.
 	        	};
+	        	
+	        	/*이미지 추가 버튼 클릭시 처리 이벤트 */
+		          /*  $("#fileBtn").click(function(){
+					 var fileIndex =  $("input[type=file]").length;
+					 console.log(fileIndex);
+		             
+					 var br = $("<br/>");
+		              
+		              $("#boardWrite tr:nth-child(12) td:eq(0)").attr("rowspan", fileIndex+1)
+		              $("#boardWrite tr:nth-child(12) td:eq(1)").append("<input type='file' name='files["+ fileIndex + "]' class='gapBox' />");
+
+		           }); */
 	    		
 	    		// 수정 버튼 클릭 시 처리 이벤트
 	    		$("#productUpdateBtn").click(function() {
 	    			// 입력값 체크
-	    			if(!chkSubmit($('#b_title'), "제목을")) return;
-	    			else if(!chkSubmit($('#b_content'), "작성할 내용을")) return;
+	    			if(!chkSubmit($('#p_name'), "상품명")) return;
+	    			else if(!chkSubmit($("#p_inventory"), "재고량을")) return;
+	    			/* else if(!chkSubmit($('#pr_01'), "가격을")) return;
+	    			else if(!chkSubmit($("#"))) */
 	    			else {
 	    				$("#f_writeForm").attr({
 	    					"method":"POST",
-	    					"action":"/product/productUpdate.do"
+	    					"action":"/admin/product/productUpdate.do"
 	    				});
 	    				$("#f_writeForm").submit();
 	    			}
 	    		});
+		           
+		           $(".imageUpdate").click(function() {
+		        	   console.log("data-no"+$(this).parents("tr").find("img").attr("data-no"));
+		        	   var imgSrc = $(this).parents("tr").find("img").attr("src");
+		        	   console.log("src"+imgSrc.substring(imgSrc.lastIndexOf("/")+1));
+		        	   
+		        	   $("#img_no").val($(this).parents("tr").find("img").attr("data-no"));
+		        	   $("#img_image").val(imgSrc.substring(imgSrc.lastIndexOf("/")+1));
+		        	  
+		        	   $(this).parents("tr").find("input[type='file']").attr("name","files[0]");
+		        	   console.log($("input[type='file']").val());
+		        	   $("#formBtn").attr({
+	    					"method":"POST",
+	    					/* "enctype":"multipart/form-data", */
+	    					"action":"/admin/product/imageUpdate.do"
+	    				});
+	    				$("#formBtn").submit();
+		        	   
+		           });
+		           
+		           $(".imageDelete").click(function() {
+		        	   console.log("data-no"+$(this).parents("tr").find("img").attr("data-no"));
+		        	   var imgSrc = $(this).parents("tr").find("img").attr("src");
+		        	   console.log("src"+imgSrc.substring(imgSrc.lastIndexOf("/")+1));
+		        	   
+		        	   $("#img_no").val($(this).parents("tr").find("img").attr("data-no"));
+		        	   $("#img_image").val(imgSrc.substring(imgSrc.lastIndexOf("/")+1));
+		        	   console.log($("input[type='file']").val());
+		        	   $(this).parents("tr").find("input[type='file']").attr("name","files[0]");
+		        	   $("#formBtn").attr({
+	    					"method":"POST",
+	    					/* "enctype":"multipart/form-data", */
+	    					"action":"/admin/product/imageDelete.do"
+	    				});
+	    				$("#formBtn").submit();
+		           });
 	    		
 	    		// 목록 버튼 클릭 시 처리 이벤트
 	    		$("#productListBtn").click(function() {
-	    			location.href="/product/productList.do"
+	    			location.href="/admin/product/productList.do"
 	    		})
 	    	})
         </script>
 		
 	</head>
 		<body>
-			<div class="contentContainer">
-			<div class="contentTit"><h3>게시판 글수정</h3></div>
-			
-			<div class="contentTB">
-				<form id="f_writeForm" name="f_writeForm" enctype="multipart/form-data">
-					<input type="hidden" id="b_num" name="b_num" value="${updateData.b_num}" />
-					<input type="hidden" id="b_file" name="b_file" value="${updateData.b_file}" />
-					
-					<table>
-						<colgroup>
-							<col width="17%" />
-							<col width="33%" />
-							<col width="17%" />
-							<col width="33%" />
-						</colgroup>
-						<tbody>
+		
+			<div class="contentContainer" >
+				<div class="contentTB">
+					<form id="f_writeForm">		<!-- enctype은 태그가 아닌 attr에서도 사용이 가능. 첨부파일 시 사용. -->
+						<input type="hidden" id="p_code" name="p_code" value="${updateData.p_code}" />
+						<%-- <input type="hidden" id="img_image" name="img_image" value="${updateData.img_image}" /> --%>
+						
+						<table id="boardWrite">
+							<colgroup>
+								<col width="17%" />
+								<col width="83%" />
+							</colgroup>
+							
 							<tr>
-								<td class="ac">글번호</td>
-								<td>${updateData.b_num}</td>
-								<td class="ac">작성일</td>
-								<td>${updateData.b_date}</td>
+								<td class="ac">소분류</td>
+								<td colspan="2">${updateData.smallct_category}</td>
 							</tr>
 							<tr>
-								<td class="ac">작성자</td>
-								<td colspan="3">${updateData.b_name}</td>
+								<td class="ac vm">상품명</td>
+								<td colspan="2"><input type="text" name="p_name" id="p_name" value="${updateData.p_name}" /></td>
 							</tr>
 							<tr>
-								<td class="ac">글제목</td>
-								<td colspan="3"><input type="text" name="b_title" id="b_title" value="${updateData.b_title}" /></td>
+								<td class="ac vm">상품 재고량</td>
+								<td colspan="2"><input type="text" name="p_inventory" id="p_inventory" value="${updateData.p_inventory}" /></td>
 							</tr>
 							<tr>
-								<td class="ac vm">글내용</td>
-								<td colspan="3"><textarea name="b_content" id="b_content">${updateData.b_content}</textarea></td>
+								<td class="ac vm">상품 가격</td>
+								<td colspan="2">${updateData.pr_01}</td>
 							</tr>
 							<tr>
-								<td class="ac">첨부파일</td>
-								<td colspan="3"><input type="file" id="file" name="file" />
-								<span id="imgView" >기존 이미지 파일명 : ${updateData.b_file}<span id="imgArea"></span></span></td>
+								<td class="ac vm">상품 컬러</td>
+								<td colspan="2">${updateData.p_color}</td>
 							</tr>
 							<tr>
-								<td class="ac">비밀번호</td>
-								<td colspan="3"><input type="password" id="b_pwd" name="b_pwd" ><label>수정할 비밀번호를 입력해 주세요.</label></td>
+								<td class="ac vm">상품 사이즈</td>
+								<td colspan="2">${updateData.p_size}</td>
 							</tr>
-						</tbody>
-					</table>
-				</form>
+							<tr>
+								<td class="ac vm">상품 성별</td>
+								<td colspan="2">${updateData.p_gender}</td>
+							</tr>
+							<tr>
+								<td class="ac vm">상품 수정일</td>
+								<td colspan="2"><input type="date" name="p_date" id="p_date" /></td>
+							</tr>
+							<tr>
+								<td class="ac vm">상품 설명</td>
+								<td colspan="2"><textarea cols="100" rows="30" name="p_content" id="p_content" >${updateData.p_content}</textarea></td>
+							</tr>
+							
+								
+							</table>
+							<div class="contentBtn">
+							<input type="button" id="productUpdateBtn" value="수정" />
+							</div>
+					</form>
+							 <form id="formBtn"  enctype="multipart/form-data">
+		 						<input type="hidden" name="img_no" id="img_no">
+		 						<input type="hidden" name="img_image" id="img_image">
+		 						<input type="hidden" name="p_code" value="${updateData.p_code}">
+						<table>
+							<c:if test="${not empty imageUpdate}">
+								<c:forEach var="image" items="${imageUpdate}" varStatus="status">
+									<tr>
+										<td class="ac">첨부파일</td>
+										<td colspan="2">
+										<input type="file" class="file" />
+										
+										<img src="/uploadStorage/product/${image.img_image}" data-no="${image.img_no}">
+										<button type="button" class="imageUpdate">수정</button>
+										<button type="button" class="imageDelete">삭제</button>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${not empty imageInsert}">
+								<c:forEach var="image" items="${imageInsert}" varStatus="status">
+									<tr>
+										<td class="ac">첨부파일</td>
+										<td colspan="2"><input type="file" id="files" />
+										<button type="button" class="imageInsert">입력</button>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</table>
+						</form>
 			</div>
 			<div class="contentBtn">
-				<input type="button" id="productUpdateBtn" value="수정" />
+				<!-- <input type="button" id="productUpdateBtn" value="수정" /> -->
 				<input type="button" id="productListBtn" value="목록" />
 			</div>
 		</div>

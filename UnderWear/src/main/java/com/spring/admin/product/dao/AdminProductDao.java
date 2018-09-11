@@ -14,7 +14,7 @@ public interface AdminProductDao {
 	public int productInsert(AdminProductVO pvo);
 	public int imageInsert(AdminImageVO ivo);
 	public int productNumber();
-	
+	 
 	// category
 	public List<AdminProductVO> bcategory();
 	public List<AdminProductVO> scategory(int bigct_no);		/*int bigct_no*/

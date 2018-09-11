@@ -49,7 +49,7 @@ public class AdminProductDaoImpl implements AdminProductDao {
 	public List<AdminProductVO> scategory(int bigct_no) {		/*int bigct_no*/
 		return session.selectList("category",bigct_no);		/*,bigct_no*/
 	}
-
+ 
 	// 이미지 입력 구현
 	@Override
 	public int imageInsert(AdminImageVO pvo) {

@@ -2,27 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.admin.product.dao.AdminProductDao">
 	<select id="productList" parameterType="adminProduct" resultType="adminProduct" >   <!-- id로 구분한다. -->
-			/* AdminProduct - productList */      <!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
-			select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category
-			from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no
+		/* AdminProduct - productList */      <!-- 자바에서 쓸것이기 때문에 xml주석이 아닌 자바주석으로 사용이 가능함. -->
+		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category, bigcategory.bigct_category
+		from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no
+		inner join bigcategory on product.smallct_no = smallcategory.smallct_no
+		where p_status != 0
+			 
 			
-			order by p_code desc
+			
+		<where>
+			<if test="search=='p_code'">
+				<![CDATA[ p_address LIKE '%'|| #{keyword} ||'%' ]]>
+			</if>
+			<if test="search=='p_name'">
+				<![CDATA[ p_name LIKE '%'|| #{keyword} ||'%' ]]>
+			</if>
+			<if test="search=='p_date'">
+				<![CDATA[ to_char(p_date, 'YYYY-MM-DD') between #{start_date} and #{end_date} ]]>
+			</if>
+		</where>
+		
+		order by p_code desc
+		
 	</select>
 	
 	<!-- 상품 상세 조회 -->
    <select id="productDetail" parameterType="adminProduct" resultType="adminProduct" >
       /* AdminProduct - productDetail */
       
-      select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, 
-      p_gender, price.pr_01, smallcategory.smallct_category
-      
+      select product.p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_content,
+      p_gender, price.pr_01, smallcategory.smallct_category, bigcategory.bigct_category
       from product inner join price on product.pr_no = price.pr_no   
-      
       inner join smallcategory on product.smallct_no = smallcategory.smallct_no 
+      inner join bigcategory on smallcategory.bigct_no = bigcategory.bigct_no
       
       where product.p_code = #{p_code}
 
    </select>
+   
    <select id="productDetailImage" parameterType="adminProduct" resultType="adminImage">
 		/* AdminProduct - productDetailImage */
 		
@@ -34,9 +51,9 @@
 	<insert id="productInsert" parameterType="adminProduct">
 		/* AdminProduct - productInsert */
 		INSERT INTO PRODUCT
-		(p_code, p_name, p_inventory, p_color, p_size, p_date, p_content, pr_no, p_gender, smallct_no)
+		(p_code, p_name, p_inventory, p_color, p_size, p_date, p_content, pr_no, p_gender, smallct_no, p_status)
   		VALUES
-  		(#{p_code}, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no})
+  		(#{p_code}, #{p_name}, #{p_inventory}, #{p_color}, #{p_size}, #{p_date}, #{p_content}, #{pr_no}, #{p_gender}, #{smallct_no}, 1)
 	</insert>
 	
 	<!-- 카테고리 -->
@@ -48,11 +65,11 @@
 			order by bigct_no desc
 	</select>
 	<!-- parameterType="int" --><!-- where smallcategory.bigct_no=#{bigct_no} -->
-	<select id="scategory" resultType="adminProduct" >		
+	<select id="scategory" parameterType="int" resultType="adminProduct" >		
 		/* adminProduct - scategory */
-		select smallct_no, smallct_category, bigcategory.bigct_no bigct_no
-  			from smallcategory inner join bigcategory 
-  			on smallcategory.bigct_no = bigcategory.bigct_no 
+		<!-- select smallct_no, smallct_category, bigct_no from smallcategory -->
+		select smallct_no, smallct_category, bigcategory.bigct_no
+  			from smallcategory inner join bigcategory on smallcategory.bigct_no = bigcategory.bigct_no where smallcategory.bigct_no= #{bigct_no}
 	</select>
 	
 	<!-- image -->
@@ -75,17 +92,17 @@
 	</select>
 	
 	<!-- 상품 수정 -->
-	<select id="updateForm" parameterType="adminProduct" resultType="adminProduct">
+	<!-- <select id="updateForm" parameterType="adminProduct" resultType="adminProduct">
 		/* AdminProduct - updateForm */
 		select p_code, p_name, p_inventory, p_color, p_size, to_char(p_date, 'YYYY-MM-DD') as p_date, p_gender, price.pr_01, smallcategory.smallct_category
 			from product inner join price on product.pr_no = price.pr_no   inner join smallcategory on product.smallct_no = smallcategory.smallct_no inner join image on product.img_no = image.img_no
 			where p_code = #{p_code}
-			order by p_code desc
+			order by p_code desc -->
 			<!-- select product.P_CODE, P_NAME, P_INVENTORY, P_COLOR, P_SIZE, P_DATE, P_CONTENT, P_GENDER, PR_NO, product.SMALLCT_NO, img_image
 from image join product
 on product.p_code = image.p_code
-join smallCategory on smallCategory.smallct_no = product.smallct_no -->
-	</select>
+join smallCategory on smallCategory.smallct_no = product.smallct_no 
+	</select>-->
 	
 	<update id="productUpdate" parameterType="adminProduct">
 		/* adminProduct - productUpdate */
@@ -93,10 +110,25 @@ join smallCategory on smallCategory.smallct_no = product.smallct_no -->
 		where p_code = #{p_code}
 	</update>
 	
-	<update id="imageUpdate" parameterType="adminImage">
+	<update id="imageUpdate" parameterType="adminProduct">
 		/* adminProduct - imageUpdate */
 		update image set img_image = <if test = "img_image != null and img_image != ''">#{img_image}</if>
 		where img_no = #{img_no}
 	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="productDelete" parameterType="adminProduct">
+		/* adminProduct - productDelete */
+		delete from product where p_code = #{p_code}
+	</delete>
+	
+	<update id="statusUpdate" parameterType="adminProduct">
+		/* adminProduct - statusUpdate */
+		update product set p_status = 0 where p_code = #{p_code}
+	</update>
+	
+	<delete id="imageDelete" parameterType="adminProduct">
+		delete from image where img_no = #{img_no}
+	</delete>
 	
 </mapper>
