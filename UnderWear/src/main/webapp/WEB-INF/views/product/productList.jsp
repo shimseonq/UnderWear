@@ -100,6 +100,7 @@
 							<td>${product.p_gender}</td>
 							<td>${product.pr_01}</td>
 							<td>${product.smallct_category}</td>
+							
 						</tr>
 					</c:forEach>
 				</c:when>

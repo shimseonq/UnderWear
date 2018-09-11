@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
-
+ 
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">

@@ -10,12 +10,11 @@
 	href="/resources/include/css/board.css" />
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
-
+ 
 <style type="text/css">
 #imgView {
 	position: absolute;
 }
-
 .imgViewData {
 	position: relative;
 	top: -2px;
@@ -23,7 +22,9 @@
 	z-index: 100;
 }
 </style>
-
+<script type="text/javascript"
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 
 	$(function() {
@@ -46,26 +47,6 @@
 <body>
 
 <div class="contentContainer">
-		<!-- <div class="contentTB">
-			<form id="f_writeForm" enctype="multipart/form-data"> -->
-		<!-- 	<table id="boardWrite" class="table table-hover">
-					<colgroup>
-						<col width="17%" />
-						<col width="83%" />
-					</colgroup>
-					
-					<tr >
-						<td class="ac"><label for="exampleInputEmail1">글제목</label></td>
-						<td><input type="text" class="form-control" id="le"
-							name="le" /></td>
-					</tr>
-					
-					<tr >
-						<td class="ac vm"><label for="exampleInputPassword1">글 내용</label></td>
-						<td><textarea class="form-control" rows="7" id="n_content"
-								name="n_content"></textarea></td>
-					</tr>
-				</table> -->
 				
 
 			<div class="contentTB">
@@ -99,8 +80,27 @@
 				</form>
 			</div>
 				<div class="contentBtn">
+					<table id="boardWrite" class="table table-hover">
+						<colgroup>
+							<col width="17%" />
+							<col width="83%" />
+						</colgroup>
+
+						<tr class="form-group">
+							<td class="ac"><label for="exampleInputEmail1">글제목</label></td>
+							<td><input type="text" class="form-control" id="n_title"
+								name="n_title" /></td>
+						</tr>
+						<tr class="form-group">
+							<td class="ac"><label for="exampleInputPassword1">글 내용</label></td>
+							<td><textarea class="form-control" rows="7" id="n_content"
+									name="n_content"></textarea></td>
+						</tr>
+					</table>
+					<div class="contentBtn">
 				<input type=button class="btn btn-default" id="noticeInsertBtn"
 					value="글쓰기" />
+			</div>
 			</div>
 		</div>
 </body>

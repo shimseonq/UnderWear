@@ -216,7 +216,7 @@
 			<div class="form-group form-group-sm">
 				<label for="c_address" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-3">
-					<input type="text" id="c_address" name="c_address" maxlength="10" class="form-control" placeholder="ADDRESS" >
+					<input type="text" id="c_address" name="c_address" maxlength="80" class="form-control" placeholder="ADDRESS" >
 				</div>
 				<div class="col-sm-5">
 					<p class="form-control-static error"></p>
@@ -247,9 +247,5 @@
 			</div>																										
 		</form>
 	</div>
-	</div>
-</div>
-
-	
       </body>
 </html>

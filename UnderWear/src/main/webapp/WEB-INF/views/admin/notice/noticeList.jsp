@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 <!-- =================스크립트 정의 ======================= -->
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +27,10 @@
 <style type="text/css">
 .table-responsive{
 	margin-top: -25%;
+   margin-top: -25%;
 }
 .required {
-	color: red;
+   color: red;
 }
 </style>
 
@@ -51,6 +52,7 @@
 
 
 <script type="text/javascript" src="/resources/include/js/adminQnaBoard.js"></script>
+<script type="text/javascript" src="/resources/include/js/adminNoticeBoard.js"></script>
 <script type="text/javascript">
 search = "<c:out value='${data.search}' />";
 start_date = "<c:out value='${data.start_date}' />";
@@ -60,17 +62,17 @@ keyword = "<c:out value= '${data.keyword}' />";
 $(function() {
 
 	//검색하고 나서 검색조건이랑 검색명  초기화 안되고 그대로 값 foward하는 부분
-	var word = "${data.keyword}";
+	/* var word = "${data.keyword}";
 	var value = "";
 	if (word != "") {
 		$("#keyword").val("${data.keyword}");
 		$("#search").val("${data.search}");
 
-		/* ------------- 검색 항목 행당 단어 색깔 주기 ---------- */
-		if ($("#search").val() != 'n_content') { /* 내용이 아닐때만 색깔을 변경할수 있게 하는 제어 */
+		/* ------------- 검색 항목 행당 단어 색깔 주기 ---------- 
+		if ($("#search").val() != 'n_content') { /* 내용이 아닐때만 색깔을 변경할수 있게 하는 제어 
 			//contains()는 특정 텍스트를 포함한 요소반환
 			if ($("#search").val() == 'n_title') {
-				value = "#list tr td.goDetail"; /* #(아이디) list 하위에 tr 하위에 td 안에있는 .(클래스)goDetaul을 찾아간느 부분 */
+				value = "#list tr td.goDetail"; /* #(아이디) list 하위에 tr 하위에 td 안에있는 .(클래스)goDetaul을 찾아간느 부분 
 			$(value + ":contains('" + word + "')").each(
 					function() {
 						var regex = new RegExp(word, 'gi'); //정규표현식 객체
@@ -82,9 +84,9 @@ $(function() {
 					});
 		}
 	}
-	}
+	}  */
 	/* 검색 대상이 변경될 때마다 처리 이벤트 */
-	$('#search').change(function() {
+	/* $('#search').change(function() {
 		if ($("#search").val() == "all") {
 			$("#keyword").val("전체 데이터 조회합니다.");
 		} else if ($("#search").val() != "all") {
@@ -92,7 +94,7 @@ $(function() {
 			$("#keyword").focus();
 		}
 	});
-
+ */
 
 	// 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트
 	$(".goDetail").click(function() {
@@ -132,35 +134,11 @@ function goPage() {
 </head>
 <body>
 
+<!-- <h2 class="sub-header">관리자 게시판 관리  페이지</h2> -->
 
 <div class="table-responsive">
-   <div class="well">
-      <form class="form-inline" id="f_search">
-         <h3><span class="label label-success">검색조건</span></h3>
-         
-         <div class="form-group">
-            <select name="search" id="search" class="form-control">
-               <option value="n_title">제목</option>
-               <option value="n_content">내용</option>
-               <option value="n_date">작성일자</option>
-            </select>
-         </div>
-         
-         <div class="form-group" id="textCheck">
-            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="검색어를 입력하세요.">   
-         </div>
-         
-         <div class="form-group" id="dateCheck">
-            <input type="date" name="start_date" id="start_date" class="form-control" placeholder="시작일자.">
-            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="종료일자.">
-         </div>
-         
-         <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
-         <button type="button" class="btn btn-primary" id="allSearchBtn">All Search</button>
-      </form>
-   </div>
    
-   
+  
  <form name="detailForm" id="detailForm">
 	<input type="hidden" id="n_no" name="n_no" />
 <!-- 	hidden 값을 전달해 줌 -->

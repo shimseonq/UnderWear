@@ -23,7 +23,7 @@ $(function() {
 	/* 기본덧글 목록 불러오기 */
 	var rv_no = "${detail.rv_no}";			
 	listAll(rv_no)
-	
+	 
 			/* 덧글 내용 저장 이벤트 */
 		$("#replyInsert").click(function() {
 			

@@ -25,6 +25,11 @@
 .required {
 	color: red;
 }
+ 
+.rCount {
+   font-size: 10px;
+   color: red;
+   }
 </style>
 
 <script type="text/javascript"
@@ -168,7 +173,8 @@ $(function() {
 						<c:forEach var="review" items="${reviewList}" varStatus="status">
 							<tr class="tac" data-num="${review.rv_no}" align="center">
 								<td>${review.rv_no}</td>
-								<td class="goDetail tal">${review.rv_title}</td>
+								<td><span class="goDetail tal">${review.rv_title} </span>
+								<c:if test="${review.rCount>0 }"><span class="rCount">[${review.rCount}]</span></c:if></td>
 								<td class="content">관리자</td>
 								<td>${review.rv_date}</td>
 								<td>${review.rv_hit}</td>

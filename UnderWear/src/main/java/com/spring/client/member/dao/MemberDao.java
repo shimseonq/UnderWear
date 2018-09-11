@@ -30,4 +30,6 @@ public interface MemberDao {
 	public int memberUpdate(MemberVO mvo);
 
 	public List<QnaVO> customerBoardList(MemberVO mvo);
+
+	
 }

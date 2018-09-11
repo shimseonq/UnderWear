@@ -23,7 +23,7 @@ import com.spring.admin.product.service.AdminProductService;
 import com.spring.admin.product.vo.AdminProductVO;
 import com.spring.client.product.service.ProductService;
 import com.spring.common.file.FileUploadUtil;
- 
+
 @Controller
 @RequestMapping(value="/admin")
 public class AdminProductController {
@@ -37,8 +37,8 @@ public class AdminProductController {
 	
 	@Autowired
 	private ProductService productService;
-
-	/*글목록 구현하기 (페이징 처리를 제외한 목록)*/
+ 
+	/*글목록 구현하기 (페이징 처리를 제외한 목록)*/ 
 
 	@RequestMapping(value="/product/productList.do", method = RequestMethod.GET)
 	public String productList(@ModelAttribute ("data")AdminProductVO pvo, Model model) {

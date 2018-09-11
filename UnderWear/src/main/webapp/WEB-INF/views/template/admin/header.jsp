@@ -13,7 +13,7 @@
                 <a class="navbar-brand" href="/resource/default.html">UnderWear 관리자 페이지</a>
             </div>
         
-          
+        
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -44,19 +44,21 @@
                                     <a href="/admin/member/memberList.do">회원 정보</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/member/rank.do">등급 정보</a>
+                                    <a href="/admin/member/rankupdate.do">등급 정보</a>
                                 </li>
                                 
                             </ul>
                          </li>
                         <li>
                             <a> 상품 관리</a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level">                            
+
                                 <li>
-                                    <a href="flot.html">상품 정보</a>
+
+                                    <a href="/admin/product/productList.do">상품 정보</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">상품 등록</a>
+                                    <a href="/admin/product/writeForm.do">상품 등록</a>
                                 </li>
                                   <li>
                                     <a href="morris.html">상품 분류</a>
@@ -78,9 +80,6 @@
                                 <li>
                                     <a href="/admin/notice/noticeList.do">관리자 Notice 관리</a>
                                 </li>  
-                                <li>
-                                    <a href="/admin/review/reviewList.do">관리자review 관리</a>
-                                </li> 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -92,7 +91,11 @@
                                     <a href="/admin/order/orderList.do">주문관리</a>
                                 </li>
                                 <li>
+
+                                    <a href="/admin/order/orderList.do">배송 조회</a>
+
                                     <a href="/admin/sale/saleList.do">판매관리</a>
+
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

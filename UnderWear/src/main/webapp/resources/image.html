@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>http://www.blueb.co.kr</title>
+  <script type="text/javascript" src="/resources/include/js/image/jquery.js"></script>
+<!-- <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script> -->
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0px;padding:0;list-style-type:none;}
+body{margin:0px;padding:0px;}
+html{}
+img{border:none;}
+h3{font-family:Tahoma, Geneva, sans-serif;font-size:14px;color:#333;letter-spacing:1px;margin-top:10px;margin-bottom:10px;}
+p{margin-bottom:10px;margin-top:10px;line-height:22px;}
+.demo{margin:0 auto;width:600px;}
+.tickul li{line-height:24px;}
+/* zoom-section */
+.zoom-section{clear:both;margin-top:20px;}
+*html .zoom-section{display:inline;clear:both;}
+.zoom-desc{float:left;margin-left:10px;width:310px;margin-bottom:20px;}
+.zoom-small-image{border:4px solid #CCC;float:left;margin-bottom:20px;}
+.zoom-tiny-image{border:1px solid #CCC;margin:0px;}
+.zoom-tiny-image:hover{border:1px solid #C00;}
+</style>
+<link href="/resources/include/css/image/cloud-zoom.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/resources/include/js/image/cloud-zoom.1.0.2.min.js"></script>
+<script type="text/javascript">
+  
+     
+        
+        var sell_price;
+    	
+    	var c_id = "${login.c_id}";
+    	var state;
+    	var state2;
+    	
+        $(function(){
+    		init();
+    		$("#selectColor").change(function(){
+    			 state = $("#selectColor option:selected").val();
+    		});
+    		$("#selectSize").change(function(){
+    			 state2 = $("#selectSize option:selected").val();
+    		
+    			if(state != null){
+    				if(state2 != null){
+    					$("#sumdiv").show();
+    					$("#spanval").html(state+"/"+state2);
+    				}
+    			}else{
+    				$("#sumdiv").hide();
+    			}
+    		});
+    		/* $("#detailForm").attr({
+				"method":"post",
+				"action":"/order/orderForm.do"
+			});
+			$("#detailForm").submit(); */
+    		// 구매 버튼 클릭시 구매페이지로
+    	 	/* $("#orderFormBtn").click(function() {
+    		
+    			if(c_id!=""){
+    			console.log("상품코드 : " + $("#p_code").val());
+    			 
+    			var insertUrl = "/mypage/basketInsert.do";
+    			$.ajax({
+    				url : insertUrl,
+    				type : "post",
+    				headers : {
+    					"Content-Type" : "application/json",
+    					"X-HTTP-Method-Override" : "POST"
+    				},
+    				dataType : "text",
+    				data : $("#detailForm").serialize(),
+    				error : function(){
+    					alert('시스템 오류 입니다 . 현수형에게 문의하세요');
+    				},
+    				success : function(resultData){
+    					if(resultData == "SUCCESS"){
+    						alert("장바구니에 등록되었습니다.");
+
+    						location.href="/order/orderForm.do";
+    					}
+    				}
+    			})
+    			}else{
+    	            location.href="/login/login.do";
+    	         }
+    		});  */
+    		
+    		$("#orderFormBtn").click(function() {
+    			if(c_id!=""){
+    			$("#detailForm").attr({
+    				"method":"get",
+    				"action":"/order/orderForm.do"
+    			});
+    			
+    			 $("#detailForm").submit();
+				}else{
+					location.href="/login/login.do";
+				}
+    		}); 
+    		
+    		
+			
+			
+    		$("#basketBtn").click(function() {
+    			if(c_id!=""){
+    			$("#detailForm").attr({
+    				"method":"get",
+    				"action":"/mypage/basket.do"
+    			});
+    			
+    			 $("#detailForm").submit();
+				}else{
+					location.href="/login/login.do";
+				}
+    		}); 
+    		
+    		
+    		
+    		/* var p_code = $(this).parents("div.container3").attr("data-num");
+			$("#p_code").val(p_code); */
+			
+			/* if(c_id!=""){
+	            location.href="/mypage/basketInsert.do";
+	        
+			console.log("상품코드!!!!!!!!!!!!!!!!!!!!!! : " + $("#p_code").val());
+			
+			
+			$("#detailForm").attr({
+				"method":"get",
+				"action":"/mypage/basketInsert.do"
+			});
+			 $("#detailForm").submit();
+			 }else{
+		            location.href="/login/login.do";
+		         } */
+    	})
+    
+	
+
+	
+
+	function init () {
+		sell_price = document.detailForm.sell_price.value;
+		b_count = document.detailForm.b_count.value;
+		document.detailForm.sum.value = sell_price;
+		change();
+	}
+
+	function add () {
+		hm = document.detailForm.b_count;
+		sum = document.detailForm.sum;
+		hm.value ++ ;
+
+		sum.value = parseInt(hm.value) * sell_price;
+	}
+
+	function del () {
+		hm = document.detailForm.b_count;
+		sum = document.detailForm.sum;
+			if (hm.value > 1) {
+				hm.value -- ;
+				sum.value = parseInt(hm.value) * sell_price;
+			}
+	}
+
+	function change () {
+		hm = document.detailForm.b_count;
+		sum = document.detailForm.sum;
+
+			if (hm.value < 0) {
+				hm.value = 0;
+			}
+		sum.value = parseInt(hm.value) * sell_price;
+	}
+	
+	function createColorOptions() {
+		// colorOptions = [];
+		var p_color = "${detail.p_color}";
+		var colorOptions = [];
+		var color = "";
+		for (var i = 0; i < p_color.length; ++i) {
+			var character = p_color.charAt(i);  //;
+			if (character != ';') {
+				color = color + character;		// color = 
+			}
+			else {
+				colorOptions.push(color);
+				color = "";
+			}
+		}
+		
+		var output = "";
+		for (var i = 0; i < colorOptions.length; ++i) {
+			output = output + "<option>"+colorOptions[i]+"</option>";
+			// <option>빨강</option> <option>파랑</option> <option>검정</option>
+		}
+		return output;
+	}
+	
+	function createSizeOptions() {
+		var p_size = "${detail.p_size}";
+		var sizeOptions = [];
+		var size = "";
+		for (var i = 0; i < p_size.length; ++i) {
+			var character = p_size.charAt(i);  //;
+			if (character != ';') {
+				size = size + character;		// color = 빨강
+			}
+			else {
+				sizeOptions.push(size);
+				size = "";
+			}
+		}
+		
+		var output = ""; 
+		for (var i = 0; i < sizeOptions.length; ++i) {
+			output = output + "<option value='"+sizeOptions[i]+"'>"+sizeOptions[i]+"</option>";
+		}
+		return output;
+	}
+	
+	var colorOptions = createColorOptions();
+	var sizeOptions = createSizeOptions();
+        </script>
+</script>
+
+<div class="demo">
+
+	<div class="zoom-section">    	  
+		<div class="zoom-small-image">
+			<a href='/resources/image/test7654.jpg' class = 'cloud-zoom' id='zoom1' rel="adjustX:10, adjustY:-4"><img src="/resources/image/test79.jpg" alt='' title="Optional title display" /></a></div>
+		<div class="zoom-desc">
+		</div>
+	</div>
+</div>
+<form name="detailForm" id="detailForm" method="get">
+         
+         <div class="all">
+           
+           
+           <div id="option">
+			<div class="container3" >
+			<table>
+				<tr >
+					<td><span>상품명 : </span></td>
+					<td>${detail.p_name}</td>
+				</tr>
+				<tr>
+					<td><span>가격 : </span></td>
+					<td>${detail.pr_01}</td>
+					<%-- <td>${detail.p_file }</td> --%>
+				</tr>
+				<tr>
+				<!-- 셀렉트 배열처리 -->
+					<td><span>색상 : </span></td>
+					<td> <select id="selectColor" name="selectColor">
+							<option>옵션</option>
+							<script>document.write(colorOptions);</script>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><span>사이즈 : </span></td>
+
+					<td>
+					<select id="selectSize" name="selectSize">
+							<option>옵션</option>
+							<script>document.write(sizeOptions);</script>
+					</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+				<input type="hidden" id="p_code" name="p_code" value="${detail.p_code}" />
+				<div id="content"> ${detail.p_name}<span id="spanval"></span>
+				</div>
+				<div id="sumdiv">
+					수량 : <input type=hidden name="sell_price" value="${detail.pr_01}">
+					<input type="number" name="b_count" value="1" size="3" onchange="change();">
+						 <input type="button" value=" + " onclick="add();"> 
+						 <input type="button" value=" - " onclick="del();"><br> 
+						 금액 : <input type="text" name="sum" size="11" readonly>원
+				</div>
+
+				<div class="container4">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" id="orderFormBtn" name="orderFormBtn" value="BUY"><br> 
+					<input type="button" id="basketBtn" name="basketBtn" value="add to cart">
+				</div> 
+			
+		</div>
+    </div>
+	<div class="testimg" align="center">
+    	
+    	<!-- <img alt="" src="/resources/image/test/test14.jpg"><br>
+    	<img alt="" src="/resources/image/test/test15.jpg"><br>
+    	<img alt="" src="/resources/image/test/test16.jpg"><br>
+    	<img alt="" src="/resources/image/test/test17.jpg"><br>
+    	<img alt="" src="/resources/image/test/test18.jpg"><br>
+    	<img alt="" src="/resources/image/test/test19.jpg"><br>
+    	<img alt="" src="/resources/image/test/test20.jpg"><br>
+    	<img alt="" src="/resources/image/test/test21.jpg"><br>
+    	<img alt="" src="/resources/image/test/test22.jpg"><br>
+    	<img alt="" src="/resources/image/test/test23.jpg"><br>
+    	<img alt="" src="/resources/image/test/test25.jpg"><br>
+    	<img alt="" src="/resources/image/test/test26.jpg"> -->
+    	<img alt="" src="/resources/image/${detail.p_file }">
+    </div>	
+         
+         </form>
+
+    
+
+  
+	
+	
+
+
+
+</body>
+</html>

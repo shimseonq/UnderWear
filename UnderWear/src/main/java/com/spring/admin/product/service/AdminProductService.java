@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.admin.product.vo.AdminProductVO;
 
- 
+
 public interface AdminProductService {
 	// LIST
 	public List<AdminProductVO> productList(AdminProductVO pvo);
@@ -16,7 +16,7 @@ public interface AdminProductService {
 
 	// CATEGORY
 	public String bigCategory(ObjectMapper mapper);
-	
+	 
 	public String smallCategory(int bigct_no, ObjectMapper mapper);
 	
 	// UPDATE

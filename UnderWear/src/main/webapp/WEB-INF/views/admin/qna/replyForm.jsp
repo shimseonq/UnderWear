@@ -21,7 +21,7 @@
          <script src="../js/html5shiv.js"></script>
       <![endif] -->
    
-      
+       
       
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/board.css" />

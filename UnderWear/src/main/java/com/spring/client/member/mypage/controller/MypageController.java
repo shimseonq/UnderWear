@@ -1,4 +1,4 @@
-  package com.spring.client.member.mypage.controller;
+package com.spring.client.member.mypage.controller;
 
 import java.util.List;
 
@@ -32,213 +32,212 @@ import com.spring.client.qna.vo.QnaVO;
 @RequestMapping(value="/mypage")
 public class MypageController {
 
-	Logger logger = Logger.getLogger(MypageController.class);
+   Logger logger = Logger.getLogger(MypageController.class);
 
-	@Autowired
-	private RankService rankService;
+   @Autowired
+   private RankService rankService;
 
-	@Autowired
-	private BasketService basketService;
+   @Autowired
+   private BasketService basketService;
 
-	@Autowired
-	private MemberService memberService;
-	
-	@Autowired
-	private LoginService loginService;	
+   @Autowired
+   private MemberService memberService;
 
-	@Autowired
-	private PayService payService;
+   @Autowired
+   private LoginService loginService;   
 
-	@Autowired
-	private OrderService orderService;
+   @Autowired
+   private PayService payService;
 
-	/*************************************************
-	    * 마이페이지 주문 조회
-	    *************************************************/
-	   @RequestMapping(value="/mypage.do", method = RequestMethod.GET)
-	   public String customerOrderList(PayVO pvo, Model model, HttpSession session) {
-	      logger.info("mypage 호출 성공");
+   @Autowired
+   private OrderService orderService;
 
-	      LoginVO login =(LoginVO)session.getAttribute("login");
-	      if(login == null) {
-	         return "login/login";           
-	      }else {   
-	         pvo.setC_id(login.getC_id());
+   /*************************************************
+    * 마이페이지 주문 조회
+    *************************************************/
+   @RequestMapping(value="/mypage.do", method = RequestMethod.GET)
+   public String customerOrderList(PayVO pvo, Model model, HttpSession session) {
+      logger.info("mypage 호출 성공");
 
-	         List<PayVO> payList = payService.payList(pvo);   
+      LoginVO login =(LoginVO)session.getAttribute("login");
+      if(login == null) {
+         return "login/login";           
+      }else {   
+         pvo.setC_id(login.getC_id());
 
-	         model.addAttribute("payList", payList);
+         List<PayVO> payList = payService.payList(pvo);   
 
-	         return "mypage/mypage";
-	      }
-	   }
-	
-	/*************************************************
-	 * 마이페이지 구매완료
-	 *************************************************/
-	@RequestMapping(value="/orderFin.do", method = RequestMethod.POST)
-	public String orderFinish(OrderVO ovo, Model model, HttpSession session) {
-		logger.info("order Finish호출 성공");
-		LoginVO login =(LoginVO)session.getAttribute("login");
+         model.addAttribute("payList", payList);
 
-		if(login == null) {
-			return "login/login";	        
-		}else {	
-			ovo.setC_id(login.getC_id());
+         return "mypage/mypage";
+      }
+   }
 
-			orderService.orderFinish(ovo);
+   /*************************************************
+    * 마이페이지 구매완료
+    *************************************************/
+   @RequestMapping(value="/orderFin.do", method = RequestMethod.POST)
+   public String orderFinish(OrderVO ovo, Model model, HttpSession session) {
+      logger.info("order Finish호출 성공");
+      LoginVO login =(LoginVO)session.getAttribute("login");
 
-			return "redirect:/mypage/mypage.do";
-		}		
-	}
+      if(login == null) {
+         return "login/login";           
+      }else {   
+         ovo.setC_id(login.getC_id());
 
-	/*************************************************
-	 * 마이페이지 장바구니 조회
-	 *************************************************/
-	@RequestMapping(value="/basket.do", method = RequestMethod.GET)
-	public String customerBasketList(BasketVO bvo, Model model, HttpSession session) {
-		logger.info("basket 호출 성공");
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-	    if(login == null) {
-	         return "login/login";	        
-	    }else {	
-	    	logger.info("c_id ="+login.getC_id());
-	    	bvo.setC_id(login.getC_id());
+         orderService.orderFinish(ovo);
 
-	 		List<BasketVO> basketList = basketService.basketList(bvo);	
-			
-			model.addAttribute("basketList", basketList);
-			
-			return "mypage/basket";
-	     }		
-	}
-	
-	/*************************************************
-	 * 마이페이지 주문 조회
-	 *************************************************/
-	@RequestMapping(value="/pwdCheck.do", method = RequestMethod.GET)
-	public ModelAndView infocheck(@ModelAttribute LoginVO lvo, ModelAndView mav, HttpSession session) {
-		logger.info("mypage 호출 성공");
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-	    if(login == null) {
-	    	mav.setViewName("login/login");	 
-	    	return mav;      
-	    }else {		    
-			String userId = lvo.getC_id();
-			String userPw = lvo.getC_pwd();
-			LoginVO loginCheckResult = loginService.loginSelect(userId, userPw);
-			if (loginCheckResult == null) {
-				mav.addObject("status", 1);
-				mav.setViewName("mypage/pwdCheck");
-				return mav;
-			} else { // 일치하면
-				session.setAttribute("login",loginCheckResult);
-				/*mav.addObject("login", loginCheckResult);*/
-				mav.setViewName("mypage/myinfo");
-				return mav;
-			}
-	    }
+         return "redirect:/mypage/mypage.do";
+      }      
+   }
 
-	}
+   /*************************************************
+    * 마이페이지 장바구니 조회
+    *************************************************/
+   @RequestMapping(value="/basket.do", method = RequestMethod.GET)
+   public String customerBasketList(BasketVO bvo, Model model, HttpSession session) {
+      logger.info("basket 호출 성공");
 
-	/*************************************************
-	 * 마이페이지 장바구니 등록
-	 *************************************************/
-	@RequestMapping(value="/basketInsert.do", method = RequestMethod.GET)
-	public String customerBasketInsert(BasketVO bvo, Model model, HttpSession session) {
-		logger.info("basketInsert 호출 성공");
+      LoginVO login =(LoginVO)session.getAttribute("login");
 
-		int result = 0;
-		String url = "";
+      if(login == null) {
+         return "login/login";           
+      }else {   
+         bvo.setC_id(login.getC_id());
 
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		bvo.setC_num(login.getC_num());
+         List<BasketVO> basketList = basketService.basketList(bvo);   
 
-		result = basketService.basketInsert(bvo);
+         model.addAttribute("basketList", basketList);
 
+         return "mypage/basket";
+      }      
+   }      
+   
 
+   /*************************************
+    * 마이페이지 등록
+    * ************************************/
+   @RequestMapping(value="/basketInsert.do", method = RequestMethod.GET)
+   public String customerBasketInsert(BasketVO bvo, Model model, HttpSession session) {
+      logger.info("basketInsert 호출 성공");
+      
+      int result = 0;
+      String url = "";
+      
+      LoginVO login =(LoginVO)session.getAttribute("login");
+         bvo.setC_num(login.getC_num());
+      
+      result = basketService.basketInsert(bvo);
+      
+      
+      
+      if(result == 1) {
+         url = "/mypage/basket.do";
+      }else {
+         model.addAttribute("code",1);
+         url = "/product/productDetail.do";
+      }
+   return "redirect:"+url;
+   }
 
-		if(result == 1) {
-			url = "/mypage/basket.do";
-		}else {
-			model.addAttribute("code",1);
-			url = "/product/productDetail.do";
-		}
-		return "redirect:"+url;
-	}
+   /*************************************************
+    * 마이페이지 장바구니 삭제
+    *************************************************/
+   @RequestMapping(value="/basketDelete.do", method = RequestMethod.GET)
+   public String basketDelete(BasketVO bvo, @RequestParam String b_number, Model model, HttpSession session) {
+      logger.info("basket delete 호출 성공");
+      String[] b_num = b_number.split(",");
+      LoginVO login =(LoginVO)session.getAttribute("login");
 
-	/*************************************************
-	 * 마이페이지 장바구니 삭제
-	 *************************************************/
-	@RequestMapping(value="/basketDelete.do", method = RequestMethod.GET)
-	public String basketDelete(BasketVO bvo, @RequestParam String b_number, Model model, HttpSession session) {
-		logger.info("basket delete 호출 성공");
-		String[] b_num = b_number.split(",");
-		LoginVO login =(LoginVO)session.getAttribute("login");
+      if(login == null) {
+         return "login/login";           
+      }else {   
+         bvo.setC_id(login.getC_id());
 
-		if(login == null) {
-			return "login/login";	        
-		}else {	
-			bvo.setC_id(login.getC_id());
+         basketService.basketDelete(bvo, b_num);
 
-			basketService.basketDelete(bvo, b_num);
+         return "redirect:/mypage/basket.do";
+      }      
+   }
 
-			return "redirect:/mypage/basket.do";
-		}		
-	}
+   /*************************************************
+    * 마이페이지 내정보 확인
+    *************************************************/
+   @RequestMapping(value="/pwdCheck.do", method = RequestMethod.GET)
+   public ModelAndView infocheck(@ModelAttribute LoginVO lvo, ModelAndView mav, HttpSession session) {
+      logger.info("mypage 호출 성공");
 
-	/*************************************************
-	 * 마이페이지 개인정보 조회
-	 *************************************************/
-	@RequestMapping(value="/myinfo.do", method = RequestMethod.POST)
-	public String customeriInfoList(MemberVO mvo, Model model, HttpSession session) {
-		logger.info("mypage 호출 성공");
-				
-		LoginVO login =(LoginVO)session.getAttribute("login");
-		
-	      if(login == null) {    	  
-	    	  return "login/login";
-	        
-	     }else {
-	    	 logger.info("c_id ="+login.getC_id());
-		     mvo.setC_id(login.getC_id());
-	    	 
-	 		 MemberVO myInfo = new MemberVO();
-	 		 myInfo = memberService.myInfo(mvo);
-			
-			model.addAttribute("myInfo", myInfo);
-		   	 return "mypage/myinfo";
-	     }
+      LoginVO login =(LoginVO)session.getAttribute("login");
 
-	}
-		
+      if(login == null) {
+         mav.setViewName("login/login");    
+         return mav;      
+      }else {          
+         String userId = lvo.getC_id();
+         String userPw = lvo.getC_pwd();
+         LoginVO loginCheckResult = loginService.loginSelect(userId, userPw);
+         if (loginCheckResult == null) {
+            mav.addObject("status",1 );
+            mav.setViewName("mypage/pwdCheck");
+            return mav;
+         } else { // 일치하면
+            session.setAttribute("login",loginCheckResult);
+            /*mav.addObject("login", loginCheckResult);*/
+            mav.setViewName("mypage/myinfo");
+            return mav;
+         }
+      }
+   }
 
-	/*************************************************
-	 * 마이페이지 등급현황 조회
-	 *************************************************/
-	@RequestMapping(value="/rank.do", method = RequestMethod.GET)
-	public String customerRankList(RankVO rvo, Model model, HttpSession session) {
-		logger.info("rank 호출 성공");
-		
-		LoginVO login =(LoginVO)session.getAttribute("login");		
-		logger.info("c_id ="+login.getC_id());
-		rvo.setC_id(login.getC_id());
-		
-		List<RankVO> rankList = rankService.rankList(rvo);	
-		model.addAttribute("rankList", rankList);
-		
-		String myRank = rankService.myRank(rvo);
-		model.addAttribute("myRank",myRank);
-		
-		return "mypage/rank";
+   /*************************************************
+    * 마이페이지 개인정보 조회
+    *************************************************/
+   @RequestMapping(value="/myinfo.do", method = RequestMethod.POST)
+   public String customeriInfoList(MemberVO mvo, Model model, HttpSession session) {
+      logger.info("mypage 호출 성공");
 
-	}
+      LoginVO login =(LoginVO)session.getAttribute("login");
 
-	/*************************************************
+      if(login == null) {         
+         return "login/login";
+
+      }else {
+         mvo.setC_id(login.getC_id());
+
+         MemberVO myInfo = new MemberVO();
+         myInfo = memberService.myInfo(mvo);
+
+         model.addAttribute("myInfo", myInfo);
+         return "mypage/myinfo";
+      }
+   }
+
+   /*************************************************
+    * 마이페이지 등급현황 조회
+    *************************************************/
+   @RequestMapping(value="/rank.do", method = RequestMethod.GET)
+   public String customerRankList(RankVO rvo, Model model, HttpSession session) {
+      logger.info("rank 호출 성공");
+
+      LoginVO login =(LoginVO)session.getAttribute("login");
+
+      if(login == null) {
+         return "login/login";           
+      }else {   
+         rvo.setC_id(login.getC_id());
+
+         List<RankVO> rankList = rankService.rankList(rvo);   
+         model.addAttribute("rankList", rankList);
+
+         String myRank = rankService.myRank(rvo);
+         model.addAttribute("myRank",myRank);
+
+         return "mypage/rank";
+      }
+   }
+
+   /*************************************************
 	 * 마이페이지 게시물 조회
 	 *************************************************/
 	@RequestMapping(value="/myboard.do", method = RequestMethod.GET)
@@ -253,5 +252,4 @@ public class MypageController {
 		model.addAttribute("customerBoardList", customerBoardList);
 		return "mypage/myboard";
 	}
-
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.spring.admin.image.vo.AdminImageVO;
 import com.spring.admin.product.vo.AdminProductVO;
- 
+
 public interface AdminProductDao {
 	// List
 	public List<AdminProductVO> productList(AdminProductVO pvo);
@@ -14,7 +14,7 @@ public interface AdminProductDao {
 	public int productInsert(AdminProductVO pvo);
 	public int imageInsert(AdminImageVO ivo);
 	public int productNumber();
-	
+	 
 	// category
 	public List<AdminProductVO> bcategory();
 	public List<AdminProductVO> scategory(int bigct_no);		/*int bigct_no*/

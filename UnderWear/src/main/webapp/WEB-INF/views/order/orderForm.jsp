@@ -182,6 +182,12 @@ select{
          boxForm();
          orderConfirm();
          console.log($("#product").val());
+         console.log($("#b_number").val());
+         $("#orderForm").attr({
+            "method":"post",
+            "action":"/order/orderInsert.do"
+         }); 
+         $("#orderForm").submit();  
       });
          
    });

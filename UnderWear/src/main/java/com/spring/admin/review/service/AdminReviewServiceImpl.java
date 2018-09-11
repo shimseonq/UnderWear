@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.review.dao.ReviewDao;
 import com.spring.client.review.vo.ReviewVO;
+import com.spring.client.reviewReply.dao.ReviewReplyDao;
 
 @Service
 public class AdminReviewServiceImpl implements AdminReviewService {
@@ -17,6 +18,9 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
 
+	@Autowired
+	private ReviewReplyDao reviewReplyDao;
+	
 	@Override
 	public List<ReviewVO> reviewList(ReviewVO rvo) {
 		List<ReviewVO> rList = null;
@@ -47,6 +51,11 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		return result;
 	}
 
+	@Override
+	public int replyCount(int rv_no) {
+		int result = reviewReplyDao.replyCount(rv_no);
+	      return result;
+	}
 
 
 	}

@@ -12,4 +12,5 @@ public interface AdminReviewService {
 
 	public int reviewDelete(ReviewVO rvo);
 
+	public int replyCount(int rv_no);
 }

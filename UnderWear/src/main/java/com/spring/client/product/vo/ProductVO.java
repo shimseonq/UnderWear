@@ -1,10 +1,8 @@
 package com.spring.client.product.vo;
 
-import org.springframework.web.multipart.MultipartFile;
+import com.spring.admin.image.vo.AdminImageVO;
 
-import com.spring.common.vo.CommonVO;
-
-public class ProductVO extends CommonVO {
+public class ProductVO extends AdminImageVO {
 
 	private int p_code			= 0;
 	private String p_name		= "";
@@ -14,13 +12,19 @@ public class ProductVO extends CommonVO {
 	private String p_date		= "";
 	private String p_content	= "";
 	private String p_gender		= "";
+	private String p_image		= "";
 	
-	private MultipartFile file[];		// 첨부파일
-	private String p_file = "";		// 실제서버에 저장한 파일명
+	
 	
 	
 
 
+	public String getP_image() {
+		return p_image;
+	}
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
+	}
 	public int getP_code() {
 		return p_code;
 	}
@@ -71,16 +75,5 @@ public class ProductVO extends CommonVO {
 	}
 	
 	
-	public MultipartFile[] getFile() {
-		return file;
-	}
-	public void setFile(MultipartFile[] file) {
-		this.file = file;
-	}
-	public String getP_file() {
-		return p_file;
-	}
-	public void setP_file(String p_file) {
-		this.p_file = p_file;
-	}
+
 }

@@ -88,6 +88,7 @@
 		<if test="rv_img != null and rv_img != ''">,#{rv_img}</if> )
 	</insert>
 	
+	
 		<!-- 게시물 삭제 하기  -->
 <delete id="reviewDelete" parameterType="review">		<!-- 반환타입이 int일 시 파라미터타입은 int -->
 		/* review - reviewDelete */

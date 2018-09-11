@@ -9,6 +9,6 @@ public interface AdminMemberDao {
 	// 글 목록 구현
 	public List<MemberVO> memberList(MemberVO mvo);
 	
-
+ 
 
 }

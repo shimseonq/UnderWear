@@ -16,7 +16,7 @@
     <link rel="icon" href="/resources/image/icon.png">
     
     <!-- Bootstrap core CSS -->
-    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/include/dist/css/adminbootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="/resources/include/css/metisMenu.min.css" rel="stylesheet">
@@ -48,7 +48,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <tiles:insertAttribute name="left" />
         </div>
+        <br><br><br><br>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        
          <tiles:insertAttribute name="sub" />
          <tiles:insertAttribute name="main" />
         </div>

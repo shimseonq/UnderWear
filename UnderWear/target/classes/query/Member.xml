@@ -84,14 +84,21 @@
       order by c_num desc
    </select>
 	
-	 <select id="customerBoardList" parameterType="member" resultType="qna" >
-		select q_no , q_title, q_date, '문의게시판' as q_content from qna where c_num=#{c_num}
-		union 
-		select rv_no as q_no, rv_title as q_title, rv_date as q_date, '리뷰게시판' as q_content from review r 
+	<!-- <select id="myboard" >
+		   select q_no,q_title, c_id,c_name, q_content, to_char(q_date, 'YYYY-MM-DD') as q_date , repRoot, repStep, repIndent from qna q inner join customer c on 
+		q.c_num = c.c_num 
+	</select> -->
+	
+   
+    <select id="customerBoardList" parameterType="member" resultType="qna" >
+      select q_no , q_title, q_date, '문의게시판' as q_content from qna where c_num=#{c_num}
+      union 
+      select rv_no as q_no, rv_title as q_title, rv_date as q_date, '리뷰게시판' as q_content from review r 
       inner join orders o on r.o_no = o.o_no 
       inner join basket b on b.b_no = O.b_NO 
       inner join customer c on c.c_num = b.c_num
       where c.c_num=#{c_num}
       
-	</select> 
+   </select> 
+   
 </mapper>

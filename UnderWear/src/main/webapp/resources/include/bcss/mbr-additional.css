@@ -1453,6 +1453,8 @@ body {
   flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   padding-left: 0;
+  width: 700px;
+  margin-left: 15%;
 }
 .cid-r1UxZzsjgj .navbar-toggleable-sm .navbar-collapse .navbar-nav .nav-item {
   -webkit-align-self: center;

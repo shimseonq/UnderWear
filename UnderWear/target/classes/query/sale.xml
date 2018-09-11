@@ -33,4 +33,13 @@
       </where> 
       order by sa_date desc
    </select>
+
+	<select id="sumpay" parameterType="String" resultType="int">
+			select sum(sa_money) from sale 
+     	   inner join pay on sale.pa_no = pay.pa_no
+     		 inner join orders on pay.o_no = orders.o_no
+     		 inner join basket on orders.b_no = basket.b_no
+      		inner join customer on basket.c_num = customer.c_num
+     	   group by c_id having c_id=#{c_id}
+        </select>
 </mapper>

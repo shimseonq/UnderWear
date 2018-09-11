@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.client.login.dao.LoginDao;
 import com.spring.client.login.vo.LoginVO;
-import com.spring.client.member.dao.MemberDao;
 import com.spring.client.member.vo.MemberVO;
 
 @Service
@@ -62,5 +61,11 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public LoginVO loginHistorySelect(String c_id) {
 		return loginDao.loginHistorySelect(c_id);
+	}
+
+	@Override
+	public MemberVO idCheck(MemberVO lvo) {
+		// TODO Auto-generated method stub
+		return loginDao.idCheck(lvo);
 	}
 }
